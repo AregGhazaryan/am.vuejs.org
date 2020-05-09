@@ -1,56 +1,56 @@
 ---
-title: Installation
-type: guide
+title: Տեղադրում
+type: ուղեցույց
 order: 1
 vue_version: 2.5.16
 gz_size: "30.90"
 ---
 
-### Compatibility Note
+### Համապատասխանության Նշում
 
-Vue does **not** support IE8 and below, because it uses ECMAScript 5 features that are un-shimmable in IE8. However it supports all [ECMAScript 5 compliant browsers](https://caniuse.com/#feat=es5).
+Vue-ն **չի** աշխատում IE8-ում և ավելի հին տարբերակներում, որովհետև Vue-ն օգտագործում է ECMAScript 5 հատկանիշներ որոնք բացակայում են IE8-ի մեջ. Այստեղ կարող եք տեսնել բոլոր այն [բրաուզերները որոնք համապատասխանում են ECMAScript 5-ին](https://caniuse.com/#feat=es5)։
 
-### Semantic Versioning
+### Սեմանտիկ Տարբերակում
 
-Vue follows [Semantic Versioning](https://semver.org/) in all its official projects for documented features and behavior. For undocumented behavior or exposed internals, changes are described in [release notes](https://github.com/vuejs/vue/releases).
+Vue-ն հետևում է [Սեմանտիկ Տարբերակման](https://semver.org/)-ը իր բոլոր պաշտոնական նախագծերի դոկումենտացիայի և behavior-ի համար. Չ՝դոկումենտացված behavior-ի կամ այլ բաց ներքին փոփոխությունները, նկարագրված են [թողակման նշումներում](https://github.com/vuejs/vue/releases)։
 
-### Release Notes
+### Թողարկման նշումներ
 
-Latest stable version: {{vue_version}}
+Վերջին կայուն տարբերակը։ {{vue_version}}
 
-Detailed release notes for each version are available on [GitHub](https://github.com/vuejs/vue/releases).
+Մանրամասն թողարկման նշումները ամեն տարբերակի համաար հասանելի են այստեղ [GitHub](https://github.com/vuejs/vue/releases).
 
 ## Vue Devtools
 
-When using Vue, we recommend also installing the [Vue Devtools](https://github.com/vuejs/vue-devtools#vue-devtools) in your browser, allowing you to inspect and debug your Vue applications in a more user-friendly interface.
+Երբ օգտագործում ենք Vue, մենք խորհուրդ ենք տալիս տեղադրել [Vue Devtools-ը](https://github.com/vuejs/vue-devtools#vue-devtools) ձեր բրաուզերում, որը ձեզ թույլ է տալիս inspect և debug անել ձեր Vue ծրագրերը ավելի հարմար interface-ում.
 
-## Direct `<script>` Include
+## Ուղիղ `<script>`  Ներառում
 
-Simply download and include with a script tag. `Vue` will be registered as a global variable.
+Ուղղակի ներբեռնեք և ներառեք script tag-ով։ `Vue`-ն կգրանցվի որպես գլոբալ փոփոխական։
 
-<p class="tip">Don't use the minified version during development. You will miss out on all the nice warnings for common mistakes!</p>
+<p class="tip">Զարգացման ժամանակ մի օգտագործեք minified տարբերակը. Այդ դեպքում ձեր մոտ կբացակայի նախազգուշացումները (warnings) հասարկակ սխալների համար!</p>
 
 <div id="downloads">
-  <a class="button" href="/js/vue.js" download>Development Version</a><span class="light info">With full warnings and debug mode</span>
+  <a class="button" href="/js/vue.js" download>Զարգացման Տարբերակ</a><span class="light info">Բոլոր նախազգուշացումներով և debug mode</span>
 
-  <a class="button" href="/js/vue.min.js" download>Production Version</a><span class="light info">Warnings stripped, {{gz_size}}KB min+gzip</span>
+  <a class="button" href="/js/vue.min.js" download>Արտադրության Տարբերակ</a><span class="light info">Առանց նապազգուշացումներով, {{gz_size}}KB min+gzip</span>
 </div>
 
 ### CDN
 
-For prototyping or learning purposes, you can use the latest version with:
+Prototyping-ի կամ սովորելու համար կարող եք նաև օգտագործել ամենանոր տարբերը հետևյալ ձևով;
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 ```
 
-For production, we recommend linking to a specific version number and build to avoid unexpected breakage from newer versions:
+Արտադրության ժամանակ, մենք խորհուրդ ենք տալիս օգտագործել կոնկրետ տարբերակ որպեսզի խուսափեք անսպասելի կոտրումներից ավելի նոր տարբերակներից։
 
 ``` html
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 ```
 
-If you are using native ES Modules, there is also an ES Modules compatible build:
+Եթե դուք օգտագործում եք native ES մոդուլները, մենք ունենք նաև ES Modules-ին համապատասխան տարբերակ:
 
 ``` html
 <script type="module">
@@ -58,70 +58,69 @@ If you are using native ES Modules, there is also an ES Modules compatible build
 </script>
 ```
 
-You can browse the source of the NPM package at [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).
+Դուք կարող եք իմանալ ավելին NPM-ի package-ին օգտագործելով հետևյալ հղումը [cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue/).
 
-Vue is also available on [unpkg](https://unpkg.com/vue@{{vue_version}}/dist/vue.js) and [cdnjs](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs takes some time to sync so the latest release may not be available yet).
+Vue-ն նաև հասանելի է [unpkg-ում](https://unpkg.com/vue@{{vue_version}}/dist/vue.js) և [cdnjs-ում](https://cdnjs.cloudflare.com/ajax/libs/vue/{{vue_version}}/vue.js) (cdnjs կարող է որոշ ժամանակ տանել որպեսզի համաժամեցնել այնպես որ ամենավերջին տարբերակը հնարավոր է որ հասանելի չի լինի.
 
-Make sure to read about [the different builds of Vue](#Explanation-of-Different-Builds) and use the **production
- version** in your published site, replacing `vue.js` with `vue.min.js`. This is a smaller build optimized for speed instead of development experience.
+Համոզվեք որ դուք կարդացել եք [Vue-ի տարբերակների](#Explanation-of-Different-Builds) և օգտագործեք **արտադրության տարբերակը** ձեր հրատարակած կայքում, փոխելով `vue.js`-ը `vue.min.js`-ի հետ։ Այս տարբերակը ավելի փոքր է և օպտիմիզացված է արագության համար, զարգացման փորձառության փոխարեն.
 
 ## NPM
 
-NPM is the recommended installation method when building large scale applications with Vue. It pairs nicely with module bundlers such as [Webpack](https://webpack.js.org/) or [Browserify](http://browserify.org/). Vue also provides accompanying tools for authoring [Single File Components](single-file-components.html).
+NPM-ով խորհուրդ է տրվում տեղադրել երբ որ կառուցում եք մեծածավալ ծրագրեր Vue-ով։ Այն լավ զուգացվում է մոդուլների bundler-ների հետ ինչպիսիք են [Webpack-ը](https://webpack.js.org/) կամ [Browserify-ը](http://browserify.org/)։ Vue-ն նաև տրամադրում է գործիքներ հեղինակելու համար [Մեկ ֆայլ կոմպոնենտներ](single-file-components.html)։
 
 ``` bash
-# latest stable
+# վերջին կայուն տարբերակ
 $ npm install vue
 ```
 
 ## CLI
 
-Vue provides an [official CLI](https://github.com/vuejs/vue-cli) for quickly scaffolding ambitious Single Page Applications. It provides batteries-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save, and production-ready builds. See [the Vue CLI docs](https://cli.vuejs.org) for more details.
+Vue տրամադրում է [պաշտոնական CLI](https://github.com/vuejs/vue-cli) որ ավելի արագ տրամադրի ձեզ մեկ էջ ծրագրի հենք (scaffolding)։ Այն ներառում է մարտկոցներով ներկառուցված տեղադրում ավելի ժամանակակից frontend աշխատընթացների համար։ Այն խլում է միայն մի քանի րոպե որպեսզի աշխատի և ապահովի ծրագիրը hot-reload-ով, lint-on-save, և production-ready build-ներով: Կարդացեք [Vue CLI-ի դոկումենտացիան](https://cli.vuejs.org) ավելի մանրամասների համար.
 
-<p class="tip">The CLI assumes prior knowledge of Node.js and the associated build tools. If you are new to Vue or front-end build tools, we strongly suggest going through <a href="./">the guide</a> without any build tools before using the CLI.</p>
+<p class="tip">CLI—ը ենթադրում որ դուք գիտեք թէ ինչ է Node.js-ը և կապված կառուցման գործիքները: Եթե դուք նոր եք ծանոթանում Vue-ի հետ կամ front-end կառուցման գործիքների հետ, մենք խորհուրդ ենք տալիս անցնել <a href="./"> այս ուղեցույցը </a> առանց կառուցման գործիքների նախքան CLI-ի օգտագործելը</p>
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/real-world-vue-js/vue-cli" target="_blank" rel="sponsored noopener" title="Vue CLI">Watch a video explanation on Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/real-world-vue-js/vue-cli" target="_blank" rel="sponsored noopener" title="Vue CLI">Դիտել բացատրական հոլովակ Vue Mastery-ում</a></div>
 
-## Explanation of Different Builds
+## Տարբեր Build-ների բացատրությունը
 
-In the [`dist/` directory of the NPM package](https://cdn.jsdelivr.net/npm/vue/dist/) you will find many different builds of Vue.js. Here's an overview of the difference between them:
+[`dist/` բաժնում NPM package-ի մեջ](https://cdn.jsdelivr.net/npm/vue/dist/) դուք կարող եք փնտրել տարբեր build-ներ Vue.js-ի։ Ահա ցուցակ որը ցույց է տալիս տարբերությունները:
 
-| | UMD | CommonJS | ES Module (for bundlers) | ES Module (for browsers) |
+| | UMD | CommonJS | ES Մոդուլ (bundler-ների համար) | ES Մոդուլ (բրաուզերների համար) |
 | --- | --- | --- | --- | --- |
-| **Full** | vue.js | vue.common.js | vue.esm.js | vue.esm.browser.js |
-| **Runtime-only** | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js | - |
-| **Full (production)** | vue.min.js | - | - | vue.esm.browser.min.js |
-| **Runtime-only (production)** | vue.runtime.min.js | - | - | - |
+| **Ամբողջովին** | vue.js | vue.common.js | vue.esm.js | vue.esm.browser.js |
+| **Միայն Runtime** | vue.runtime.js | vue.runtime.common.js | vue.runtime.esm.js | - |
+| **Ամբողջովին (արտադրություն)** | vue.min.js | - | - | vue.esm.browser.min.js |
+| **Միայն Runtime (արտադրություն)** | vue.runtime.min.js | - | - | - |
 
-### Terms
+### Պայմաններ
 
-- **Full**: builds that contain both the compiler and the runtime.
+- **Ամբողջովին**: build որը պարունակում է compiler-ը և runtime-ը.
 
-- **Compiler**: code that is responsible for compiling template strings into JavaScript render functions.
+- **Compiler**: կոդ որը պատասխանատու է compile անելու ձևանմուշի string-ները դեպի JavaScript տպելու ֆունկցիաներ։
 
-- **Runtime**: code that is responsible for creating Vue instances, rendering and patching virtual DOM, etc. Basically everything minus the compiler.
+- **Runtime**: կոդ որը պատասխանատու է ստեղծելու Vue-ի instance ստեղծելու, տպելու և միացնելու virtual DOM-ին, և այլն. Պարզապես ունի ամեն ինչ բացի compiler-ից։
 
-- **[UMD](https://github.com/umdjs/umd)**: UMD builds can be used directly in the browser via a `<script>` tag. The default file from jsDelivr CDN at [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) is the Runtime + Compiler UMD build (`vue.js`).
+- **[UMD](https://github.com/umdjs/umd)**: UMD build-ը կարելի է օգտագործել ուղիղ բրաուզերի մեջ օգտագործելով `<script>` tag. Հիմնական ֆայլը jsDelivr CDN-ից է [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) այն պարունակում է Runtime + Compiler UMD build-ը (`vue.js`)։
 
-- **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: CommonJS builds are intended for use with older bundlers like [browserify](http://browserify.org/) or [webpack 1](https://webpack.github.io). The default file for these bundlers (`pkg.main`) is the Runtime only CommonJS build (`vue.runtime.common.js`).
+- **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: CommonJS build-ները նախատեսված են այլ bundler-ների համար ինչպիսիք են [browserify-ը](http://browserify.org/) կամ [webpack 1-ը](https://webpack.github.io)։ Հիմնական ֆայլը այս bundler-ների համար  (`pkg.main`) է որը միայն Runtime CommonJS build է (`vue.runtime.common.js`)։
 
-- **[ES Module](http://exploringjs.com/es6/ch_modules.html)**: starting in 2.6 Vue provides two ES Modules (ESM) builds:
+- **[ES Մոդուլ](http://exploringjs.com/es6/ch_modules.html)**: Vue-ի 2․6-ից տրամադրվում է երկու ES Մոդուլ (ESM) build-ներ:
 
-  - ESM for bundlers: intended for use with modern bundlers like [webpack 2](https://webpack.js.org) or [Rollup](https://rollupjs.org/). ESM format is designed to be statically analyzable so the bundlers can take advantage of that to perform "tree-shaking" and eliminate unused code from your final bundle. The default file for these bundlers (`pkg.module`) is the Runtime only ES Module build (`vue.runtime.esm.js`).
+  - ESM-ի bundler-ները: նախատեսված է ժամանակակից bundler-ների համար ինչպիսիք են [webpack 2-ը](https://webpack.js.org) կամ [Rollup-ը](https://rollupjs.org/)։ ESM format-ը դիզայանավորված է որպեսզի ստատիկորեն վերլուծվի և bundler-ները կարողանանան կատարեն "tree-shaking" և դուրս հանել չօգտագործած կոդը ձեր վերջին bundle-ում: Հիմնական ֆայլը այս bundler-ների համար (`pkg.module`)-ն է որը միայն Runtime է ES Մոդուլ build-ի (`vue.runtime.esm.js`)։
 
-  - ESM for browsers (2.6+ only): intended for direct imports in modern browsers via `<script type="module">`.
+  - ESM-ը բրաուզերների համար (2.6+ միայն)․ նախատեսված է ուղիղ ներմուծելու ժամանակակից բրաուզերներում օգտագործելով `<script type="module">`.
 
-### Runtime + Compiler vs. Runtime-only
+### Runtime + Compiler ընդեմ Runtime-only
 
-If you need to compile templates on the client (e.g. passing a string to the `template` option, or mounting to an element using its in-DOM HTML as the template), you will need the compiler and thus the full build:
+Եթե դուք ցանկանում եք compile անեք ձևանմուշներ օգտագործողի մոտ (օրինակ՝ փոխանցել string `template` տարբերակում, կամ mount անել էլեմենտին օգտագործելով միայն իր DOM HTML-ը որպես ձևանմուշ), ձեզ պետք անհրաժեշտ կլինի compiler-ը և վերջին build-ը։
 
 ``` js
-// this requires the compiler
+// սա պահանջում է compiler-ը 
 new Vue({
-  template: '<div>{{ hi }}</div>'
+  template: '<div>{{ բարև }}</div>'
 })
 
-// this does not
+// սա ոչ 
 new Vue({
   render (h) {
     return h('div', this.hi)
@@ -129,9 +128,9 @@ new Vue({
 })
 ```
 
-When using `vue-loader` or `vueify`, templates inside `*.vue` files are pre-compiled into JavaScript at build time. You don't really need the compiler in the final bundle, and can therefore use the runtime-only build.
+Երբ օգտածգործում ենք `vue-loader` կամ `vueify`, ձևանմուշներ `*.vue`-ի մեջ, ֆայլերը pre-compile եղած են լինում JavaScript-ի մեջ build- ժամանակ։ Ձեզ պետք չի compiler վերջին bundle-ում, և դուք կարող եք օգտագործել միայն runtime build-ը։
 
-Since the runtime-only builds are roughly 30% lighter-weight than their full-build counterparts, you should use it whenever you can. If you still wish to use the full build instead, you need to configure an alias in your bundler:
+Ի վեր միայն runtime build-ները համարյա 30% ավելի թեթև են քան full-build-ները, դուք պետք է օգտագործեք երբ կարող եք։ Եթե դուք ցանկանում եք օգտագործել full build-ը նրա փոխարեն, դուք պետք է alias տրամադրեք ձեր bundler-ում։
 
 #### Webpack
 
@@ -140,7 +139,7 @@ module.exports = {
   // ...
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' webpack 1-ի համար
     }
   }
 }
@@ -163,7 +162,7 @@ rollup({
 
 #### Browserify
 
-Add to your project's `package.json`:
+Ավելացրեք ձեր նախագիծը `package.json`-ում:
 
 ``` js
 {
@@ -176,7 +175,7 @@ Add to your project's `package.json`:
 
 #### Parcel
 
-Add to your project's `package.json`:
+Ավելցարեք ձեր նախագիծը `package.json`-ում:
 
 ``` js
 {
@@ -187,17 +186,17 @@ Add to your project's `package.json`:
 }
 ```
 
-### Development vs. Production Mode
+### Զարգացման Տեսակը ընդեմ Արտադրության Տեսակի
 
-Development/production modes are hard-coded for the UMD builds: the un-minified files are for development, and the minified files are for production.
+Զարգացման/արտադրության տեսակները hard-code են արած UMD build-ների համար։ un-minified ֆայլերը զարգացման համար են, և minified ֆայլերը արտադրության։
 
-CommonJS and ES Module builds are intended for bundlers, therefore we don't provide minified versions for them. You will be responsible for minifying the final bundle yourself.
+CommonJS և ES Մոդուլ build-ները նախատեսված են bundler-ների համար, որի հետևանքով մենք չենք տրամադրում minified տարբերակներ նրանց համար։ Դուք պատասխանատու կլինեք minify անելու ձեր վերջին bundle-ը։
 
-CommonJS and ES Module builds also preserve raw checks for `process.env.NODE_ENV` to determine the mode they should run in. You should use appropriate bundler configurations to replace these environment variables in order to control which mode Vue will run in. Replacing `process.env.NODE_ENV` with string literals also allows minifiers like UglifyJS to completely drop the development-only code blocks, reducing final file size.
+CommonJS և ES Մոդուլ build-ները նաև տրամադրում raw ստուգումներ `process.env.NODE_ENV`-ի համար որպեսզի որոշվի այն տեսակը որով պետք է այն աշխատի։ Դուք պետք է օգտագործեք համապատասխան bundler-ի configuration-ը որպեսզի փոփոխեք enviroment փոփոխականները և կառավարեք թէ ինչ տեսակով Vue-ն պետք է աշխատի։ Փոփոխելով `process.env.NODE_ENV`-ին string literal-ների հետ, նաև թույլ է տալիս minifier-ների ինչպիսիք են UglifyJS որպեսզի ամբողջովի վերացնի զարգացման համար տախատեսված կոդի բլոկները, նվազեցնելով վերջին ֆայլի չափսը։
 
 #### Webpack
 
-In Webpack 4+, you can use the `mode` option:
+Webpack 4+-ի մեջ դուք կարող եք օգտագործել `mode` option-ը:
 
 ``` js
 module.exports = {
@@ -205,7 +204,7 @@ module.exports = {
 }
 ```
 
-But in Webpack 3 and earlier, you'll need to use [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+Բայց Webpack 3 և ավելի հին տարբերակներում, դուք պետք է օգտագործեք [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
 
 ``` js
 var webpack = require('webpack')
@@ -225,7 +224,7 @@ module.exports = {
 
 #### Rollup
 
-Use [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
+Օգտագործեք [rollup-plugin-replace](https://github.com/rollup/rollup-plugin-replace):
 
 ``` js
 const replace = require('rollup-plugin-replace')
@@ -242,23 +241,23 @@ rollup({
 
 #### Browserify
 
-Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle.
+Տվեք գլոբալ [envify](https://github.com/hughsk/envify) transform ձեր bundle-ին.
 
 ``` bash
 NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
 ```
 
-Also see [Production Deployment Tips](deployment.html).
+Նաև նայեք [Արտադրության Տեղակայման Հուշումներ](deployment.html).
 
-### CSP environments
+### CSP environment-ներ
 
-Some environments, such as Google Chrome Apps, enforce Content Security Policy (CSP), which prohibits the use of `new Function()` for evaluating expressions. The full build depends on this feature to compile templates, so is unusable in these environments.
+Որոշ environment-ներ, ինչպիսիք են Google Chrome App-ը, պաշտպանված են Բովանդակության Անվտանգության Քաղաքականությունով (CSP), որը արգելում է `new Function()`-ի օգտագործումը։ Ամբողջ build-ը կախված է այս հատկության վրա որպեսզի compile անի ձևանմուշները, և օգտագործելի լինի այն այս environment-ներում։
 
-On the other hand, the runtime-only build is fully CSP-compliant. When using the runtime-only build with [Webpack + vue-loader](https://github.com/vuejs-templates/webpack-simple) or [Browserify + vueify](https://github.com/vuejs-templates/browserify-simple), your templates will be precompiled into `render` functions which work perfectly in CSP environments.
+Մյուս դեպքում, միայն runtime build-y ամբողջովի համապատասխանում է CSP-ին։ Երբ օգտագործում ենք միայն runetime build-ը [Webpack + vue-loader-ի](https://github.com/vuejs-templates/webpack-simple) կամ [Browserify + vueify-ի](https://github.com/vuejs-templates/browserify-simple) հետ, ձեր ձևանմուշները precompiled կլինեն դեպի `render` ֆունկցիա որը հիանալի է աշխատում CSP environment-ներում։
 
-## Dev Build
+## Զարգացման Build
 
-**Important**: the built files in GitHub's `/dist` folder are only checked-in during releases. To use Vue from the latest source code on GitHub, you will have to build it yourself!
+**Կարևոր**: կառուցված ֆայլերը GitHub-ի `/dist` պանակում միայն ստուգվում են թողարկումների ժամանակ։ Որպեսզի օգտագործեք Vue-ն վերջին կոդից որը որ գտնվում է GitHub-ում, դուք պետք է build անեք ինքներտ!
 
 ``` bash
 git clone https://github.com/vuejs/vue.git node_modules/vue
@@ -269,13 +268,13 @@ npm run build
 
 ## Bower
 
-Only UMD builds are available from Bower.
+Միայն UMD build-ներն են հասանելի Bower-ից
 
 ``` bash
 # latest stable
 $ bower install vue
 ```
 
-## AMD Module Loaders
+## AMD Մոդուլի Բեռնողներ
 
-All UMD builds can be used directly as an AMD module.
+Բոլոր UMD build-ները կարող են օգտագործվել ուղիղ ինչպես AMD Մոդուլ։
