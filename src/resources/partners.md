@@ -1,7 +1,7 @@
 ---
 type: partners
 partners: true
-title: Vue Partners
+title: Vue-ի գործընկերները
 proficiencies_urls:
   VueJs: https://vuejs.org
   Laravel: https://laravel.com
@@ -11,7 +11,7 @@ partners_list:
         name: Vehikl
         logo: vehikl.png
         description:
-            Vehikl is a software consultancy specialising in PHP and JavaScript. We build best-in-class web applications written with popular frameworks such as Laravel, Express, NestJS, Vue, and React. Think of us as an extension of your team.
+            Vehikl-ը ծրագրային ապահովման խորհրդատվություն է, որը մասնագիտանում է PHP-ի և JavaScript-ի ոլորտում․ Մենք կառուցում ենք ամենալավ դասի վեբ ծրագրեր, որոնք գրված են հանրաճանաչ framework-երով, ինչպիսիք են Laravel, Express, NestJS, Vue և React․ Մտածեք մեզ որպես ձեր թիմի ընդլայնում․
         proficiencies:
             - VueJs
             - Laravel

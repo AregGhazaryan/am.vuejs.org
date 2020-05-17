@@ -3,31 +3,31 @@ title: API
 type: api
 ---
 
-## Global Config
+## Գլոբալ Կոնֆիգուրացիա
 
-`Vue.config` is an object containing Vue's global configurations. You can modify its properties listed below before bootstrapping your application:
+`Vue.config`-ը օբյեկտ է որը պարունակում է Vue-ի գլոբալ կոնֆիգուրացիան։ Դուք կարող եք փոփոխել նրա հատկությունները ներքևում նշված նախքան ձեր ծրագիրը միացնելը։
 
 ### silent
 
-- **Type:** `boolean`
+- **Տիպ:** `boolean`
 
-- **Default:** `false`
+- **Հիմնական Արժեքը:** `false`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.silent = true
   ```
 
-  Suppress all Vue logs and warnings.
+  Արգելափակել Vue-ի բոլոր նախազգուշացումները և log-երը։
 
 ### optionMergeStrategies
 
-- **Type:** `{ [key: string]: Function }`
+- **Տիպ:** `{ [key: string]: Function }`
 
-- **Default:** `{}`
+- **Հիմնական Արժեքը:** `{}`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.optionMergeStrategies._my_option = function (parent, child, vm) {
@@ -41,106 +41,106 @@ type: api
   // Profile.options._my_option = 2
   ```
 
-  Define custom merging strategies for options.
+  Սահմանեք custom ձուլման տրատեգիա ընտրանքի համար։
 
-  The merge strategy receives the value of that option defined on the parent and child instances as the first and second arguments, respectively. The context Vue instance is passed as the third argument.
+  Ձուլման ստրատեգիան ստանում է արժեք ընտրանքից որը սահմանված է ծնող և ժառանգող instance-ում որպես առաջին և երկրորդ արգումենտ։ Vue-ի կոնտեքստը փոխանցվում է որպես երրորդ արգումենտ։
 
-- **See also:** [Custom Option Merging Strategies](../guide/mixins.html#Custom-Option-Merge-Strategies)
+- **Նաև նայեք:** [Custom Ընտրանքի Ձուլման Ստրատեգիա](../guide/mixins.html#Custom-Option-Merge-Strategies)
 
 ### devtools
 
-- **Type:** `boolean`
+- **Տիպ:** `boolean`
 
-- **Default:** `true` (`false` in production builds)
+- **Հիմնական Արժեքը:** `true` (`false` արտադրության build-ներում)
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
-  // make sure to set this synchronously immediately after loading Vue
+  // համոզվեք, որ սա համաժամորեն տեղադրել եք Vue-ն բեռնավորելուց անմիջապես հետո
   Vue.config.devtools = true
   ```
 
-  Configure whether to allow [vue-devtools](https://github.com/vuejs/vue-devtools) inspection. This option's default value is `true` in development builds and `false` in production builds. You can set it to `true` to enable inspection for production builds.
+  Դուք նաև կարող եք կոնֆիգուրացիա անել հասանելիությունը [vue-devtools-ի](https://github.com/vuejs/vue-devtools) inspection-ում։ Այս ընտանքի հիմնական արժեքը `true` է զարգացման buildn-ներում և `false` արտադրության build-ներում։ Դուք կարող եք փոխել այն `true` որպեսզի միացնեք inspection-ը արտադրության build-ներում։
 
 ### errorHandler
 
-- **Type:** `Function`
+- **Տիպ:** `Function`
 
-- **Default:** `undefined`
+- **Հիմնական Արժեքը:** `undefined`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.errorHandler = function (err, vm, info) {
-    // handle error
-    // `info` is a Vue-specific error info, e.g. which lifecycle hook
-    // the error was found in. Only available in 2.2.0+
+    // բռնել սխալը
+    // `info`-ն Vue-ի հատուկ սխալի տեղեկություն է, օրինակ՝ որ lifecycle hook-ում
+    // է սխալը հայտնվել։ Միայն հասասնելի է 2.2.0+ տարբերակում
   }
   ```
 
-  Assign a handler for uncaught errors during component render function and watchers. The handler gets called with the error and the Vue instance.
+  Նշանակեք handler չբռնած սխալների համար, կոմպոնենտի render ֆունկցիաների և watcher-ների գործընթացի ժամանակ։ Handler-ը աշխատում է և վերադարձնում է սխալը Vue-ի instance-ի հետ։
 
-  > In 2.2.0+, this hook also captures errors in component lifecycle hooks. Also, when this hook is `undefined`, captured errors will be logged with `console.error` instead of crashing the app.
+  > 2.2.0+, այս hook-ը նաև բռնում է սխալները կոմպոնենտի lifecycle hooks-ի մեջ։ Նաև, երբ որ այս hook-ը `undefined` է, բռնած սխալները log կլինեն `console.error` այն ոչ թե կկոտրեն ամբողջ ծրագիրը։
 
-  > In 2.4.0+, this hook also captures errors thrown inside Vue custom event handlers.
+  > 2.4.0+, այս hook-ը նաև բռնում է սխալները նետած Vue-ի custom event handler-ների մեջ։
 
-  > In 2.6.0+, this hook also captures errors thrown inside `v-on` DOM listeners. In addition, if any of the covered hooks or handlers returns a Promise chain (e.g. async functions), the error from that Promise chain will also be handled.
+  > 2.6.0+, այս hook-ը նաև բռնում է սխալներ նետած `v-on` DOM listener-ների մեջ։ Ի հավելումն, եթե որևէ մեկը այս hook-երից կամ handler-ներից որոնք վերադարձնում են Promise շղթա (օրինակ՝ async ֆունկցիաները), սխալը այդ Promise շղթաի նույնպես կբռնվի։
 
-  > Error tracking services [Sentry](https://sentry.io/for/vue/) and [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) provide official integrations using this option.
+  > Սխալներին հետևելու ծառայություններ [Sentry](https://sentry.io/for/vue/) և [Bugsnag](https://docs.bugsnag.com/platforms/browsers/vue/) տրամադրում են պաշտոնական ինտեգրացիաներ օգտագործելով այս ընտրանքները։
 
 ### warnHandler
 
-> New in 2.4.0+
+> Նոր 2.4.0+
 
-- **Type:** `Function`
+- **Տիպ:** `Function`
 
-- **Default:** `undefined`
+- **Հիմնական Արժեքը:** `undefined`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.warnHandler = function (msg, vm, trace) {
-    // `trace` is the component hierarchy trace
+    // `trace`-ը կոմպոնենտի հիերարխիաի հետք է
   }
   ```
 
-  Assign a custom handler for runtime Vue warnings. Note this only works during development and is ignored in production.
+  Նշանակեք custom handler-ներ runtime Vue-ի նախազգուշացումների համար։ Նշում՝ այն միայն աշխատում է զարգացման ընթացքում և արտադրության մեջ անտեսվում է։
 
 ### ignoredElements
 
-- **Type:** `Array<string | RegExp>`
+- **Տիպ:** `Array<string | RegExp>`
 
-- **Default:** `[]`
+- **Հիմնական Արժեքը:** `[]`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.ignoredElements = [
     'my-custom-web-component',
     'another-web-component',
-    // Use a `RegExp` to ignore all elements that start with "ion-"
-    // 2.5+ only
+    // Օգտագործեք `RegExp` որպեսզի անտեսեք բոլոր այն էլեմենտներին որոնք սկսվում են "ion-"-ով
+    // միայն 2.5+
     /^ion-/
   ]
   ```
 
-  Make Vue ignore custom elements defined outside of Vue (e.g., using the Web Components APIs). Otherwise, it will throw a warning about an `Unknown custom element`, assuming that you forgot to register a global component or misspelled a component name.
+  Ստիպեք Vue-ին անտեսել Vue-ից դուրս սահմանված custom Էլեմենտները (օրինակ՝ օգտագործելով Web Components API-ները): Հակառակ դեպքում, դա նախազգուշացում կբերի `Unknown custom element` վերաբերյալ, ենթադրելով, որ մոռացել եք գրանցել գլոբալ կոմպոնենտ կամ սխալ եք գրել կոմպոնենտի անունը:
 
 ### keyCodes
 
-- **Type:** `{ [key: string]: number | Array<number> }`
+- **Տիպ:** `{ [key: string]: number | Array<number> }`
 
-- **Default:** `{}`
+- **Հիմնական Արժեքը:** `{}`
 
-- **Usage:**
+- **Օգտագործումը:**
 
   ``` js
   Vue.config.keyCodes = {
     v: 86,
     f1: 112,
-    // camelCase won`t work
+    // camelCase-ը չի աշխատի
     mediaPlayPause: 179,
-    // instead you can use kebab-case with double quotation marks
+    // փոխարենը դուք կարող եք օգտագործել kebab-case զույգ չակերտներով
     "media-play-pause": 179,
     up: [38, 87]
   }
@@ -150,51 +150,51 @@ type: api
   <input type="text" @keyup.media-play-pause="method">
   ```
 
-  Define custom key alias(es) for `v-on`.
+  Սահմանեք հատուկ անուններ `v-on`-ի key-ի համար։
 
 ### performance
 
-> New in 2.2.0+
+> Նոր 2.2.0+
 
-- **Type:** `boolean`
+- **Տիպ:** `boolean`
 
-- **Default:** `false (from 2.2.3+)`
+- **Հիմնական Արժեքը:** `false (2.2.3+ -ից)`
 
-- **Usage**:
+- **Օգտագործումը**:
 
-  Set this to `true` to enable component init, compile, render and patch performance tracing in the browser devtool performance/timeline panel. Only works in development mode and in browsers that support the [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API.
+  Նշելով `true` դուք կմիացնեք կոմպոնենտի init, compile, render և patch կատարման tracing-ը բրաուզերի devtool performance/timeline պատուհանում։ Միայն աշխատում է զարգացման տարբերակում և այն բրաուզերներում որոնք ապահովված են [performance.mark](https://developer.mozilla.org/en-US/docs/Web/API/Performance/mark) API-ով։
 
 ### productionTip
 
-> New in 2.2.0+
+> Նոր 2.2.0+
 
-- **Type:** `boolean`
+- **Տիպ:** `boolean`
 
-- **Default:** `true`
+- **Հիմնական Արժեքը:** `true`
 
-- **Usage**:
+- **Օգտագործումը**:
 
-  Set this to `false` to prevent the production tip on Vue startup.
+  Վերագրեք սա `false` որպեսզի կանխել արտադրության հուշումը Vue-ի միացման ժամանակ։Խ
 
-## Global API
+## Գլոբալ API
 
 ### Vue.extend( options )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object} options`
 
-- **Usage:**
+- **Օգտագործում:**
 
-  Create a "subclass" of the base Vue constructor. The argument should be an object containing component options.
+  Ստեղծեք ենթադաս Vue-ի կոնստրուկտորի հենքից։ Արգումենտը պետք է լինի օբյեկտ պարունակող կոմպոնենտի ընտրանքները։
 
-  The special case to note here is the `data` option - it must be a function when used with `Vue.extend()`.
+  Հատուկ դեպքը որ նշված է այստեղ դա `data` տարբերակն է - այն պետք է լինի ֆունկցիա երբ օգտագործվում է `Vue.extend()`-ի հետ.։
 
   ``` html
   <div id="mount-point"></div>
   ```
 
   ``` js
-  // create constructor
+  // Ստեղծել կոնստրուկտոր
   var Profile = Vue.extend({
     template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
     data: function () {
@@ -205,92 +205,92 @@ type: api
       }
     }
   })
-  // create an instance of Profile and mount it on an element
+  // ստեղծել Profile-ի instance և mount անել այն էլեմենտին 
   new Profile().$mount('#mount-point')
   ```
 
-  Will result in:
+  Արդյունքում՝
 
   ``` html
   <p>Walter White aka Heisenberg</p>
   ```
 
-- **See also:** [Components](../guide/components.html)
+- **Նաև Նայեք:** [Կոմպոնենտներ](../guide/components.html)
 
 ### Vue.nextTick( [callback, context] )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Function} [callback]`
   - `{Object} [context]`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Defer the callback to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update.
+  Հետաձգեք callback-ը որպեսզի այն աշխատի հաջորդ DOM-ի թարմացման ցիկլի ժամանակ։ Օգտագործեք այն անմիջապես հետո երբ որ դուք փոփոխել էք որոշ տվյալներ որպեսզի սպասեք DOM-ի թարմեցմանը։
 
   ``` js
-  // modify data
-  vm.msg = 'Hello'
-  // DOM not updated yet
+  // փոփոխեք տվյալները
+  vm.msg = 'Բարև'
+  // DOM-ը թարմեցված չէ դեռ
   Vue.nextTick(function () {
-    // DOM updated
+    // DOM-ը թարմեցվեց
   })
 
-  // usage as a promise (2.1.0+, see note below)
+  // օգտագործումը որպես promise (2.1.0+, նայեք նշումը ներքևում)
   Vue.nextTick()
     .then(function () {
-      // DOM updated
+      // DOM-ը թարմեցվեց
     })
   ```
 
-  > New in 2.1.0+: returns a Promise if no callback is provided and Promise is supported in the execution environment. Please note that Vue does not come with a Promise polyfill, so if you target browsers that don't support Promises natively (looking at you, IE), you will have to provide a polyfill yourself.
+  > Նոր 2.1.0+ մեջ: Վերադարձնում է Promise եթե callback տրամադրած չէ և Promise աջակցվում է կատարման միջավայրում։ Խնդրում ենք նկատի ունենալ, որ Vue-ն չունի Promise-ի polyfill, այնպես որ, եթե դուք ստեղծում եք ծրագիր այն բրաուզերների մեջ որոնք չունեն Promise-ներ (նայում են քեզ, IE), դուք ստիպված կլինեք ինքներդ ձեզ տրամադրել polyfill:
 
-- **See also:** [Async Update Queue](../guide/reactivity.html#Async-Update-Queue)
+- **Նաև Նայեք:** [Async Թարմեցման Հերթ](../guide/reactivity.html#Async-Update-Queue)
 
 ### Vue.set( target, propertyName/index, value )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
   - `{any} value`
 
-- **Returns:** the set value.
+- **Վերադարձնում է:** Դրված արժեքը.
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Adds a property to a reactive object, ensuring the new property is also reactive, so triggers view updates. This must be used to add new properties to reactive objects, as Vue cannot detect normal property additions (e.g. `this.myObject.newProperty = 'hi'`).
+  Ավելացնում է հատկություն ռեակիվ օբյեկտին, համոզվելով որ նոր հատկություն նույնպես ռեակտիվ է, և այն թարմեցնում է տեսքը։ Այն պետք է օգտագործվի որպեսզի ավելացվեն նոր հատկություններ ռեակտիվ օբյեկտներին, որովհետև Vue-ն չի կարող նկատել հասարակ հատկության ավելացումները (օրինակ՝ `this.myObject.newProperty = 'hi'`):
 
-  <p class="tip">The target object cannot be a Vue instance, or the root data object of a Vue instance.</p>
+  <p class="tip">Այս օբյեկտը չի կարող լինել Vue-ի instance, կամ արմատային տվյալների օբյեկտը Vue instance-ի։</p>
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.delete( target, propertyName/index )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
 
-  > Only in 2.2.0+: Also works with Array + index.
+  > Միայն 2.2.0+ և ավելի նոր: Նաև աշխատում է Array + index-ով։
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Delete a property on an object. If the object is reactive, ensure the deletion triggers view updates. This is primarily used to get around the limitation that Vue cannot detect property deletions, but you should rarely need to use it.
+  Ջնջել օբյեկտի հատկություն։ Եթե օբյեկտը ռեակտիվ է, համոզվեք որ ջնջելը կթամացնի տեսքը։ Սա հիմնականում օգտագործվում է որպեսզի շրջանցել այն սահմանաձակումը որը Vue-ն չի կարող նկատել հատկության ջնջումները, բայց դուք հազվադեպ պետք է օգտագործեք այն։ 
 
-  <p class="tip">The target object cannot be a Vue instance, or the root data object of a Vue instance.</p>
+  <p class="tip">ս օբյեկտը չի կարող լինել Vue-ի instance, կամ արմատային տվյալների օբյեկտը Vue instance-ի։</p>
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.directive( id, [definition] )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{string} id`
   - `{Function | Object} [definition]`
 
-- **Usage:**
+- **Օգտագործում:**
 
-  Register or retrieve a global directive.
+  Գրանցել կամ ստանալ գլոբալ ուղղորդիչ։
 
   ``` js
-  // register
+  // գրանցել
   Vue.directive('my-directive', {
     bind: function () {},
     inserted: function () {},
@@ -299,123 +299,123 @@ type: api
     unbind: function () {}
   })
 
-  // register (function directive)
+  // գրանցել (function directive)
   Vue.directive('my-directive', function () {
-    // this will be called as `bind` and `update`
+    // սա կկանչվի որպես `bind` և `update`
   })
 
-  // getter, return the directive definition if registered
+  //  ստացող, վերադարձնում է ուղղորդիչի նկարագրությունը եթե այն գրանցված է
   var myDirective = Vue.directive('my-directive')
   ```
 
-- **See also:** [Custom Directives](../guide/custom-directive.html)
+- **Նաև Նայեք:** [Custom Ուղղորդիչներ](../guide/custom-directive.html)
 
 ### Vue.filter( id, [definition] )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{string} id`
   - `{Function} [definition]`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Register or retrieve a global filter.
+  Գրանցեք կամ ստացեք գլոբալ ֆիլտեր։
 
   ``` js
-  // register
+  // գրանցում
   Vue.filter('my-filter', function (value) {
-    // return processed value
+    // վերադարձնել ստացված արժեքը 
   })
 
-  // getter, return the filter if registered
+  //  ստացող, վերադարձնում է ֆիլտերը եթե այն գրանցված է 
   var myFilter = Vue.filter('my-filter')
   ```
 
-- **See also:** [Filters](../guide/filters.html)
+- **Նաև Նայեք:** [Ֆիլտերներ](../guide/filters.html)
 
 ### Vue.component( id, [definition] )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{string} id`
   - `{Function | Object} [definition]`
 
-- **Usage:**
+- **Օգտագործում:**
 
-  Register or retrieve a global component. Registration also automatically sets the component's `name` with the given `id`.
+  Գրանցել կամ ստանալ գլոբալ կոմպոնենտ։ Գրանցումմը նաև ավտոմատ կերպով դնում է կոմպոնենտի `name`-ը իրան տված `id`—ով։
 
   ``` js
-  // register an extended constructor
+  // գրանցել երկարացված կոնստրուկտոր
   Vue.component('my-component', Vue.extend({ /* ... */ }))
 
-  // register an options object (automatically call Vue.extend)
+  // գրանցել ընտրություններ օբյեկտ (ավտոմատ կանչել Vue.extend)
   Vue.component('my-component', { /* ... */ })
 
-  // retrieve a registered component (always return constructor)
+  // ստանալ գրանցված կոմպոնենտ (միշտ վերադարձնում է կոնստրուկտորը)
   var MyComponent = Vue.component('my-component')
   ```
 
-- **See also:** [Components](../guide/components.html)
+- **Նաև Նայեք:** [Կոմպոնենտներ](../guide/components.html)
 
 ### Vue.use( plugin )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object | Function} plugin`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Install a Vue.js plugin. If the plugin is an Object, it must expose an `install` method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument.
+  Տեղադրելով Vue.js plugin: Եթե plugin—ը օբյեկտ է, ապա այն կպարունակի `install` մեթոդ։ Եթե այն ամբողջությամբ ֆունկցիա է, այն կվերաբերվի որպես տեղադրման մեթոդ։ Տեղադրման մեթոդը կկանչվի Vue-ի հետ որպես արգումենտ։
 
-  This method has to be called before calling `new Vue()`
+  Այս մեթոդը պետք է կանչվի մինչ դուք կկանչեք `new Vue()`
 
-  When this method is called on the same plugin multiple times, the plugin will be installed only once.
+  Երբ այս մեթոդը կանչվում է նույն plugin—ի մեջ միքանի անգամ, ապա այս plugin-ի կտեղադրվի միայն մեկ անգամ։
 
-- **See also:** [Plugins](../guide/plugins.html)
+- **Նաև Նայեք:** [Plugin-ներ](../guide/plugins.html)
 
 ### Vue.mixin( mixin )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object} mixin`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Apply a mixin globally, which affects every Vue instance created afterwards. This can be used by plugin authors to inject custom behavior into components. **Not recommended in application code**.
+  Կիրառեք mixin գլոբալ վիճակով, որը կփոխազդի ամեն Vue instance-ի վրա որը ստեղծվել է հետո։ Սա կարող է օգտագործվել plugin-ի հեղինակների կողմից որպեսզի ներարկել custom behavior-ներ կոմպոնենտների մեջ։ **Խորհուրդ Չի Տրվում Ծրագրի Կոդի Մեջ**։
 
-- **See also:** [Global Mixin](../guide/mixins.html#Global-Mixin)
+- **Նաև Նայեք:** [Գլոբալ Mixin-ներ](../guide/mixins.html#Global-Mixin)
 
 ### Vue.compile( template )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{string} template`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Compiles a template string into a render function. **Only available in the full build.**
+  Compile անել ձևանմուշի string-ները դեպի render ֆունկցիա։ **Հասանելի է միայն full build-ում։**
 
   ``` js
   var res = Vue.compile('<div><span>{{ msg }}</span></div>')
 
   new Vue({
     data: {
-      msg: 'hello'
+      msg: 'բարև'
     },
     render: res.render,
     staticRenderFns: res.staticRenderFns
   })
   ```
 
-- **See also:** [Render Functions](../guide/render-function.html)
+- **Նաև Նայեք:** [Render Ֆունկցիաներ](../guide/render-function.html)
 
 ### Vue.observable( object )
 
-> New in 2.6.0+
+> Նոր 2.6.0+ մեջ
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{Object} object`
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Make an object reactive. Internally, Vue uses this on the object returned by the `data` function.
+  Ստեղծել օբյեկտ ռեակտիվ։ Ներքինով, Vue-ն օգտագործում է սա օբյեկտի վրա որը վերադարձվել է `data` ֆունկցիայի միջոցով։
 
-  The returned object can be used directly inside [render functions](../guide/render-function.html) and [computed properties](../guide/computed.html), and will trigger appropriate updates when mutated. It can also be used as a minimal, cross-component state store for simple scenarios:
+  Վերադարձված օբյեկտը կարող է օգտագործվել ուղիղ [render ֆունկցիաների](../guide/render-function.html) և [հաշվարկված հատկությունների](../guide/computed.html) մեջ, և այն կսկսի համապատասխան թարմացումներ երբ մուտատված է։ Այն նաև կարող է օգտագործվել որպես մինիմալ, կոմպոնենտից-կոմպոնենտ վիճակի պահեստ հասարակ դեպքերի համար։
 
   ``` js
   const state = Vue.observable({ count: 0 })
@@ -429,15 +429,15 @@ type: api
   }
   ```
 
-  <p class="tip">In Vue 2.x, `Vue.observable` directly mutates the object passed to it, so that it is equivalent to the object returned, as [demonstrated here](../guide/instance.html#Data-and-Methods). In Vue 3.x, a reactive proxy will be returned instead, leaving the original object non-reactive if mutated directly. Therefore, for future compatibility, we recommend always working with the object returned by `Vue.observable`, rather than the object originally passed to it.</p>
+  <p class="tip">Vue 2.x-ի մեջ, `Vue.observable` ուղիղ մուտացնում է այն օբյեկտը որը փոխանցված է, այն հավասար է նույն վերադարձված օբյեկտին որը [ցուցադրված է այստեղ](../guide/instance.html#Data-and-Methods). Vue 3.x-ի մեջ, ռեակտիվ proxy կվերադարձվի դրա փոխարեն, թողնելով սկզբնական օբյեկտը որպես ոչ ռեակտիվ եթե մուտատված է ուղիղ։ Այնուհետև, ապագա համատեղելիության համար, մենք խորհուրդ ենք տալիս միշտ աշխատել այն օբյեկտի հետը որը վերադարձվել է `Vue.observable`-ի միջոցով, ի փոխարեն այն օբյեկտի որը որ փոխանցվել էր իրեն։</p>
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.version
 
-- **Details**: Provides the installed version of Vue as a string. This is especially useful for community plugins and components, where you might use different strategies for different versions.
+- **Մանրամասներ**: Տրամադրում է տեղադրված տարբերակը Vue-ի որպես string: Սա հիմնականում օգտակար է plugin-ների և կոմպոնենտների համար, որտեղ դուք կարող էք օգտագործել երբ օգտագործում եք տարբեր տարբերակներ տարբեր պատճառներով։
 
-- **Usage**:
+- **Օգտագործումը**:
 
   ```js
   var version = Number(Vue.version.split('.')[0])
@@ -447,45 +447,45 @@ type: api
   } else if (version === 1) {
     // Vue v1.x.x
   } else {
-    // Unsupported versions of Vue
+    // Չհամապատասխանող տարբերակների համար
   }
   ```
 
-## Options / Data
+## Ընտրանքներ / Տվյալներ
 
 ### data
 
-- **Type:** `Object | Function`
+- **Տիպ:** `Object | Function`
 
-- **Restriction:** Only accepts `Function` when used in a component definition.
+- **Սահմանափակում:** Միայն ընդհունում է `Function` երբ օգտագործվում է կոմպոնենտի նկարագրության մեջ։
 
-- **Details:**
+- **Մանրամասն:**
 
-  The data object for the Vue instance. Vue will recursively convert its properties into getter/setters to make it "reactive". **The object must be plain**: native objects such as browser API objects and prototype properties are ignored. A rule of thumb is that data should just be data - it is not recommended to observe objects with their own stateful behavior.
+  Տվյալների օբյեկտը Vue instance-ի համար։ Vue-ն ռեկուրսիվ ձևով կփոփոխի նրա հատկությունները դեպի getter/setter-ներ որպեսզի այն դարձնի «ռեակտիվ»։ **Այս օբյեկտը պետք է լինի պարզ**․ ներքին օբյեկտները ինչպիսիք են բրաուզերի API օբյեկտները կամ prototype հատկություննեը նրանք անտեսված են։ Հիմնական կանոնն այն է, որ տվյալները պարզապես պետք է լինեն տվյալներ - խորհուրդ չի տրվում դիտարկել օբյեկտները իրեց սեփական վիչակի behavior-ներով։
 
-  Once observed, you can no longer add reactive properties to the root data object. It is therefore recommended to declare all root-level reactive properties upfront, before creating the instance.
+  Երբ դիտարկված է, դուք չեք կարող այլևս ավելացնել ռեակտիվ հատկություններ արմատային տվյալների օբյեկտի մեջ։ Որի պատճառով խորհուրդ է տրվում նախորոք վերագրել բոլոր արմատային աստիճանի ռեակտիվ հատկությունները, նախքան ստեղծելով instance-ը։
 
-  After the instance is created, the original data object can be accessed as `vm.$data`. The Vue instance also proxies all the properties found on the data object, so `vm.a` will be equivalent to `vm.$data.a`.
+  Instance-ը ստեղծելուց հետո, օրիգինալ տվյալների օբյեկտի մեջ կարելի է մուտք գործել `vm.$data`-ի շնորհիվ։ Vue-ի instance-ը proxy է անում բոլոր հատկությունները որոնք գտվնում են տվյալների օբյեկտի վրա, այնուհետև `vm.a` հավասար կլինի `vm.$data.a`.
 
-  Properties that start with `_` or `$` will **not** be proxied on the Vue instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `vm.$data._property`.
+  Հատկությունները որոնք սկսում են `_` կամ `$`-ով **չեն** proxy-ացվի Vue-ի instance-ի մեջ որովհետև նրանք կարող են կոնֆլիկտ ունենալ Vue-ի ներքին հատկությունների և API մեթոդների հետ։ Դուք պետք է մուտք գործեք նրանց մեջ օգտագործելով `vm.$data._property`։
 
-  When defining a **component**, `data` must be declared as a function that returns the initial data object, because there will be many instances created using the same definition. If we use a plain object for `data`, that same object will be **shared by reference** across all instances created! By providing a `data` function, every time a new instance is created we can call it to return a fresh copy of the initial data.
+  Երբ նկարագրում էք **կոմպոնենտ**, `data`-ն պետք է հայտարարված լինի որպես ֆունկցիա որը կվերադարձնի սկզբնական տվյալների օբյեկտը, որովհետև այնտեղ կլինի շատ instance-ներ որոնք ստեղծված են օգտագործելով նույն նկարագրությունը։ Եթե մենք օգտագործենք պարզ օբյեկտ `data`-ի համար, այդ նույն օբյեկտը **կփոխանցվի որպես մեջբերում** բոլոր այն instance-ների մեջ որոնք ստեղծվել են! Տրամադրելով `data` ֆունկցիա, ամեն անգամ երբ որ նոր instance է ստեղծված մենք կարող ենք կանչել այն որպեսզի վերադարձնի թարմ կրկնօրինակ սկզբնական տվյալններից։
 
-  If required, a deep clone of the original object can be obtained by passing `vm.$data` through `JSON.parse(JSON.stringify(...))`.
+  Եթե պահանջվում է, խորը կրկնօրինակ սկզբնական օբյեկտից դուք կարող էք այն ստանալ փոխանցելով `vm.$data` `JSON.parse(JSON.stringify(...))`-ի միջով։
 
-- **Example:**
+- **Օրինակ:**
 
   ``` js
   var data = { a: 1 }
 
-  // direct instance creation
+  // ուղիղ instance-ի ստեղծում
   var vm = new Vue({
     data: data
   })
   vm.a // => 1
   vm.$data === data // => true
 
-  // must use function when in Vue.extend()
+  // պետք է օգտագործվի ֆունկցիա երբ Vue.extend()-ի մեջ է
   var Component = Vue.extend({
     data: function () {
       return { a: 1 }
@@ -493,19 +493,19 @@ type: api
   })
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  Նշում եթե դուք ուզում էք օգտագործել սլաքով ֆունկցիա `data` հատկանիշով, `this` չի լինի կոմպոնենտի instance, բայց դուք դեռ կարող եք մուտք գործել instance որպես ֆունկցիայի առաջին արգումենտ։
 
   ```js
   data: vm => ({ a: vm.myProp })
   ```
 
-- **See also:** [Reactivity in Depth](../guide/reactivity.html)
+- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### props
 
-- **Type:** `Array<string> | Object`
+- **Տիպ:** `Array<string> | Object`
 
-- **Details:**
+- **Մանրամասն:**
 
   A list/hash of attributes that are exposed to accept data from the parent component. It has an Array-based simple syntax and an alternative Object-based syntax that allows advanced configurations such as type checking, custom validation and default values.
 

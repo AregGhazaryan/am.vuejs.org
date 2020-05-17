@@ -1,25 +1,25 @@
 ---
-title: Class and Style Bindings
-type: guide
+title: Class-ների և Ոճերի Կապը
+type: ուղեցույց
 order: 6
 ---
 
-A common need for data binding is manipulating an element's class list and its inline styles. Since they are both attributes, we can use `v-bind` to handle them: we only need to calculate a final string with our expressions. However, meddling with string concatenation is annoying and error-prone. For this reason, Vue provides special enhancements when `v-bind` is used with `class` and `style`. In addition to strings, the expressions can also evaluate to objects or arrays.
+Հասարակ անհրաժեշտություն է տվյալների միացման համար մանիպուլացիայի ենթարկել էլեմենտի class-ները և նրա inline ոճերը։ Քանի որ երկուսնել ատրիբուտ են, մենք կարող ենք օգտագործել `v-bind`-ը որպեսզի կառավարենք նրանց։ Մենք միայն պետք է հաշվարկենք վերջնական string մեր արտահայտության հետ։ Սակայն, խառնվելը string-ի միացումներին նյարդայնացնող է և սխալներ կարող է առաջացնել։ Այդ պատճառով, Vue-ն տրամադրում է հատուկ բարելավումներ երբ `v-bind`-ն է օգտագործվում `class` և `style`-ի հետ: String-ներին ավելացված, արտահայտությունները կարող են արժեքավորվել օբյեկտներում կամ զանգվածներում։
 
-## Binding HTML Classes
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-dynamic-classes?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Dynamic Classes Lesson">Watch a free video lesson on Vue School</a></div>
+## HTML Class-ների Կապը
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-dynamic-classes?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Dynamic Classes Lesson">Դիտեք անվճար վիդեո դաս Vue School-ում</a></div>
 
-### Object Syntax
+### Օբյեկտի Գրելաձև
 
-We can pass an object to `v-bind:class` to dynamically toggle classes:
+Մենք կարող ենք փոխանցել օբյեկտ `v-bind:class`-ին որպեսզի դինամիկորեն միացնենք կամ անջատենք class—ները։
 
 ``` html
 <div v-bind:class="{ active: isActive }"></div>
 ```
 
-The above syntax means the presence of the `active` class will be determined by the [truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) of the data property `isActive`.
+Վերևի գրելաձևը նշանակում է որ `active` class-ը կորոշվի ըստ `isActive` տվյալի հատկանիշի [ճշմարտությանը](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)։
 
-You can have multiple classes toggled by having more fields in the object. In addition, the `v-bind:class` directive can also co-exist with the plain `class` attribute. So given the following template:
+Դուք կարող էք ունենալ մի քանի class-ներ որոնք toggle են լինում ունենալով համապատասխան դաշտերը ձեր օբյեկտում։ Ի հավելումն, `v-bind:class` ուղղորդիչը կարող է նաև գոյակցել պարզ `class` ատրիբուտի հետ։ Ինչպես տրված է հետևյալ ձևանմուշում։
 
 ``` html
 <div
@@ -28,7 +28,7 @@ You can have multiple classes toggled by having more fields in the object. In ad
 ></div>
 ```
 
-And the following data:
+ԵՎ հետևյալ տվյալները։
 
 ``` js
 data: {
@@ -37,15 +37,15 @@ data: {
 }
 ```
 
-It will render:
+Այն կարտատպի որպես;
 
 ``` html
 <div class="static active"></div>
 ```
 
-When `isActive` or `hasError` changes, the class list will be updated accordingly. For example, if `hasError` becomes `true`, the class list will become `"static active text-danger"`.
+Երբ `isActive` կամ `hasError`-ը փոփոխվում է, class-ները կթարմացվեն համապատասխանորեն։ Օրինակ՝ եթե `hasError`-ը դառնա `true`, class-ները կդառնան `"static active text-danger"`:
 
-The bound object doesn't have to be inline:
+Կապված օբյեկտը չպետք է լինի inline:
 
 ``` html
 <div v-bind:class="classObject"></div>
@@ -59,7 +59,7 @@ data: {
 }
 ```
 
-This will render the same result. We can also bind to a [computed property](computed.html) that returns an object. This is a common and powerful pattern:
+Սա կտպի նույն արդյունքը։ Որը մենք նույպես կարող ենք կապել [հաշվարկած հատկանիշում](computed.html) որը վերադարձնում է օբյեկտ։ Սա հասարակ և հզոր ձևավորում է։
 
 ``` html
 <div v-bind:class="classObject"></div>
@@ -79,9 +79,9 @@ computed: {
 }
 ```
 
-### Array Syntax
+### Զանգվածի Գրելաձև
 
-We can pass an array to `v-bind:class` to apply a list of classes:
+Մենք կարող ենք փոխանցել զանգված `v-bind:class`-ին որպեսզի այն կիրառի class-ների ցանկ։
 
 ``` html
 <div v-bind:class="[activeClass, errorClass]"></div>
@@ -93,69 +93,69 @@ data: {
 }
 ```
 
-Which will render:
+Որը կտպի։
 
 ``` html
 <div class="active text-danger"></div>
 ```
 
-If you would like to also toggle a class in the list conditionally, you can do it with a ternary expression:
+Եթե դուք ցանկանում եք միացնել կամ անջատել class-ը ցանկի մեջ պայմանականորեն, դուք կարող էք փորձել եռյակ արտահայտությունը։
 
 ``` html
 <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
 ```
 
-This will always apply `errorClass`, but will only apply `activeClass` when `isActive` is truthy.
+Սա միշտ կկիրառի `errorClass`, բայց միայն կկիրառի `activeClass` երբ `isActive`-ը ճշմարիտ է։
 
-However, this can be a bit verbose if you have multiple conditional classes. That's why it's also possible to use the object syntax inside array syntax:
+Սակայն, սա կարող է լինել մի փոքր բառալի, եթե ունեք բազմաթիվ պայմանական class—ներ: Այդ իսկ պատճառով հնարավոր է օգտագործել օբյեկտի գրելաձևը զանգվածի գրելաձևի ներսում։
 
 ``` html
 <div v-bind:class="[{ active: isActive }, errorClass]"></div>
 ```
 
-### With Components
+### Կոմպոնենտների Հետ
 
-> This section assumes knowledge of [Vue Components](components.html). Feel free to skip it and come back later.
+> Այս բաժինը ենթադրում է որ դուք ունեք [Vue Կոմպոնենտների](components.html) գիտելիքներ։ Ազատ ըզգացեք բաց թողնելու այս բաժին և վերադառնալ հետո։
 
-When you use the `class` attribute on a custom component, those classes will be added to the component's root element. Existing classes on this element will not be overwritten.
+Երբ դուք օգտագործում էք `class` ատրիբուտը custom կոմպոնենտի վրա, այդ class-ները կավելացվեն կոմպոնենի արմատային էլեմենտին։ Գոյություն ունեցող class-ները այս էլեմենտի վրա չեն վերագրվի։
 
-For example, if you declare this component:
+Օրինակ՝ եթե դուք հայտարարեք այս կոմպոնենտը։
 
 ``` js
 Vue.component('my-component', {
-  template: '<p class="foo bar">Hi</p>'
+  template: '<p class="foo bar">Բարև</p>'
 })
 ```
 
-Then add some classes when using it:
+Այնուհետև եթե ավելացնեք մի քանի class-ներ երբ օգտագործում էք այն։
 
 ``` html
 <my-component class="baz boo"></my-component>
 ```
 
-The rendered HTML will be:
+Տպված HTML—ը կլինի։
 
 ``` html
-<p class="foo bar baz boo">Hi</p>
+<p class="foo bar baz boo">Բարև</p>
 ```
 
-The same is true for class bindings:
+Նույն բանը ճշմարիտ է class-ների միացման ժամանակ։
 
 ``` html
 <my-component v-bind:class="{ active: isActive }"></my-component>
 ```
 
-When `isActive` is truthy, the rendered HTML will be:
+Երբ `isActive`-ը ճշմարիտ է, տպված HTML-ը կլինի։ 
 
 ``` html
-<p class="foo bar active">Hi</p>
+<p class="foo bar active">Բարև</p>
 ```
 
-## Binding Inline Styles
+## Կապվող Inline Ոճեր
 
-### Object Syntax
+### Օբյեկտի Գրելաձև 
 
-The object syntax for `v-bind:style` is pretty straightforward - it looks almost like CSS, except it's a JavaScript object. You can use either camelCase or kebab-case (use quotes with kebab-case) for the CSS property names:
+Օբյեկտի գրելաձևը `v-bind:style`-ի շատ պարզ է - այն համարյա նման է CSS-ի, բայց այն JavaScript օբյեկտ է։ Դուք կարող էք օգտագործել camelCase կամ kebab-case (օգտագործեք չակերտներ kebab-case-ի դեպքում) CSS-ի հատկանիշների անունների համար։
 
 ``` html
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
@@ -167,7 +167,7 @@ data: {
 }
 ```
 
-It is often a good idea to bind to a style object directly so that the template is cleaner:
+Հաճախ շատ լավ գաղափար է ուղղակիորեն կապվել ոճային օբյեկտի հետ, որպեսզի ձևանմուշը ավելի մաքուր լինի։
 
 ``` html
 <div v-bind:style="styleObject"></div>
@@ -181,28 +181,28 @@ data: {
 }
 ```
 
-Again, the object syntax is often used in conjunction with computed properties that return objects.
+Նորից, օբյեկտի գրելաձևը շատ հաճախ օգտագործվում է հաշվարկված հատկությունների հետ որոնք վերադարձնում են օբյեկտներ։
 
-### Array Syntax
+### Զանգվածի Գրելաձև
 
-The array syntax for `v-bind:style` allows you to apply multiple style objects to the same element:
+Զանգվածի գրելաձևի `v-bind:style`-ում թույլ է տալիս ձեզ որպեսզի կիրառել միքանի ոճային օբյեկտներ նույն էլեմենտին։
 
 ``` html
 <div v-bind:style="[baseStyles, overridingStyles]"></div>
 ```
 
-### Auto-prefixing
+### Ավտոմատ նախածանցում (prefixing)
 
-When you use a CSS property that requires [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in `v-bind:style`, for example `transform`, Vue will automatically detect and add appropriate prefixes to the applied styles.
+Երբ օգտագործում ենք CSS հատկություն որը պահանջում է [vendor prefix](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix)-ներ `v-bind:style`-ում, օրինակ՝ `transform`, Vue-ն ավտոմատ կնկատի և կավելացնի անհրաժեշտ prefix-ները կիրառած ոճերի համար։
 
-### Multiple Values
+### Բազմակի Արժեքներ
 
 > 2.3.0+
 
-Starting in 2.3.0+ you can provide an array of multiple (prefixed) values to a style property, for example:
+Սկսած 2.3.0+ տարբերակի մեջ դուք կարող էք տրամադրել զանգված բազմակի (նախածանցված) արժեքներ style հատկությանը, օրինակ։
 
 ``` html
 <div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 
-This will only render the last value in the array which the browser supports. In this example, it will render `display: flex` for browsers that support the unprefixed version of flexbox.
+Սա միայն կտպի վերջին արժեքը զանգվածի մեջ որը որ բրաուզերը հասկանում է։ Այս օրինակում, այն կտպի `display:flex` այն բրաուզերների համար որոնք աշխատում են flexbox-ի չնախածանցված տարբերակով։

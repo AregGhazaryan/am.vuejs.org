@@ -1,11 +1,11 @@
 <div id="partners">
   <p>
-    Vue Partners are premium shops that provide first-class Vue consulting and development.
-    If your company is interested in being listed as a partner, please contact us at
+    Vue-ի Գործընկերները պրեմիում խանութներ են, որոնք ապահովում են առաջին կարգի Vue խորհրդատվություն և զարգացում:
+    Եթե ձեր ընկերությունը հետաքրքրված է ներառվելու որպես գործընկեր, խնդրում ենք կապվել մեզ հետ հետևյալ փոստով
     <a href="mailto:partners@vuejs.org">partners@vuejs.org.</a>
   </p>
 
-  <h2 id="active-partners">Active Partners</h2>
+  <h2 id="active-partners">Ակտիվ Գործընկերներ</h2>
 
   <% for (let partner of page.partners_list) { %>
     <div class="partner">
@@ -23,7 +23,7 @@
         <dl>
           <dt>
               <i class="fa fa-link"></i>
-              <span class="sr-only">Link</span>
+              <span class="sr-only">Հղում</span>
             </dt>
             <dd>
               <a href="https://<%- partner.url_link %>" target="_blank" rel="sponsored noopener">
@@ -33,7 +33,7 @@
 
           <dt>
             <i class="fa fa-map-marker"></i>
-            <span class="sr-only">Location</span>
+            <span class="sr-only">Գտնվելու վայրը</span>
           </dt>
           <dd>
             <%= partner.location %>
@@ -41,7 +41,7 @@
 
           <dt>
             <i class="fa fa-globe"></i>
-            <span class="sr-only">Languages</span>
+            <span class="sr-only">Լեզուներ</span>
           </dt>
           <dd class="language-list">
             <ul>
@@ -53,7 +53,7 @@
             </ul>
           </dd>
 
-          <dt>Proficiencies</dt>
+          <dt>Հմուտություններ</dt>
           <dd>
             <ul>
               <% for (let proficiency of partner.proficiencies) { %>

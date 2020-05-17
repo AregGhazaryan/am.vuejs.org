@@ -1,5 +1,5 @@
 ---
-title: Themes
+title: Ոճային Թեմաներ
 type: resources
 order: 804
 ---
@@ -10,8 +10,8 @@ order: 804
   </section>
 
   <p>
-    Want to feature your themes here?
-    <a href="mailto:evan@vuejs.org?subject=Theme+affiliation">Contact us</a>!
+    Ցանկանու՞մ եք ներկայացնել այստեղ ձեր թեմաները:
+    <a href="mailto:evan@vuejs.org?subject=Theme+affiliation">Կապնվեք մեզ հետ</a>!
   </p>
 </div>
 
@@ -33,7 +33,7 @@ order: 804
         <div class="item-preview-description">{{product.description}}</div>
       </div>
       <div class="see-more-container">
-        <a :href="partner.seeMoreUrl" class="button white see-more-link">See More Themes from {{partner.name}}</a>
+        <a :href="partner.seeMoreUrl" class="button white see-more-link">Տեսեք ավելի շատ թեմաներ {{partner.name}}-ից</a>
       </div>
     </div>
   </div>
