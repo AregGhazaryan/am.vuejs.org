@@ -1,37 +1,37 @@
 ---
-title: Custom Events
-type: guide
+title: Custom Event-ներ
+type: ուղեցույց
 order: 103
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Այս էջը ենթադրում է որ դուք արդեն կարդացելեք [Կոմպոնենտների Հիմունքները](components.html)։ Կարդացեք այն եթե դուք նոր եք ծանոթանում կոմպոնենտներին։
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/communication-between-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to work with custom events on Vue School">Learn how to work with custom events in a free Vue School lesson</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/communication-between-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես աշխատել custom event-ների հետ Vue School-ում">Սովորեք թե ինչպես աշխատել custom event-ների հետ անվճար Vue School-ի դասում</a></div>
 
-## Event Names
+## Event-ի Անուններ
 
-Unlike components and props, event names don't provide any automatic case transformation. Instead, the name of an emitted event must exactly match the name used to listen to that event. For example, if emitting a camelCased event name:
+Ի տարբերություն կոմպոնենտների և հատկությունների, event-ի անունները չեն տրամադրում ավտոմատ case-ի վերափոխում։ Փոխարենը, անունը արձակված event-ի պետք է համապատասխանի այն անունին որով պետք է լսել այդ event-ին։ Օրինակ՝ եթե արձակեք camelCased event-ի անուն։
 
 ```js
 this.$emit('myEvent')
 ```
 
-Listening to the kebab-cased version will have no effect:
+Լսելով kebab-cased տարբերակին ոչ մի էֆեկտ չի ունենա։
 
 ```html
-<!-- Won't work -->
+<!-- Չի աշխատի -->
 <my-component v-on:my-event="doSomething"></my-component>
 ```
 
-Unlike components and props, event names will never be used as variable or property names in JavaScript, so there's no reason to use camelCase or PascalCase. Additionally, `v-on` event listeners inside DOM templates will be automatically transformed to lowercase (due to HTML's case-insensitivity), so `v-on:myEvent` would become `v-on:myevent` -- making `myEvent` impossible to listen to.
+Ի տարբերություն կոմպոնենտների և հատկությունների, event-ի անունները երբեք չեն օգտագործվի որպես փոփոխական կամ հատկության անուն JavaScript-ի մեջ, որի հետևանքով պետք չէ օգտագործել camelCase կամ PascalCase: Ի հավելումն, `v-on` event-ին լսողները DOM-ի ձևանմուշների ներսում ավտոմատ կերպով կվերափոխվեն փոքրատառ (HTML-ի case-insensitivity-ի պատճառով), այս դեպքում `v-on:myEvent` կդառնա `v-on:myevent` -- `myEvent`-ը լինելով անհնարին լսելու համար։
 
-For these reasons, we recommend you **always use kebab-case for event names**.
+Այս պատճառներով, մեք խորհուրդ ենք տալիս ձեզ **միշտ օգտագործել kebab-case event-ի անունների համար**։
 
-## Customizing Component `v-model`
+## Կոմպոնենտի `v-model`-ի Ձևափոխումները
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
-By default, `v-model` on a component uses `value` as the prop and `input` as the event, but some input types such as checkboxes and radio buttons may want to use the `value` attribute for a [different purpose](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value). Using the `model` option can avoid a conflict in such cases:
+Հիմնականում, `v-model`-ը կոմպոնենտի վրա օգտագործում է `value` որպես հատկություն և `input` որպես event, բայց որոշ input-ի տիպեր ինչպիսիք են checkbox-երը և radio button-ները կարող են օգտագործել `value` ատրիբուտը [ուրիշ նպատակներով](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value)։ Օգտագործելով `model` ընտրանքը կարող է խուսփել կոնֆլիկտ այս դեպքերում։
 
 ```js
 Vue.component('base-checkbox', {
@@ -51,26 +51,25 @@ Vue.component('base-checkbox', {
   `
 })
 ```
-
-Now when using `v-model` on this component:
+Հիմա երբ օգտագործում ենք `v-model` այս կոմպոնենտի վրա։
 
 ```html
 <base-checkbox v-model="lovingVue"></base-checkbox>
 ```
 
-the value of `lovingVue` will be passed to the `checked` prop. The `lovingVue` property will then be updated when `<base-checkbox>` emits a `change` event with a new value.
+`lovingVue`-ի արժեքը կփոխանցվի `checked` հատկությանը։ `lovingVue` հատկությունը պետք է թարմեցվի երբ `<base-checkbox>`-ը արձակի `change` event նոր արժեքի հետ հանդերձ։
 
-<p class="tip">Note that you still have to declare the <code>checked</code> prop in the component's <code>props</code> option.</p>
+<p class="tip">Նշում․ դուք միայն պետք է հայտարարեք <code>checked</code> հատկությունը կոմպոնենտի <code>props</code> ընտրանքում։</p>
 
-## Binding Native Events to Components
+## Native Event-ների Կապումը Կոմպոնենտներին
 
-There may be times when you want to listen directly to a native event on the root element of a component. In these cases, you can use the `.native` modifier for `v-on`:
+Շատ դեպքեր կլինեն երբ որ դուք պետք է ուղիղ լսեք native event-ին կոմպոնետնի արմատային էլեմենտի վրա։ Այս դեպքերում, դուք պետք է օգտագործեք `.native` փոփոխիչը `v-on`-ի համար։
 
 ```html
 <base-input v-on:focus.native="onFocus"></base-input>
 ```
 
-This can be useful sometimes, but it's not a good idea when you're trying to listen on a very specific element, like an `<input>`. For example, the `<base-input>` component above might refactor so that the root element is actually a `<label>` element:
+Սա կարող է լինել օգտակար երբեմն, բայց այն լավ գաղափար չէ երբ որ դուք փորձում էք լսել շատ կոնկրետ էլեմենտի, `<input>`-ին նման։ Օրինակ՝ `<base-input>` կոմպոնենտը վերևում նշված կարող է ռեֆակտոր լինել որ արմատային էլեմենտը իրականում `<label>` էլեմենտ է։
 
 ```html
 <label>
@@ -83,9 +82,9 @@ This can be useful sometimes, but it's not a good idea when you're trying to lis
 </label>
 ```
 
-In that case, the `.native` listener in the parent would silently break. There would be no errors, but the `onFocus` handler wouldn't be called when we expected it to.
+Այդ դեպքում, `.native` լսողը ծնողի մեջ ուղակի լուռ կերպով կկոտրվի։ Սխալներ չեն գրանցվի, բայց `onFocus` handler-ը չի արձակվի երբ որ մենք սպասում ենք դրան։
 
-To solve this problem, Vue provides a `$listeners` property containing an object of listeners being used on the component. For example:
+Որպեսզի լուծենք այս հարցը, Vue—ն տրամադրում է `$listeners` հատկություն պարունակող լսողների օբյեկտ որը օգտագործվում է կոմպոնենտում։ Օրինակ՝
 
 ```js
 {
@@ -94,7 +93,7 @@ To solve this problem, Vue provides a `$listeners` property containing an object
 }
 ```
 
-Using the `$listeners` property, you can forward all event listeners on the component to a specific child element with `v-on="$listeners"`. For elements like `<input>`, that you also want to work with `v-model`, it's often useful to create a new computed property for listeners, like `inputListeners` below:
+Օգտագործելով `$listener` հատկությունը, դուք կարող էք ուղարկել բոլոր event-ի լսողներին այդ կոմպոնենտում կոնկրետ ժառանքող էլեմենտին `v-on"$listeners"`-ի շնորհիվ։ Օրինակ՝ էլեմենտները ինչպիսիք են `<input>`, դուք հնարավոր է ուզենաք աշխատացել `v-model`-ի հետ, դա հազվադեպ օգտագործվում է որպեսզի ստեղծել նոր հաշվարկված հատկություն լսողների համար, ինչպես `inputListeners` է նշված ներքևում։
 
 ```js
 Vue.component('base-input', {
@@ -103,14 +102,14 @@ Vue.component('base-input', {
   computed: {
     inputListeners: function () {
       var vm = this
-      // `Object.assign` merges objects together to form a new object
+      // `Object.assign`-ի ձուլում է օբյեկտները միասին որպեսզի կազմվի նոր օբյեկտ
       return Object.assign({},
-        // We add all the listeners from the parent
+        // Մենք ավելացնում ենք բոլոր լսողներին ծնողից
         this.$listeners,
-        // Then we can add custom listeners or override the
-        // behavior of some listeners.
+        // Հետո մենք կարող ենք ավելացնել custom լսողներ կամ ovveride անել 
+        // behavior-ը որոշ լսողների։
         {
-          // This ensures that the component works with v-model
+          // Սա համոզվում է որ կոմպոնենտը աշխատում է v-model—ի հետ
           input: function (event) {
             vm.$emit('input', event.target.value)
           }
@@ -131,21 +130,21 @@ Vue.component('base-input', {
 })
 ```
 
-Now the `<base-input>` component is a **fully transparent wrapper**, meaning it can be used exactly like a normal `<input>` element: all the same attributes and listeners will work, without the `.native` modifier.
+Հիմա `<base-input>` կոմպոնենտը **ամբողջովին թափանցիկ wrapper** է, որը նշանակում է որ այն կարող է օգտագործվել նույն ձև ինչպես հասարակ `<input>` էլեմենտն է։ Բոլոր նույն ատրիբուտները և լսողները կաշխատեն, առանց `.native` փոփոխիչի։
 
-## `.sync` Modifier
+## `.sync` Փոփոխիչ
 
-> New in 2.3.0+
+> Նոր 2.3.0+-ի մեջ
 
-In some cases, we may need "two-way binding" for a prop. Unfortunately, true two-way binding can create maintenance issues, because child components can mutate the parent without the source of that mutation being obvious in both the parent and the child.
+Որոշ դեպքերում, մենք հնարավոր է "երկուղի կապման" կարիքը ունենանք հատկության համար։ Ցավոք սրտի, իրական երկուղի կապումը կարող է ստեղծել maintance-ի հարցեր, որովհետև ժառանգող կոմպոնենտները կարող են մուտացնել ծնողին առանց source-ի այդ մուտացիայի լինելով ակնհայտ ծնողում և ժառանգողում։
 
-That's why instead, we recommend emitting events in the pattern of `update:myPropName`. For example, in a hypothetical component with a `title` prop, we could communicate the intent of assigning a new value with:
+Այդ պաճառով դրա փոխարեն, մենք խորհուրդ ենք տալիս արձակել event-ներ նման կերպով `update:myPropName`։ Օրինակ՝ հիպոթետիկ կոմպոնենտի մեջ `title` հատկությունով, մենք կարող էինք հաղորդակցվել նոր արժեք նշանակելու մտադրության հետ։
 
 ```js
 this.$emit('update:title', newTitle)
 ```
 
-Then the parent can listen to that event and update a local data property, if it wants to. For example:
+Հետո ծնողը կարող է լսել այդ event-ին և թարմացնել լոկալ տվյալների հատկությունը, եթե անհրաժեշտ է։ Օրինակ՝
 
 ```html
 <text-document
@@ -154,20 +153,20 @@ Then the parent can listen to that event and update a local data property, if it
 ></text-document>
 ```
 
-For convenience, we offer a shorthand for this pattern with the `.sync` modifier:
+Հարմարության համար, մենք առաջարկում ենք կարճ գրելաձև այս ձևի համար օգտագործելով `.sync` փոփոխիչը։
 
 ```html
 <text-document v-bind:title.sync="doc.title"></text-document>
 ```
 
-<p class="tip">Note that <code>v-bind</code> with the <code>.sync</code> modifier does <strong>not</strong> work with expressions (e.g. <code>v-bind:title.sync="doc.title + '!'"</code> is invalid). Instead, you must only provide the name of the property you want to bind, similar to <code>v-model</code>.</p>
+<p class="tip">Նշում որ <code>v-bind-ը</code> ի հանդերձ <code>.sync</code> փոփոխիչի հետ <strong>չի</strong> աշխպատում արտահայտությունների հետ (օրինակ՝ <code>v-bind:title.sync="doc.title + '!'"</code> սխալ է)։ Փոխարենը, դուք միայն պետք է տրամադրեք այն հատկության անունը որը դուք ցանկանում էք կապել, որը նման է <code>v-model-ին</code>։</p>
 
-The `.sync` modifier can also be used with `v-bind` when using an object to set multiple props at once:
+`.sync` փոփոխիչը կարող է օգտագործվել `v-bind`-ի հետ երբ օգտագործում էք օբյեկտ որպեսզի նշանակեք բազմաթիվ հատկություններ։
 
 ```html
 <text-document v-bind.sync="doc"></text-document>
 ```
 
-This passes each property in the `doc` object (e.g. `title`) as an individual prop, then adds `v-on` update listeners for each one.
+Սա փոխանցում է ամեն հատկանիշը `doc` օբյեկտին (օրինակ `title`) որպես անհատ հատկանիշ, այնուհետև ավելացնում է `v-on` թարմեցման լսողները ամեն մեկի համար։
 
-<p class="tip">Using <code>v-bind.sync</code> with a literal object, such as in <code>v-bind.sync="{ title: doc.title }"</code>, will not work, because there are too many edge cases to consider in parsing a complex expression like this.</p>
+<p class="tip">Օգտագործելով <code>v-bind.sync-ը</code> բառացի օբյեկտի հետ, ինչպիսին է <code>v-bind.sync="{ title: doc.title }"</code>, այն չի աշխատի, որովհետև այսպիսի բարդ արտահայտություն վերլուծելիս չափազանց շատ եզրեր կան։</p>
