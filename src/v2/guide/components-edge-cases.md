@@ -1,23 +1,23 @@
 ---
-title: Handling Edge Cases
+title: Բացառիկ դեպքերի կառավարումը
 type: guide
 order: 106
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Այս էջը ենթադրում է որ դուք արդեն կարդացել եք [Կոմպոնենտների Հիմունքները](components.html)։ Կարդացեք այն եթե դուք նոր եք ծանոթանում կոմպոնենտներին։
 
-<p class="tip">All the features on this page document the handling of edge cases, meaning unusual situations that sometimes require bending Vue's rules a little. Note however, that they all have disadvantages or situations where they could be dangerous. These are noted in each case, so keep them in mind when deciding to use each feature.</p>
+<p class="tip">Այս էջի բոլոր առանձնահատկությունները փաստում են բացառիկ դեպքերի կառավարումը, ինչը նշանակում է անսովոր իրավիճակներ, որոնք երբեմն պահանջում են փոքր-ինչ թեքել Vue-ի կանոնները: Սակայն նշում, որ բոլորն էլ ունեն թերություններ կամ իրավիճակներ, որտեղ դրանք կարող են վտանգավոր լինել: Նրանք յուրաքանչյուր դեպքում նշվում են, այնպես որ յուրաքանչյուր առանձնահատկություն ընտրելու որոշում կայացնելիս հիշեք դրանք։</p>
 
-## Element & Component Access
+## Էլեմենտի և Կոմպոնենտի Մուտք
 
-In most cases, it's best to avoid reaching into other component instances or manually manipulating DOM elements. There are cases, however, when it can be appropriate.
+Որոշ դեպքերում, ամենալավ տարբերակն է խուսափել այլ կոմպոնենտի instance-ի մեջ մտնելը կամ ձեռքով մանիպուլացիայի եթարկելու DOM էլեմենտները։ Այնուամենայնիվ, կան դեպքեր, երբ դա կարող է տեղին լինել։
 
-### Accessing the Root Instance
+### Մուտք Գործումը դեպի Root Instance
 
-In every subcomponent of a `new Vue` instance, this root instance can be accessed with the `$root` property. For example, in this root instance:
+Ամեն սուբկոմպոնենտում `new Vue`-ի instance, մենք կարող ենք մուտք գործել այս root instance `$root` հատկությունով։ Օրինակ՝, այս root instance—ում։
 
 ```js
-// The root Vue instance
+// Vue-ի root instance-ը
 new Vue({
   data: {
     foo: 1
@@ -31,31 +31,31 @@ new Vue({
 })
 ```
 
-All subcomponents will now be able to access this instance and use it as a global store:
+Բոլոր սուբկոմպոնենտները հիմա կարող ենք մուտք գործել այս instance և օգտագործել այն որպես գլոբալ պահեստ:
 
 ```js
-// Get root data
+// Ստանալ root տվյալները
 this.$root.foo
 
-// Set root data
+// Վերագրել root տվյալները
 this.$root.foo = 2
 
-// Access root computed properties
+// Մուտք գործել դեպի root հաշվարկված հատկություններ
 this.$root.bar
 
-// Call root methods
+// Կանչել root մեթոդներ
 this.$root.baz()
 ```
 
-<p class="tip">This can be convenient for demos or very small apps with a handful of components. However, the pattern does not scale well to medium or large-scale applications, so we strongly recommend using <a href="https://github.com/vuejs/vuex">Vuex</a> to manage state in most cases.</p>
+<p class="tip">Սա կարող է հարմար լինել demo կամ փոքր ծրագրերի համար որոնք ունեն բազմաթիվ կոմպոնենտներ։ Սակայն, այս pattern-ը լավ աճ չունի դեպի միջին կամ ավելի մեծ ծրագրեր, մենք խորհուրդ ենք տալիս օգտագործել <a href="https://github.com/vuejs/vuex">Vuex</a> որպեսզի կառավարել վիճակը (state-ը) որոշ դեպքերում։</p>
 
-### Accessing the Parent Component Instance
+### Մուտք Դեպի Ծնող Կոմպոնենտի Instance
 
-Similar to `$root`, the `$parent` property can be used to access the parent instance from a child. This can be tempting to reach for as a lazy alternative to passing data with a prop.
+Նման `$root`-ին, `$parent` հատկությունը կարող է օգտագործվել որպեսզի մուտք գործել ծնող instance ժառանգողից։ Սա գայթակղիչ կարող է լինել որպես ալարկոտ այլընտրանք որպեսզի տվյալներ փոխանցել հատկության հետ համատեղ։
 
-<p class="tip">In most cases, reaching into the parent makes your application more difficult to debug and understand, especially if you mutate data in the parent. When looking at that component later, it will be very difficult to figure out where that mutation came from.</p>
+<p class="tip">Շատ դեպքերում, մուտք գործելով դեպի ծնող դարձնում է ձեր ծրագիրը ավելի դժված debug անելու և հասկանալու համար, հատկապես երբ որ մուտացնում եք տվյալները ծնողի մեջ։։ Երբ նայում եք այդ կոմպոնենտին հետո, շատ դժվար կլինի պարզելու թէ որտեղից է մուտացիան առաջացել։</p>
 
-There are cases however, particularly shared component libraries, when this _might_ be appropriate. For example, in abstract components that interact with JavaScript APIs instead of rendering HTML, like these hypothetical Google Maps components:
+Այդ դեպքերը սակայն, մասնավորապես ընդհանուր կոմպոնենտի գրադարանների համար, _կարող_ է լինել համապատասխան։ Օրինակ՝ աբստրակտ կոմպոնենտները կարող են շփվել JavaScript API-ների հետ ի փոխարեն HTML-ը render անելու, ինչպես այս վարկածային Google Maps-ի կոմպոնենտները։
 
 ```html
 <google-map>
@@ -63,9 +63,9 @@ There are cases however, particularly shared component libraries, when this _mig
 </google-map>
 ```
 
-The `<google-map>` component might define a `map` property that all subcomponents need access to. In this case `<google-map-markers>` might want to access that map with something like `this.$parent.getMap`, in order to add a set of markers to it. You can see this pattern [in action here](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-accessing-parent-component-instance).
+`<google-map>` կոմպոնենտը կարող է նկարագրել `map` հատկություն որին բոլոր սուբկոմպոնենտները պետք է կարողանան մուտք գործել։ Այս դեպքում `<google-map-markers>` անհրաժեշտության դեպքում պետք է մուտք գործի դեպի map այս ձևով `this.$parent.getMap`, որպեսզի ավելացնի marker-ների հավաքածու։ Դուք կարող եք ուսումնասիրել այս pattern-ի [գործողությունը այստեղ](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-accessing-parent-component-instance)։
 
-Keep in mind, however, that components built with this pattern are still inherently fragile. For example, imagine we add a new `<google-map-region>` component and when `<google-map-markers>` appears within that, it should only render markers that fall within that region:
+Մտքում պահեք, որ այս կոմպոնենտները որոնք կառուցվել են այս pattern-ի շնորհիվ ժառանգականորեն փխրուն են։ Օրինակ՝ պատկերացրեք որ մենք ավելացնում ենք նոր `<google-map-region>` կոմպոնենտ և երբ `<google-map-markers>`-ը հայտնվում է իր մեջ, այն միայն պետք է render անի marker-ները որոնք այդ շրջանի մեջ են։
 
 ```html
 <google-map>
@@ -75,58 +75,59 @@ Keep in mind, however, that components built with this pattern are still inheren
 </google-map>
 ```
 
-Then inside `<google-map-markers>` you might find yourself reaching for a hack like this:
+Այնուհետև `<google-map-markers>`-ում դուք հնարավոր է որ կկիրառեք այսպիսի մի բան։
 
 ```js
 var map = this.$parent.map || this.$parent.$parent.map
 ```
 
-This has quickly gotten out of hand. That's why to provide context information to descendent components arbitrarily deep, we instead recommend [dependency injection](#Dependency-Injection).
+Սա արագորեն ձեռքից դուրս է գալիս։ Դրա համար մենք առաջարկում ենք ենթատեքստային տեղեկատվություն ժառանգական կոպմոնենտների մասին, փոխարենը խորհուրդ ենք տալիս [dependency injection-ը](#Dependency-Injection)։
 
-### Accessing Child Component Instances & Child Elements
+### Մուտք Գործելով Ժառանգող Կոմպոնենտի Instance-ներ և Ժառանգող Էլեմենտներ
 
-Despite the existence of props and events, sometimes you might still need to directly access a child component in JavaScript. To achieve this you can assign a reference ID to the child component using the `ref` attribute. For example:
+Չնայած հատկությունների և event-ների գոյությանը, երբեմն դուք հնարավոր է որ կցանկանաք ուղիղ մուտք գործել ժառանգող կոմպոնենտ JavaScript-ում։ Որպեսզի հասնել դրան դուք պետք է նշանակեք reference ID ժառանգող կոմպոնենտին օգտագործելով `ref` ատրիբուտը։
+Օրինակ՝
 
 ```html
 <base-input ref="usernameInput"></base-input>
 ```
 
-Now in the component where you've defined this `ref`, you can use:
+Հիմա երբ որ դուք կոմպոնենտում նկարագրել եք այս `ref`-ը, դուք կարող եք օգտագործել։
 
 ```js
 this.$refs.usernameInput
 ```
 
-to access the `<base-input>` instance. This may be useful when you want to, for example, programmatically focus this input from a parent. In that case, the `<base-input>` component may similarly use a `ref` to provide access to specific elements inside it, such as:
+Որպեսզի մուտք գործել դեպի `<base-input>` instance։ Սա կարող է օգտակար լինել երբ որ դուք, օրինակի համար, ծրագրավորման միջոցով focus եք անում այս input-ի վրա ծնողից։ Այս դեպքում, `<base-input>` կոմպոնենտը նմանորեն կարող է օգտագործել `ref`-ը որպեսզի տրամադրել մուտք հատուկ էլեմենտների ներսում, ինչպիսիք են։
 
 ```html
 <input ref="input">
 ```
 
-And even define methods for use by the parent:
+ԵՎ նույնիսկ նկարագրել մեթոդներ այս ծնողի համար։
 
 ```js
 methods: {
-  // Used to focus the input from the parent
+  // Օգտագործվում է որպեսզի focus տրամադրել input-ին ծնողի կողմից
   focus: function () {
     this.$refs.input.focus()
   }
 }
 ```
 
-Thus allowing the parent component to focus the input inside `<base-input>` with:
+Սրանով մենք թույլ ենք տալիս ծնող կոմպոնենտին որպեսզի կենտրոնանա input-ի վրա `<base-input>`-ի մեջ։
 
 ```js
 this.$refs.usernameInput.focus()
 ```
 
-When `ref` is used together with `v-for`, the ref you get will be an array containing the child components mirroring the data source.
+Երբ `ref`-ը օգտագործվում է համատեղ `v-for`-ի հետ, ref-ը որը դուք կստանաք կլինի զանգված որը պարունակում է ժառանող կոմպոնենտները իր տվյալների աղբյուրով։
 
-<p class="tip"><code>$refs</code> are only populated after the component has been rendered, and they are not reactive. It is only meant as an escape hatch for direct child manipulation - you should avoid accessing <code>$refs</code> from within templates or computed properties.</p>
+<p class="tip"><code>$refs</code> միայն առանջանում են երբ կոմպոնենտը render է եղել, և նրանք ռեակտիվ չեն։ Այն նախատեսված է միայն որպես այլ տարբերակ ուղիղ ժառանգողի մանիպուլացիային համար - դուք պետք է խուսափեք մուտք գործելու դեպի <code>$refs</code> ձևանմուշի կամ հաշվարկված հատկությունների ներքո։</p>
 
 ### Dependency Injection
 
-Earlier, when we described [Accessing the Parent Component Instance](#Accessing-the-Parent-Component-Instance), we showed an example like this:
+Ավելի վաղ, մենք նկարագրել էինք [Մուտք Դեպի Ծնող Կոմպոնենտի Instance](#Accessing-the-Parent-Component-Instance), մենք ցույց ենք տվել հետևյալ օրինակը։
 
 ```html
 <google-map>
@@ -136,9 +137,9 @@ Earlier, when we described [Accessing the Parent Component Instance](#Accessing-
 </google-map>
 ```
 
-In this component, all descendants of `<google-map>` needed access to a `getMap` method, in order to know which map to interact with. Unfortunately, using the `$parent` property didn't scale well to more deeply nested components. That's where dependency injection can be useful, using two new instance options: `provide` and `inject`.
+Այս կոմպոնենտում, բոլոր ժառանգողները `<google-map>`-ի անհրաժեշտ էին մուտք գործելու դեպի `getMap` մեթոդ, որպեսզի իմանանք թէ որ քարտեզի հետ շփվենք։ Ցավոք, օգտագործելով `$parent` հատկությունը մենք չենք կարող խորանալ կոմպոնենտի մեջ ավելի մանրամասն։ Այստեղ մենք կոգտագործենք dependency injection-ը որը կարող է օգտակար լինել, օգտագործելով երկու նոր instance ընտրանքներ․ `provide` և `inject`:
 
-The `provide` options allows us to specify the data/methods we want to **provide** to descendent components. In this case, that's the `getMap` method inside `<google-map>`:
+`Provide` ընտրանքը մեզ թույլ է տալիս հատուկ տվյալներ/մեթոդներ **տրամադրել** ժառանգող կոմպոնենտներին։ Այս դեպքում, դա `getMap` մեթոդն է `<google-map>`-ի մեջ։
 
 ```js
 provide: function () {
@@ -148,56 +149,56 @@ provide: function () {
 }
 ```
 
-Then in any descendants, we can use the `inject` option to receive specific properties we'd like to add to that instance:
+Այնուհետև ցանկացած ժառանգողում, մենք կարող ենք օգտագործել `inject` ընտրանքը որպեսզի ստանանք կոնկրետ հատկություններ որոնք մենք ցանկանում ենք ավելացնել այդ instance-ին։
 
 ```js
 inject: ['getMap']
 ```
 
-You can see the [full example here](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dependency-injection). The advantage over using `$parent` is that we can access `getMap` in _any_ descendant component, without exposing the entire instance of `<google-map>`. This allows us to more safely keep developing that component, without fear that we might change/remove something that a child component is relying on. The interface between these components remains clearly defined, just as with `props`.
+Դուք կարող էք նայել [օրինակը ամբողջովին այստեղ](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dependency-injection)։ Առավելությունը օգտագործելով `$parent`-ը մենք կարող ենք մուտք գործել `getMap` _ցանկացած_ ժառանգող կոմպոնենտում, առանց բացահայտելու `<google-map>`-ի ամբողջ instance-ը։ Սա մեզ թույլ է տալիս ավելի ապահով զարգացնել այդ կոմպոնենտը, առանց վախի որ մենք հնարավոր է որ փոխենք/ջնջենք որևէ մի բան որից այդ ժառանգող կոմպոնենտը կախված է։ Կոմպոնենտների միջև գտնվող Interface-ը մնում է պարզ նկարագրված, ինչպես `props`-ի հետ։
 
-In fact, you can think of dependency injection as sort of "long-range props", except:
+Իրականում, դուք կարող եք մտածել dependency injection-ի մասին ինչպես "հավելյալ հատկություններ", բացառությամբ։
 
-* ancestor components don't need to know which descendants use the properties it provides
-* descendant components don't need to know where injected properties are coming from
+* ծնող կոմպոնենտը չ՛պետք է իմանա թե որ ժառանգողներն են օգտագործում այն հատկությունները որոնք այն տրամադրում է
+* ժառանգող կոմպոնենտները չ՝պետք է իմանան թե որտեղից են injected հատկությունները գալիս
 
-<p class="tip">However, there are downsides to dependency injection. It couples components in your application to the way they're currently organized, making refactoring more difficult. Provided properties are also not reactive. This is by design, because using them to create a central data store scales just as poorly as <a href="#Accessing-the-Root-Instance">using <code>$root</code></a> for the same purpose. If the properties you want to share are specific to your app, rather than generic, or if you ever want to update provided data inside ancestors, then that's a good sign that you probably need a real state management solution like <a href="https://github.com/vuejs/vuex">Vuex</a> instead.</p>
+<p class="tip">Սակայն, dependency injection-ը ունի որոշ վատ կողմեր։ Այն զուգում է կոմպոնենտները ձեր ծրագրում ինչպես նրան կազմակերպված են, դարձնելով refactoring-ը ավելի դժվար։ Տրամադրված հատկությունները նաև ռեակտիվ չեն։ Սա նրա ոճից է, որովհետև այն օգտագործվում է որպեսզի ստեղծել վատ կենտրոնական տվյալների պահեստ ինչպես <a href="#Accessing-the-Root-Instance">օգտագործելով <code>$root-ը</code></a> նույն նպատակի համար։ Եթե հատկությունները դուք ցանկանում եք տրամադրել հատուկ են ծրագրի համար սովորականի փոխարեն, կամ եթե դուք ցանկանաք թարմացնել տրամադրված տվյալները ծնողում, այդ դեպքերում ձեզ հաստատ պետք կգա իրական state managment-ի լուծում ինչպիսին է <a href="https://github.com/vuejs/vuex">Vuex-ը</a>։</p>
 
-Learn more about dependency injection in [the API doc](https://vuejs.org/v2/api/#provide-inject).
+Իմացեք ավելին dependency injection-ի մասին [API-ի փաստաթղթում](https://vuejs.org/v2/api/#provide-inject)։
 
-## Programmatic Event Listeners
+## Ծրագրավորված Event-ի Լսողներ
 
-So far, you've seen uses of `$emit`, listened to with `v-on`, but Vue instances also offer other methods in its events interface. We can:
+Մինչ այժմ, դուք տեսել եք թե ինչպես են օգտագործում `$emit`-ը, լսված `v-on`-ի շնորհիվ, բայց Vue-ի instance-ները կարող են նաև տրամադրել այլ մեթոդներ իր event-ների interface-ի համար։ Մենք կարող ենք․ 
 
-- Listen for an event with `$on(eventName, eventHandler)`
-- Listen for an event only once with `$once(eventName, eventHandler)`
-- Stop listening for an event with `$off(eventName, eventHandler)`
+- Լսել event-ին `$on(eventName, eventHandler)`-ի շնորհիվ
+- Լսել event-ին միայն մեկ անգամ `$once(eventName, eventHandler)`-ի շնորհիվ
+- Դադարել լսել event-ին `$off(eventName, eventHandler)`-ի շնորհիվ
 
-You normally won't have to use these, but they're available for cases when you need to manually listen for events on a component instance. They can also be useful as a code organization tool. For example, you may often see this pattern for integrating a 3rd-party library:
+Դուք սովորականում չ՛պետք է օգտագործեք դրանք, բայց նրանք հասանելի են որոշ դեպքերում երբ որ դուք ցանկանում եք ձեռքով լսել event-ներին կոմպոնենտի instance-ում։ Նրանք կարող են նաև օգտակար լիենլ որպես կոդը կազմակերպելու գործիք, դուք նաև հաճախ կնկատեք այս pattern-ը երբ որ տեղադրում եք 3-րդ կողմի գրադարան։
 
 ```js
-// Attach the datepicker to an input once
-// it's mounted to the DOM.
+// Միացրեք datepicker-ը input-ին մեկ անգամ
+// Այդ mount է եղած DOM-ին։
 mounted: function () {
-  // Pikaday is a 3rd-party datepicker library
+  // Pikaday-ը 3-րդ կողմի datepicker գրադարան է
   this.picker = new Pikaday({
     field: this.$refs.input,
     format: 'YYYY-MM-DD'
   })
 },
-// Right before the component is destroyed,
-// also destroy the datepicker.
+// Հենց մինչև կոմպոնենտը վերացված է,
+// նաև վերացնել datepicker-ը։
 beforeDestroy: function () {
   this.picker.destroy()
 }
 ```
 
-This has two potential issues:
+Սա ունի երկու պոտենցիալ խնդիր։
 
-- It requires saving the `picker` to the component instance, when it's possible that only lifecycle hooks need access to it. This isn't terrible, but it could be considered clutter.
-- Our setup code is kept separate from our cleanup code, making it more difficult to programmatically clean up anything we set up.
+- Այն պահանջում է հիշացնել `picker`-ը դեպի կոմպոնենտի instance, երբ հնարավոր է միայն lifecycle hook-երը պետք է մուտք գործեն։ Սա շատ վատ չէ, և դա կարելի էր համարել խառնաշփոթ։  
+- Մեր կազմակերպված կոդը պահված է բաժանված վիճակում մեր մաքրված կոդից, դարձնելով այն ավելի դժվար որպեսզի ծրագրավորման միջոցով մաքրենք այն ինչ որ մենք հավաքել ենք։
 
-You could resolve both issues with a programmatic listener:
+Դուք կարող եք լուծել այս խնդիրները ծրագրավորված listener-ով։
 
 ```js
 mounted: function () {
@@ -212,7 +213,7 @@ mounted: function () {
 }
 ```
 
-Using this strategy, we could even use Pikaday with several input elements, with each new instance automatically cleaning up after itself:
+Օգտագործելով այս ստրատեգիան, մենք կարող ենք նաև օգտագործել Pikaday-ը մի քանի input էլեմենտների հետ, և ամեն նոր instance-ը կմաքրի իրեն գործողությունները անելուց հետո։
 
 ```js
 mounted: function () {
@@ -233,23 +234,23 @@ methods: {
 }
 ```
 
-See [this example](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-programmatic-event-listeners) for the full code. Note, however, that if you find yourself having to do a lot of setup and cleanup within a single component, the best solution will usually be to create more modular components. In this case, we'd recommend creating a reusable `<input-datepicker>` component.
+Նայեք [այս օրինակը](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-programmatic-event-listeners) ամբողջ կոդի համար։ Նշում, Սակայն, եթե դուք կատարում եք շատ տեղադրումներ և մաքրում մեկ կոմպոնենտի ներքո, ճիշտ լուծում պարզապես կլինի ավելի մոդուլար կոմպոնենտների ստեղծումը։ Այս դեպքում, մենք խորհուրդ ենք տալիս ստեղծելու վերօգտագործելի `<input-datepicker>` կոմպոնենտ։
 
-To learn more about programmatic listeners, check out the API for [Events Instance Methods](https://vuejs.org/v2/api/#Instance-Methods-Events).
+Որպեսզի իմանալ ավելին ծրագրավորված listener-ների մասին, նայեք API-ը [Event-ի Instance Մեթոդների համար](https://vuejs.org/v2/api/#Instance-Methods-Events)։
 
-<p class="tip">Note that Vue's event system is different from the browser's <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API</a>. Though they work similarly, <code>$emit</code>, <code>$on</code>, and <code>$off</code> are <strong>not</strong> aliases for <code>dispatchEvent</code>, <code>addEventListener</code>, and <code>removeEventListener</code>.</p>
+<p class="tip">Նշում որ Vue-ի event-ի համակարգը տարբերվում է բրաուզերի <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget API-ից</a>։ Չնայած որ նրանք աշխատում են նմանորեն, <code>$emit</code>, <code>$on</code>, և <code>$off</code> alias—ներ <strong>չեն</strong> <code>dispatchEvent-ի</code>, <code>addEventListener</code>, և <code>removeEventListener</code> համար։</p>
 
-## Circular References
+## Ցիկուլյար Reference-ներ
 
-### Recursive Components
+### Ռեկուրսիվ Կոմպոնենտներ
 
-Components can recursively invoke themselves in their own template. However, they can only do so with the `name` option:
+Կոմպոնենտները կարող են ռեկուրսիվ ձևով գործել իրենց ձևանմուշների մեջ։ Սակայն, նրանք կարող են միայն աշխատել այդ կերպ `name` ընտրանքի միջոցով։
 
 ``` js
 name: 'unique-name-of-my-component'
 ```
 
-When you register a component globally using `Vue.component`, the global ID is automatically set as the component's `name` option.
+Երբ որ դուք գրանցում եք կոմպոնենտ գլոբալ կերպով օգտագործելով `Vue.component`-ը, գլոբալ ID-ն ավտոմատ կերպով վերագրվում է որպես կոմպոնենտի `name` ընտրանք։
 
 ``` js
 Vue.component('unique-name-of-my-component', {
@@ -257,18 +258,18 @@ Vue.component('unique-name-of-my-component', {
 })
 ```
 
-If you're not careful, recursive components can also lead to infinite loops:
+Եթե ուշադիր չեք, ռեկուրսիվ կոմպոնենտները կարող են նաև հանգեցնել անսահման ցիկլերի։
 
 ``` js
 name: 'stack-overflow',
 template: '<div><stack-overflow></stack-overflow></div>'
 ```
 
-A component like the above will result in a "max stack size exceeded" error, so make sure recursive invocation is conditional (i.e. uses a `v-if` that will eventually be `false`).
+Վերևում նշված կոմպոնենտի արդյունքում կստանաք "max stack size exceeded" սխալ, այնպես որ համոզվեք որ ռեկուրսիվ կանչը պայմանական է (օրինակ՝ օգտագործում է `v-if`-ը որը ի վերջո կդառնա `false`)։
 
-### Circular References Between Components
+### Ցիկուլյար Reference-ները Կոմպոնենտների Միջև
 
-Let's say you're building a file directory tree, like in Finder or File Explorer. You might have a `tree-folder` component with this template:
+Եկեք ենթադրենք որ դուք կառուցում եք ֆայլերի ցուցակների ծառ, ինչպես Finder-ում կամ File Explorer-ում։ Դուք հնարավոր է որ կունենաք `tree-folder` կոմպոնենտ այս ձևանմուշի հետ։
 
 ``` html
 <p>
@@ -277,7 +278,7 @@ Let's say you're building a file directory tree, like in Finder or File Explorer
 </p>
 ```
 
-Then a `tree-folder-contents` component with this template:
+Հետո `tree-folder-contents` կոմպոնենտը այս ձևանմուշի հետ։
 
 ``` html
 <ul>
@@ -288,17 +289,17 @@ Then a `tree-folder-contents` component with this template:
 </ul>
 ```
 
-When you look closely, you'll see that these components will actually be each other's descendent _and_ ancestor in the render tree - a paradox! When registering components globally with `Vue.component`, this paradox is resolved for you automatically. If that's you, you can stop reading here.
+Եթե դուք ուշադիր նայեք, դուք կտեսնեք որ այս կոմպոնենտները իրականում կլինեն մեկը մյուսի ժառանգողը և ծնողը render-ի ծառում - որը լրիվ պարադոքս է! Երբ գրանցում ենք կոմպոնենտներ գլոբալ կերպով `Vue.component`-ի հետ, այս պարադոքսը լուծվում է ձեզ համար ավտոմատ կերպով։ Եթե դա դուք եք, դուք կարող եք դադարեցնել կարդալը այստեղ։
 
-However, if you're requiring/importing components using a __module system__, e.g. via Webpack or Browserify, you'll get an error:
+Սակայն, եթե դուք required/import եք անում կոմպոնենտները օգտագործելով __մոդուլի համակարգը__, օրինակ՝ Webpack-ի կամ Browserify-ի շնորհիվ, դուք սխալներ կստանաք։
 
 ```
 Failed to mount component: template or render function not defined.
 ```
 
-To explain what's happening, let's call our components A and B. The module system sees that it needs A, but first A needs B, but B needs A, but A needs B, etc. It's stuck in a loop, not knowing how to fully resolve either component without first resolving the other. To fix this, we need to give the module system a point at which it can say, "A needs B _eventually_, but there's no need to resolve B first."
+Որպեսզի բացատրենք թե ինչ է կատարվում, եկեք անվանենք մեր կոմպոնենտները A և B։ Այս մոդուլի համակարգը նկատում է որ նրան հարկավոր է A-ն, բայց սկզբում A-ին անհրաժեշտ է B-ն, բայց B-ին անհրաժեշտ է A-ն, և այլն։ Այն կմնա ցիկլի մեջ, առանց իմանալու թե ինչպես լուծել այս կոմպոնենտը առանց լուծելու մյուսը։ Որպեսզի լուծենք այս խնդիրը, մենք պետք է տանք մոդուլի համակարգին մի կետ որում կհայտարարվի, "A-ին անհրաժեշտ է B-ն _ընդհանուր առմամբ_, բայց այստեղ պետք չե լուծել B-ն առաջինը։"
 
-In our case, let's make that point the `tree-folder` component. We know the child that creates the paradox is the `tree-folder-contents` component, so we'll wait until the `beforeCreate` lifecycle hook to register it:
+Մեր դեպքում, եկեք ստեղծենք այդ կետը `tree-folder` կոմպոնենտում։ Մենք գիտենք որ ժառանգողը ստեղծում է պարադոքսը որը `tree-folder-contents` կոմպոնենտն է, մենք կսպասենք մինչև `beforeCreate` lifecycle hook-ը կգրանցի այն։ 
 
 ``` js
 beforeCreate: function () {
@@ -306,7 +307,7 @@ beforeCreate: function () {
 }
 ```
 
-Or alternatively, you could use Webpack's asynchronous `import` when you register the component locally:
+Կամ ուրիշ ձև, մենք կարող ենք օգտագործել Webpack-ի ասինխռոն `import` երբ դուք գրանցում եք այդ կոմպոնենտը լոկալ ձևով։
 
 ``` js
 components: {
@@ -314,34 +315,34 @@ components: {
 }
 ```
 
-Problem solved!
+Խնդիրը լուծվեց!
 
-## Alternate Template Definitions
+## Այլընտրանքային Ձևանմուշի Սահմանումներ
 
-### Inline Templates
+### Inline Ձևանմուշներ
 
-When the `inline-template` special attribute is present on a child component, the component will use its inner content as its template, rather than treating it as distributed content. This allows more flexible template-authoring.
+Երբ `inline-template` հատուկ ատրիբուտը ներկա է ժառանգող կոմպոնենտում, այդ կոմպոնենտը կօգտագործի իր ներքին բովանդակությունը որպես իր ձևանմուշ, ի փոխարեն վերաբերվելու նրան որպես բաշխված բովանդակություն։ Սա մեզ թույլ է տալիս ավելի ճկուն կերպով ձևանմուշը հեղինակել։
 
 ``` html
 <my-component inline-template>
   <div>
-    <p>These are compiled as the component's own template.</p>
-    <p>Not parent's transclusion content.</p>
+    <p>Սրանք compile են եղած որպես կոմպոնենտի ձևանմուշ։</p>
+    <p>Ոչ թե ծնողի փոխակերպման բովանդակություն։</p>
   </div>
 </my-component>
 ```
 
-Your inline template needs to be defined inside the DOM element to which Vue is attached.
+Ձեր inline ձևանմուշները պետք է նկարագրված լինեն DOM էլեմենտի մեջ որին Vue-ն միացված է։
 
-<p class="tip">However, <code>inline-template</code> makes the scope of your templates harder to reason about. As a best practice, prefer defining templates inside the component using the <code>template</code> option or in a <code>&lt;template&gt;</code> element in a <code>.vue</code> file.</p>
+<p class="tip">Սակայն, <code>inline ձևանմուշը</code> դարձնում է ձևանմուշների scope-ի հետ աշխատելը ավելի դժվար։ Որպես լավագույն փորձ, ցանկալի է նկարագրել ձևանմուշները կոմպոնենտի մեջ օգտագործելով <code>template</code> ընտրանքը կամ <code>&lt;template&gt;</code> էլեմենտը <code>.vue</code> ֆայլի մեջ։</p>
 
-### X-Templates
+### X-Template
 
-Another way to define templates is inside of a script element with the type `text/x-template`, then referencing the template by an id. For example:
+Մեկ այլ ճանապարհ ստեղծելու ձևանմուշներ, script էլեմենտի մեջ `text/x-template` տիպով, երբ դիմում ենք ձևանմուշին id-ով։ Օրինակ՝
 
 ``` html
 <script type="text/x-template" id="hello-world-template">
-  <p>Hello hello hello</p>
+  <p>Բարև բարև բարև</p>
 </script>
 ```
 
@@ -351,35 +352,34 @@ Vue.component('hello-world', {
 })
 ```
 
-Your x-template needs to be defined outside the DOM element to which Vue is attached.
+Ձեր x-template-ը պետք է է նկարագրված լինի DOM էլեմենտից դուրս որին Vue-ն է միացված։
 
-<p class="tip">These can be useful for demos with large templates or in extremely small applications, but should otherwise be avoided, because they separate templates from the rest of the component definition.</p>
+<p class="tip">Սա կարող է օգտակար լինել demo-ների համար որոնք ունեն մեծ ձևանմուշներ կամ շատ փոքր ծրագրերում, բայց հակառակ դեպքում պետք է խուսափել, որովհետև նրանք առանձին ձևանմուշներ են ուրիշ նկարագրված ձևանմուշներից։</p>
 
-## Controlling Updates
+## Թարմացման Կառավարում
 
-Thanks to Vue's Reactivity system, it always knows when to update (if you use it correctly). There are edge cases, however, when you might want to force an update, despite the fact that no reactive data has changed. Then there are other cases when you might want to prevent unnecessary updates.
+Շնորհակալ լինելով Vue-ի ռեակիվության համակարգին, այն միշտ գիտի թե երբ պետք է թարմացնել (եթե դուք օգտագործում եք այն ճիշտ)։ Կան նաև բացառիկ դեպքեր, սակայն, երբ դուք կցանկանաք ստիպել թարմեցումը, չնայած որ ռեակտիվ տվյալները չեն փոփոխվել։ Այնուհետև կան նաև ուրիշ դեպքեր երբ որ դուք կցանկանաք կանխել ավելորդ թարմացումները։
 
-### Forcing an Update
+### Ստիպողական Թարմացում
 
-<p class="tip">If you find yourself needing to force an update in Vue, in 99.99% of cases, you've made a mistake somewhere.</p>
+<p class="tip">Եթե դուք կցանկանաք կատարել ստիպողական թարմացում Vue-ում, 99.99% դեպքերում, դուք ինչ որ մի տեղ սխալ եք արել։</p>
 
-You may not have accounted for change detection caveats [with arrays](https://vuejs.org/v2/guide/list.html#Caveats) or [objects](https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats), or you may be relying on state that isn't tracked by Vue's reactivity system, e.g. with `data`.
+Հնարավոր է ՝ դուք հաշվի չեք առել փոփոխությունների հայտնաբերման նախազգուշացումները [զանգվածներում](https://vuejs.org/v2/guide/list.html#Caveats) կամ [օբյեկտներում](https://vuejs.org/v2/guide/list.html#Object-Change-Detection-Caveats), կամ դուք հնարավոր է որ կախված լինեք այն վիճակի հետ որը չի նկատում Vue-ի ռեակտիվության համակարգը, օրինակ՝ `data`-ն։
 
-However, if you've ruled out the above and find yourself in this extremely rare situation of having to manually force an update, you can do so with [`$forceUpdate`](../api/#vm-forceUpdate).
+Սակայն, եթե դուք կատարել եք վերևում նշվածը և գտնվում եք այս ծայրաստիճան հազվադեպ իրավիճակում որում դուք ցանկանում եք ձեռքով ստիպողականորեն թարմացնել, դուք կարող եք կատարել թարմացումը [`$forceUpdate`](../api/#vm-forceUpdate)-ի շնորհիվ։
 
-### Cheap Static Components with `v-once`
+### Պարզ Ստատիկ Կոմպոնենտներ `v-once`-ի հետ
 
-Rendering plain HTML elements is very fast in Vue, but sometimes you might have a component that contains **a lot** of static content. In these cases, you can ensure that it's only evaluated once and then cached by adding the `v-once` directive to the root element, like this:
+Render անելով պարզ HTML էլեմենտները շատ արագ է Vue-ում, բայց երբեմն դուք պետք է ունենաք կոմպոնենտ որը պարունակում է **շատ** ստատիկ բովանդակություն։ Այս դեպքերում, դուք կարող եք համոզվել որ այն միայն հաշվարկված է մեկ անգամ և cache է արված ավելացնելով `v-once` ուղղորդիչը արմատային էլեմենտին, ինչպես հետևյալն է։
 
 ``` js
 Vue.component('terms-of-service', {
   template: `
     <div v-once>
-      <h1>Terms of Service</h1>
-      ... a lot of static content ...
+      <h1>Ծառայությունների մատուցման պայմաններ</h1>
+      ... շատ ստատիկ բովանդակություն ...
     </div>
   `
 })
 ```
-
-<p class="tip">Once again, try not to overuse this pattern. While convenient in those rare cases when you have to render a lot of static content, it's simply not necessary unless you actually notice slow rendering -- plus, it could cause a lot of confusion later. For example, imagine another developer who's not familiar with <code>v-once</code> or simply misses it in the template. They might spend hours trying to figure out why the template isn't updating correctly.</p>
+<p class="tip">ԵՎս մեկ անգամ, փորձեք չվերօգտագործել այս pattern-ը։ Չնայած հարմար է այն հազվագյուտ դեպքերում, երբ դուք ստիպված եք շատ ստատիկ բովանդակություն հաղորդել, այն ուղղակիորեն պարտադիր չէ եթե դուք չեք նկատում դանդաղ rendering -- ի հավելումն, սա կարող է ստեղծել շատ խառնաշփոթներ ավելի ուշ: Օրինակ՝ պատկերացրեք ծրագրավորողի որը ծանոթ չէ <code>v-once</code> կամ պարզապես այն ներկա չէ ձևանմուշում։ Նրանք կարող են ծախսել ժամեր փորձելով հասկանալ թե ինչու ձևանմուշը ճիշտ չի թարմացվում։</p>
