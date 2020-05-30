@@ -1,41 +1,41 @@
 ---
-title: Props
-type: guide
+title: Հատկություններ
+type: ուղեցույց
 order: 102
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Այս էջը ենթադրում է որ դուք արդեն կարդացել եք [Կոմպոնենտների Հիմունքները](components.html)։ Կարդացեք այն եթե դուք նոր եք ծանոթանում կոմպոնենտներին։
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/reusable-components-with-props?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how component props work with Vue School">Learn how component props work with a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/reusable-components-with-props?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես են կոմպոնենտի հատկությունները աշխատում Vue School-ում">Սովորեք թե ինչպես են կոմպոնենտները աշխատում այս անվճար Vue School-ի դասում</a></div>
 
-## Prop Casing (camelCase vs kebab-case)
+## Հատկությունների Casing-ը (camelCase-ը ընդեմ kebab-case-ի)
 
-HTML attribute names are case-insensitive, so browsers will interpret any uppercase characters as lowercase. That means when you're using in-DOM templates, camelCased prop names need to use their kebab-cased (hyphen-delimited) equivalents:
+HTML ատրիբուտների անունները case-insensitive են, բրաուզերները կթարգմանեն ցանկացած մեծատաերով նիշեր որպես փոքրատառ։ Սա նշանակում է երբ որ դուք օգտագործում էք DOM-ում գտնվող ձևանմուշներ, camelCase-ով գրված հատկությունների անունները պետք է օգտագործեն իրենց kebab-case-ով փոփոխված համապատասխան անունները։
 
 ``` js
 Vue.component('blog-post', {
-  // camelCase in JavaScript
+  // camelCase-ը JavaScript-ում
   props: ['postTitle'],
   template: '<h3>{{ postTitle }}</h3>'
 })
 ```
 
 ``` html
-<!-- kebab-case in HTML -->
-<blog-post post-title="hello!"></blog-post>
+<!-- kebab-case-ը HTML-ում -->
+<blog-post post-title="բարև!"></blog-post>
 ```
 
-Again, if you're using string templates, this limitation does not apply.
+Կրկին, եթե դուք օգտագործում եք տեքստային ձևանմուշներ, այս սահմանափակումը չի կիրառվի։
 
-## Prop Types
+## Հատկությունների Տիպերը
 
-So far, we've only seen props listed as an array of strings:
+Մինչ այժմ մենք միայն տեսել ենք հատկությունների ցանկեր որպես տեքստային արժեքների զանգված։
 
 ```js
 props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
 ```
 
-Usually though, you'll want every prop to be a specific type of value. In these cases, you can list props as an object, where the properties' names and values contain the prop names and types, respectively:
+Սովորականում, դուք կցանկանաք ամեն հատկությունը որ ունենա հատուկ տիպի արժեք։ Այս դեպքերում, դուք կարող եք ցուցակագրել հատակությունները որպես օբյեկտ, որտեղ հատկությունները՝ անունները և արժեքները պարունակում են հատկությունների անունները և տիպերը համապատասխանորեն։
 
 ```js
 props: {
@@ -45,75 +45,75 @@ props: {
   commentIds: Array,
   author: Object,
   callback: Function,
-  contactsPromise: Promise // or any other constructor
+  contactsPromise: Promise // կամ որևէ այլ կոնստրուկտոր
 }
 ```
 
-This not only documents your component, but will also warn users in the browser's JavaScript console if they pass the wrong type. You'll learn much more about [type checks and other prop validations](#Prop-Validation) further down this page.
+Սա ոչ միայն փաստաթղթավորում է ձեր կոմպոնենտը, բայց նաև կնախազգուշացնի օգտագործողներին բրաուզերի JavaScript console-ում եթե նրանք փոխանցում են սխալ տիպը։ Դուք կարող եք իմանալ ավելին [տիպերի ստուգումները և այլ հատկությունների վավերացման մասին](#Prop-Validation) այս էջում ավելի ներքև։
 
-## Passing Static or Dynamic Props
+## Ստատիկ Կամ Դինամիկ Հատկությունների Փոխանցումը
 
-So far, you've seen props passed a static value, like in:
+Մինչ դեռ, դուք տեսել եք որ հատկությունները փոխանցել են ստատիկ արժեքներ, ինչպես հետևյալն է՝
 
 ```html
-<blog-post title="My journey with Vue"></blog-post>
+<blog-post title="Իմ Ճամփորդությունը Vue-ի հետ"></blog-post>
 ```
 
-You've also seen props assigned dynamically with `v-bind`, such as in:
+Դուք նաև տեսել եք որ հատկությունները նշանակված են դինամիկորեն `v-bind`-ի հետ,  ինչպես հետևյալն է՝
 
 ```html
-<!-- Dynamically assign the value of a variable -->
+<!-- Դինամիկորեն փոփոխականի արժեքի նշանակումը -->
 <blog-post v-bind:title="post.title"></blog-post>
 
-<!-- Dynamically assign the value of a complex expression -->
+<!-- Դինամիկորեն բարդ արտահայտության արժեքի նշանակումը -->
 <blog-post
   v-bind:title="post.title + ' by ' + post.author.name"
 ></blog-post>
 ```
 
-In the two examples above, we happen to pass string values, but _any_ type of value can actually be passed to a prop.
+Վերևում գտնվող երկու օրինակներում, մենք փոխանցում ենք string արժեքներ, բայց _ցանկացած_ տիպի արժեք իրականում կարող է փոխանցվել։
 
-### Passing a Number
+### Թվի Փոխանցումը
 
 ```html
-<!-- Even though `42` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.       -->
+<!-- Չնայած որ `42`-ը ստատիկ է, մենք պետք է v-bind-ի միջոցով հասկացնել Vue-ին որ դա -->
+<!-- JavaScript-ի արտահայտություն է այլ ոչ թե string։ -->
 <blog-post v-bind:likes="42"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- Դինամիկորեն փոփոխականի արժեքի նշանակումը -->
 <blog-post v-bind:likes="post.likes"></blog-post>
 ```
 
-### Passing a Boolean
+### Boolean-ի Փոխանցումը
 
 ```html
-<!-- Including the prop with no value will imply `true`. -->
+<!-- Ներառելով հատկություն առանց արժեքի կհաշվարկվի որպես `true` -->
 <blog-post is-published></blog-post>
 
-<!-- Even though `false` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.          -->
+<!-- Չնայած որ `false`-ը ստատիկ է, մենք պետք է v-bind-ի միջոցով հասկացնել Vue-ին որ դա -->
+<!-- JavaScript-ի արտահայտություն է այլ ոչ թե string։ -->
 <blog-post v-bind:is-published="false"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- Դինամիկորեն փոփոխականի արժեքի նշանակումը։ -->
 <blog-post v-bind:is-published="post.isPublished"></blog-post>
 ```
 
-### Passing an Array
+### Զանգվածի Փոխանցումը
 
 ```html
-<!-- Even though the array is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.            -->
+<!-- Չնայած որ զանգվածը ստատիկ է, մենք պետք է v-bind-ի միջոցով հասկացնել Vue-ին որ դա -->
+<!-- JavaScript-ի արտահայտություն է այլ ոչ թե string։ -->
 <blog-post v-bind:comment-ids="[234, 266, 273]"></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- Դինամիկորեն փոփոխականի արժեքի նշանակումը։ -->
 <blog-post v-bind:comment-ids="post.commentIds"></blog-post>
 ```
 
-### Passing an Object
+### Օբյեկտի Փոխանցումը
 
 ```html
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.             -->
+<!-- Չնայած որ օբյեկտը ստատիկ է, մենք պետք է v-bind-ի միջոցով հասկացնել Vue-ին որ դա -->
+<!-- JavaScript-ի արտահայտություն է այլ ոչ թե string։ -->
 <blog-post
   v-bind:author="{
     name: 'Veronica',
@@ -121,28 +121,28 @@ In the two examples above, we happen to pass string values, but _any_ type of va
   }"
 ></blog-post>
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- Դինամիկորեն փոփոխականի արժեքի նշանակումը։ -->
 <blog-post v-bind:author="post.author"></blog-post>
 ```
 
-### Passing the Properties of an Object
+### Օբյեկտի Հատկությունների Փոխանցումը
 
-If you want to pass all the properties of an object as props, you can use `v-bind` without an argument (`v-bind` instead of `v-bind:prop-name`). For example, given a `post` object:
+Եթե դուք ցանկանում եք փոխանցել բոլոր հատկությունների օբյեկտը որպես props, դուք կարող եք օգտագործել `v-bind`-ը առանց արգումենտի (`v-bind`-ի փոխարեն `v-bind:prop-name`-ի)։ Օրինակ՝ տրված `post` օբյեկտը։
 
 ``` js
 post: {
   id: 1,
-  title: 'My Journey with Vue'
+  title: 'Իմ Ճամփորդությունը Vue-ի հետ'
 }
 ```
 
-The following template:
+Այս ձևանմուշում։
 
 ``` html
 <blog-post v-bind="post"></blog-post>
 ```
 
-Will be equivalent to:
+Հավասար կլինի սրան։
 
 ``` html
 <blog-post
@@ -151,15 +151,15 @@ Will be equivalent to:
 ></blog-post>
 ```
 
-## One-Way Data Flow
+## Մեկ Ճանապարհով Տվյալների Հոսքը
 
-All props form a **one-way-down binding** between the child property and the parent one: when the parent property updates, it will flow down to the child, but not the other way around. This prevents child components from accidentally mutating the parent's state, which can make your app's data flow harder to understand.
+Բոլոր հատկություննը կազմում են **մեկ ճանապարհ ներքև կապում** ժառանգողի հատկության և ծնողինի միջև․ երբ ծնողի հատկությունը փոփոխվում է, այն կփոխանցվի ժառանգողին, բայց ոչ հակառակ ուղղությամբ։ Սա օգնում է մեզ խուսափել ժառանգող կոմպոնենտների միամիտորեն ծնողի վիճակի (state-ի) մուտացիայի ենթարկելուց, որը դարձնում է ձեր ծրագրի տվյալների հոսքը ավելի բարդ հասկանալու համար։
 
-In addition, every time the parent component is updated, all props in the child component will be refreshed with the latest value. This means you should **not** attempt to mutate a prop inside a child component. If you do, Vue will warn you in the console.
+Ի հավելումն, ամեն անգամ երբ ծնող կոմպոնենտը թարմացված է, բոլոր հատկությունները ժառանգող կոմպոնենտում նույնպես կթարմացվեն վերջին արժեքներով։ Սա նշանակում է որ դուք **չ՛պետք** է փոխձեք մուտացիայի ենթարկել հատկությունը ժառանգող կոմպոնենտում։ Եթե դուք անեք դա, Vue-ն ձեզ կզգուշացնի console-ի մեջ։
 
-There are usually two cases where it's tempting to mutate a prop:
+Սովորականում կան երկու դեպքեր երբ գայթակղիչ է հատկության մուտացիայի ենթարկումը։
 
-1. **The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.** In this case, it's best to define a local data property that uses the prop as its initial value:
+1. **Հատկությունը օգտագործվում է որպեսզի փոխանցվի սկզբնական արժեքում; ժառանգող կոմպոնենտը ցանկություն ունի օգտագործելու որպես լոկալ տվյալների հատկություն հետագայում։** Այս դեպքում, լավագույնը կլինի որպեսզի հայտարարել լոկալ տվյալների հատկություն որը օգտագործում է prop-ը որպես սկզբնական արժեք։
 
   ``` js
   props: ['initialCounter'],
@@ -170,7 +170,7 @@ There are usually two cases where it's tempting to mutate a prop:
   }
   ```
 
-2. **The prop is passed in as a raw value that needs to be transformed.** In this case, it's best to define a computed property using the prop's value:
+2. **Prop-ը փոխանցված է որպես չմշակված արժեք որը պետք է փոփոխվի։** Այս դեպքում, լավագույնը կլինի որպեսզի հայտարարել հաշվարկված հատկություն օգտագործելով prop-ի արժեքը։
 
   ``` js
   props: ['size'],
@@ -181,44 +181,44 @@ There are usually two cases where it's tempting to mutate a prop:
   }
   ```
 
-<p class="tip">Note that objects and arrays in JavaScript are passed by reference, so if the prop is an array or object, mutating the object or array itself inside the child component **will** affect parent state.</p>
+<p class="tip">Նշում որ օբյեկտները և զանգվածները JavaScript-ում փոխանցված են reference-ի միջոցով, այնպես որ եթե prop-ը զանգված է կամ օբյեկտ, մուտացիայի ենթարկելու օբյեկտը կամ զանգվածը ժառանգող կոմպոնենտում **կազդի** ծնողի state-ի վրա։</p>
 
-## Prop Validation
+## Prop-ի Վալիդացիա
 
-Components can specify requirements for their props, such as the types you've already seen. If a requirement isn't met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that's intended to be used by others.
+Կոմպոնենտները կարող են նշել պահանջներ իրենց prop-ների համար, ինչպիսին են այն տիպերը որոնք դուք արդեն տեսել եք։ Եթե որևէ պահանջ չի բավարարվում, Vue-ն ձեզ կզգուշացնի բրաուզերի JavaScript console-ի մեջ։ Սա հատկապես օգտակար է երբ ծրագրավորում եք կոմպոնենտներ որոնք նախատեսված են որպեսզի օգտագործեն ուրիշ կոմպոնենտների կողմից։ 
 
-To specify prop validations, you can provide an object with validation requirements to the value of `props`, instead of an array of strings. For example:
+Որպեսզի նշել prop-ի վալիդացումը, մենք կարող են տրամադրել օբյեկտ վավերացման պահանջներով `props`-ի արժեքին, ի փոխարեն string-ների զանգվածի։ Օրինակ՝
 
 ``` js
 Vue.component('my-component', {
   props: {
-    // Basic type check (`null` and `undefined` values will pass any type validation)
+    // Սովորական տիպի ստուգում (`null` և `undefined` արժեքները կանցնեն ցանկացած տիպի կողմնորոշման վալիդացիա)
     propA: Number,
-    // Multiple possible types
+    // Միքանի հնարավոր տիպեր
     propB: [String, Number],
-    // Required string
+    // Պահանջվող որպես string
     propC: {
       type: String,
       required: true
     },
-    // Number with a default value
+    // Թիվ հիմնական արժեքով
     propD: {
       type: Number,
       default: 100
     },
-    // Object with a default value
+    // Օբյեկտ հիմնական արժեքով
     propE: {
       type: Object,
-      // Object or array defaults must be returned from
-      // a factory function
+      // Օբյեկտի կամ զանգվածի հիմնական արժեքները պետք է վերադարձվեն
+      // factory ֆունկցիայից
       default: function () {
-        return { message: 'hello' }
+        return { message: 'բարև' }
       }
     },
-    // Custom validator function
+    // Custom validator ֆունկցիա
     propF: {
       validator: function (value) {
-        // The value must match one of these strings
+        // Արժեքը պետք է համապատասխանի հետևյալ string-ներից մեկին
         return ['success', 'warning', 'danger'].indexOf(value) !== -1
       }
     }
@@ -226,13 +226,13 @@ Vue.component('my-component', {
 })
 ```
 
-When prop validation fails, Vue will produce a console warning (if using the development build).
+Երբ prop-ի վալիդացիան ձախողվում է, Vue-ն կարտադրի console-ի նախազգուշացում (եթե օգտագործում եք development build-ը)
 
-<p class="tip">Note that props are validated **before** a component instance is created, so instance properties (e.g. `data`, `computed`, etc) will not be available inside `default` or `validator` functions.</p>
+<p class="tip">Նշում որ prop-ները վալիդացվում են **նախքան** կոմպոնենտնի instance-ի ստեղծումը, այնպես որ instance-ի հատկությունները (օրինակ՝ `data`, `computed`, և այլն) հասանելի չեն լինի `default` կամ `validator` ֆունկցիաների ներսում։</p>
 
-### Type Checks
+### Տիպի Ստուգում
 
-The `type` can be one of the following native constructors:
+`type`-ը կարող է լինել հետևյալ կոնստրուկտորներից մեկը։
 
 - String
 - Number
@@ -243,7 +243,7 @@ The `type` can be one of the following native constructors:
 - Function
 - Symbol
 
-In addition, `type` can also be a custom constructor function and the assertion will be made with an `instanceof` check. For example, given the following constructor function exists:
+Ի հավելումն, `type`-ը կարող է նաև լինել հատուկ (custom) կոնստրուկտոր ֆունկցիա և պնդումը կկատարվի `instanceof`-ի հետ ստուգմամբ։ Օրինակ՝ ենթադրելով որ հետևյալ կոնստրուկտորի ֆունկցիան գոյություն ունի:
 
 ```js
 function Person (firstName, lastName) {
@@ -252,7 +252,7 @@ function Person (firstName, lastName) {
 }
 ```
 
-You could use:
+Դուք կարող եք օգտագործել:
 
 ```js
 Vue.component('blog-post', {
@@ -262,31 +262,31 @@ Vue.component('blog-post', {
 })
 ```
 
-to validate that the value of the `author` prop was created with `new Person`.
+Որպեսզի վալիդացնենք որ `author` prop-ի արժեքը ստեղծվել է `new Person`-ի միջոցով։
 
-## Non-Prop Attributes
+## Ոչ Prop Ատրիբուտներ
 
-A non-prop attribute is an attribute that is passed to a component, but does not have a corresponding prop defined.
+Ոչ prop ատրիբուտը դա ատրիբուտ է որը փոխանցված է կոմպոնենտի, բայց չունի համապատասխան prop-ը հայտարարված։
 
-While explicitly defined props are preferred for passing information to a child component, authors of component libraries can't always foresee the contexts in which their components might be used. That's why components can accept arbitrary attributes, which are added to the component's root element.
+Երբ բացահայտ հայտարարված prop-ները նախատեսված են փոխանցելու ինֆորմացիա ժառանգող կոմպոնենտին, կոմպոնենտների գրադարանների հեղինակները միշտ չեն կարող տեսնել թե ինչպես իրենց կոմպոնենտները կարող են օգտագործել։ Այս պատճառով կոմպոնենտները կարող են ընդհունել կամայական ատրիբուտներ, որոնք ավելացված են կոմպոնենտի արմատային էլեմենտում։
 
-For example, imagine we're using a 3rd-party `bootstrap-date-input` component with a Bootstrap plugin that requires a `data-date-picker` attribute on the `input`. We can add this attribute to our component instance:
+Օրինակի համար, պատկերացրեք մենք օգտագործխում ենք 3-րդ կողմի `bootstrap-date-input` կոմպոնենտ Bootstrap plugin-ի հետ հանդերձ որը պահանջում է `data-date-picker` ատրիբուտը `input`-ի վրա։ Մենք կարող են ավելացնել այս ատրիբուտը մեր կոմպոնենտի instance-ին։
 
 ``` html
 <bootstrap-date-input data-date-picker="activated"></bootstrap-date-input>
 ```
 
-And the `data-date-picker="activated"` attribute will automatically be added to the root element of `bootstrap-date-input`.
+ԵՎ `data-date-picker="activated"` ատրիբուտը ավտոմատ կերպով կավելացվի `bootstrap-date-input`-ի արամատային էլեմենտին։
 
-### Replacing/Merging with Existing Attributes
+### Փոխել/Ձուլելը Գույություն Ունեցող Ատրիբուտների Հետ
 
-Imagine this is the template for `bootstrap-date-input`:
+Պատկերացրեք սա `bootstrap-date-input`-ի ձևանմուշն է։
 
 ``` html
 <input type="date" class="form-control">
 ```
 
-To specify a theme for our date picker plugin, we might need to add a specific class, like this:
+Որպեսզի նշել ոճի թեմա մեր date picker plugin-ի համար, մենք պետք է ավելացնենք հատուկ class, այսպես՝
 
 ``` html
 <bootstrap-date-input
@@ -295,16 +295,16 @@ To specify a theme for our date picker plugin, we might need to add a specific c
 ></bootstrap-date-input>
 ```
 
-In this case, two different values for `class` are defined:
+Այս դեպքում, երկու տարբեր արժեքներ են հայտարարված `class`-ի համար։
 
-- `form-control`, which is set by the component in its template
-- `date-picker-theme-dark`, which is passed to the component by its parent
+- `form-control`, որը դրված է կոմպոնենտի կողմից իր ձևանմուշում
+- `date-picker-theme-dark`, որը փոխանցվել է կոմպոնենտին իր ծնողի կողմից
 
-For most attributes, the value provided to the component will replace the value set by the component. So for example, passing `type="text"` will replace `type="date"` and probably break it! Fortunately, the `class` and `style` attributes are a little smarter, so both values are merged, making the final value: `form-control date-picker-theme-dark`.
+Շատ ատրիբուտներում, արժեքը որը տրամադրված է կոմպոնենտին կփոխի այն արժեքը որը դրվել է կոմպոնենտի կողմից։ Օրինակի համար, փոխանցելով `type="text"`-ը կփոխի `type="date"` և հնարավոր է որ կոտրի այն! Բարեբախտաբար, `class` և `style` ատրիբուտները մի փոքր խելացի են, այնպես որ երկուսի արժեքները կձուլվեն և վերջնական արժեքը կլինի `form-control date-picker-theme-dark`։
 
-### Disabling Attribute Inheritance
+### Ատրիբուտների Ժառանգման Անջատումը
 
-If you do **not** want the root element of a component to inherit attributes, you can set `inheritAttrs: false` in the component's options. For example:
+Եթե դուք **չ՛եք** ցանկանում որպեսզի կոմպոնենտի արմատային էլեմենտը ժառանգի ատրիբուտները, դուք կարող եք տեղադրել `inheritAttrs: false` այն կոմպոնենտի ընտրանքներում։ Օրինակ՝
 
 ```js
 Vue.component('my-component', {
@@ -313,7 +313,7 @@ Vue.component('my-component', {
 })
 ```
 
-This can be especially useful in combination with the `$attrs` instance property, which contains the attribute names and values passed to a component, such as:
+Սա կարող է հատկապես օգտակար լինել `$attrs`-ի հետ համատեղ, որը պարունակում է ատրիբուտների անունները և արժեքները որոնք փոխանցվում են կոմպոնենտի, ինչպիսին են․
 
 ```js
 {
@@ -322,7 +322,7 @@ This can be especially useful in combination with the `$attrs` instance property
 }
 ```
 
-With `inheritAttrs: false` and `$attrs`, you can manually decide which element you want to forward attributes to, which is often desirable for [base components](../style-guide/#Base-component-names-strongly-recommended):
+`inheritAttrs: false` և `$attrs`-ի հետ, դուք կարող եք ձեռքով որոշել թե որ էլեմենտին եք ուզում ուղարկել ատրիբուտները, որը հատկապես ցանկալի է [հիմնական կոմպոնենտներում](../style-guide/#Base-component-names-strongly-recommended):
 
 ```js
 Vue.component('base-input', {
@@ -341,9 +341,9 @@ Vue.component('base-input', {
 })
 ```
 
-<p class="tip">Note that `inheritAttrs: false` option does **not** affect `style` and `class` bindings.</p>
+<p class="tip">Նշում որ `inheritAttrs: false` ընտրանքը **չի** ազդի `style` և `class` կապերի վրա։</p>
 
-This pattern allows you to use base components more like raw HTML elements, without having to care about which element is actually at its root:
+Այս pattern-ը թույլ է տալիս ձեզ օգտագործելու հիմնական կոմպոնենտները որպես չոր HTML էլեմենտներ, առանց մտածելու, թե որ էլեմենտն է իրականում իր արմատում։
 
 ```html
 <base-input
