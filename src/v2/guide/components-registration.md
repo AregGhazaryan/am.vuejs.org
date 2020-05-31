@@ -1,58 +1,58 @@
 ---
-title: Component Registration
-type: guide
+title: Կոմպոնենտի Գրանցումը
+type: ուղեցույց
 order: 101
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Այս էջը ենթադրում է որ դուք արդեն կարդացել եք [Կոմպոնենտների Հիմունքները](components.html)։ Կարդացեք այն եթե դուք նոր եք ծանոթանում կոմպոնենտներին։
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Component Registration lesson">Watch a free video lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/global-vs-local-components?friend=vuejs" target="_blank" rel="sponsored noopener" title="Անվճար Vue.js-ի Կոմպոնենտի Գրանցման Դասընթաց">Դիտեք անվճար դաս Vue School-ում</a></div>
 
-## Component Names
+## Կոմպոնենտի Անունները
 
-When registering a component, it will always be given a name. For example, in the global registration we've seen so far:
-
-```js
-Vue.component('my-component-name', { /* ... */ })
-```
-
-The component's name is the first argument of `Vue.component`.
-
-The name you give a component may depend on where you intend to use it. When using a component directly in the DOM (as opposed to in a string template or [single-file component](single-file-components.html)), we strongly recommend following the [W3C rules](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) for custom tag names (all-lowercase, must contain a hyphen). This helps you avoid conflicts with current and future HTML elements.
-
-You can see other recommendations for component names in the [Style Guide](../style-guide/#Base-component-names-strongly-recommended).
-
-### Name Casing
-
-You have two options when defining component names:
-
-#### With kebab-case
+Երբ գրանցում ենք կոմպոնենտ, նրան միշտ կտրվի անուն։ Օրինակ, գլոբալ գրացման մեջ մենք տեսել ենք։
 
 ```js
 Vue.component('my-component-name', { /* ... */ })
 ```
 
-When defining a component with kebab-case, you must also use kebab-case when referencing its custom element, such as in `<my-component-name>`.
+Կոմպոնենտի անունը առաջին արգումենտն է `Vue.component`-ում։
 
-#### With PascalCase
+Անունը որը դուք տվել եք կոմպոնենտին կարող է կախված լինել թե որտեղ եք պատրաստվում այն օգտագործել։ Երբ օգտագործում եք կոմպոնենտը ուղիղ DOM-ի մեջ (որը հակասված է string ձևանմուշին կամ [մեկ ֆայլ կոմպոնենտին](single-file-components.html)), մենք խորհուրդ ենք տալիս հետևել [W3C օրենքներին](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) custom tag-երին անունների համար (բոլորը փոքրատառ, պետք է պարունակի միության գծիկ)։ Սա օգնում է ձեզ խուսափել կոնֆլիկտներից ընթացիկ և ապագա HTML տարրերի մեջ։
+
+Դուք կարող եք նաև նայել առաջարկությունները կոմպոնենտի անունների համար [Ոճի Ուղեցույցում](../style-guide/#Base-component-names-strongly-recommended)։
+
+### Անվան Casing-ը
+
+Դուք ունեք երկու տարբերակ երբ նկարագրում եք կոմպոնենտի անունները։
+
+#### Kebab-case-ով
+
+```js
+Vue.component('my-component-name', { /* ... */ })
+```
+
+Երբ նկարագրում եք կոմպոնենտը kebab-case-ով, դուք պետք է օգտագործեք kebab-case երբ դիմում եք այդ custom էլեմենտին, ինպես արված է `<my-component-name>`։
+
+#### PascalCase-ով
 
 ```js
 Vue.component('MyComponentName', { /* ... */ })
 ```
 
-When defining a component with PascalCase, you can use either case when referencing its custom element. That means both `<my-component-name>` and `<MyComponentName>` are acceptable. Note, however, that only kebab-case names are valid directly in the DOM (i.e. non-string templates).
+Երբ նկարագրում եք կոմպոնենտը PascalCase-ով, դուք կարող եք օգտագործել երկուսնել երբ դիմում եք custom էլեմենտին։ Սա նշանակում է որ `<my-component-name>` և `<MyComponentName>`-ը ընդհունելի են։ Նշում, սակայն, միայն kebab-case-ով գրված անուններնեն ճիշտ ուղիղ DOM-ի մեջ (օրինակ՝ ոչ string ձևանմուշները)։
 
-## Global Registration
+## Գլոբալ Գրանցում
 
-So far, we've only created components using `Vue.component`:
+Մինչ դեռ, մենք միայն ստեղծել ենք կոմպոնենտներ օգտագործելով `Vue.component`-ը․
 
 ```js
 Vue.component('my-component-name', {
-  // ... options ...
+  // ... ընտրանքները ...
 })
 ```
 
-These components are **globally registered**. That means they can be used in the template of any root Vue instance (`new Vue`) created after registration. For example:
+Այս կոմպոնենտները **գլոբալ գրանցված** են։ Սա նշանակում է որ նրանք կարող են օգտագործվել արմատային Vue instance-ի (`new Vue`) ցանկացած ձևանմուշում որը ստեղծվում է գրանցումից հետո։ Օրինակ՝
 
 ```js
 Vue.component('component-a', { /* ... */ })
@@ -70,13 +70,13 @@ new Vue({ el: '#app' })
 </div>
 ```
 
-This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_.
+Սա նաև կիարառվում է բոլոր սուբկոմպոնենտներին, որը նշանակում է որ բոլոր երեքնել այս կոմպոնենտներից հասանելի կլինեն _մեկը մյուսի մեջ_։
 
-## Local Registration
+## Լոկալ Գրանցում
 
-Global registration often isn't ideal. For example, if you're using a build system like Webpack, globally registering all components means that even if you stop using a component, it could still be included in your final build. This unnecessarily increases the amount of JavaScript your users have to download.
+Գլոբալ գրանցումը հաճախ իդեալական չէ։ Օրինակ, եթե դուք օգտագործում եք կառուցման համակարգեր ինչպիսին է Webpack—ը, գլոբալ գրանցելով բոլոր կոմպոնենտները նշանակում է եթե դուք չօգտագործեք որևէ կոմպոնենտ, այն դեռ կներառվի ձեր վերջին կառույցում։ Սա անհարկի մեծացնում է չափսը JavaScript-ի որը ձեր օգտագործողները պետք է ներբեռնեն։
 
-In these cases, you can define your components as plain JavaScript objects:
+Այս դեպքերում, դուք կարող եք նկարագրել ձեր կոմպոնենտը որպես չոր JavaScript-ի օբյեկտներ։
 
 ```js
 var ComponentA = { /* ... */ }
@@ -84,7 +84,7 @@ var ComponentB = { /* ... */ }
 var ComponentC = { /* ... */ }
 ```
 
-Then define the components you'd like to use in a `components` option:
+Հետո հայտարարեք այն կոմպոնենտները որոնք դուք ցանկանում եք օգտագործել `components` ընտրանքի մեջ․
 
 ```js
 new Vue({
@@ -96,9 +96,9 @@ new Vue({
 })
 ```
 
-For each property in the `components` object, the key will be the name of the custom element, while the value will contain the options object for the component.
+Ամեն հատկանիշի համար որը գտնվում է `components` օբյեկտում, բանալին կլինի նույն անունը custom էլեմենտի, և արժեքը կպարունակի ընտրանքների օբյեկտը կոմպոնենտի համար։
 
-Note that **locally registered components are _not_ also available in subcomponents**. For example, if you wanted `ComponentA` to be available in `ComponentB`, you'd have to use:
+Նշում որ **լոկալ գրանցված կոմպոնենտները հասանելի _չեն_ լինի սուբկոմպոնենտներում**։ Օրինակ, եթե դուք ցանկանում եք որպեսզի `ComponentA`-ն լինի հասանելի `ComponentB`-ում, դուք պետք է օգտագործեք․
 
 ```js
 var ComponentA = { /* ... */ }
@@ -111,7 +111,7 @@ var ComponentB = {
 }
 ```
 
-Or if you're using ES2015 modules, such as through Babel and Webpack, that might look more like:
+Կամ եթե դուք օգտագործում եք ES2015 մոդուլներ, ինչպիսիք են Babel-ը և Webpack-ը, այն ավելի նման կլինի հետևյալին։
 
 ```js
 import ComponentA from './ComponentA.vue'
@@ -124,20 +124,20 @@ export default {
 }
 ```
 
-Note that in ES2015+, placing a variable name like `ComponentA` inside an object is shorthand for `ComponentA: ComponentA`, meaning the name of the variable is both:
+Նշում որ ES2015+, տեղադրելով փոփոխականի անուն ինչպիսին `ComponentA`-ն է օբյեկտի ներսում կարճ կլինի `ComponentA: ComponentA`, որը նշանակում է որ փոփոխականի անունը․
 
-- the custom element name to use in the template, and
-- the name of the variable containing the component options
+- custom էլեմենտի անունն է որպեսզի օգտագործվի ձևանմուշում, և
+- փոփոխականի անունն է որը պարունակում է կոմպոնենտնի ընտրանքները
 
-## Module Systems
+## Մոդուլի Համակարգեր
 
-If you're not using a module system with `import`/`require`, you can probably skip this section for now. If you are, we have some special instructions and tips just for you.
+Եթե դուք չեք օգտագործում մոդուլի համակարգեր `import`/`require`-ի հետ հանդերձ, դուք կարող եք բաց թողնել այս բաջինը հիմա։ Եթե դուք օգտագործում եք, մենք ունենք հատուկ ցուցումներ և խորհուրդներ հենց ձեզ համար։
 
-### Local Registration in a Module System
+### Լոկալ Գրանցուոմ Մոդուլի Համակարգում
 
-If you're still here, then it's likely you're using a module system, such as with Babel and Webpack. In these cases, we recommend creating a `components` directory, with each component in its own file.
+Եթե դուք դեռևս այստեղ եք, ուրեմն հավանական է որ դուք օգտագործում եք մոդուլի համակարգ, ինչպիսին են Babel և Webpack-ը համատեղ։ Այս դեպքերում, մենք խորհուրդ ենք տալիս ստեղծել `component` պանակ, որը կպարունակի ամեն կոմպոնենտը իր ֆայլի մեջ։
 
-Then you'll need to import each component you'd like to use, before you locally register it. For example, in a hypothetical `ComponentB.js` or `ComponentB.vue` file:
+Եթե ձեզ պետք է import անել ամեն կոմպոնենտը որը դուք ցանկանում եք օգտագործել, նախքան լոկալ գրանցելը դրանք։ Օրինակ, կարող եք պահել որպես հիպոթետիկ `ComponentB.js` կամ `ComponentB.vue` ֆայլ։
 
 ```js
 import ComponentA from './ComponentA'
@@ -152,13 +152,13 @@ export default {
 }
 ```
 
-Now both `ComponentA` and `ComponentC` can be used inside `ComponentB`'s template.
+Հիմա `ComponentA` և `ComponentC` կարող են օգտագործվել `ComponentB`-ի ձևանմուշում։
 
-### Automatic Global Registration of Base Components
+### Ավտոմատ Գլոբալ Գրանցում Հիմնական Կոմպոնենտների Համար
 
-Many of your components will be relatively generic, possibly only wrapping an element like an input or a button. We sometimes refer to these as [base components](../style-guide/#Base-component-names-strongly-recommended) and they tend to be used very frequently across your components.
+Շատերը ձեր կոմպոնենտներից հարաբերականորեն ընդհանուր են, հնարավորություն ունենալով փաթաթվելու էլեմենտում ինչպիսին է input-ը կամ button-ը։ Մենք երբեմն դիմում ենք նրանց որպես [հիմնական կոմպոնենտներ](../style-guide/#Base-component-names-strongly-recommended) և նրանք նախատեսված են որպեսզի հաճախ օգտագործվեն ձեր կոմպոնենտների մեջ։
 
-The result is that many components may include long lists of base components:
+Արդյունքում շատ կոմպոնենտները կարող ենք ընդգրկել երկար ցուցած հիմնական կոմպոնենտների․
 
 ```js
 import BaseButton from './BaseButton.vue'
@@ -174,7 +174,7 @@ export default {
 }
 ```
 
-Just to support relatively little markup in a template:
+Պարզապես աջակցելու համար, որ համեմատաբար քիչ նշում կատարվի ձևանմուշում․
 
 ```html
 <BaseInput
@@ -186,7 +186,7 @@ Just to support relatively little markup in a template:
 </BaseButton>
 ```
 
-Fortunately, if you're using Webpack (or [Vue CLI 3+](https://github.com/vuejs/vue-cli), which uses Webpack internally), you can use `require.context` to globally register only these very common base components. Here's an example of the code you might use to globally import base components in your app's entry file (e.g. `src/main.js`):
+Բարեբախտորեն, եթե դուք օգտագործում եք Webpack (կամ [Vue CLI 3+](https://github.com/vuejs/vue-cli), որը ներքուստ օգտագործում է Webpack), դուք կարող եք օգտագործել `require.context` որպեսզի գլոբալ գրանցեք միայն շատ հաճախ օգտագործվող հիմնական կոմպոնենտները։ Ահա մի կոդի օրինակ որը դուք կարող եք օգտագործել գլոբալ կերպով հիմնական կոմպոնենտները import անելու ձեր ծրագրի մուտքային ֆայլի մեջ (օրինակ՝ `src/main.js`-ում)։
 
 ```js
 import Vue from 'vue'
@@ -194,22 +194,22 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
 const requireComponent = require.context(
-  // The relative path of the components folder
+  // Հարաբերական կոմպոնենտների պանակի ճանապարհը
   './components',
-  // Whether or not to look in subfolders
+  // Նայել նաև ենթապանականերում թե ոչ օգտագործելով boolean
   false,
-  // The regular expression used to match base component filenames
+  // Այս regular expression-ը օգտագործված է որ համապատասխանի հիմանական կոմպոնենտների ֆայլերի անուններին
   /Base[A-Z]\w+\.(vue|js)$/
 )
 
 requireComponent.keys().forEach(fileName => {
-  // Get component config
+  // Ստանալ կոմպոնենտնի կոնֆիգուրացիան 
   const componentConfig = requireComponent(fileName)
 
-  // Get PascalCase name of component
+  // Ստանալ PascalCase անունը կոմպոնենտնի
   const componentName = upperFirst(
     camelCase(
-      // Gets the file name regardless of folder depth
+      // Ստանում է ֆայլի անունը անկախ պանակի խորությունից
       fileName
         .split('/')
         .pop()
@@ -218,15 +218,15 @@ requireComponent.keys().forEach(fileName => {
   )
 
 
-  // Register component globally
+  // Գրանցել կոմպոնենտ գլոբլալ կերպով
   Vue.component(
     componentName,
-    // Look for the component options on `.default`, which will
-    // exist if the component was exported with `export default`,
-    // otherwise fall back to module's root.
+    // Նայեք կոմպոնենտի ընտրանքները `.default`-ում, որը
+    // գույություն կունենա եթե կոմպոնենտը export է արված `export default`-ով,
+    // հակառակ դեպքում հետ կընկնի դեպի մոդուլի արմատ։
     componentConfig.default || componentConfig
   )
 })
 ```
 
-Remember that **global registration must take place before the root Vue instance is created (with `new Vue`)**. [Here's an example](https://github.com/chrisvfritz/vue-enterprise-boilerplate/blob/master/src/components/_globals.js) of this pattern in a real project context.
+Հիշեք որ **գլոբալ գրանցումը պետք է կատարվի նախքան արմատային Vue instance-ի ստեղծելը (with `new Vue`-ի հետ)**։ [Այստեղ է օրինակը](https://github.com/chrisvfritz/vue-enterprise-boilerplate/blob/master/src/components/_globals.js) այս pattern-ի իրական նախագծի կոնտեքստում։
