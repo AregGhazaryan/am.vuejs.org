@@ -4,23 +4,23 @@ type: guide
 order: 104
 ---
 
-> This page assumes you've already read the [Components Basics](components.html). Read that first if you are new to components.
+> Այս էջը ենթադրում է որ դուք արդեն կարդացել եք [Կոմպոնենտների Հիմունքները](components.html)։ Կարդացեք այն եթե դուք նոր եք ծանոթանում կոմպոնենտներին։
 
-> In 2.6.0, we introduced a new unified syntax (the `v-slot` directive) for named and scoped slots. It replaces the `slot` and `slot-scope` attributes, which are now deprecated, but have _not_ been removed and are still documented [here](#Deprecated-Syntax). The rationale for introducing the new syntax is described in this [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md).
+> 2.6.0-ի մեջ, մենք ներկայացրել ենք նոր միակցված գրելաձև (`v-slot` ուղղորդիչը) անվանված և scope-ված սլոտների համար։ Այն փոփոխում է `slot` և `slot-scope` ատրիբուտները, որոնք այժմ depricated են, բայց նրանք _չեն_ ջնջվել և մինջ դեռ փաստաթղթված են [այստեղ](#Deprecated-Syntax)։ Հիմանվորումը նոր գրելաձևի ներկայացման համար նկարագրված է այս [RFC-ում](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md)։
 
-## Slot Content
+## Սլոտի Բովանդակություն
 
-Vue implements a content distribution API inspired by the [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the `<slot>` element to serve as distribution outlets for content.
+Vue-ն պարունակում է բովանդակության բաշխման API որը ոգեշնչված [Web Կոմպոնենտների նշանակությունների նմուշից](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), օգտագործելով `<slot>` էլեմենտը որպեսզի մատուցել որպես բաշխման ելքագրում բովանդակության համար։
 
-This allows you to compose components like this:
+Սա ձեզ թույլ է տալիս ստեղծել կոմպոնենտներ այսպես․
 
 ``` html
 <navigation-link url="/profile">
-  Your Profile
+  Ձեր Էջը
 </navigation-link>
 ```
 
-Then in the template for `<navigation-link>`, you might have:
+Այնուհետև այս ձևանմուշում `<navigation-link>`—ի համար, դուք կարող եք ունենալ․
 
 ``` html
 <a
@@ -31,58 +31,58 @@ Then in the template for `<navigation-link>`, you might have:
 </a>
 ```
 
-When the component renders, `<slot></slot>` will be replaced by "Your Profile". Slots can contain any template code, including HTML:
+Երբ կոմպոնենտը render է լինում, `<slot></slot>`-ը կփոփոխվի "Ձեր Էջը" տեքստով։ Սլոտները կարող են պարունակել ցանկացած ձևանմուշի կոդ, ներառյալ HTML:
 
 ``` html
 <navigation-link url="/profile">
-  <!-- Add a Font Awesome icon -->
+  <!-- Ավելացնել Font Awesome icon -->
   <span class="fa fa-user"></span>
-  Your Profile
+  Ձեր Էջը
 </navigation-link>
 ```
 
-Or even other components:
+Կամ նույնիսկ ուրիշ կոմպոնենտներ․
 
 ``` html
 <navigation-link url="/profile">
-  <!-- Use a component to add an icon -->
+  <!-- Օգտագործել կոմպոնենտ որպեսզի ավելացնել icon -->
   <font-awesome-icon name="user"></font-awesome-icon>
-  Your Profile
+  Ձեր Էջը
 </navigation-link>
 ```
 
-If `<navigation-link>`'s template did **not** contain a `<slot>` element, any content provided between its opening and closing tag would be discarded.
+Եթե `<navigtaion-link>`-ի ձևանմուշը **չի** պարունակում `<slot>` էլեմենտ, ցանկացած բովանդակություն որը տեղադրված է իր բացվող և փակվող tag-ի մեջտեղում կհեռացվի։
 
-## Compilation Scope
+## Կազմային Scope
 
-When you want to use data inside a slot, such as in:
+Երբ որ դուք ուզում եք օգտագործել տվյալներ սլոտի մեջ, ինչպիսին է հետևյալը․
 
 ``` html
 <navigation-link url="/profile">
-  Logged in as {{ user.name }}
+  Մուտք է գործված որպես {{ user.name }}
 </navigation-link>
 ```
 
-That slot has access to the same instance properties (i.e. the same "scope") as the rest of the template. The slot does **not** have access to `<navigation-link>`'s scope. For example, trying to access `url` would not work:
+Այդ սլոտը ունի մուտք դեպի նույն instance-ի հատկանիշներ (օրինակ նույն "scope"-ը) որպես մնացած մասը ձևանմուշի։ Սլոտը **չունի** մուտք դեպի `<navigation-link>`-ի scope: Օրինակի համար, փորձելով մտնել դեպի `url` պարզապես չի աշխատի․
 
 ``` html
 <navigation-link url="/profile">
-  Clicking here will send you to: {{ url }}
+  Սեղմելով այստեղ դուք կգնաք դեպի: {{ url }}
   <!--
-  The `url` will be undefined, because this content is passed
-  _to_ <navigation-link>, rather than defined _inside_ the
-  <navigation-link> component.
+  `url`-ը կլինի undefined, որովհետև այս բովանդակություն է
+  տրված <navigation-link>, ի փոխարեն հայտարարված <navigation-link> 
+  կոմպոնենտի մեջ։
   -->
 </navigation-link>
 ```
 
-As a rule, remember that:
+Որպես կանոն, հիշեք որ․
 
-> Everything in the parent template is compiled in parent scope; everything in the child template is compiled in the child scope.
+> Ամեն ինչ ծնողի ձևանմուշում compile է եղած ծնողի scope-ում; ամեն ինչ ժառանգողի ձևանմուշում compile է եղած ժառանգողի scope-ում։
 
-## Fallback Content
+## Ընկման Բովանդակություն
 
-There are cases when it's useful to specify fallback (i.e. default) content for a slot, to be rendered only when no content is provided. For example, in a `<submit-button>` component:
+Կան դեպքեր երբ հարկավոր է հատկացնել ընկման (օրինակ՝ հիմնական) բովանդակություն սլոտի համար, որը պետք է render լինի երբ բովանդակությունը չի տրամադրված։ Օրինակ՝ `<submit-button>` կոմպոնենտը։
 
 ```html
 <button type="submit">
@@ -90,7 +90,7 @@ There are cases when it's useful to specify fallback (i.e. default) content for 
 </button>
 ```
 
-We might want the text "Submit" to be rendered inside the `<button>` most of the time. To make "Submit" the fallback content, we can place it in between the `<slot>` tags:
+Մենք հնարավոր է որ կցանականանք "Submit" տեքստը render լինի `<button>`-ի մեջ հիմնականում։ Որպեսզի նշանակել "Submit" որպես ընկման բովանդակություն, մենք կարող ենք տեղադրել այն `<slot>` tag-երի միջև։
 
 ```html
 <button type="submit">
@@ -98,13 +98,13 @@ We might want the text "Submit" to be rendered inside the `<button>` most of the
 </button>
 ```
 
-Now when we use `<submit-button>` in a parent component, providing no content for the slot:
+Հիմա երբ որ օգտագործենք `<submit-button>`-ը ծնող կոմպոնենտում, առանց տրամադրելու բովանդակություն սլոտի համար։
 
 ```html
 <submit-button></submit-button>
 ```
 
-will render the fallback content, "Submit":
+Ապա այն render կանի ընկման բովանդակությունը, "Submit"․
 
 ```html
 <button type="submit">
@@ -112,7 +112,7 @@ will render the fallback content, "Submit":
 </button>
 ```
 
-But if we provide content:
+Բայց եթե մենք տրամադրենք բովանդակություն․
 
 ```html
 <submit-button>
@@ -120,7 +120,7 @@ But if we provide content:
 </submit-button>
 ```
 
-Then the provided content will be rendered instead:
+Ապա տրամադրված բովանդակությունը render կլինի փոխարենը․
 
 ```html
 <button type="submit">
@@ -128,27 +128,27 @@ Then the provided content will be rendered instead:
 </button>
 ```
 
-## Named Slots
+## Անվանված Սլոտներ
 
-> Updated in 2.6.0+. [See here](#Deprecated-Syntax) for the deprecated syntax using the `slot` attribute.
+> Թարմեցված 2.6.0+-ի մեջ։ [Նայեք այստեղ](#Deprecated-Syntax) depricated գրելաձևի համար օգտագործելով `slot` ատրիբուտը։
 
-There are times when it's useful to have multiple slots. For example, in a `<base-layout>` component with the following template:
+Կան նաև դեպքեր երբ օգտակար է ունենալ մի քանի սլոտներ։ Օրինակի համար, `<base-layout>` կոմպոնենտում հետևյալ ձևանմուշի հետ հանդերձ։
 
 ``` html
 <div class="container">
   <header>
-    <!-- We want header content here -->
+    <!-- Մենք ուզում ենք header-ի բովանդակությունը այստեղ -->
   </header>
   <main>
-    <!-- We want main content here -->
+    <!-- Մենք ուզում ենք main-ի բովանդակությունը այստեղ -->
   </main>
   <footer>
-    <!-- We want footer content here -->
+    <!-- Մենք ուզում ենք footer-ի բովանդակությունը այստեղ -->
   </footer>
 </div>
 ```
 
-For these cases, the `<slot>` element has a special attribute, `name`, which can be used to define additional slots:
+Այս դեպքերում, `<slot>` էլեմենտը ունի հատուկ ատրիբուտ, `name`, որը կարող է օգտագործվել որպեսզի հայտարարել հավելյալ սլոտներ։
 
 ``` html
 <div class="container">
@@ -164,70 +164,70 @@ For these cases, the `<slot>` element has a special attribute, `name`, which can
 </div>
 ```
 
-A `<slot>` outlet without `name` implicitly has the name "default".
+`<slot>` ելքագրիչը առանց `name`-ի կստանա "default" անունը։
 
-To provide content to named slots, we can use the `v-slot` directive on a `<template>`, providing the name of the slot as `v-slot`'s argument:
+Որպեսզի տրամադրենք բովանդակություն անվանված սլոտներին, մենք կարող ենք օգտագործել `v-slot` ուղղորդիչը `<template>`-ի վրա, տրամադրելով անունը սլոտի ինչպես `v-slot`-ի արգումենտում է նշված։
 
 ```html
 <base-layout>
   <template v-slot:header>
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </template>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Պարբերություն հիմնական բովանդակության համար։</p>
+  <p>Հավելյալ պարբերություն։</p>
 
   <template v-slot:footer>
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </template>
 </base-layout>
 ```
 
-Now everything inside the `<template>` elements will be passed to the corresponding slots. Any content not wrapped in a `<template>` using `v-slot` is assumed to be for the default slot.
+Հիմա ամեն ինչ `<template>` էլեմենտների մեջ կփոխանցվի համապատասխան սլոտների։ Ցանկացած բովանդակություն որը փաթաթված չէ `<template>`-ի մեջ օգտագործելով `v-slot`-ը ենթադրվում է որ այն նախատեսված է հիմնական սլոտի համար։
 
-However, you can still wrap default slot content in a `<template>` if you wish to be explicit:
+Սակայն, դուք դեռ կարող եք փաթաթել հիմնական սլոտի բովանդակությունը `<template>`-ի մեջ եթե ցանկանում եք որպեսզի այն լինի ավելի կոնկրետ։
 
 ```html
 <base-layout>
   <template v-slot:header>
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </template>
 
   <template v-slot:default>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Պարբերություն հիմնական բովանդակության համար։</p>
+    <p>Հավելյալ պարբերություն։</p>
   </template>
 
   <template v-slot:footer>
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </template>
 </base-layout>
 ```
 
-Either way, the rendered HTML will be:
+Երկու դեպքում, render եղած HTML-ը կլինի այսպիսին․
 
 ``` html
 <div class="container">
   <header>
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </header>
   <main>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Պարբերություն հիմնական բովանդակության համար։</p>
+    <p>Հավելյալ պարբերություն։</p>
   </main>
   <footer>
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </footer>
 </div>
 ```
 
-Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#Abbreviated-Syntax-for-Lone-Default-Slots)), unlike the deprecated [`slot` attribute](#Deprecated-Syntax).
+Նշում որ **`v-slot`-ը կարող է միայն ավելացվել `<template>`-ին** (մեկ [բացառությամբ](#Abbreviated-Syntax-for-Lone-Default-Slots)), ի տարբերություն depricated [`slot` ատրիբուտի](#Deprecated-Syntax)։
 
-## Scoped Slots
+## Scope-ված Սլոտներ
 
-> Updated in 2.6.0+. [See here](#Deprecated-Syntax) for the deprecated syntax using the `slot-scope` attribute.
+> Թարմացված 2.6.0+-ի մեջ. [Նայեք այստեղ](#Deprecated-Syntax) depricated գրելաձևի համար օգտագործելով `slot-scope` ատրիբուտը։
 
-Sometimes, it's useful for slot content to have access to data only available in the child component. For example, imagine a `<current-user>` component with the following template:
+Երբեմն, օգտակար է սլոտի բովանդակության համար ունենալ մուտք դեպի տվյալներ որոնք միայն հասանելի են ժառանգող կոմպոնենտում։ Օրինակ, պատկերացրեք `<current-user>` կոմպոնենտ հետևյալ ձևանմուշով․
 
 ```html
 <span>
@@ -235,7 +235,7 @@ Sometimes, it's useful for slot content to have access to data only available in
 </span>
 ```
 
-We might want to replace this fallback content to display the user's first name, instead of last, like this:
+Մենք հնարավոր է ցանկանանք փոփոխել այս ընկման բովանդակություն որպեսզի ցույց տալ օգտագործողի անունը, ազգանունի փոխարեն, այսպես․
 
 ``` html
 <current-user>
@@ -243,9 +243,9 @@ We might want to replace this fallback content to display the user's first name,
 </current-user>
 ```
 
-That won't work, however, because only the `<current-user>` component has access to the `user` and the content we're providing is rendered in the parent.
+Սա չի աշխատի, սակայն, որովհետև միայն `<current-user>` կոմպոնենտը կարող է մուտք գործել դեպի `user` և մեր տրամադրած բովանդակությունը render է եղած ծնողի մեջ։
 
-To make `user` available to the slot content in the parent, we can bind `user` as an attribute to the `<slot>` element:
+Որպեսզի `user`-ը հասանելի դարձնել սլոտի բովանդակության մեջ որը գտնվում է ծնողում, մենք կարող ենք կապել `user`-ը որպես `<slot>` էլեմենտի ատրիբուտ։
 
 ``` html
 <span>
@@ -255,7 +255,7 @@ To make `user` available to the slot content in the parent, we can bind `user` a
 </span>
 ```
 
-Attributes bound to a `<slot>` element are called **slot props**. Now, in the parent scope, we can use `v-slot` with a value to define a name for the slot props we've been provided:
+Ատրիբուտները կապված `<slot>` էլեմենտին կոչվում են **սլոտի prop—ներ**։ Հիմա, ծնողի scope-ում, մենք կարող ենք օգտագործել `v-slot`-ը արժեքով հանդերձ որպեսզի հայտարարենք անուն սլոտ prop-ի համար որը մենք տրամադրել ենք։
 
 ``` html
 <current-user>
@@ -265,11 +265,11 @@ Attributes bound to a `<slot>` element are called **slot props**. Now, in the pa
 </current-user>
 ```
 
-In this example, we've chosen to name the object containing all our slot props `slotProps`, but you can use any name you like.
+Այս օրինակում, մենք ընտրել ենք որ անվանենք օբյեկտը որը պարունակում է մեր բոլոր սլոտի prop-ները `slotProps`, բայց դուք կարող եք օգտագործել ցանկացած անուն։
 
-### Abbreviated Syntax for Lone Default Slots
+### Կրճատված Գրելաձև Միայնակ Հիմնական Սլոտների Համար
 
-In cases like above, when _only_ the default slot is provided content, the component's tags can be used as the slot's template. This allows us to use `v-slot` directly on the component:
+Վերևում նշված դեպքերում, երբ _միայն_ հիմնական սլոտն է տրամադրած բովանդակությունը, կոմպոնենտի tag-երը կարող են օգտագործվել որպես սլոտի ձևանմուշներ։ Սա թույլ է տալիս մեզ օգտագործել `v-slot`-ը ուղիղ կոմպոնենտի վրա։
 
 ``` html
 <current-user v-slot:default="slotProps">
@@ -277,7 +277,7 @@ In cases like above, when _only_ the default slot is provided content, the compo
 </current-user>
 ```
 
-This can be shortened even further. Just as non-specified content is assumed to be for the default slot, `v-slot` without an argument is assumed to refer to the default slot:
+Սա կարող է կրճատվել ավելին։ Ուղակի չնշված բովանդակությունը համարվում է որպես հիմնական սլոտի համար, `v-solt`-ը արանց արգումենտի համարվում է դիմում հիմնական սլոտին։
 
 ``` html
 <current-user v-slot="slotProps">
@@ -285,19 +285,19 @@ This can be shortened even further. Just as non-specified content is assumed to 
 </current-user>
 ```
 
-Note that the abbreviated syntax for default slot **cannot** be mixed with named slots, as it would lead to scope ambiguity:
+Նշում որ կրճատված գրելաձևը հիմնական սլոտի համար **չի** կարող խառնվել անվանված սլոտների հետ, որովհետև այն կառաջացնի scope-ի անորոշություն։
 
 ``` html
-<!-- INVALID, will result in warning -->
+<!-- ՍԽԱԼ, կառաջացնի նախազգուշացում -->
 <current-user v-slot="slotProps">
   {{ slotProps.user.firstName }}
   <template v-slot:other="otherSlotProps">
-    slotProps is NOT available here
+    slotProps-ը հասանելի չէ այստեղ
   </template>
 </current-user>
 ```
 
-Whenever there are multiple slots, use the full `<template>` based syntax for _all_ slots:
+Երբ կան նաև բազմաթիվ սլոտները, օգտագործել ամբող `<template>` գրելաձևը _բոլոր_ սլոտների համար։
 
 ``` html
 <current-user>
@@ -311,17 +311,17 @@ Whenever there are multiple slots, use the full `<template>` based syntax for _a
 </current-user>
 ```
 
-### Destructuring Slot Props
+### Սլոտ Prop-ների Ապակառուցումը
 
-Internally, scoped slots work by wrapping your slot content in a function passed a single argument:
+Ներքինում, scope-ված սլոտները աշխատում են փաթաթվելով ձեր սլոտի բովանդակությանը ֆունկցիայում փոխանցված մեկ արգումենտով։
 
 ```js
 function (slotProps) {
-  // ... slot content ...
+  // ... սլոտի բովանդակություն ...
 }
 ```
 
-That means the value of `v-slot` can actually accept any valid JavaScript expression that can appear in the argument position of a function definition. So in supported environments ([single-file components](single-file-components.html) or [modern browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), you can also use [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) to pull out specific slot props, like so:
+Սա նշանակում է `v-slot`-ի արժեքը իրականում կարող է ընդհունել ցանկցած վալիդ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
 
 ``` html
 <current-user v-slot="{ user }">
@@ -329,7 +329,7 @@ That means the value of `v-slot` can actually accept any valid JavaScript expres
 </current-user>
 ```
 
-This can make the template much cleaner, especially when the slot provides many props. It also opens other possibilities, such as renaming props, e.g. `user` to `person`:
+Սա կարող է դարձնել ձևանմուշը ավելի մաքուր, հատկապես երբ սլոտը տրամադրում է բազմաթիվ prop-ներ։ Սա կարող է բացել նաև այլ հնարավորություններ, ինչպիսիք են prop-ների վերանվանումը օրինակ՝ `user`-ը դեպի `preson`։
 
 ``` html
 <current-user v-slot="{ user: person }">
@@ -337,19 +337,19 @@ This can make the template much cleaner, especially when the slot provides many 
 </current-user>
 ```
 
-You can even define fallbacks, to be used in case a slot prop is undefined:
+Դուք կարող եք նաև հայտարարել ընկումներ, որ օգտագործվի այն ժամանակ երբ ոլոտի prop-ը undefined է։
 
 ``` html
-<current-user v-slot="{ user = { firstName: 'Guest' } }">
+<current-user v-slot="{ user = { firstName: 'Հյուր' } }">
   {{ user.firstName }}
 </current-user>
 ```
 
-## Dynamic Slot Names
+## Դինամիկ Սլոտի Անուններ
 
-> New in 2.6.0+
+> Նոր 2.6.0+-ի մեջ
 
-[Dynamic directive arguments](syntax.html#Dynamic-Arguments) also work on `v-slot`, allowing the definition of dynamic slot names:
+[Դինամիկ ուղղորդիչ արգումենտներ](syntax.html#Dynamic-Arguments) նաև աշխատում է `v-slot`—ի վրա, թույլ տալով դինամիկ սլոտի անունների հայտարարումը․
 
 ``` html
 <base-layout>
@@ -359,37 +359,37 @@ You can even define fallbacks, to be used in case a slot prop is undefined:
 </base-layout>
 ```
 
-## Named Slots Shorthand
+## Անվանված Սլոտներ Կարճ
 
-> New in 2.6.0+
+> Նոր 2.6.0+-ի մեջ
 
-Similar to `v-on` and `v-bind`, `v-slot` also has a shorthand, replacing everything before the argument (`v-slot:`) with the special symbol `#`. For example, `v-slot:header` can be rewritten as `#header`:
+Նման `v-on`-ին և `v-bind`-ին, `v-slot` նաև ունի կարճ գրելաձև, փոփոխելով ամեն ինչ արգումենտից առաջ (`v-slot:`) հատուկ նշանի հետ հադերձ `#`։ Օրինակ, `v-slot:header`-ը կարող է գրվել որպես `#header`։
 
 ```html
 <base-layout>
   <template #header>
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </template>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Պարբերություն հիմնական բովանդակության համար։</p>
+  <p>Հավելյալ պարբերություն։</p>
 
   <template #footer>
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </template>
 </base-layout>
 ```
 
-However, just as with other directives, the shorthand is only available when an argument is provided. That means the following syntax is invalid:
+Սակայն, ինչպես այլ ուղղորդիչներ, կարճ գրելաձևը հասանելի է միայն երբ արգումենտը տրամադրված է։ Սա նշանակում է որ հետևյալ գրելաձևը սխալ է․
 
 ``` html
-<!-- This will trigger a warning -->
+<!-- Սա կստեղծի նախազգուշացում -->
 <current-user #="{ user }">
   {{ user.firstName }}
 </current-user>
 ```
 
-Instead, you must always specify the name of the slot if you wish to use the shorthand:
+Փոխարենը, դուք միշտ պետք է նշեք անունը սլոտի եթե ցանկանում եք օգտագործել կարճ գրելաձև։
 
 ``` html
 <current-user #default="{ user }">
@@ -397,11 +397,11 @@ Instead, you must always specify the name of the slot if you wish to use the sho
 </current-user>
 ```
 
-## Other Examples
+## Այլ Օրինակներ
 
-**Slot props allow us to turn slots into reusable templates that can render different content based on input props.** This is most useful when you are designing a reusable component that encapsulates data logic while allowing the consuming parent component to customize part of its layout.
+**Սլոտի prop-նեը թույլ են տալիս մեզ դարձնել սլոտները դեպի վերօգտագործվող ձևանմուշների որոնք կարող են render անել տարբեր բովանդակություն կախված մուտքագրված prop-ներից։** Սա կարող է շատ օգտակար լինել երբ դուք ստեղծում եք վերօգտագործվող կոմպոնենտ որը կապսուլացնում է տվյալների տրամաբանությունը միաժամանակ թույլ տալով ծնող կոմպոնենտի սպառումը որպեսզի փոփոխի իր layout-ի մի մաս։
 
-For example, we are implementing a `<todo-list>` component that contains the layout and filtering logic for a list:
+Օրինակ, մենք ունենք `<todo-list>` կոմպոնենտ որը պարունակում է layout և ֆիլտրացման տրամաբանություն ցանկի համար։
 
 ```html
 <ul>
@@ -414,7 +414,7 @@ For example, we are implementing a `<todo-list>` component that contains the lay
 </ul>
 ```
 
-Instead of hard-coding the content for each todo, we can let the parent component take control by making every todo a slot, then binding `todo` as a slot prop:
+Ի փոխարեն hard-coding անելու ամեն todo-ի բովանդակությունը, մենք կարող ենք թույլ տալ ծնող կոմպոնենտին վերցնել կառավարումը դարձնելով ամեն todo-ն սլոտ, այնուհետև կապելով `todo` ուպես սլոտի prop։
 
 ```html
 <ul>
@@ -423,18 +423,18 @@ Instead of hard-coding the content for each todo, we can let the parent componen
     v-bind:key="todo.id"
   >
     <!--
-    We have a slot for each todo, passing it the
-    `todo` object as a slot prop.
+    Մենքւ ունենք սլոտ ամեն todo-ի համար, փոխանցելով դա 
+    `todo` օբյեկտին որպես սլոտ-ի prop:
     -->
     <slot name="todo" v-bind:todo="todo">
-      <!-- Fallback content -->
+      <!-- Ընկման բովանդակություն -->
       {{ todo.text }}
     </slot>
   </li>
 </ul>
 ```
 
-Now when we use the `<todo-list>` component, we can optionally define an alternative `<template>` for todo items, but with access to data from the child:
+Հիմա երբ մենք օգտագործենք `<todo-list>` կոմպոնենտ, մենք կարող ենք ըստ ցանկության հայտարարել ալտերնատիվ `<template>` todo items-ի համար, բայց տվյալների մուտք ապահովելով ժառանգողից։
 
 ```html
 <todo-list v-bind:todos="todos">
@@ -445,29 +445,29 @@ Now when we use the `<todo-list>` component, we can optionally define an alterna
 </todo-list>
 ```
 
-However, even this barely scratches the surface of what scoped slots are capable of. For real-life, powerful examples of scoped slot usage, we recommend browsing libraries such as [Vue Virtual Scroller](https://github.com/Akryum/vue-virtual-scroller), [Vue Promised](https://github.com/posva/vue-promised), and [Portal Vue](https://github.com/LinusBorg/portal-vue).
+Սակայն, սա շատ քիչ է ցույց տալիս թե ինչի են ընդհունակ scope-ված սլոտները։ Իրական կյանքում, ուժեղ օրինակները scope-ված սլոտների օգտագործման, մենք խորհուրդ ենք տալիս զննել գրադարանները ինչպիսիք են [Vue Virtual Scroller](https://github.com/Akryum/vue-virtual-scroller), [Vue Promised](https://github.com/posva/vue-promised), և [Portal Vue](https://github.com/LinusBorg/portal-vue)։
 
-## Deprecated Syntax
+## Deprecated Գրելաձև
 
-> The `v-slot` directive was introduced in Vue 2.6.0, offering an improved, alternative API to the still-supported `slot` and `slot-scope` attributes. The full rationale for introducing `v-slot` is described in this [RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md). The `slot` and `slot-scope` attributes will continue to be supported in all future 2.x releases, but are officially deprecated and will eventually be removed in Vue 3.
+> `v-slot` ուղղորդիչը ներկայացվել էր Vue 2.6.0-ում, տրամադրելով բարելավեծ, ալտերնատիվ API դեռ համապատասխանող `slot` և `slot-scope` ատրիբուտներին։ Ներդրման ամբողջական հիմնավորումը `v-slot`-ի համար նկարագրված է այս [RFC-ում](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md)։ `slot` և `slot-scope` ատրիբուտները կշարունակեն համապատասխանել բոլոր ապագայի 2.x թողարկումներում, բայց պաշտոնապես depricated են և ի վերջո կհեռացվեն Vue 3-ում։
 
-### Named Slots with the `slot` Attribute
+### Անվանված Սլոտները `slot` Ատրիբուտի Հետ
 
-> <abbr title="Still supported in all 2.x versions of Vue, but no longer recommended.">Deprecated</abbr> in 2.6.0+. See [here](#Named-Slots) for the new, recommended syntax.
+> <abbr title="Դեռ համապատասխանում է բոլոր 2.x տարբերակներում Vue-ի, բայց այլևս խորհուրդ չի տրվում օգտագործել։">Deprecated</abbr> 2.6.0+-ի մեջ։ Նայեք [այստեղ](#Named-Slots) նոր, առաջարկված գրելաձևը։
 
-To pass content to named slots from the parent, use the special `slot` attribute on `<template>` (using the `<base-layout>` component described [here](#Named-Slots) as example):
+Որպեսզի փոխանցել բովանդակություն անվանված սլոտներին ծնողից, օգտագործեք այս հատուկ `slot` ատրիբուտը `<template>`-ի վրա (օգտագործելով `<base-layout>` կոմպոնենտը նկարագրված [այստեղ](#Named-Slots) որպես օրինակ։)
 
 ```html
 <base-layout>
   <template slot="header">
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </template>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Պարբերություն հիմնական բովանդակության համար։</p>
+  <p>Հավելյալ պարբերություն։</p>
 
   <template slot="footer">
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </template>
 </base-layout>
 ```
@@ -476,37 +476,37 @@ Or, the `slot` attribute can also be used directly on a normal element:
 
 ``` html
 <base-layout>
-  <h1 slot="header">Here might be a page title</h1>
+  <h1 slot="header">Այստեղ կարող է լինել էջի վերնագիրը</h1>
 
-  <p>A paragraph for the main content.</p>
-  <p>And another one.</p>
+  <p>Պարբերություն հիմնական բովանդակության համար։</p>
+  <p>Հավելյալ պարբերություն։</p>
 
-  <p slot="footer">Here's some contact info</p>
+  <p slot="footer">Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
 </base-layout>
 ```
 
-There can still be one unnamed slot, which is the **default slot** that serves as a catch-all for any unmatched content. In both examples above, the rendered HTML would be:
+Այստեղ դեռ կարող է լինել մեկ չանվանված սլոտ, որը **հիմնական սլոտն** է, որը ծառայում է որպես ընկում չհամապատասխանող բովանդակությունների համար։ Երկու օրինակներում նշված վերևում, render եղած HTML-ը կլինի․
 
 ``` html
 <div class="container">
   <header>
-    <h1>Here might be a page title</h1>
+    <h1>Այստեղ կարող է լինել էջի վերնագիրը</h1>
   </header>
   <main>
-    <p>A paragraph for the main content.</p>
-    <p>And another one.</p>
+    <p>Պարբերություն հիմնական բովանդակության համար։</p>
+    <p>Հավելյալ պարբերություն։</p>
   </main>
   <footer>
-    <p>Here's some contact info</p>
+    <p>Այստեղ կարող է լինել կոնտակտային ինֆորմացիա</p>
   </footer>
 </div>
 ```
 
-### Scoped Slots with the `slot-scope` Attribute
+### Scope-ված Սլոտները `slot-scope` Ատրիբուտի Հետ
 
-> <abbr title="Still supported in all 2.x versions of Vue, but no longer recommended.">Deprecated</abbr> in 2.6.0+. See [here](#Scoped-Slots) for the new, recommended syntax.
+> <abbr title="Դեռ համապատասխանում է բոլոր 2.x տարբերակներում Vue-ի, բայց այլևս խորհուրդ չի տրվում օգտագործել։">Deprecated</abbr> 2.6.0+-ի մեջ։ Նայեք [այստեղ](#Scoped-Slots) նոր, առաջարկված գրելաձևը։
 
-To receive props passed to a slot, the parent component can use `<template>` with the `slot-scope` attribute (using the `<slot-example>` described [here](#Scoped-Slots) as example):
+Որպեսզի ստանալ prop-ները փոխանցված սլոտին, ծնող կոմպոնենտը կարող է օգտագործել `<template>` `slot-scope` ատրիբուտի հետ (օգտագործելով `<slot-example>`-ը նկարագրված [այստեղ](#Scoped-Slots) որպես օրինակ)․
 
 ``` html
 <slot-example>
@@ -516,9 +516,9 @@ To receive props passed to a slot, the parent component can use `<template>` wit
 </slot-example>
 ```
 
-Here, `slot-scope` declares the received props object as the `slotProps` variable, and makes it available inside the `<template>` scope. You can name `slotProps` anything you like similar to naming function arguments in JavaScript.
+Այսեղ, `slot-scope`-ը հայտարարում է ստացած prop-ների օբյեկտը որպես `slotProps` փոփոխական, և դարձնում է այն հասանելի `<template>` scope-ի մեջ։ Դուք կարող եք անվանել `slotProps` ինչ ցանկանաք JavaScript ֆունկցիայի արգումենտներին նման:
 
-Here `slot="default"` can be omitted as it is implied:
+Այստեղ `slot="default"`-ը կարելի է բաց թողնել այնպես, ինչպես ենթադրվում է․ 
 
 ``` html
 <slot-example>
@@ -528,7 +528,7 @@ Here `slot="default"` can be omitted as it is implied:
 </slot-example>
 ```
 
-The `slot-scope` attribute can also be used directly on a non-`<template>` element (including components):
+`slot-scope` ատրիբուտը կարող է օգտագործվել ուղիղ ոչ `<template>` էլեմենտի վրա (կոմպոնենտները ներառյալ)․
 
 ``` html
 <slot-example>
@@ -538,7 +538,7 @@ The `slot-scope` attribute can also be used directly on a non-`<template>` eleme
 </slot-example>
 ```
 
-The value of `slot-scope` can accept any valid JavaScript expression that can appear in the argument position of a function definition. This means in supported environments ([single-file components](single-file-components.html) or [modern browsers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)) you can also use [ES2015 destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) in the expression, like so:
+Սա նշանակում է `slot-scope`-ի արժեքը իրականում կարող է ընդհունել ցանկցած վալիդ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
 
 ``` html
 <slot-example>
@@ -548,7 +548,7 @@ The value of `slot-scope` can accept any valid JavaScript expression that can ap
 </slot-example>
 ```
 
-Using the `<todo-list>` described [here](#Other-Examples) as an example, here's the equivalent usage using `slot-scope`:
+Օգտագործելով `<todo-list>` նկարագրված [այստեղ](#Other-Examples) որպես օրինակ, ահա նման օգտագործման օրինակ օգտագործելով `slot-scope`-ը․
 
 ``` html
 <todo-list v-bind:todos="todos">
