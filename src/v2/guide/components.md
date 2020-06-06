@@ -1,28 +1,28 @@
 ---
-title: Components Basics
-type: guide
+title: Կոմպոնենտների Հիմունքները
+type: ուղեցույց
 order: 11
 ---
 
-<div class="vueschool"><a href="https://vueschool.io/courses/vuejs-components-fundamentals?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Components Fundamentals Course">Watch a free video course on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/courses/vuejs-components-fundamentals?friend=vuejs" target="_blank" rel="sponsored noopener" title="Անվծար Vue.js Կոմպոնենտների Հիմունքների Կուրս">Դիտեք անվճար վիդեո կուրս Vue School-ում</a></div>
 
-## Base Example
+## Հիմքի Օրինակ
 
-Here's an example of a Vue component:
+Ահա Vue կոմպոնենտի օրինակ․
 
 ``` js
-// Define a new component called button-counter
+// Հայտարարենք նոր կոմպոնենտ button-counter անվանումով
 Vue.component('button-counter', {
   data: function () {
     return {
       count: 0
     }
   },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  template: '<button v-on:click="count++">Դուք սեղմել եք ինձ {{ count }} անգամ։</button>'
 })
 ```
 
-Components are reusable Vue instances with a name: in this case, `<button-counter>`. We can use this component as a custom element inside a root Vue instance created with `new Vue`:
+Կոմպոնենտները վերօգտագործվող Vue-ի instance-ներ են անունով․ այս դեպքում, `<button-counter>`-ը։ Մենք կարող ենք օգտագործել այս կոմպոնենտը որպես custom էլեմենտ Vue-ի արմատային instace-ում որը ստեղծվել է `new Vue`-ի շնորհիվ․
 
 ```html
 <div id="components-demo">
@@ -45,17 +45,17 @@ Vue.component('button-counter', {
       count: 0
     }
   },
-  template: '<button v-on:click="count += 1">You clicked me {{ count }} times.</button>'
+  template: '<button v-on:click="count += 1">Դուք սեղմել եք ինձ {{ count }} անգամ։</button>'
 })
 new Vue({ el: '#components-demo' })
 </script>
 {% endraw %}
 
-Since components are reusable Vue instances, they accept the same options as `new Vue`, such as `data`, `computed`, `watch`, `methods`, and lifecycle hooks. The only exceptions are a few root-specific options like `el`.
+Ի վեր կոմպոնենտները վերօգտագործելի են Vue-ի instance-ներում, նրանք ընդհունում են նույն ընտրանքները ինչպես `new Vue`-ն է, ինչպիսիք են `data`, `computed`, `watch`, `methods`, և lifecycle hook-երը։ Մի քանի արմատին հատուկ ընտրանքներ բացառությամբ ինչպիսին է `el`-ը։
 
-## Reusing Components
+## Կոմպոնենտների Վերօգտագործումը
 
-Components can be reused as many times as you want:
+Կոմպոնենտները կարող են վերօգտագործվել այնքան անգամ, որքան ցանկանում եք․
 
 ```html
 <div id="components-demo">
@@ -76,11 +76,11 @@ new Vue({ el: '#components-demo2' })
 </script>
 {% endraw %}
 
-Notice that when clicking on the buttons, each one maintains its own, separate `count`. That's because each time you use a component, a new **instance** of it is created.
+Նշում որ երբ սղմում եք կոչակները, ամեն մեկը ունի իր, առանձին `count`-ը։ Որովհետև ամեն անգամ երբ որ դուք օգտագործում եք կոմպոնենտը, նոր **instance** է ստեղծվում իրենից։
 
-### `data` Must Be a Function
+### `data` Պետք է Լինի Ֆունկցիա
 
-When we defined the `<button-counter>` component, you may have noticed that `data` wasn't directly provided an object, like this:
+Երբ մենք հայտարարեցինք `<button-counter>` կոմպոնենտը, դուք հնարավոր է որ նկատելեք որ `data`-ին ուղիղ տրամադրված չեր օբյեկտ, ինչպես այստեղ․
 
 ```js
 data: {
@@ -88,7 +88,7 @@ data: {
 }
 ```
 
-Instead, **a component's `data` option must be a function**, so that each instance can maintain an independent copy of the returned data object:
+Փոխարենը, **կոմպոնենտի `data` ընտրանքը պետք է լինի ֆունկցիա**, որպեսզի ամեն instance կարող է պահպանի անկախ կրկնորինակ վերադարձված օբյեկտից․
 
 ```js
 data: function () {
@@ -98,7 +98,7 @@ data: function () {
 }
 ```
 
-If Vue didn't have this rule, clicking on one button would affect the data of _all other instances_, like below:
+Եթե Vue չունի այս կանոնը, կոճակին մեկ անգամ սեղմելով կազդի _բոլոր instance-ների_ տվյալներին, ինչպես ներքևում է նշված․
 
 {% raw %}
 <div id="components-demo3" class="demo">
@@ -114,37 +114,37 @@ Vue.component('button-counter2', {
   data: function () {
     return buttonCounter2Data
   },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  template: '<button v-on:click="count++">Դուք սեղմել եք ինձ {{ count }} անգամ։</button>'
 })
 new Vue({ el: '#components-demo3' })
 </script>
 {% endraw %}
 
-## Organizing Components
+## Կոմպոնենտների Կազմակերոպումը
 
-It's common for an app to be organized into a tree of nested components:
+Դա սովորական է որ ծրագիրը պետք է կազմակերպված լինի ծառի տեսքով որը պարունակում է ներդրված կոմպոնենտները․
 
-![Component Tree](/images/components.png)
+![Կոմպոնենտի Ծառ](/images/components.png)
 
-For example, you might have components for a header, sidebar, and content area, each typically containing other components for navigation links, blog posts, etc.
+Օրինակի համար, դուք կարող է ունենաք կոմպոնենտներ նախատեսված header-ի, sidebar-ի, և բովանդակության բաժնի համար, ամեն մեկը պարունակում է այլ կոմպոնենտներ նավիգացիոն հղումների, բլոգի գրառումներ, և այլ մասերի համար։
 
-To use these components in templates, they must be registered so that Vue knows about them. There are two types of component registration: **global** and **local**. So far, we've only registered components globally, using `Vue.component`:
+Որպեսզի օգտագործենք այդ կոմպոնենտները ձևանմուշներում, նրանք պետք է գրանցված լինեն որ Vue-ն նկատի իրենց։ Մենք ունենք երկու տիպի կոմպոնենտի գրանցում․ **գլոբալ** և **լոկալ**։ Մինչ դեռ, մենք միայն գրանցելենք կոմպոնենտներ գլոբալ կերպով, օգտագործելով `Vue.component`-ը․
 
 ```js
 Vue.component('my-component-name', {
-  // ... options ...
+  // ... ընտրանքները ...
 })
 ```
 
-Globally registered components can be used in the template of any root Vue instance (`new Vue`) created afterwards -- and even inside all subcomponents of that Vue instance's component tree.
+Գլոբալ գրանցված կոմպոնենտները կարող են օգտագործվել ձևանմուշում որը գտնվում է ցանկցած արմատային Vue instance-ում (`new Vue`) ստեղծումից հետո -- և նույնիսկ բոլոր սուբկոմպոնենտներում որոնք գտնվում են այդ Vue instance-ի կոմպոնենտի ծառում։
 
-That's all you need to know about registration for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Component Registration](components-registration.html).
+Սա այն ամենն է ինչ որ դուք պետք է իմանաք գրանցման մասին, բայց երբ որ դուք վերջացրելեք կարդալ այս էջը և հարմարավետ եք ըզգում իր բովանդակությամբ, մենք խորհուրդ ենք տալիս վերադառնալ ավելի ուշ ամբողջությամբ կարդալու ուղեցույցը [Կոմպոնենտի Գրանցումում](components-registration.html)։
 
-## Passing Data to Child Components with Props
+## Տվյալների Փոխանցումը Ժառանգող Կոմպոնենտներին Prop-ների միջոցով
 
-Earlier, we mentioned creating a component for blog posts. The problem is, that component won't be useful unless you can pass data to it, such as the title and content of the specific post we want to display. That's where props come in.
+Ավելի վաղ, մենք նշել ենք կոմպոնենտի ստեղծումը բլոգի գրառումների համար։ Խնդիրը այն է, որ կոմպոնենտը օգտակար չի լինի եթե դուք տվյալներ չեք փոխանցում նրան, ինչպիսին է վերնագիրը և բովանդակությունը կոնկրետ գրառման որը մենք ցանկանում ենք ցույց տալ։ Այստեղ է երբ prop-ները մեզ կարող են աջակցել։
 
-Props are custom attributes you can register on a component. When a value is passed to a prop attribute, it becomes a property on that component instance. To pass a title to our blog post component, we can include it in the list of props this component accepts, using a `props` option:
+Prop-ները custom ատրիբուտներ են որոնք կարող եք գրանցել կոմպոնենտում։ Երբ արժեքը փոխանցված է prop ատրիբուտին, այն դառնում է հատկություն այդ կոմպոնենտի instance-ում։ Որպեսզի փոխանցենք վերնագիր մեր բլոգ գրառման կոմպոնենտին, մենք կարող ենք այն ներառել prop-ների ցանկում որը այս կոմպոնենտը ընդհունում է, օգտագործելով `props` ընտրանքը․
 
 ```js
 Vue.component('blog-post', {
@@ -153,21 +153,21 @@ Vue.component('blog-post', {
 })
 ```
 
-A component can have as many props as you'd like and by default, any value can be passed to any prop. In the template above, you'll see that we can access this value on the component instance, just like with `data`.
+Կոմպոնենտը կարող է ունանալ այնքան prop-ներ որքան որ դուք ցանկանում եք և հիմնականում, ցանկացած արժեք կարող է փոխանցվել ցանկացած prop-ի։ Վերևում նշված ձևանմուշում, դուք կտեսնեք որ մենք կարող ենք օգտագործել այս արժեքը կոմպոնենտի instance-ում, ինչպես `data`-ն։ 
 
-Once a prop is registered, you can pass data to it as a custom attribute, like this:
+Երբ prop-ը գրանցված է, դուք կարող եք նրան փոխանցել տվյալներ որպես custom ատրիբուտ, այսպես․
 
 ```html
-<blog-post title="My journey with Vue"></blog-post>
-<blog-post title="Blogging with Vue"></blog-post>
-<blog-post title="Why Vue is so fun"></blog-post>
+<blog-post title="Իմ ճամփորդությունը Vue-ի հետ"></blog-post>
+<blog-post title="Բլոգումը Vue-ի հետ"></blog-post>
+<blog-post title="Ի՞նչու Vue-ն այսքան զվարճալի է"></blog-post>
 ```
 
 {% raw %}
 <div id="blog-post-demo" class="demo">
-  <blog-post1 title="My journey with Vue"></blog-post1>
-  <blog-post1 title="Blogging with Vue"></blog-post1>
-  <blog-post1 title="Why Vue is so fun"></blog-post1>
+  <blog-post1 title="Իմ ճամփորդությունը Vue-ի հետ"></blog-post1>
+  <blog-post1 title="Բլոգումը Vue-ի հետ"></blog-post1>
+  <blog-post1 title="Ի՞նչու Vue-ն այսքան զվարճալի է"></blog-post1>
 </div>
 <script>
 Vue.component('blog-post1', {
@@ -178,22 +178,22 @@ new Vue({ el: '#blog-post-demo' })
 </script>
 {% endraw %}
 
-In a typical app, however, you'll likely have an array of posts in `data`:
+Սովորական ծրագրում, շատ հավանական է որ կունենաք գրառումների զանգված `data`-ում․
 
 ```js
 new Vue({
   el: '#blog-post-demo',
   data: {
     posts: [
-      { id: 1, title: 'My journey with Vue' },
-      { id: 2, title: 'Blogging with Vue' },
-      { id: 3, title: 'Why Vue is so fun' }
+      { id: 1, title: 'Իմ ճամփորդությունը Vue-ի հետ' },
+      { id: 2, title: 'Բլոգումը Vue-ի հետ' },
+      { id: 3, title: 'Ի՞նչու Vue-ն այսքան զվարճալի է' }
     ]
   }
 })
 ```
 
-Then want to render a component for each one:
+Հետո ցանկանաք render անել ամեն կոմպոնենտը․
 
 ```html
 <blog-post
@@ -203,26 +203,26 @@ Then want to render a component for each one:
 ></blog-post>
 ```
 
-Above, you'll see that we can use `v-bind` to dynamically pass props. This is especially useful when you don't know the exact content you're going to render ahead of time, like when [fetching posts from an API](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-component-blog-post-example).
+Վերևում, դուք կտեսնեք որ մենք օգտագործում ենք `v-bind`-ը որպեսզի դինամիկորեն փոխանցենք prop-ներ։ Սա կարող է հատկապես օգտակար լինել երբ որ դուք չգիտեք կոնկրետ բովանդակությունը որը պետք է render լինի ժամանակից առաջ, ինչպես [գրառումների ստացումն է API-ից](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-component-blog-post-example)։
 
-That's all you need to know about props for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Props](components-props.html).
+Սա ամենն է ինչ որ պետք է իմանաք prop-ների մասին այժմ, բայց երբ որ դուք վերջացրելեք կարդալ այս էջը և հարմարավետ եք ըզգում իր բովանդակությամբ, մենք խորհուրդ ենք տալիս վերադառնալ ավելի ուշ ամբողջությամբ կարդալու ուղեցույցը [Prop-ներ](components-props.html)։
 
-## A Single Root Element
+## Մեկ Արմատային Էլեմենտ
 
-When building out a `<blog-post>` component, your template will eventually contain more than just the title:
+Երբ կառուցում ենք `<blog-post>` կոմպոնենտ, ձեր ձևանմուշը ի վերջո կպարունակեն ավելի քան մեկ վերնագիր․
 
 ```html
 <h3>{{ title }}</h3>
 ```
 
-At the very least, you'll want to include the post's content:
+ԵՎ ամենավերջում, դուք կցանկանաք ներառել գրառման բովանդակությունը․
 
 ```html
 <h3>{{ title }}</h3>
 <div v-html="content"></div>
 ```
 
-If you try this in your template however, Vue will show an error, explaining that **every component must have a single root element**. You can fix this error by wrapping the template in a parent element, such as:
+Եթե դուք փորձեք սա ձեր ձևանմուշում, Vue-ն ցույց կտա սխալ, բացատրելով որ **every component must have a single root element (ամեն կոմպոնենտ պետք է ունենա մեկ արմատային էլեմենտ)**։ Որպեսզի ուղղենք այս սխալը պարզապես փաթափելով ձևանմուշը ծնող էլեմենտում, ինչպես այստեղ․
 
 ```html
 <div class="blog-post">
@@ -231,7 +231,7 @@ If you try this in your template however, Vue will show an error, explaining tha
 </div>
 ```
 
-As our component grows, it's likely we'll not only need the title and content of a post, but also the published date, comments, and more. Defining a prop for each related piece of information could become very annoying:
+Քանի որ մեր կոմպոնենտը աճում է, հավանական է մեզ միայն վերնագիրը և բովանդակությունը հերիք չէ գրառման համար, մեզ նաև պետք է հրատարակության ամսաթիվը, մեկնաբանությունները և ավելին։ Հայտարարելով prop ամեն հարաբերական ինֆորմացիային մասնիկի կարող է շատ նյարդայնացնել․
 
 ```html
 <blog-post
@@ -244,7 +244,7 @@ As our component grows, it's likely we'll not only need the title and content of
 ></blog-post>
 ```
 
-So this might be a good time to refactor the `<blog-post>` component to accept a single `post` prop instead:
+Այս ժամանակ ճիշտ լինի ռեֆակտոր անել `<blog-post>` կոմպոնենտը որպեսզի ընդհունի մեկ `post` prop փոխարենը․
 
 ```html
 <blog-post
@@ -266,15 +266,15 @@ Vue.component('blog-post', {
 })
 ```
 
-<p class="tip">The above example and some future ones use JavaScript's [template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) to make multi-line templates more readable. These are not supported by Internet Explorer (IE), so if you must support IE and are not transpiling (e.g. with Babel or TypeScript), use [newline escapes](https://css-tricks.com/snippets/javascript/multiline-string-variables-in-javascript/) instead.</p>
+<p class="tip">Վերևում նշված օրինակը և որոշ ապագա օրինակները օգտագործում են JavaScript-ի [template literal-ը](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) որպեսզի դարձնեն բազմագիծ ձևանմուշները ավելի կարդալի. Նրանք չեն համապատասխանում Internet Explorer-ի հետ (IE), այնպես որ եթե դուք պետք է համապատասխանացնեք IE-ի և transpile չեք անում (օրինակ՝ Babel կամ TypeScript), օգտագործեք [newline escape-ներ](https://css-tricks.com/snippets/javascript/multiline-string-variables-in-javascript/) փոխարենը։</p>
 
-Now, whenever a new property is added to `post` objects, it will automatically be available inside `<blog-post>`.
+Հիմա, երբ նոր հատկություն է ավելացված `post` օբյեկտին, այն ավտոմատ կերպով հասանելի կլինի `<blog-post>`-ի մեջ։
 
-## Listening to Child Components Events
+## Ժառանգող Կոմպոնենտի Event-ների Լսումը
 
-As we develop our `<blog-post>` component, some features may require communicating back up to the parent. For example, we may decide to include an accessibility feature to enlarge the text of blog posts, while leaving the rest of the page its default size:
+Երբ որ մենք զարգացնում ենք մեր `<blog-post>` կոմպոնենտը, որոշ հատկություններ պետք է կապ հաստատեն ծնողի հետ։ Օրինակի համար, մենք հնարավոր է որոշենք ներառել accessibility հատկություն որպեսզի մեծածնենք բլոգի գրառումների տեքստը, միաժամանակ թողնելով էջի մնացած մասը հիմնական չափով․
 
-In the parent, we can support this feature by adding a `postFontSize` data property:
+Ծնողում, մենք կարող ենք ստանալ այս հատկությունը ավելացնելով `postFontSize` տվյալների հատկություն․
 
 ```js
 new Vue({
@@ -286,7 +286,7 @@ new Vue({
 })
 ```
 
-Which can be used in the template to control the font size of all blog posts:
+Որը կարող է օգտագործվել ձևանմուշում որպեսզի կառավարել տեքստի չափսը բոլոր բլոգի գրառումների համար․
 
 ```html
 <div id="blog-posts-events-demo">
@@ -300,7 +300,7 @@ Which can be used in the template to control the font size of all blog posts:
 </div>
 ```
 
-Now let's add a button to enlarge the text right before the content of every post:
+Հիմա եկեք ավելացնենք կոճակ որպեսզի մեծածնենք տեքստը ամեն գրառման բովանդակությունից առաջ․
 
 ```js
 Vue.component('blog-post', {
@@ -309,7 +309,7 @@ Vue.component('blog-post', {
     <div class="blog-post">
       <h3>{{ post.title }}</h3>
       <button>
-        Enlarge text
+        Մեծացնել տեքստը
       </button>
       <div v-html="post.content"></div>
     </div>
@@ -317,15 +317,15 @@ Vue.component('blog-post', {
 })
 ```
 
-The problem is, this button doesn't do anything:
+Խնդիրը այն է, որ այս կոճակը ոչ մի բան չի անի․
 
 ```html
 <button>
-  Enlarge text
+  Մեծացնել տեքստը
 </button>
 ```
 
-When we click on the button, we need to communicate to the parent that it should enlarge the text of all posts. Fortunately, Vue instances provide a custom events system to solve this problem. The parent can choose to listen to any event on the child component instance with `v-on`, just as we would with a native DOM event:
+Երբ որ մենք սեղմում ենք կոճակը, մենք պետք է կապվենք ծնողի հետ որ այն մեծացնի տեքստը մեր բոլոր գրառումներում։ Բարեբախտաբար, Vue-ի instance-ները տրամադրում են custom event-ների համակարգ որպեսզի լուծվի այս խնդիրը։ Ծնողը կարող է ընտրել որպեսզի լսել ցանկացած event-ի որը գտնվում է ժառանգող կոմպոնենտի instance-ում `v-on`-ի շնորհիվ, ինչպես սովորական native DOM event-ում։
 
 ```html
 <blog-post
@@ -334,15 +334,15 @@ When we click on the button, we need to communicate to the parent that it should
 ></blog-post>
 ```
 
-Then the child component can emit an event on itself by calling the built-in [**`$emit`** method](../api/#vm-emit), passing the name of the event:
+Այնուհետև ժառանգող կոմպոնենտը կարող է բաց թողնել event իր վրա կանչելով ներքին [**`$emit`** մեթոդը](../api/#vm-emit), փոխանցելով event-ի անունը․
 
 ```html
 <button v-on:click="$emit('enlarge-text')">
-  Enlarge text
+  Մեծացնել տեքստը
 </button>
 ```
 
-Thanks to the `v-on:enlarge-text="postFontSize += 0.1"` listener, the parent will receive the event and update `postFontSize` value.
+Շնորհակալ լինելով `v-on:enlarge-text="postFontSize += 0.1"` լսողին, ծնողը կստանա event-ը և կթարմացնի `postFontSize`-ի արժեքը։
 
 {% raw %}
 <div id="blog-posts-events-demo" class="demo">
@@ -372,9 +372,9 @@ new Vue({
   el: '#blog-posts-events-demo',
   data: {
     posts: [
-      { id: 1, title: 'My journey with Vue', content: '...content...' },
-      { id: 2, title: 'Blogging with Vue', content: '...content...' },
-      { id: 3, title: 'Why Vue is so fun', content: '...content...' }
+      { id: 1, title: 'Իմ ճամփորդությունը Vue-ի հետ', content: '...բովանդակություն...' },
+      { id: 2, title: 'Բլոգումը Vue-ի հետ', content: '...բովանդակություն...' },
+      { id: 3, title: 'Ի՞նչու Vue-ն այսքան զվարճալի է', content: '...բովանդակություն...' }
     ],
     postFontSize: 1
   }
@@ -382,9 +382,9 @@ new Vue({
 </script>
 {% endraw %}
 
-### Emitting a Value With an Event
+### Արժեքի Բաց Թողումը Event-ի Հետ
 
-It's sometimes useful to emit a specific value with an event. For example, we may want the `<blog-post>` component to be in charge of how much to enlarge the text by. In those cases, we can use `$emit`'s 2nd parameter to provide this value:
+Շատ դեպքերում օգտակար է բաց թողնել կոնկրետ արժեք event-ի հետ։ Օրինակի համար, մենք ցանկանում ենք `<blog-post>` կոմպոնենտը պատասխանատու լինի թե ինչքանով տեքստը պետք է մեծանա։ Այս դեպքերում, մենք կարող ենք օգտագործել `$emit`-ի 2-րդ պարամետրը որպեսզի տրամադրենք այս արժեքը․
 
 ```html
 <button v-on:click="$emit('enlarge-text', 0.1)">
@@ -392,7 +392,7 @@ It's sometimes useful to emit a specific value with an event. For example, we ma
 </button>
 ```
 
-Then when we listen to the event in the parent, we can access the emitted event's value with `$event`:
+Հետո մենք կլսենք այս event-ին ծնողում, մենք պետք է ստանանք բաց թողնված event-ի արժեքը `$event`-ով․
 
 ```html
 <blog-post
@@ -401,7 +401,7 @@ Then when we listen to the event in the parent, we can access the emitted event'
 ></blog-post>
 ```
 
-Or, if the event handler is a method:
+Կամ, եթե event-ի handler-ը մեթոդ է․
 
 ```html
 <blog-post
@@ -410,7 +410,7 @@ Or, if the event handler is a method:
 ></blog-post>
 ```
 
-Then the value will be passed as the first parameter of that method:
+Հետո արժեքը կփոխանցվի որպես առաջին պարամետր այդ մեթոդի․
 
 ```js
 methods: {
@@ -420,15 +420,15 @@ methods: {
 }
 ```
 
-### Using `v-model` on Components
+### Օգտագործելով `v-model`-ը Կոմպոնենտների Վրա
 
-Custom events can also be used to create custom inputs that work with `v-model`. Remember that:
+Custom event—ներ կարող են նաև օգտագործվել որպեսզի ստեղծել custom input-ներ որոնք աշխատում են `v-model`-ի հետ։ Հիշեք դա․
 
 ```html
 <input v-model="searchText">
 ```
 
-does the same thing as:
+անում է նույն բանը ինչ․
 
 ```html
 <input
@@ -437,7 +437,7 @@ does the same thing as:
 >
 ```
 
-When used on a component, `v-model` instead does this:
+Երբ օգտագործվում է կոմպոնենտում, `v-model` անում է հետևյալը․
 
 ``` html
 <custom-input
@@ -446,10 +446,10 @@ When used on a component, `v-model` instead does this:
 ></custom-input>
 ```
 
-For this to actually work though, the `<input>` inside the component must:
+Որպեսզի սա աշխատի, `<input>` կոմպոնենտի ներսում պետք է․
 
-- Bind the `value` attribute to a `value` prop
-- On `input`, emit its own custom `input` event with the new value
+- Կապի `value` ատրիբուտը `value` prop-ին
+- `input`-ի ժամանակ, բաց թողնի իր custom `input` event-ը նոր արժեքով
 
 Here's that in action:
 
@@ -465,37 +465,37 @@ Vue.component('custom-input', {
 })
 ```
 
-Now `v-model` should work perfectly with this component:
+Հիմա `v-model`-ը պետք է աշխատի հիանալի այս կոմպոնենտի հետ․
 
 ```html
 <custom-input v-model="searchText"></custom-input>
 ```
 
-That's all you need to know about custom component events for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Custom Events](components-custom-events.html).
+Սա ամենն է ինչ որ պետք է իմանաք custom կոմպոնենտի event-ենրի մասին այժմ, բայց երբ որ դուք վերջացրելեք կարդալ այս էջը և հարմարավետ եք ըզգում իր բովանդակությամբ, մենք խորհուրդ ենք տալիս վերադառնալ ավելի ուշ ամբողջությամբ կարդալու ուղեցույցը [Custom Event-ներում](components-props.html)։
 
-## Content Distribution with Slots
+## Բովանդակության Բաշխումը Սլոտների Հետ
 
-Just like with HTML elements, it's often useful to be able to pass content to a component, like this:
+Ինչպես HTML էլեմենտներում, շատ հաճախ օգտակար ունենալ հնարավորություն փոխանցելու բովանդակություն կոմպոնենտին, ինչպես այստեղ․
 
 ``` html
 <alert-box>
-  Something bad happened.
+  Ինչ որ մի վատ բան եղավ։
 </alert-box>
 ```
 
-Which might render something like:
+Որը կարող է render անել նման մի բան․
 
 {% raw %}
 <div id="slots-demo" class="demo">
   <alert-box>
-    Something bad happened.
+    Ինչ որ մի վատ բան եղավ։
   </alert-box>
 </div>
 <script>
 Vue.component('alert-box', {
   template: '\
     <div class="demo-alert-box">\
-      <strong>Error!</strong>\
+      <strong>Սխալ!</strong>\
       <slot></slot>\
     </div>\
   '
@@ -511,26 +511,26 @@ new Vue({ el: '#slots-demo' })
 </style>
 {% endraw %}
 
-Fortunately, this task is made very simple by Vue's custom `<slot>` element:
+Բարեբախտորեն, այս հանձնարարությունը ավելի է հեշտանում Vue-ի custom `<slot>` էլեմենտով․
 
 ```js
 Vue.component('alert-box', {
   template: `
     <div class="demo-alert-box">
-      <strong>Error!</strong>
+      <strong>Սխալ!</strong>
       <slot></slot>
     </div>
   `
 })
 ```
 
-As you'll see above, we just add the slot where we want it to go -- and that's it. We're done!
+Ինչպես տեսնում եք վերևում, մենք ուղակի ավելացրեցին սլոտը որտետղ մենք ցանկանում ենք որ այն լինի -- և վերջ։ Մենք ավարտեցին!
 
-That's all you need to know about slots for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Slots](components-slots.html).
+Սա ամենն է ինչ որ պետք է իմանաք սլոտների մասին այժմ, բայց երբ որ դուք վերջացրելեք կարդալ այս էջը և հարմարավետ եք ըզգում իր բովանդակությամբ, մենք խորհուրդ ենք տալիս վերադառնալ ավելի ուշ ամբողջությամբ կարդալու ուղեցույցը [Սլոտներում](components-props.html)։
 
-## Dynamic Components
+## Դինամիկ Կոմպոնենտներ
 
-Sometimes, it's useful to dynamically switch between components, like in a tabbed interface:
+Հաճախ, օգտակար է դինամիկորեն փոփոխել կոմպոնենտները, ինչպես tab-ված interface-ում․
 
 {% raw %}
 <div id="dynamic-component-demo" class="demo">
@@ -589,29 +589,30 @@ new Vue({
 </style>
 {% endraw %}
 
-The above is made possible by Vue's `<component>` element with the `is` special attribute:
+Վերևում օրինակը հաջողվել է օգտագործելով Vue-ի `<component>` էլեմենտը `is` հատուկ ատրիբուտի հետ․
 
 ```html
-<!-- Component changes when currentTabComponent changes -->
+<!-- Կոմպոնենտը փոփոխվում է երբ currentTabComponent-ը փոփոխվում է -->
 <component v-bind:is="currentTabComponent"></component>
 ```
 
-In the example above, `currentTabComponent` can contain either:
+Վերևի օրինակում, `currentTabComponent`-ը կարող է պարունակի կամ․
 
-- the name of a registered component, or
-- a component's options object
+- անունը գրանցված կոմպոնենտի, կամ
+- կոմպոնենտնի ընտրանքների օբյեկտը
 
-See [this example](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components) to experiment with the full code, or [this version](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components-with-binding) for an example binding to a component's options object, instead of its registered name.
+Նայեք [այս օրինակը](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components) որպեսզի փորձարկել ամբողաջական կոդի հետ, կամ [այս տարբերակը](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-dynamic-components-with-binding) կոմպոնենտի ընտրանքների կապման օրինակի համար, ի փոխարեն գրանցված անունի։
 
-Keep in mind that this attribute can be used with regular HTML elements, however they will be treated as components, which means all attributes **will be bound as DOM attributes**. For some properties such as `value` to work as you would expect, you will need to bind them using the [`.prop` modifier](../api/#v-bind).
+Մտքում պահեք որ այս ատրիբուտը կարող է օգտագործվել սովորական HTML էլեմենտներում, սակայն նրա հետ պետք է վարվել որպես կոմպոնենտ, որը նշանակում է որ բոլոր ատրիբուտները **կկապնվեն որպես DOM ատրիբուտներ**։ Որոշ հատկություններ ինչպիսին է `value`-ն որպեսզի աշխատի ինչպես որ պատկերացնում ենք, դուք պետք է կապեք նրանց օգտագործելով [`.prop` փոփոխիչը](../api/#v-bind)։
 
-That's all you need to know about dynamic components for now, but once you've finished reading this page and feel comfortable with its content, we recommend coming back later to read the full guide on [Dynamic & Async Components](components-dynamic-async.html).
+Սա ամենն է ինչ որ պետք է իմանաք դինամիկ կոմպոնենտների մասին այժմ, բայց երբ որ դուք վերջացրելեք կարդալ այս էջը և հարմարավետ եք ըզգում իր բովանդակությամբ, մենք խորհուրդ ենք տալիս վերադառնալ ավելի ուշ ամբողջությամբ կարդալու ուղեցույցը [Դինամիկ և Async Կոմպոնենտներում](components-props.html)։
 
-## DOM Template Parsing Caveats
 
-Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
+## DOM Ձևանմուշի Parsing-ի Զգուշացումները
 
-This will lead to issues when using components with elements that have such restrictions. For example:
+Որոշ HTML էլեմենտներ, ինչպիսին են `<ul>`-ը, `<ol>`-ը, `<table>`-ը և `<select>`-ը ունեն սահմանափակումներ թե ինչ էլեմենտներ կարող են հայտնվել իրենց մեջ, և որոշ էլեմենտներ ինչպիսին են `<li>`-ն, `<tr>`-ը, և `<option>`—ը կարող են միայն հայտնվել միայն որոշ այլ էլեմենտների մեջ։
+
+Սա կառաձացնի խնդիրներ երբ օգտագործում ենք կոմպոնենտներ էլեմենտների հետ որոնք ունեն այդպիսի սահմանափակումներ։ Օրինակի համար․
 
 ``` html
 <table>
@@ -619,7 +620,7 @@ This will lead to issues when using components with elements that have such rest
 </table>
 ```
 
-The custom component `<blog-post-row>` will be hoisted out as invalid content, causing errors in the eventual rendered output. Fortunately, the `is` special attribute offers a workaround:
+`<blod-post-row>` Custom կոմպոնենտ-ը կհեռացվի որպես անվավեր բովանդակություն, ստեղծելով սխալեներ ի վերջո մատուցված ելքում։ Բարեբախտորեն, `is` հատուկ ատրիբուտը առաջարկում է շրջանցում․
 
 ``` html
 <table>
@@ -627,12 +628,12 @@ The custom component `<blog-post-row>` will be hoisted out as invalid content, c
 </table>
 ```
 
-It should be noted that **this limitation does _not_ apply if you are using string templates from one of the following sources**:
+Պետք է նշվի որ **այս սահմանափակումը _չի_ կիրառվում եթե դուք օգտագործում եք տեքստային ձևանմուշներ հետևյալ աղբյուրնեից մեկից**․
 
-- String templates (e.g. `template: '...'`)
-- [Single-file (`.vue`) components](single-file-components.html)
+- String ձևանմուշներ (օրինակ՝ `template: '...'`)
+- [Մեկ ֆայլ (`.vue`) կոմպոնենտներ](single-file-components.html)
 - [`<script type="text/x-template">`](components-edge-cases.html#X-Templates)
 
-That's all you need to know about DOM template parsing caveats for now -- and actually, the end of Vue's _Essentials_. Congratulations! There's still more to learn, but first, we recommend taking a break to play with Vue yourself and build something fun.
+Սա այն ամենն է ինչ որ պետք է իմանաք DOM ձևանմուշների parsing-ի զգուշացումների մասին այժմ -- և իրականում, սա վերջն է Vue-ի _Հիմնական Նյութերի_։ Շնորհավորում եմ Ձեզ! Ավելի շատ բան կա սովորելու համար, բայց սկզբում, մենք խորհուրդ ենք տալիս ընդմիջում տալ որպեսզի խախալ Vue-ի հետ և ստեղծել ինչոր մի զվարճալի մի բան։
 
-Once you feel comfortable with the knowledge you've just digested, we recommend coming back to read the full guide on [Dynamic & Async Components](components-dynamic-async.html), as well as the other pages in the Components In-Depth section of the sidebar.
+Երբ որ դուք հանգիստ եք ըզգում գիտելիքների մասին որոնք դուք մարսելեք, մենք խորհուրդ ենք տալիս վերադառնալ որպեսզի կարդալ աբողջ ուղեցույցը [Դինամիկ և Async Կոմպոնենտներում](components-dynamic-async.html), ինչպես նաև այլ էջերը Կոմպոնենտները Խորացված բաժնում որը գտնվում է sidebar-ում։
