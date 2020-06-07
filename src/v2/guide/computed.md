@@ -1,14 +1,14 @@
 ---
-title: Computed Properties and Watchers
-type: guide
+title: Հաշվարկված Հատկություններ և Դիտորդներ
+type: ուղեցույց
 order: 5
 ---
 
-## Computed Properties
+## Հաշվարկված Հատկություններ
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-computed-properties?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how computed properties work with Vue School">Learn how computed properties work with a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-computed-properties?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես են հաշվարկված հատկությունները աշխատում Vue School-ի հետ">Սովորեք թե ինչպես են հաշվարկված հատկությունները աշխատում Vue School-ում</a></div>
 
-In-template expressions are very convenient, but they are meant for simple operations. Putting too much logic in your templates can make them bloated and hard to maintain. For example:
+Ձևանմուշում գտվող արտահայտությունները շատ հարմար են օգտագործման համար, բայց նրանք նախատեսված են հասարակ գործողությունների համար։ Դնելով շատ տրամաբանություն ձևանմուշներում կարող է անիմաստ մեծացնել նրա չափսերը և դժվարացնել նրանց պահպանում։ Օրինակի համար․
 
 ``` html
 <div id="example">
@@ -16,16 +16,16 @@ In-template expressions are very convenient, but they are meant for simple opera
 </div>
 ```
 
-At this point, the template is no longer simple and declarative. You have to look at it for a second before realizing that it displays `message` in reverse. The problem is made worse when you want to include the reversed message in your template more than once.
+Այս կետից սկսած, ձևանուշը այլևս պարզ և դեկլարատիվ չէ։ Դուք պետք է ավելի երկար նայեք նրան որ հասկանաք որ սա տպելու է `message`-ը հակառակ։ Խնդիրը ավելի է բարդանում երբ որ դուք ցանկանում եք ներառել նամակը հակառակ ձեր ձևանմուշում մեկից ավելի անգամ։
 
-That's why for any complex logic, you should use a **computed property**.
+Այդ պատճառով ցանկացած բարդ տրամաբանության համար, դուք պետք է օգտագործեք **հաշվարկված հատկություններ**։
 
-### Basic Example
+### Սովորական Օրինակ
 
 ``` html
 <div id="example">
-  <p>Original message: "{{ message }}"</p>
-  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <p>Օրիգինալ Նամակը: "{{ message }}"</p>
+  <p>Հաշվարկված Հակառակ Նամակը: "{{ reversedMessage }}"</p>
 </div>
 ```
 
@@ -33,30 +33,30 @@ That's why for any complex logic, you should use a **computed property**.
 var vm = new Vue({
   el: '#example',
   data: {
-    message: 'Hello'
+    message: 'Բարև'
   },
   computed: {
-    // a computed getter
+    // հաշվարկված ստացող
     reversedMessage: function () {
-      // `this` points to the vm instance
+      // `this`-ը ուղղում է դեպի vm instance
       return this.message.split('').reverse().join('')
     }
   }
 })
 ```
 
-Result:
+Արդյունքում:
 
 {% raw %}
 <div id="example" class="demo">
-  <p>Original message: "{{ message }}"</p>
-  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  <p>Օրիգինալ Նամակը: "{{ message }}"</p>
+  <p>Հաշվարկված Հակառակ Նամակը: "{{ reversedMessage }}"</p>
 </div>
 <script>
 var vm = new Vue({
   el: '#example',
   data: {
-    message: 'Hello'
+    message: 'Բարև'
   },
   computed: {
     reversedMessage: function () {
@@ -67,28 +67,28 @@ var vm = new Vue({
 </script>
 {% endraw %}
 
-Here we have declared a computed property `reversedMessage`. The function we provided will be used as the getter function for the property `vm.reversedMessage`:
+Այստեղ մենք հայտարարել ենք հաշվարկված հատկություն `reversedMessage`։ Այս ֆունկցիան որը մենք տրամադրելենք կօգտագործվի որպես ստացող ֆունկցիա `vm.reversedMessage` հատկության համար։
 
 ``` js
-console.log(vm.reversedMessage) // => 'olleH'
-vm.message = 'Goodbye'
-console.log(vm.reversedMessage) // => 'eybdooG'
+console.log(vm.reversedMessage) // => 'ևրաԲ'
+vm.message = 'Ցտեսություն'
+console.log(vm.reversedMessage) // => 'նույթուսետՑ'
 ```
 
-You can open the console and play with the example vm yourself. The value of `vm.reversedMessage` is always dependent on the value of `vm.message`.
+Դուք կարող եք բացել console—ը և խաղալ vm օրինակի հետ ինքներտ։ `vm.reversedMessage`-ի արժեքը միշտ կախված է `vm.message`-ի արժեքից։
 
-You can data-bind to computed properties in templates just like a normal property. Vue is aware that `vm.reversedMessage` depends on `vm.message`, so it will update any bindings that depend on `vm.reversedMessage` when `vm.message` changes. And the best part is that we've created this dependency relationship declaratively: the computed getter function has no side effects, which makes it easier to test and understand.
+Դուք կարող եք կապել տվյալներ հաշվարկված հատկություններին ձևանմուշների մեջ ինչպես մենք անում ենք սովորական հատկությունների հետ։ Vue-ն տեղյակ է որ `vm.reversedMessage`-ը կախված է `vm.message`-ի հետ, այնպես որ այն կթարմացնի ցանկացած կապումներ որոնք կախված են `vm.reversedMessage`-ից երբ `vm.message`-ը փոխվում է։ ԵՎ ամենալավ մասը այն է որ մենք ստեղծել ենք այս կախվածություն ունեցող հարաբերությունը դեկլարատիվ ձևով։ Հաշվարկված ստացող ֆունկցիան չունի կողմնակի ազդեցություններ, սա հեշտացնում է թեստեր անելը և հասկանալը։
 
-### Computed Caching vs Methods
+### Հաշվարկված Caching-ը ընդեմ Մեթոդների
 
-You may have noticed we can achieve the same result by invoking a method in the expression:
+Դուք հնարավոր է որ նկատելեք որ մենք կարող ենք հասնել նույն արդյունքին կանչելով մեթոդը արտահայտության մեջ․
 
 ``` html
-<p>Reversed message: "{{ reverseMessage() }}"</p>
+<p>Հակառակ Նամակը: "{{ reverseMessage() }}"</p>
 ```
 
 ``` js
-// in component
+// կոմպոնենտի մեջ
 methods: {
   reverseMessage: function () {
     return this.message.split('').reverse().join('')
@@ -96,9 +96,9 @@ methods: {
 }
 ```
 
-Instead of a computed property, we can define the same function as a method. For the end result, the two approaches are indeed exactly the same. However, the difference is that **computed properties are cached based on their reactive dependencies.** A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as `message` has not changed, multiple access to the `reversedMessage` computed property will immediately return the previously computed result without having to run the function again.
+Հաշվարկված հատկությունների փոխարենը, մենք կարող ենք հայտարարել նույն ֆունկցիան որպես մեթոդ։ Վերջնական արդյունքում, երկու մոտեցումները նույնն են։ Սակայն, տարբերությունը կայանում է որ **հաշվարկված հատկությունները cache են եղած հիմնված իրենց ռեակտիվ կախվածություններից**։ Հաշվարկված հատկությունը միայն կվերահաշվարկվի երբ իր որոշ ռեակտիվ կախվածությունները փոփոխվել են։ Սա նշանակում է որ քանի դեռ `message`-ը չի փոխվել, բազմաթիվ մուտքեր դեպի `reversedMessage` հաշվարկված հատկություն կվերադարձնի նախկինում հաշվարկված արդյունքը առանց ֆունկցիան նորից աշխատացնելու։ 
 
-This also means the following computed property will never update, because `Date.now()` is not a reactive dependency:
+Սա նաև նշանակում է որ հետևյալ հաշվարկված հատկությունը երբեք չի թարմացվի, որովհետև `Date.now()`-ը ռեակտիվ կախվածություն չէ․
 
 ``` js
 computed: {
@@ -108,13 +108,13 @@ computed: {
 }
 ```
 
-In comparison, a method invocation will **always** run the function whenever a re-render happens.
+Համեմատաբար, մեթոդի կանչելը **միշտ** կաշխատացնի ֆունկցիան երբ re-render է լինում։
 
-Why do we need caching? Imagine we have an expensive computed property **A**, which requires looping through a huge Array and doing a lot of computations. Then we may have other computed properties that in turn depend on **A**. Without caching, we would be executing **A**’s getter many more times than necessary! In cases where you do not want caching, use a method instead.
+Ի՞նչու է մեզ պետք caching-ը։ Պատկերացրենք որ մենք ունենք բարդ հաշվարկված հատկություն **A** անվանումով, որը պահանջում է պտտվել մեծ զանգվածի միջով և կատարել լիքը հաշվարկումներ։ Այնուհետև մենք հնարավոր է ունենանք այլ հաշվարկված հատկություններ որոնք իրենց հերթին կախված են **A**-ից։ Առանց caching-ից, մենք կաշխատացնենք **A**-ի ստացողին ավելի շատ քան մեզ անհրաժեշտ է! Եթե դուք չեք ցանկանում caching օգտագործել, օգտագործեք մեթոդ փոխարենը։
 
-### Computed vs Watched Property
+### Հաշվարկված ընդեմ Դիտվող Հատկություն
 
-Vue does provide a more generic way to observe and react to data changes on a Vue instance: **watch properties**. When you have some data that needs to change based on some other data, it is tempting to overuse `watch` - especially if you are coming from an AngularJS background. However, it is often a better idea to use a computed property rather than an imperative `watch` callback. Consider this example:
+Vue-ն տրամադրում է ընդհանուր դիտարկում և ռեակտիվություն տվյալների փոփոխությունների համար Vue instance-ում․ **դիտորդ հատկություններ**։ Երբ որ դուք ունեք որոշ տվյալներ որոնք պետք է փոփոխվեն հիմնված այլ տվյալների վրա, և գայթակղիչ է `watch`—ի վերօգտագործումը հատկապես երբ որ դուք նախկինում օգտագործել եք AngularJS։ Սակայն, հաճախ ավելի լավ միտք է օգտագործելու հաշվարկված հատկություններ քան հրամայական `watch` callback-ներ։ Համարեք այս օրինակը․
 
 ``` html
 <div id="demo">{{ fullName }}</div>
@@ -139,7 +139,7 @@ var vm = new Vue({
 })
 ```
 
-The above code is imperative and repetitive. Compare it with a computed property version:
+Վերևի կոդը հրամայական է և կրկնվող։ Համեմատեք այն հաշվարկված հատկության տարբերակի հետ․
 
 ``` js
 var vm = new Vue({
@@ -156,21 +156,21 @@ var vm = new Vue({
 })
 ```
 
-Much better, isn't it?
+Ավելի լավ է, չ՞է
 
-### Computed Setter
+### Հաշվարկված Սահմանողներ
 
-Computed properties are by default getter-only, but you can also provide a setter when you need it:
+Հաշվարկված հատկությունները հիմնականում սցաող են միայն, բայց մենք կարող ենք նաև տրամադրել սահմանող եթե ձեզ անհրաժեշտ է․
 
 ``` js
 // ...
 computed: {
   fullName: {
-    // getter
+    // ստացող
     get: function () {
       return this.firstName + ' ' + this.lastName
     },
-    // setter
+    // սահմանող
     set: function (newValue) {
       var names = newValue.split(' ')
       this.firstName = names[0]
@@ -181,18 +181,18 @@ computed: {
 // ...
 ```
 
-Now when you run `vm.fullName = 'John Doe'`, the setter will be invoked and `vm.firstName` and `vm.lastName` will be updated accordingly.
+Հիմա երբ որ դուք աշխատացնեք `vm.fullName = 'John Doe'`, սահմանողը կկանչվի և `vm.firstName`-ը և `vm.lastName`-ը կթարմացվեն համապատասխանորեն։
 
-## Watchers
+## Դիտորդներ (Watchers)
 
-While computed properties are more appropriate in most cases, there are times when a custom watcher is necessary. That's why Vue provides a more generic way to react to data changes through the `watch` option. This is most useful when you want to perform asynchronous or expensive operations in response to changing data.
+Երբ հաշվարկված հատկությունները ավելի ճիշտ են որոշ դեպքերում, կան նաև դեպքեր երբ custom դիտորդը անհրաժեշտ է: Այս պատճառով Vue-ն տրամադրում է ավելի հասարակ ճանապարհ արձագանքելու տվյալների փոխոխություններին `watch` ընտրանքի միջոցով։ Սա շատ օգտակար է երբ դուք ցանկանում եք կատարել ասինխռոն կամ երկարացված գործություններ response-ի մեջ որպեսզի փոփոխեք տվյալները։
 
-For example:
+Օրինակի համար՝
 
 ``` html
 <div id="watch-example">
   <p>
-    Ask a yes/no question:
+    Հարցրեք այո/ոչ հարց․
     <input v-model="question">
   </p>
   <p>{{ answer }}</p>
@@ -200,10 +200,10 @@ For example:
 ```
 
 ``` html
-<!-- Since there is already a rich ecosystem of ajax libraries    -->
-<!-- and collections of general-purpose utility methods, Vue core -->
-<!-- is able to remain small by not reinventing them. This also   -->
-<!-- gives you the freedom to use what you're familiar with.      -->
+<!-- Քանի դեռ կան հարուստ ajax գրադարանների էկոհամակարգեր -->
+<!-- և հավաքածուներ հիմնական նպատակների սպասարկվող մեթոդներ, Vue-ի core-ը -->
+<!-- կարողացել է մնալ փոքր առանց վերստեղծելու նրանց։ Սա նաև -->
+<!-- տալիս է ձեզ ազատություն որպեսզի դուք օգտագործեք այն ինչի հետ որ դուք ծանոթ եք։ -->
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script>
@@ -211,39 +211,39 @@ var watchExampleVM = new Vue({
   el: '#watch-example',
   data: {
     question: '',
-    answer: 'I cannot give you an answer until you ask a question!'
+    answer: 'Ես չեմ կարող տալ ձեզ պատասխան մինչ դուք ինձ հարց կտաք!'
   },
   watch: {
-    // whenever question changes, this function will run
+    // երը հարցը փոխվում է, այս ֆունկցիան կաշխատի
     question: function (newQuestion, oldQuestion) {
-      this.answer = 'Waiting for you to stop typing...'
+      this.answer = 'Սպասում որ դուք դադարեցնեք գրելը...'
       this.debouncedGetAnswer()
     }
   },
   created: function () {
-    // _.debounce is a function provided by lodash to limit how
-    // often a particularly expensive operation can be run.
-    // In this case, we want to limit how often we access
-    // yesno.wtf/api, waiting until the user has completely
-    // finished typing before making the ajax request. To learn
-    // more about the _.debounce function (and its cousin
-    // _.throttle), visit: https://lodash.com/docs#debounce
+    // _.debounce-ը ֆունկցիա է տրամադրված lodash-ի կողմից որպեսզի սահմանափակել թե
+    // ինչքան հաճախ երկար գործողությունը կարող է աշխատել։
+    // Այս դեպքում, մենք ուզում ենք սահմանափակել թե որքան մենք կարող ենք մուտք գործել
+    // yesno.wtf/api, սպասելով մինչ օգտագործողը վերջացրել է
+    // գրելը նախքան ստեղծելով ajax հարցումը։ Որպեսզի սովորենք
+    // ավելին _.debounce ֆունկցիայի (և իր զարմիկ
+    // _.throttle-ի մասին), այցելեք: https://lodash.com/docs#debounce
     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   methods: {
     getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
-        this.answer = 'Questions usually contain a question mark. ;-)'
+        this.answer = 'Հարցերը սովորականում պարունակում են հարցական։ ;-)'
         return
       }
-      this.answer = 'Thinking...'
+      this.answer = 'Մտածում եմ...'
       var vm = this
       axios.get('https://yesno.wtf/api')
         .then(function (response) {
           vm.answer = _.capitalize(response.data.answer)
         })
         .catch(function (error) {
-          vm.answer = 'Error! Could not reach the API. ' + error
+          vm.answer = 'Սխալ! Չկարողացա Կապ Հաստատել API-ի Հետ։ ' + error
         })
     }
   }
@@ -251,12 +251,12 @@ var watchExampleVM = new Vue({
 </script>
 ```
 
-Result:
+Արդյունքը:
 
 {% raw %}
 <div id="watch-example" class="demo">
   <p>
-    Ask a yes/no question:
+    Հարցրեք այո/ոչ հարց․
     <input v-model="question">
   </p>
   <p>{{ answer }}</p>
@@ -268,11 +268,11 @@ var watchExampleVM = new Vue({
   el: '#watch-example',
   data: {
     question: '',
-    answer: 'I cannot give you an answer until you ask a question!'
+    answer: 'Ես չեմ կարող տալ ձեզ պատասխան մինչ դուք ինձ հարց կտաք!'
   },
   watch: {
     question: function (newQuestion, oldQuestion) {
-      this.answer = 'Waiting for you to stop typing...'
+      this.answer = 'Սպասում որ դուք դադարեցնեք գրելը...'
       this.debouncedGetAnswer()
     }
   },
@@ -282,7 +282,7 @@ var watchExampleVM = new Vue({
   methods: {
     getAnswer: function () {
       if (this.question.indexOf('?') === -1) {
-        this.answer = 'Questions usually contain a question mark. ;-)'
+        this.answer = 'Հարցերը սովորականում պարունակում են հարցական։ ;-)'
         return
       }
       this.answer = 'Thinking...'
@@ -292,7 +292,7 @@ var watchExampleVM = new Vue({
           vm.answer = _.capitalize(response.data.answer)
         })
         .catch(function (error) {
-          vm.answer = 'Error! Could not reach the API. ' + error
+          vm.answer = 'Սխալ! Չկարողացա Կապ Հաստատել API-ի Հետ։ ' + error
         })
     }
   }
@@ -300,6 +300,7 @@ var watchExampleVM = new Vue({
 </script>
 {% endraw %}
 
-In this case, using the `watch` option allows us to perform an asynchronous operation (accessing an API), limit how often we perform that operation, and set intermediary states until we get a final answer. None of that would be possible with a computed property.
+Այս դեպքում, օգտագործելով `watch` ընտրանքը մեզ թույլ է տալիս կատարել ասինխռոն գործողություն (API մուտք գործել), սահմանափակել թե որքան հաճախ մենք կարող ենք կատարել այս գործողությունը, և սահմանել միջնորդ վիճակները մինչ մենք կստանանք վերջնական պատասխանը։ Նշվածներից ոչ մեկը հնարավոր չէր լինի հաշվարկված հատկությունով։
 
-In addition to the `watch` option, you can also use the imperative [vm.$watch API](../api/#vm-watch).
+
+Հավելյալ `watch` ընտրանքին, դուք նաև կարող եք օգտագործել հրամայական [vm.$watch API-ը](../api/#vm-watch)։
