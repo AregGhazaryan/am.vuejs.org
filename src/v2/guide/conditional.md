@@ -1,84 +1,84 @@
 ---
-title: Conditional Rendering
-type: guide
+title: Պայմանական Rendering
+type: ուղեցույց
 order: 7
 ---
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-conditionals?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how conditional rendering works with Vue School">Learn how conditional rendering works with a free lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-conditionals?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես է պայմանական rendering-ը աշխատում Vue School-ի հետ">Սովորեք թե ինչպես է պայմանական rendering-ը աշխատում անվճար դասընթացով Vue School-ում</a></div>
 
 ## `v-if`
 
-The directive `v-if` is used to conditionally render a block. The block will only be rendered if the directive's expression returns a truthy value.
+`v-if` ուղղորդիչը օգտագործվում է որպեսզի պայմանանորեն render-անի մի բլոկ։ Բլոկը միայն render կլինի այն ժամանակ երբ ուղղորդչի արտահայտությունը վերադարձնում է true արժեք։
 
 ``` html
-<h1 v-if="awesome">Vue is awesome!</h1>
+<h1 v-if="awesome">Vue-ն հիանալի է!</h1>
 ```
 
-It is also possible to add an "else block" with `v-else`:
+Նաև հնարավոր է ավելացնել «else բլոկ» օգտագործելով `v-else`-ի հետ։
 
 ``` html
-<h1 v-if="awesome">Vue is awesome!</h1>
-<h1 v-else>Oh no 😢</h1>
+<h1 v-if="awesome">Vue-ն հիանալի է!</h1>
+<h1 v-else>Օ ոչ 😢</h1>
 ```
 
-### Conditional Groups with `v-if` on `<template>`
+### Պայմանական Խմբեր `v-if`-ի Հետ `<template>`-ում
 
-Because `v-if` is a directive, it has to be attached to a single element. But what if we want to toggle more than one element? In this case we can use `v-if` on a `<template>` element, which serves as an invisible wrapper. The final rendered result will not include the `<template>` element.
+Քանի որ `v-if`-ը ուղղորդիչ է, այն պետք է միացված լինի մեկ էլեմենտի։ Բայց ի՞նչ կլինի եթե մենք ցանկանում ենք միացնել մի քանի էլեմենտներ, այս դեպքում մենք կարող ենք օգտագործել `v-if`-ը `<template>` էլեմենտի վրա, որը ծառայում է որպես անտեսանելի wrapper։ Վերջին render եղած արդյունքում դուք չեք ներառի `<template>` էլեմենտը։
 
 ``` html
 <template v-if="ok">
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
+  <h1>Վերնագիր</h1>
+  <p>Պարբերություն 1</p>
+  <p>Պարբերություն 2</p>
 </template>
 ```
 
 ### `v-else`
 
-You can use the `v-else` directive to indicate an "else block" for `v-if`:
+Դուք կարող էք օգտագործել `v-if` ուղղորդիչը որպեսզի նշեք «else բլոկ» `v-if`-ի համար․
 
 ``` html
 <div v-if="Math.random() > 0.5">
-  Now you see me
+  Հիմա դուք տեսնում եք ինձ
 </div>
 <div v-else>
-  Now you don't
+  Հիմա ոչ
 </div>
 ```
 
-A `v-else` element must immediately follow a `v-if` or a `v-else-if` element - otherwise it will not be recognized.
+`v-else` Էլեմենտը միանգամից պետք է լինի `v-if`-ով կամ `v-else-if`-ով էլեմենտից հետո - հակառակ դեպքում այն չի ճանաչվի։
 
 ### `v-else-if`
 
-> New in 2.1.0+
+> Նոր 2.1.0+-ի մեջ
 
-The `v-else-if`, as the name suggests, serves as an "else if block" for `v-if`. It can also be chained multiple times:
+`v-else-if`-ը, ինչպես անունը առաջարկում է, ծառայում է որպես «else if բլոկ» `v-if`-ի համար։ Այն նաև կարող է շխթայված լինել բազմաթիվ անգամ․
 
 ```html
 <div v-if="type === 'A'">
-  A
+  Ա
 </div>
 <div v-else-if="type === 'B'">
-  B
+  Բ
 </div>
 <div v-else-if="type === 'C'">
-  C
+  Գ
 </div>
 <div v-else>
-  Not A/B/C
+  Ոչ Ա/Բ/Գ
 </div>
 ```
 
-Similar to `v-else`, a `v-else-if` element must immediately follow a `v-if` or a `v-else-if` element.
+Նման լինելով `v-else`-ին, `v-else-if` էլեմենտը պետք է անմիջապես հետևի `v-if`-ով կամ `v-else-if`-ով էլեմենտի։
 
-### Controlling Reusable Elements with `key`
+### Վերօգտագործվող Էլեմենտների Կառավարումը `key`-ով
 
-Vue tries to render elements as efficiently as possible, often re-using them instead of rendering from scratch. Beyond helping make Vue very fast, this can have some useful advantages. For example, if you allow users to toggle between multiple login types:
+Vue-ն փորձում է render անել էլեմենտները որքան հնարավոր է արդյունավետ, հաճախ վերօգտագործելով նրանց ի փոխարեն կրկին render անելուց։ Սա ոչ միայն օգնում է Vue-ն դարձնել շատ արագ, նաև ունի մի քանի առավելություն։ Օրինակի համար, եթե դուք թույլ տաք օգտագործողներին որպեսզի փոփոխեն լոգինների տիպերը․
 
 ``` html
 <template v-if="loginType === 'username'">
   <label>Username</label>
-  <input placeholder="Enter your username">
+  <input placeholder="Մուտքագրեք ձեր օգտանունը">
 </template>
 <template v-else>
   <label>Email</label>
@@ -86,23 +86,23 @@ Vue tries to render elements as efficiently as possible, often re-using them ins
 </template>
 ```
 
-Then switching the `loginType` in the code above will not erase what the user has already entered. Since both templates use the same elements, the `<input>` is not replaced - just its `placeholder`.
+Այնուհետև փոփոխելով `loginType`-ը վերևում նշված կոդում չի ջնջի թե ինչ է օգտատերը գրել։ Քանի որ ձևանմուշենրը օգտագործում են նույն էլեմենտները, `<input>`-ը չի փոխարինվի - այլ միայն իր `placholder`-ը։
 
-Check it out for yourself by entering some text in the input, then pressing the toggle button:
+Փորձեք մուտքագրել որևէ տեքստ դաշտի մեջ, այուհետև սեղմեք փոխել․
 
 {% raw %}
 <div id="no-key-example" class="demo">
   <div>
     <template v-if="loginType === 'username'">
-      <label>Username</label>
-      <input placeholder="Enter your username">
+      <label>Օգտանուն</label>
+      <input placeholder="Մուտքագրեք ձեր օգտանունը">
     </template>
     <template v-else>
-      <label>Email</label>
-      <input placeholder="Enter your email address">
+      <label>Էլ․Փոստ</label>
+      <input placeholder="Մուտքագրեք ձեր օգտանուն էլ․փոստը">
     </template>
   </div>
-  <button @click="toggleLoginType">Toggle login type</button>
+  <button @click="toggleLoginType">Փոխել Լոգինի Տիպը</button>
 </div>
 <script>
 new Vue({
@@ -119,34 +119,34 @@ new Vue({
 </script>
 {% endraw %}
 
-This isn't always desirable though, so Vue offers a way for you to say, "These two elements are completely separate - don't re-use them." Add a `key` attribute with unique values:
+Ամեն դեպքում սա միշտ ցանկալի չէ, այնպես որ Vue-ն առաջարկում է ձեզ ճանապարհ ասելու, «Այս երկու էլեմենտները լիովին առանձին են - չվերօգտագործես դրանք։» Ավելացնելով `key` ատրիբուտ հատուկ արժեքներով․
 
 ``` html
 <template v-if="loginType === 'username'">
-  <label>Username</label>
-  <input placeholder="Enter your username" key="username-input">
+  <label>Օգտանուն</label>
+  <input placeholder="Մուտքագրեք ձեր օգտանունը" key="username-input">
 </template>
 <template v-else>
-  <label>Email</label>
-  <input placeholder="Enter your email address" key="email-input">
+  <label>Էլ․Փոստ</label>
+  <input placeholder="Մուտքագրեք ձեր օգտանուն էլ․փոստը" key="email-input">
 </template>
 ```
 
-Now those inputs will be rendered from scratch each time you toggle. See for yourself:
+Հիմա այդ դաշտերը render կլինեն զրոյից ամեն անգամ փոխելու ժամանակ։ Տեսեք ինքներտ․
 
 {% raw %}
 <div id="key-example" class="demo">
   <div>
     <template v-if="loginType === 'username'">
       <label>Username</label>
-      <input placeholder="Enter your username" key="username-input">
+      <input placeholder="Մուտքագրեք ձեր օգտանունը" key="username-input">
     </template>
     <template v-else>
       <label>Email</label>
-      <input placeholder="Enter your email address" key="email-input">
+      <input placeholder="Մուտքագրեք ձեր օգտանուն էլ․փոստը" key="email-input">
     </template>
   </div>
-  <button @click="toggleLoginType">Toggle login type</button>
+  <button @click="toggleLoginType">Փոխել Լոգինի Տիպը</button>
 </div>
 <script>
 new Vue({
@@ -163,32 +163,32 @@ new Vue({
 </script>
 {% endraw %}
 
-Note that the `<label>` elements are still efficiently re-used, because they don't have `key` attributes.
+Նշում որ `<label>` էլեմենտները արդյունավետորեն վերօգտագործվել են, որովհետև նրանք չունեն `key` ատրիբուտներ։
 
 ## `v-show`
 
-Another option for conditionally displaying an element is the `v-show` directive. The usage is largely the same:
+Մեկ այլ ճանապարհ պայմանականորեն ցույց տալու էլեմենտը դա `v-show` ուղղորդիչն է։ Օգտագործումը հիմնականում նույնն է․
 
 ``` html
-<h1 v-show="ok">Hello!</h1>
+<h1 v-show="ok">Բարև!</h1>
 ```
 
-The difference is that an element with `v-show` will always be rendered and remain in the DOM; `v-show` only toggles the `display` CSS property of the element.
+Տարբերությունը որ էլեմենտը `v-show`-ի հետ միշտ render կլինի և կմնա DOM-ում; `v-show`-ը միայն փոփոխում է `display` CSS հատկությունը էլեմենտի։
 
-<p class="tip">Note that `v-show` doesn't support the `<template>` element, nor does it work with `v-else`.</p>
+<p class="tip">Նշում որ `v-show`-ը չի համապատասխանում `<template>` էլեմենտի հետ, և չի աշխատում `v-else`-ի հետ։</p>
 
-## `v-if` vs `v-show`
+## `v-if` ընդեմ `v-show`
 
-`v-if` is "real" conditional rendering because it ensures that event listeners and child components inside the conditional block are properly destroyed and re-created during toggles.
+`v-if`-ը «իրական» պայմանական rendering է որովհետև այն համոզվում է որ event listener-ները և ժառանգող կոմպոնենտները պայմանական բլոկներում համապատասխանորեն ոչնչացված և վերստեղծված են փոփոխությունների ժամանակ։
 
-`v-if` is also **lazy**: if the condition is false on initial render, it will not do anything - the conditional block won't be rendered until the condition becomes true for the first time.
+`v-if`-ը նաև **ծույլ է**․ եթե պայմանը false-է սկզբնական render-ում, այն ոչինչ չի անի - պայմանական բլոկը render չի լինի մինչև պայմանը կդառնա true առաջին անգամ։
 
-In comparison, `v-show` is much simpler - the element is always rendered regardless of initial condition, with CSS-based toggling.
+համեմատելով, `v-show`-ը ավելի պարզ է - էլեմենտը միշտ render կլինի անկախ սկզբնական պայմանից, CSS-ով հիմք ունեցող փոփոխությամբ։
 
-Generally speaking, `v-if` has higher toggle costs while `v-show` has higher initial render costs. So prefer `v-show` if you need to toggle something very often, and prefer `v-if` if the condition is unlikely to change at runtime.
+Հիմնականում, `v-if`-ունի ավելի շատ փոփոխությունների ծախս իսկ `v-show`-ը ունի ավելի շատ սկզբնական render—ի ծախս։ Այնպես որ նախընտրեք `v-show`-ը եթե դուք պետք է փոփոխեք ինչոր մի բան շատ հաճախ, և `v-if`-ը եթե պայմանը անհավանական է որ կփոփոխվի runtime-ի ժամանակ։
 
-## `v-if` with `v-for`
+## `v-if`-ը `v-for`-ի հետ
 
-<p class="tip">Using `v-if` and `v-for` together is **not recommended**. See the [style guide](/v2/style-guide/#Avoid-v-if-with-v-for-essential) for further information.</p>
+<p class="tip">Օգտագործելով `v-if` և `v-for` միասին **խորհուրդ չի տրվում**։ Նայեք [ոճի ուղեցույցը](/v2/style-guide/#Avoid-v-if-with-v-for-essential) հավելյալ ինֆորմացիայի համար։</p>
 
-When used together with `v-if`, `v-for` has a higher priority than `v-if`. See the <a href="../guide/list.html#v-for-with-v-if">list rendering guide</a> for details.
+Երբ օգտագործված է `v-if`-ի հետ, `v-for`-ը ունի ավելի ավելի բարձր գերակայություն քան `v-if`-ը։ Նայեք <a href="../guide/list.html#v-for-with-v-if">ցուցակի rendering-ի ուղեցույցը</a> ավելի մանրամասների համար։
