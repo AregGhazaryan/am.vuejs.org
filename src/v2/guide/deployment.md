@@ -1,26 +1,26 @@
 ---
-title: Production Deployment
+title: Արտադրության Deployment
 type: guide
 order: 404
 ---
 
-> Most of the tips below are enabled by default if you are using [Vue CLI](https://cli.vuejs.org). This section is only relevant if you are using a custom build setup.
+> Ստորև բերված խորհուրդների մեծամասնությունը միացված է հիմնականում, եթե օգտագործում եք [Vue CLI](https://cli.vuejs.org)։ Այս բաժինը տեղին է միայն այն դեպքում, եթե դուք օգտագործում եք custom build setup:
 
-## Turn on Production Mode
+## Արտադրության Ռեժիմի Միացումը
 
-During development, Vue provides a lot of warnings to help you with common errors and pitfalls. However, these warning strings become useless in production and bloat your app's payload size. In addition, some of these warning checks have small runtime costs that can be avoided in production mode.
+Զարգացման ընթացքում, Vue-ն տրամադրում է շատ նախազգուշացումներ որպեսզի օգնի ձեզ հասարակ սխալներով և այլ խնդիրներով։ Սակայն, այդ նախագուշացման տողերը դառնում են անպետք արտադրության մեջ և մեծացնում են ձեր ծրագրի payload-ի չափսը։ Ի հավելումն, այս նախազգուշացումներից որոշները ունեն փոքր runtime-ի ծախս որը կարող ենք խուսափել արտադրության մեջ։
 
-### Without Build Tools
+### Առանց Կառուցման Գործիքների
 
-If you are using the full build, i.e. directly including Vue via a script tag without a build tool, make sure to use the minified version (`vue.min.js`) for production. Both versions can be found in the [Installation guide](installation.html#Direct-lt-script-gt-Include).
+Եթե դուք օգտագործում էք full build, օրինակ․ ուղիղ ներառում եք Vue-ն script tag-ի շնորհիվ առանց կառուցման գործիքի, համոզվեք որ դուք օգտագործում եք minified տարբերակը (`vue.min.js`) արտադրության համար։ Երկու տարբերակներնել կարող են հանդիպել [Տեղադրման Ուղեցույցում](installation.html#Direct-lt-script-gt-Include)։
 
-### With Build Tools
+### Կառուցման Գործիքների Հետ
 
-When using a build tool like Webpack or Browserify, the production mode will be determined by `process.env.NODE_ENV` inside Vue's source code, and it will be in development mode by default. Both build tools provide ways to overwrite this variable to enable Vue's production mode, and warnings will be stripped by minifiers during the build. All `vue-cli` templates have these pre-configured for you, but it would be beneficial to know how it is done:
+Երբ օգտագործում եք կառուցման գործիք ինչպիսին են Webpack կամ Browserify-ը, արտադրության ռեժիմը կախված կլինի `process.env.NODE_ENV`-ից որը գտնվում է Vue-ի source կոդի մեջ, և այն կօգտագործի զարգացման ռեժիմը հիմնականում։ Երկու կառուցման գործիքներն ել հնարավորթյուն են տալիս վերագրել այս փոփոխականը որպեսզի միացնել Vue-ի արտադրության ռեժիմը, և բոլոր նախազգուշացումները կջնջվեն minifier-ների կողմից կառուցման ժամանակ։ Բոլոր `vue-cli` ձևանմուշները ունեն նախնական կարգավորումներ, բայց օգտակար է իմանալ թե ինչպես են նրանք արվում։
 
 #### Webpack
 
-In Webpack 4+, you can use the `mode` option:
+Webpack 4+-ի մեջ, դուք կարող եք օգտագործել `mode` ընտրանքը․
 
 ``` js
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
 }
 ```
 
-But in Webpack 3 and earlier, you'll need to use [DefinePlugin](https://webpack.js.org/plugins/define-plugin/):
+Բայց Webpack 3 և ավելի վաղ տարբերակներում, դուք պետք է օգտագործեք [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)․
 
 ``` js
 var webpack = require('webpack')
@@ -46,44 +46,44 @@ module.exports = {
 
 #### Browserify
 
-- Run your bundling command with the actual `NODE_ENV` environment variable set to `"production"`. This tells `vueify` to avoid including hot-reload and development related code.
+- Աշխատացրեք ձեր bundling հրամանը իրական `NODE_ENV` environment փոփոխականը դրված `"production"`-ի վրա։ Սա տեղյակ կպահի `vueify` որպեսզի խուսափել ներառելուց hot-reload և զարգացման հետ կապված կոդը։
 
-- Apply a global [envify](https://github.com/hughsk/envify) transform to your bundle. This allows the minifier to strip out all the warnings in Vue's source code wrapped in env variable conditional blocks. For example:
+- Կիրառեք գլոբալ [envify](https://github.com/hughsk/envify) transform ձեր bundle-ին։ Սա թույլ է տալիս minifier-ին որպեսզի ջնջի բոլոր նախազգուշացումները Vue-ի source կոդից փաթաթված env փոփոխականի պայմանական բլոկներում։
 
   ``` bash
   NODE_ENV=production browserify -g envify -e main.js | uglifyjs -c -m > build.js
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Gulp:
+- Կամ, օգտագործելով [envify](https://github.com/hughsk/envify) Gulp-ի հետ.
 
   ``` js
-  // Use the envify custom module to specify environment variables
+  // Օգտագործեք envify custom մոդուլը որպեսզի նշեք environment փոփոխականները
   var envify = require('envify/custom')
 
   browserify(browserifyOptions)
     .transform(vueify)
     .transform(
-      // Required in order to process node_modules files
+      // Պահանջված է որպեսզի աշխատացնի node_modules-ի ֆայլերը
       { global: true },
       envify({ NODE_ENV: 'production' })
     )
     .bundle()
   ```
 
-- Or, using [envify](https://github.com/hughsk/envify) with Grunt and [grunt-browserify](https://github.com/jmreidy/grunt-browserify):
+- Կամ, օգտագործելով [envify](https://github.com/hughsk/envify) Grunt-ի հետ և [grunt-browserify](https://github.com/jmreidy/grunt-browserify)․
 
   ``` js
-  // Use the envify custom module to specify environment variables
+  // Օգտագործեք envify custom մոդուլը որպեսզի նշեք environment փոփոխականները
   var envify = require('envify/custom')
 
   browserify: {
     dist: {
       options: {
-        // Function to deviate from grunt-browserify's default order
+        // Ֆունկցիա որպեսզի շեղվել grunt-browserify-ի հիմնական հերթականությունից
         configure: b => b
           .transform('vueify')
           .transform(
-            // Required in order to process node_modules files
+            // Պահանջված է որպեսզի աշխատացնի node_modules-ի ֆայլերը
             { global: true },
             envify({ NODE_ENV: 'production' })
           )
@@ -95,7 +95,7 @@ module.exports = {
 
 #### Rollup
 
-Use [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace):
+Օգտագործեք [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace)․
 
 ``` js
 const replace = require('@rollup/plugin-replace')
@@ -110,24 +110,24 @@ rollup({
 }).then(...)
 ```
 
-## Pre-Compiling Templates
+## Ձևանմուշների Pre-Compiling-ը
 
-When using in-DOM templates or in-JavaScript template strings, the template-to-render-function compilation is performed on the fly. This is usually fast enough in most cases, but is best avoided if your application is performance-sensitive.
+Երբ օգտագործում ենք DOM-ի մեջի ձևանմուշներ կամ JavaScript-ի մեջի ձևանմուշի string-ները, ձևանմուշի render-ի ֆունկցիաները կատարվում են օդի մեջ։ Սա հիմնական բավականին արագ է շատ դեպքերում, բայց լավագույն դեպքում պետք է խուսափել եթե ձեր ծրագիրը զգայուն է performance-ի հանդեպ։
 
-The easiest way to pre-compile templates is using [Single-File Components](single-file-components.html) - the associated build setups automatically performs pre-compilation for you, so the built code contains the already compiled render functions instead of raw template strings.
+Ամենահեշտ ճանափարհը pre-compile անելու ձևանմուշները դա [Մեկ Ֆայլ Կոմպոնենտների](single-file-components.html) օգտագործումն է - կապակցված կառուցման կարգավորումները ավտոմատ կերպով pre-compile են անուն ձեր համար, այնպես որ կառուցված կոդը պարունակում է արդեն compile եղած render ֆունկցիաները չփոփոխված ձևանմուշների string-ների փոխարեն։
 
-If you are using Webpack, and prefer separating JavaScript and template files, you can use [vue-template-loader](https://github.com/ktsn/vue-template-loader), which also transforms the template files into JavaScript render functions during the build step.
+Եթե դուք օգտագործում եք Webpack, և նախընտրում եք բաժանել JavaScript և ձևանմուշի ֆայլերը, դու կարող եք օգտագործել [vue-template-loader-ը](https://github.com/ktsn/vue-template-loader), որև նաև դառձնում է ձևանմուշի ֆայլերը JavaScript render ֆունկցիաներ կառուցման քայլում։ 
 
-## Extracting Component CSS
+## Կոմպոնենտի CSS-ի Ստացումը
 
-When using Single-File Components, the CSS inside components are injected dynamically as `<style>` tags via JavaScript. This has a small runtime cost, and if you are using server-side rendering it will cause a "flash of unstyled content". Extracting the CSS across all components into the same file will avoid these issues, and also result in better CSS minification and caching.
+Երբ օգտագործում եք մեկ ֆայլ կոմպոնենտներ, կոմպոնենտների մեջի CSS-ը ներարկվում է դինամիկորեն որպես `<style>` tag-երով JavaScript-ի շնորհիվ։ Սա ունի փոքր runtime-ի ծախս, և եթե դուք օգտագործում եք server-side rendering այն կպատճառի «առանց ոճի բովանդակության ակընթարթ»։ Ստալաով CSS-ը բոլոր կոմպոնենտներից դեպի նույն ֆայլ կօգնի մեզ խուսափել այս խնդիրից, և արդյունքում կլավացնի CSS-ի minification-ը և caching-ը։ 
 
-Refer to the respective build tool documentations to see how it's done:
+Դիմեք համապատասխան կառուցման գործիքների փաստաթղթերին որպեսզի տեսնեք թե ինչպես է դա արվում․
 
-- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (the `vue-cli` webpack template has this pre-configured)
+- [Webpack + vue-loader](https://vue-loader.vuejs.org/en/configurations/extract-css.html) (`vue-cli` webpack ձևանմուշը ունի սա նախնական կարգավորված)
 - [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
 - [Rollup + rollup-plugin-vue](https://vuejs.github.io/rollup-plugin-vue/#/en/2.3/?id=custom-handler)
 
-## Tracking Runtime Errors
+## Runtime Սխալների Հետևումը
 
-If a runtime error occurs during a component's render, it will be passed to the global `Vue.config.errorHandler` config function if it has been set. It might be a good idea to leverage this hook together with an error-tracking service like [Sentry](https://sentry.io), which provides [an official integration](https://sentry.io/for/vue/) for Vue.
+Եթե runtime սխալ է հայտվում կամպոնենտի render-ի ժամանակ, այն կփոխանցվի գլոբալ `Vue.config.errorHandler`-ի կարգավորման ֆունկցիային եթե այն դրված չէ։ Կարող է լավ միտք լինել որպեսզի օգտագործել այս hook-ը error-tracking service-ի հետ համատեղ ինչպիսին է [Sentry](https://sentry.io), որը տրամադրում է [պաշտոնական տեղադրում](https://sentry.io/for/vue/) Vue-ի համար։
