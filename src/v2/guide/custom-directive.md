@@ -1,14 +1,14 @@
 ---
-title: Custom Directives
-type: guide
+title: Custom Ուղղորդիչներ
+type: ուղեցույց
 order: 302
 ---
 
-## Intro
+## Ներածություն
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="sponsored noopener" title="Free Vue.js Custom Directives lesson">Watch a free video lesson on Vue School</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/create-vuejs-directive?friend=vuejs" target="_blank" rel="sponsored noopener" title="Անվճար Vue.js Custom Ուղղորդիչների դաս">Դիտեք անվճար դասը Vue School-ում</a></div>
 
-In addition to the default set of directives shipped in core (`v-model` and `v-show`), Vue also allows you to register your own custom directives. Note that in Vue 2.0, the primary form of code reuse and abstraction is components - however there may be cases where you need some low-level DOM access on plain elements, and this is where custom directives would still be useful. An example would be focusing on an input element, like this one:
+Հավելյալ հիմնական ուղղորդիչների շարքին (`v-model` և `v-show`), Vue-ն նաև թույլ է տալիս ձեզ գրանցելու custom ուղղորդիչներ։ Նշում որ Vue 2.0-ի մեջ, հիմնական կազմը կոդի վերօգտագործելու և աբստրակցիայի դա կոմպոնենտներն են - սակայն կան դեպքեր երբ որ ձեզ անհրաժեշտ է ցածր աստիճանի DOM access հասարակ էլեմենտների վրա, և այստեղ է երբ custom ուղղորդիչները կարող են ձեզ օգնել։ Օրինակի համար focus անել input էլեմենտի վրա, ինչպես այստեղ՝
 
 {% raw %}
 <div id="simplest-directive-example" class="demo">
@@ -26,25 +26,25 @@ new Vue({
 </script>
 {% endraw %}
 
-When the page loads, that element gains focus (note: `autofocus` doesn't work on mobile Safari). In fact, if you haven't clicked on anything else since visiting this page, the input above should be focused now. Now let's build the directive that accomplishes this:
+Երբ էջը բեռնվում է, էլեմենտը ստանում է focus (նշում․ `autofocus`-ը չի աշխատում Safari Mobile-ի վրա)։ Եթե դուք չեք սեղմել ցանկացած մի բան մինչ այս էջում էիք, input-ը վերևի պետք է focus եղած լինի։ Հիմ եկեք կառուցենք ուղղորդիչ որը կատարում է նույն բանը։
 
 ``` js
-// Register a global custom directive called `v-focus`
+// Գրանցեք գլոբալ custom ուղղորդիչ `v-focus` անվանումով
 Vue.directive('focus', {
-  // When the bound element is inserted into the DOM...
+  // Երբ կապված էլեմենտը դրվել է DOM-ում...
   inserted: function (el) {
-    // Focus the element
+    // Focus լինի էլեմենտի վրա
     el.focus()
   }
 })
 ```
 
-If you want to register a directive locally instead, components also accept a `directives` option:
+Եթե դուք ցանկանում էք գրանցել ուղղորդիչ լոկալ կերպով, կոմպոնենտները նաև ընդհունում են `directives` ընտրանքը․
 
 ``` js
 directives: {
   focus: {
-    // directive definition
+    // ուղղորդչի հայտարարումը
     inserted: function (el) {
       el.focus()
     }
@@ -52,48 +52,48 @@ directives: {
 }
 ```
 
-Then in a template, you can use the new `v-focus` attribute on any element, like this:
+Այնուհետև ձևանմուշում, դուք կարող եք օգտագործել նոր `v-focus` ատրիբուտը ցանկացած էլեմենտի վրա, այսպես․
 
 ``` html
 <input v-focus>
 ```
 
-## Hook Functions
+## Hook Ֆունկցիաներ
 
-A directive definition object can provide several hook functions (all optional):
+Ուղղորդչի հայտարարման օբյեկտը կարող է տրամադրել մի քանի hook ֆունկցիաներ (բոլորը կարող են օգտագործվել ըստ ցանկության)․
 
-- `bind`: called only once, when the directive is first bound to the element. This is where you can do one-time setup work.
+- `bind`: աշխատում է միայն մեկ անգամ, երբ ուղղորդիչը կապված է էլեմենտին։ Այստեղ դուք կարող էք կատարել մեկ անգամյա տեղադրման աշխտանանքեր։
 
-- `inserted`: called when the bound element has been inserted into its parent node (this only guarantees parent node presence, not necessarily in-document).
+- `inserted`: աշխատում է երբ կապված էլեմենտը տեղադրվել է իր ծնող node-ում (միայն երաշխավորում է ծնող node-ի ներկայությունը, որը պարտադիր չէ, որ փաստաթղթում լինի)։
 
-- `update`: called after the containing component's VNode has updated, __but possibly before its children have updated__. The directive's value may or may not have changed, but you can skip unnecessary updates by comparing the binding's current and old values (see below on hook arguments).
+- `update`: աշխատում է երբ պարունակող կոմպոնենտի VNode-ը թարմացվել է, __բայց հնարավոր է, որ մինչ նրա ժառանգողները թարմացվեն__։ Ուղղորդչի արժեքը հնարավոր է որ փոխված կամ չփոխված լինի, բայց դուք կարող եք բաց թողնել անիմաստ թարմացումները համեմատելով կապման նոր և հին արժեքները (նայեք ներքևում արգումենտների համար)։
 
-<p class="tip">We'll cover VNodes in more detail [later](./render-function.html#The-Virtual-DOM), when we discuss [render functions](./render-function.html).</p>
+<p class="tip">Մենք ավելի մանրամասն կցուցադրենք VNodes-ը [ավելի ուշ](./render-function.html#The-Virtual-DOM), երբ որ մենք քննարկենք [render ֆունկցիաները](./render-function.html).</p>
 
-- `componentUpdated`: called after the containing component's VNode __and the VNodes of its children__ have updated.
+- `componentUpdated`: աշխատում է երբ պարունակող կոմպոնենտի VNode-ը __և ժառանգողների VNode-երը__ թարմացվել են։
 
-- `unbind`: called only once, when the directive is unbound from the element.
+- `unbind`: աշխատում է միայն մեկ անգամ, երբ ուղղորդիչը պոկվել է էլեմենտից։
 
-We'll explore the arguments passed into these hooks (i.e. `el`, `binding`, `vnode`, and `oldVnode`) in the next section.
+Մենք կուսումնասիրենք hook-երին փոխանցված արգումենտները (օրինակ․ `el`, `binding`, `vnode`, և `oldVnode`) հաջորդ բաժնում։
 
-## Directive Hook Arguments
+## Ուղղորդիչի Hook-ի Արգումենտները
 
-Directive hooks are passed these arguments:
+Ուղղորդիչի hook-երին փոխանցված են հետևյալ արգումենտները․
 
-- `el`: The element the directive is bound to. This can be used to directly manipulate the DOM.
-- `binding`: An object containing the following properties.
-  - `name`: The name of the directive, without the `v-` prefix.
-  - `value`: The value passed to the directive. For example in `v-my-directive="1 + 1"`, the value would be `2`.
-  - `oldValue`: The previous value, only available in `update` and `componentUpdated`. It is available whether or not the value has changed.
-  - `expression`: The expression of the binding as a string. For example in `v-my-directive="1 + 1"`, the expression would be `"1 + 1"`.
-  - `arg`: The argument passed to the directive, if any. For example in `v-my-directive:foo`, the arg would be `"foo"`.
-  - `modifiers`: An object containing modifiers, if any. For example in `v-my-directive.foo.bar`, the modifiers object would be `{ foo: true, bar: true }`.
-- `vnode`: The virtual node produced by Vue's compiler. See the [VNode API](../api/#VNode-Interface) for full details.
-- `oldVnode`: The previous virtual node, only available in the `update` and `componentUpdated` hooks.
+- `el`: Էլեմենտը որին ուղղորդիչը կապված է։ Սա կարող է օգտագործվել որպեսզի ուղիղ փոփոխել DOM-ը։
+- `binding`: Օբյեկտ պարունակող հետևյալ հակտությունները։
+  - `name`: Անունը ուղղորդիչի, առանց `v-` prefix-ի։
+  - `value`: Արժեքը փոխանցված ուղղորդչին։ Օրինակ `v-my-directive="1 + 1"`-ի մեջ, արժեքը կլինի `2`։
+  - `oldValue`: Նախորդ արժեքը, միայն հասանելի է `update` և `componentUpdate`-ում։ Այն հասանելի է չկախված թե արժեքը փոփոխվել է թե ոչ։
+  - `expression`: Արտահայտությունը կապման որպես string։ Օրինակ `v-my-directive="1 + 1"`-ի մեջ, արտահայտությունը կլինի `"1 + 1"`։
+  - `arg`: Արգումենտը փոխանցված ուղղորդիչին, եթե տրամադրված է։ Օրինակ `v-my-directive:foo`-ի մեջ, արգումենտը կլինի `"foo"`։
+  - `modifiers`: Օբյեկտը որը պարունակում է փոփոխիչները, եթե տրամադրված է։ Օրինակ `v-my-directive.foo.bar`-ի մեջ, փոփոխիչների օբյեկտը կլինի `{ foo: true, bar: true }`։
+- `vnode`: Վիրտուալ node-ը ստեղծված Vue-ի compiler-ի կողմից։ Նայեք [VNode API](../api/#VNode-Interface) ավելի մանրամասների համար։
+- `oldVnode`: Նախորդ վիրտուալ node-ը, միայն հասանելի է `update` և `componentUpdated` hook-երում։
 
-<p class="tip">Apart from `el`, you should treat these arguments as read-only and never modify them. If you need to share information across hooks, it is recommended to do so through element's [dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).</p>
+<p class="tip">Բացառությամբ `el`-ից, դուք պետք է վերաբերվեք այս արգումենտներին որպես միայն read-only (կարդալու համար) և երբեք չփոփոխեք նրանց։ Եթե ձեզ անհրաժեշտ է փոխանցել ինֆորմացիա hook-երի միջև, խորհուրդ է տրվում անցնել էլեմենտի [տվյալների կազմի](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset) միջով։</p>
 
-An example of a custom directive using some of these properties:
+Custom ուղորդիչի օրինակ օգտագործելով այդ հատակություններից որոշը․
 
 ``` html
 <div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
@@ -104,19 +104,19 @@ Vue.directive('demo', {
   bind: function (el, binding, vnode) {
     var s = JSON.stringify
     el.innerHTML =
-      'name: '       + s(binding.name) + '<br>' +
-      'value: '      + s(binding.value) + '<br>' +
-      'expression: ' + s(binding.expression) + '<br>' +
-      'argument: '   + s(binding.arg) + '<br>' +
-      'modifiers: '  + s(binding.modifiers) + '<br>' +
-      'vnode keys: ' + Object.keys(vnode).join(', ')
+      'անուն: '       + s(binding.name) + '<br>' +
+      'արժեք: '      + s(binding.value) + '<br>' +
+      'արտահայտություն: ' + s(binding.expression) + '<br>' +
+      'արգումենտ: '   + s(binding.arg) + '<br>' +
+      'փոփոխիչներ: '  + s(binding.modifiers) + '<br>' +
+      'vnode բանալիներ: ' + Object.keys(vnode).join(', ')
   }
 })
 
 new Vue({
   el: '#hook-arguments-example',
   data: {
-    message: 'hello!'
+    message: 'բարև!'
   }
 })
 ```
@@ -128,33 +128,33 @@ Vue.directive('demo', {
   bind: function (el, binding, vnode) {
     var s = JSON.stringify
     el.innerHTML =
-      'name: '       + s(binding.name) + '<br>' +
-      'value: '      + s(binding.value) + '<br>' +
-      'expression: ' + s(binding.expression) + '<br>' +
-      'argument: '   + s(binding.arg) + '<br>' +
-      'modifiers: '  + s(binding.modifiers) + '<br>' +
-      'vnode keys: ' + Object.keys(vnode).join(', ')
+      'անուն: '       + s(binding.name) + '<br>' +
+      'արժեք: '      + s(binding.value) + '<br>' +
+      'արտահայտություն: ' + s(binding.expression) + '<br>' +
+      'արգումենտ: '   + s(binding.arg) + '<br>' +
+      'փոփոխիչներ: '  + s(binding.modifiers) + '<br>' +
+      'vnode: ' + Object.keys(vnode).join(', ')
   }
 })
 new Vue({
   el: '#hook-arguments-example',
   data: {
-    message: 'hello!'
+    message: 'բարև!'
   }
 })
 </script>
 {% endraw %}
 
-### Dynamic Directive Arguments
+### Դինամիկ Ուղղորդիչների Արգումենտներ
 
-Directive arguments can be dynamic. For example, in `v-mydirective:[argument]="value"`, the `argument` can be updated based on data properties in our component instance! This makes our custom directives flexible for use throughout our application.
+Ուղղորդիչների արգումենտները կարող են լինել դինամիկ։ Օրինակի համար, `v-mydirective:[argument]="value"`-ի մեջ, `argument`-ը կարող է թարմացվել կախված տվյալնների հատկություններից որը գտնվում է մեր կոմպոնենտի instance-ում! Սա դարձնում է մեր custom ուղղորդիչները ավելի ճկուն օգտագործման համար մեր ծրագրի մեջ։
 
-Let's say you want to make a custom directive that allows you to pin elements to your page using fixed positioning. We could create a custom directive where the value updates the vertical positioning in pixels, like this:
+Ենթադրենք դուք ցանկանում եք ստեղծել custom ուղղորդիչ որը ձեզ թույլ է տալիս պահել էլեմենտները ձեր էջում օգտագործելով ֆիքսված դիրք: Մենք կստեղծենք custom ուղղորդիչ որտեղ արժեքը թարմացվում է ուղղահայաց դիրքը պիքսելներով, այսպես․
 
 ```html
 <div id="baseexample">
-  <p>Scroll down the page</p>
-  <p v-pin="200">Stick me 200px from the top of the page</p>
+  <p>Իջեք ներքև scroll անելով</p>
+  <p v-pin="200">Պահիր ինձ 200px էջի վերևից հաշված</p>
 </div>
 ```
 
@@ -171,13 +171,13 @@ new Vue({
 })
 ```
 
-This would pin the element 200px from the top of the page. But what happens if we run into a scenario when we need to pin the element from the left, instead of the top? Here's where a dynamic argument that can be updated per component instance comes in very handy:
+Սա կպահի էլեմենտը 200px էջի վերևից։ Բայց ի՞նչ կլինի եթե մենք հանդիպենք մի դեպք երբ որ մենք պետք է պահենք էլեմենտը ձախ կողմից այլ ոչ թե վերևից: Այս դեպքում դինամիկ արգումենտները որոնք կարող են թարմացվեն ամեն կոմպոնենտի instance-ի շատ մեզ կօգնեն։
 
 
 ```html
 <div id="dynamicexample">
-  <h3>Scroll down inside this section ↓</h3>
-  <p v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</p>
+  <h3>Իջեք ներքև այս բաժնում ↓</h3>
+  <p v-pin:[direction]="200">Ես պահված եմ այս էջում 200px ձախից։</p>
 </div>
 ```
 
@@ -203,17 +203,17 @@ new Vue({
 Result:
 
 {% raw %}
-<iframe height="200" style="width: 100%;" class="demo" scrolling="no" title="Dynamic Directive Arguments" src="//codepen.io/team/Vue/embed/rgLLzb/?height=300&theme-id=32763&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/team/Vue/pen/rgLLzb/'>Dynamic Directive Arguments</a> by Vue
-  (<a href='https://codepen.io/Vue'>@Vue</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe height="200" style="width: 100%;" class="demo" scrolling="no" title="Դինամիկ Ուղղորդիչի Արգումենտները" src="//codepen.io/team/Vue/embed/rgLLzb/?height=300&theme-id=32763&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  Դիտեք Pen-ը <a href='https://codepen.io/team/Vue/pen/rgLLzb/'>Դինամիկ Ուղղորդիչի Արգումենտները</a> Vue-ի կողմից
+  (<a href='https://codepen.io/Vue'>@Vue</a>)<a href='https://codepen.io'>CodePen-ում</a>.
 </iframe>
 {% endraw %}
 
-Our custom directive is now flexible enough to support a few different use cases.
+Մեր custom ուղղորդիչը հիմա բավականին ճկուն է որ համապատասխանի մի քանի տարբեր օգտագործման դեպքերի հետ։
 
-## Function Shorthand
+## Ֆունկցիայի Կարճ Գրելաձև
 
-In many cases, you may want the same behavior on `bind` and `update`, but don't care about the other hooks. For example:
+Շատ դեպքերում, դուք կցանկանաք նույն բանը ինչ `bind`-ում և `update`-ը տրամադրում են, բայց ձեզ անհրաժեշտ չեն այլ hook-երը։ Օրինակի համար․
 
 ``` js
 Vue.directive('color-swatch', function (el, binding) {
@@ -221,17 +221,17 @@ Vue.directive('color-swatch', function (el, binding) {
 })
 ```
 
-## Object Literals
+## Օբյեկտ Literal
 
-If your directive needs multiple values, you can also pass in a JavaScript object literal. Remember, directives can take any valid JavaScript expression.
+Եթե ձեր ուղղորդչին անհրաժեշտ է մի քանի արժեք, դուք կարող եք նաև փոխանցել JavaScript օբյեկտ literal: Հիշեք, որը ուղղորդիչները կարող են ստանալ ցանկացած ճիշտ JavaScript արտահայտություն։
 
 ``` html
-<div v-demo="{ color: 'white', text: 'hello!' }"></div>
+<div v-demo="{ color: 'սպիտակ', text: 'բարև!' }"></div>
 ```
 
 ``` js
 Vue.directive('demo', function (el, binding) {
-  console.log(binding.value.color) // => "white"
-  console.log(binding.value.text)  // => "hello!"
+  console.log(binding.value.color) // => "սպիտակ"
+  console.log(binding.value.text)  // => "բարև!"
 })
 ```
