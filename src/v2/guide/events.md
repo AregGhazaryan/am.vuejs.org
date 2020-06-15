@@ -1,38 +1,40 @@
 ---
-title: Event Handling
-type: guide
+title: Event-ի Handling-ը
+type: ուղեցույց
 order: 9
 ---
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-user-events?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to handle events on Vue School">Learn how to handle events in a free Vue School lesson</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-user-events?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես ձեռնարկել event-ներ Vue School-ում">Սովորեք թե ինչպես ձեռնարկել event-ներ Vue School-ի անվճար դասում</a></div>
 
-## Listening to Events
+## Event-ներին Լսելը
 
-We can use the `v-on` directive to listen to DOM events and run some JavaScript when they're triggered.
+Մենք կարող ենք օգտագործել `v-on` ուղղորդիչը որպեսզի լսել DOM event-ներին և աշխատացնել որոշ JavaScript նրանց արձակումից հետո։
 
-For example:
+Օրինակի համար․
 
-``` html
+```html
 <div id="example-1">
-  <button v-on:click="counter += 1">Add 1</button>
-  <p>The button above has been clicked {{ counter }} times.</p>
+  <button v-on:click="counter += 1">Ավելացնել 1</button>
+  <p>Վերևի կոճակը սեղմվել է {{ counter }} անգամ։</p>
 </div>
 ```
-``` js
+
+```js
 var example1 = new Vue({
-  el: '#example-1',
+  el: "#example-1",
   data: {
-    counter: 0
-  }
-})
+    counter: 0,
+  },
+});
 ```
 
-Result:
+Արդյունքը․
 
 {% raw %}
+
 <div id="example-1" class="demo">
-  <button v-on:click="counter += 1">Add 1</button>
-  <p>The button above has been clicked {{ counter }} times.</p>
+  <button v-on:click="counter += 1">Ավելացնել 1</button>
+  <p>Վերևի կոճակը սեղմվել է {{ counter }} անգամ։</p>
 </div>
 <script>
 var example1 = new Vue({
@@ -44,47 +46,48 @@ var example1 = new Vue({
 </script>
 {% endraw %}
 
-## Method Event Handlers
+## Մեթոդ Event-ի Handler-ները
 
-The logic for many event handlers will be more complex though, so keeping your JavaScript in the value of the `v-on` attribute isn't feasible. That's why `v-on` can also accept the name of a method you'd like to call.
+Տրամաբանությունը շատ event handler-ներում կարող է լինել ավելի բարդ, այնպես որ պահպանելով ձեր JavaScript-ը `v-on` ատրիբուտի արժեքում պիտանի է։ Այս պատճառով `v-on`-ը կարող է նաև ընդհունել անունը մեթոդի որը որ դուք ցանկանում եք կանչել։
 
-For example:
+Օրինակի համար՝
 
-``` html
+```html
 <div id="example-2">
-  <!-- `greet` is the name of a method defined below -->
-  <button v-on:click="greet">Greet</button>
+  <!-- `greet`-ը ներքևում հայտարարված մեթոդի անունն է -->
+  <button v-on:click="greet">Բարևել</button>
 </div>
 ```
 
-``` js
+```js
 var example2 = new Vue({
-  el: '#example-2',
+  el: "#example-2",
   data: {
-    name: 'Vue.js'
+    name: "Vue.js",
   },
-  // define methods under the `methods` object
+  // հայտարարեք մեթոդները `methods` օբյեկտի ներսում
   methods: {
     greet: function (event) {
-      // `this` inside methods points to the Vue instance
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
+      // `this`-ը մեթոդի ներսում տանում է դեպի Vue-ի instance—ը
+      alert("Բարև " + this.name + "!");
+      // `event`-ը native DOM event է
       if (event) {
-        alert(event.target.tagName)
+        alert(event.target.tagName);
       }
-    }
-  }
-})
+    },
+  },
+});
 
-// you can invoke methods in JavaScript too
-example2.greet() // => 'Hello Vue.js!'
+// դուք կարող եք կանչել մեթոդներ նաև JavaScript-ում
+example2.greet(); // => 'Բարև Vue.js!'
 ```
 
-Result:
+Արդյունքում․
 
 {% raw %}
+
 <div id="example-2" class="demo">
-  <button v-on:click="greet">Greet</button>
+  <button v-on:click="greet">Բարևել</button>
 </div>
 <script>
 var example2 = new Vue({
@@ -94,7 +97,7 @@ var example2 = new Vue({
   },
   methods: {
     greet: function (event) {
-      alert('Hello ' + this.name + '!')
+      alert('Բարև ' + this.name + '!')
       if (event) {
         alert(event.target.tagName)
       }
@@ -104,32 +107,34 @@ var example2 = new Vue({
 </script>
 {% endraw %}
 
-## Methods in Inline Handlers
+## Մեթոդները Inline Handler-ներում
 
-Instead of binding directly to a method name, we can also use methods in an inline JavaScript statement:
+Փոխարեն կապելով ուղիղ մեթոդի անունին, մենք նաև կարող ենք օգտագործել մեթոդներ inline JavaScript հայտարարություններում․
 
-``` html
+```html
 <div id="example-3">
-  <button v-on:click="say('hi')">Say hi</button>
-  <button v-on:click="say('what')">Say what</button>
+  <button v-on:click="say('բարև')">Ասել Բարև</button>
+  <button v-on:click="say('ի՞նչ')">Ասել Ի՞նչ</button>
 </div>
 ```
-``` js
+
+```js
 new Vue({
-  el: '#example-3',
+  el: "#example-3",
   methods: {
     say: function (message) {
-      alert(message)
-    }
-  }
-})
+      alert(message);
+    },
+  },
+});
 ```
 
-Result:
+Արդյունքում․
 {% raw %}
+
 <div id="example-3" class="demo">
-  <button v-on:click="say('hi')">Say hi</button>
-  <button v-on:click="say('what')">Say what</button>
+  <button v-on:click="say('բարև')">Ասել Բարև</button>
+  <button v-on:click="say('ի՞նչ')">Ասել Ի՞նչ</button>
 </div>
 <script>
 new Vue({
@@ -143,19 +148,19 @@ new Vue({
 </script>
 {% endraw %}
 
-Sometimes we also need to access the original DOM event in an inline statement handler. You can pass it into a method using the special `$event` variable:
+Երբևմն մենք նաև պետք է մուտք գործենք օրիգինալ DOM event inline հայտարարության handler-ում։ Դւոք կարող էք փոխանցել այն մեթոդին օգտագործելով հատուկ `$event` փոփոխականը․
 
-``` html
-<button v-on:click="warn('Form cannot be submitted yet.', $event)">
-  Submit
+```html
+<button v-on:click="warn('Form-ը չի կարող կիրառվել դեռ։', $event)">
+  Կիրառել
 </button>
 ```
 
-``` js
+```js
 // ...
 methods: {
   warn: function (message, event) {
-    // now we have access to the native event
+    // հիմա մենք ունենք մուտք դեպի native event
     if (event) {
       event.preventDefault()
     }
@@ -164,11 +169,11 @@ methods: {
 }
 ```
 
-## Event Modifiers
+## Event-ի Փոփոխիչներ
 
-It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+Շատ սովորական է երբ անհրաժեշտ է կանչել `event.preventDefault()`-ը կամ `event.stopPropagation()`-ը event handler-ների ներսում։ Չնայած որ մենք կարող ենք անել սա ավելի հեշտ մեթոդների ներսում, բայց ավելի լավ կլինի եթե մեթոդները տվյալների տրամաբանության մասին են քան թե ինչպես DOM event-ների հետ աշխատելու մանրամասների մասին։
 
-To address this problem, Vue provides **event modifiers** for `v-on`. Recall that modifiers are directive postfixes denoted by a dot.
+Որպեսզի լուծենք այս հարցը, Vue-ն տրամադրում է **event-ի փոփոխիչներ** `v-on`-ի համար։ Հիշեցում որ փոփոխիչները հաջորդում են ուղղորդիչների ֆունկցիաներին կետով։
 
 - `.stop`
 - `.prevent`
@@ -177,86 +182,86 @@ To address this problem, Vue provides **event modifiers** for `v-on`. Recall tha
 - `.once`
 - `.passive`
 
-``` html
-<!-- the click event's propagation will be stopped -->
+```html
+<!-- click event-ի տարածումը կդադարեցվի -->
 <a v-on:click.stop="doThis"></a>
 
-<!-- the submit event will no longer reload the page -->
+<!-- submit event-ը այլևս էջը չի վերբեռնի -->
 <form v-on:submit.prevent="onSubmit"></form>
 
-<!-- modifiers can be chained -->
+<!-- փոփոխիչները կարող են շղթայվել -->
 <a v-on:click.stop.prevent="doThat"></a>
 
-<!-- just the modifier -->
+<!-- ուղղակի փոփոխիչը -->
 <form v-on:submit.prevent></form>
 
-<!-- use capture mode when adding the event listener -->
-<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+<!-- օգտագործեք որպեսզի ստանալ ռեժիմը երբ ավելացնում եք event listener -->
+<!-- օրինակ event որը նշում է միջև գտնվող էլեմենտ աշխատում է այստեղ նաղքան էլեմենտի կողմից աշխատելը -->
 <div v-on:click.capture="doThis">...</div>
 
-<!-- only trigger handler if event.target is the element itself -->
+<!-- միայն արձակողի handler-ը եթե event.target-ը նույն էլեմենտն է -->
 <!-- i.e. not from a child element -->
 <div v-on:click.self="doThat">...</div>
 ```
 
-<p class="tip">Order matters when using modifiers because the relevant code is generated in the same order. Therefore using `v-on:click.prevent.self` will prevent **all clicks** while `v-on:click.self.prevent` will only prevent clicks on the element itself.</p>
+<p class="tip">Հերթականությունը նշանակություն ունի երբ օգտագործում ենք փոփոխիչներ որովհետև հարաբերական կոդը գեներացվել է նույն հերթականությամբ։ Դրանից դատելով օգտագործելով `v-on:click.prevent.self`-ը կկանխի **բոլոր սեղմումները** երբ `v-on:click.self.prevent`-ը միայն կկանխի սեղմումները էլեմենտի վրա։</p>
 
-> New in 2.1.4+
+> Նոր 2.1.4+-ի մեջ
 
-``` html
-<!-- the click event will be triggered at most once -->
+```html
+<!-- click event-ը միայն կարձակվի մեկ անգամ -->
 <a v-on:click.once="doThis"></a>
 ```
 
-Unlike the other modifiers, which are exclusive to native DOM events, the `.once` modifier can also be used on [component events](components-custom-events.html). If you haven't read about components yet, don't worry about this for now.
+Ի համեմատ այն փոփոխիչների, որոնք միայն բացառիկ են native DOM event-ներին, `.once` փոփոխիչը կարող է նաև օգտագործվել [կոմպոնենտի event-ներում](components-custom-events.html)։ Եթե դուք չեք կարդացել կոմպոնենտների մասին դեռ, մի անհանգստացեք։
 
-> New in 2.3.0+
+> Նոր 2.3.0+-ի մեջ
 
-Vue also offers the `.passive` modifier, corresponding to [`addEventListener`'s `passive` option](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters).
+Vue-ն նաև առաջարկում է `.passive` փոփոխիչը, համապատասխան [`addEventListener`-ի `passive` ընտրանքին](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)։
 
-``` html
-<!-- the scroll event's default behavior (scrolling) will happen -->
-<!-- immediately, instead of waiting for `onScroll` to complete  -->
-<!-- in case it contains `event.preventDefault()`                -->
+```html
+<!-- scroll event-ի հիմնական behavior-ը (scroll անելը) կկայանա -->
+<!-- միանգամից, փոխարեն սպասելով `onScroll`-ին որպեսզի ավարտվի -->
+<!-- այս դեպքում այն պարունակում է `event.preventDefault()`-ը -->
 <div v-on:scroll.passive="onScroll">...</div>
 ```
 
-The `.passive` modifier is especially useful for improving performance on mobile devices.
+`.passive` փոփոխիչը հատկապես օգտակար է որպեսզի բարելավի performance-ը շարժական սարքերի համար (հեռախոսների, պլանշետների և այլն)։
 
-<p class="tip">Don't use `.passive` and `.prevent` together, because `.prevent` will be ignored and your browser will probably show you a warning. Remember, `.passive` communicates to the browser that you _don't_ want to prevent the event's default behavior.</p>
+<p class="tip">Չօգօտագործեք `.passive` և `.prevent`-ը միասին, որովհետև `.prevent`-ը կանտեսվի և ձեր բրաուզերը հավանականորեն ցույց կտա նախազգուշացում։ Հիշեք, `.passive`-ը կապ է հաստատում բրաուզերի հետ պահանջելով որ դուք _չեք_ ցանկանում կանխել event-ի հիմնական behavior-ը։</p>
 
-## Key Modifiers
+## Կոճակի Փոփոխիչներ
 
-When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` when listening for key events:
+Երբ լսում ենք ստեղնաշարի event-ներին, մեզ հաճախ հարկավոր է ստուգել հատուկ կոճակի համար։ Vue-ն թույլ է տալիս ավելացնելու կոճակի փոփոխիչներ `v-on`-ի համար երբ լսում ենք կոճակի event-ներին․
 
-``` html
-<!-- only call `vm.submit()` when the `key` is `Enter` -->
-<input v-on:keyup.enter="submit">
+```html
+<!-- միայն կանչել `vm.submit()`-ը երբ `կոճակը` `Enter`-ն է -->
+<input v-on:keyup.enter="submit" />
 ```
 
-You can directly use any valid key names exposed via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) as modifiers by converting them to kebab-case.
+Դուք կարող եք ուղիղ օգտագործել ցանկացած ճիշտ կոճակի անվանում որը կարող եք ստանալ [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) որպես փոփոխիչներ փոխակերպելով նրանց դեպի kebab-case:
 
-``` html
-<input v-on:keyup.page-down="onPageDown">
+```html
+<input v-on:keyup.page-down="onPageDown" />
 ```
 
-In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
+Վերևի օրինակում, handler-ը միայն կկանչվի եթե `$event.key`-ն հավասար է `«PageDown»`-ին։
 
-### Key Codes
+### Կոճակների Կոդերը
 
-<p class="tip">The use of `keyCode` events [is deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) and may not be supported in new browsers.</p>
+<p class="tip">`keyCode`-ի event-ները [deprecated են](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) և հնարավոր է որ չեն համապատասխանի նոր բրաուզերներին։</p>
 
-Using `keyCode` attributes is also permitted:
+`keyCode` ատրիբուտների օգտագործում նաև թույլ է տրվում․
 
-``` html
-<input v-on:keyup.13="submit">
+```html
+<input v-on:keyup.13="submit" />
 ```
 
-Vue provides aliases for the most commonly used key codes when necessary for legacy browser support:
+Vue-ն տրամադրում է անուններ հաճախ օգտագործվող կոճակների կոդերի համար երբ անհրաժեշտ է հին բրաուզերների համար․
 
 - `.enter`
 - `.tab`
-- `.delete` (captures both "Delete" and "Backspace" keys)
+- `.delete` (կապվում է "Delete" և "Backspace" կոճակները)
 - `.esc`
 - `.space`
 - `.up`
@@ -264,73 +269,73 @@ Vue provides aliases for the most commonly used key codes when necessary for leg
 - `.left`
 - `.right`
 
-<p class="tip">A few keys (`.esc` and all arrow keys) have inconsistent `key` values in IE9, so these built-in aliases should be preferred if you need to support IE9.</p>
+<p class="tip">Մի քանի կոճակներ (`.esc` և բոլոր սլաքների կոճակները) ունեն անհետևողական `key` արժեք IE9-ի մեջ, այնպես որ այս ներքուստ կառուցված անունները ցանկալի են եթե ձեզ անհրաժեշտ է IE9-ի համապատասխանեցումը։</p>
 
-You can also [define custom key modifier aliases](../api/#keyCodes) via the global `config.keyCodes` object:
+Դուք նաև կարող եք [հայտարարել custom կոճակի փոփոխիչիչ անուն](../api/#keyCodes) գլոբալ `config.keyCodes` օբյեկտի շնորհիվ․
 
-``` js
-// enable `v-on:keyup.f1`
-Vue.config.keyCodes.f1 = 112
+```js
+// միացրեք `v-on:keyup.f1`
+Vue.config.keyCodes.f1 = 112;
 ```
 
-## System Modifier Keys
+## Համակարգի Փոփոխիչ Կոճակները
 
-> New in 2.1.0+
+> Նոր 2.1.0+-ի մեջ
 
-You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
+Դուք կարող եք օգտագործել հետևյալ փոփոխիչները որպեսզի արձակել մկնիկի կամ ստեղնաշարի event-ի լսողներ միայն երբ համապատասխան փոփոխիչի կոճակն է սեղմված․
 
 - `.ctrl`
 - `.alt`
 - `.shift`
 - `.meta`
 
-> Note: On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
+> Նշում: Macintosh-ի ստեղնաշարներում, մետան հրամանի կոճակն է (⌘)։ Windows-ի ստեղնաշարներում, մետան Windows-ի կոճակն է (⊞)։ Sun Microsystems-ի ստեղնաշարերում, մետան նշաված է որպես ադամանդ (◆)։ Որոշ ստեղնաշարերում, հատկապես MIT և Lisp մեքենայի ստեղնաշարները և կատարելագործողների, ինչպիսիք են Knight ստեղնաշարը, space-cadet ստեղնաշարը, մետան անվանված է «META» կամ «Meta»:
 
-For example:
+Օրինակի համար․
 
 ```html
 <!-- Alt + C -->
-<input v-on:keyup.alt.67="clear">
+<input v-on:keyup.alt.67="clear" />
 
 <!-- Ctrl + Click -->
-<div v-on:click.ctrl="doSomething">Do something</div>
+<div v-on:click.ctrl="doSomething">Անել մի բան</div>
 ```
 
-<p class="tip">Note that modifier keys are different from regular keys and when used with `keyup` events, they have to be pressed when the event is emitted. In other words, `keyup.ctrl` will only trigger if you release a key while holding down `ctrl`. It won't trigger if you release the `ctrl` key alone. If you do want such behaviour, use the `keyCode` for `ctrl` instead: `keyup.17`.</p>
+<p class="tip">Նշում որ փոփոխիչի կոճակները տարբերվում են հասարակ կոճակներից և երբ օգտագործվում են `keyup` event-ների հետ, նրանք պետք է լինեն սեղմված երբ event-ը արձակված է։ Այլ բառերով, `keyup.ctrl`-ը միայն կարձակի եթե դուք բաց թողնեք կոճակը սեղմած պահելով `ctrl`-ը։ Այն չի արձակվի եթե դուք բաց թողնեք միայն `ctrl` կոճակը։ Եթե դուք ցանկանում եք այդպիսի վարքագիծ, օգտագործեք `keyCode`-ը `ctrl`-ի փոխարեն․ `keyup.17`։</p>
 
-### `.exact` Modifier
+### `.exact` Փոփոխիչը
 
-> New in 2.5.0+
+> Նոր 2.5.0+-ի մեջ
 
-The `.exact` modifier allows control of the exact combination of system modifiers needed to trigger an event.
+`.exact` փոփոխիչը թույլ է տալիս կառավարելու հատուկ կոմբինացիա համակարգի փոփոխիչների որոնք պետք է արձակեն event:
 
-``` html
-<!-- this will fire even if Alt or Shift is also pressed -->
+```html
+<!-- Սա կաշխատի նույնիսկ եթե Alt կամ Shift-ը նույնպես սեղմված է -->
 <button v-on:click.ctrl="onClick">A</button>
 
-<!-- this will only fire when Ctrl and no other keys are pressed -->
+<!-- Սա միայն կաշխատի երբ Ctrl-ը սեղմված է առանց հավելյալ կոճակների -->
 <button v-on:click.ctrl.exact="onCtrlClick">A</button>
 
-<!-- this will only fire when no system modifiers are pressed -->
+<!-- Սա միայն կաշխատի երբ ոչ մի համակարգի փոփոխիչներ սեղմված չեն -->
 <button v-on:click.exact="onClick">A</button>
 ```
 
-### Mouse Button Modifiers
+### Մկնիկի Կոճակնի Փոփոխիչներ
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
 - `.left`
 - `.right`
 - `.middle`
 
-These modifiers restrict the handler to events triggered by a specific mouse button.
+Այս փոփոխիչները արգելում են handler-ին այն event-ներից որոնք արձակվել են հատուկ մկնիկի կոճակի օգնությամբ։
 
-## Why Listeners in HTML?
+## Ի՞նչու Օգտագործել Listener-ներ HTML-ի Մեջ
 
-You might be concerned that this whole event listening approach violates the good old rules about "separation of concerns". Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that's handling the current view, it won't cause any maintenance difficulty. In fact, there are several benefits in using `v-on`:
+Դուք հնարավոր է որ մտահոգված կլինեք որ այս ամբողջ event լսելու մոտեցումները խախտում են հին լավ կաննոները «մտահոգությունների տարանջատումների» մասին։ Մնացացծում վստահ եղեք - քանի որ Vue-ի handler ֆունկցիաները և արտահայտությունները խստորեն կապված են ViewModel-ին որը կառավարում է ընտացիկ տեսքը, այն չի առաջացնի որև պահպանման դժվարություններ։ Ավելին, կան մի քանի առավելություններ `v-on`—ի օգտագործելու մեջ․
 
-1. It's easier to locate the handler function implementations within your JS code by skimming the HTML template.
+1. Ավելի հեշտ է փնտրելու handler ֆունկցիաների իրականացումները ձեր JS կոդում փոքրացնելով HTML ձևանմուշը։
 
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+2. Քանի որ դուք չպետք է ձեռքով միացնեք event-ի լսողներ JS-ում, ձեր ViewModel կոդը կարող է մաքուր տրամաբանություն լինել և DOM—ից ազատ։ Սա դարձնում է ավելի հեշտ թեստեր անելու համար։
 
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+3. Երբ ViewModel-ը ոչնչացված է, բոլոր event-ի լսողները ավտոմատ կերպով հեռացվում են։ Դուք չպետք անհանգստանաք նրանց մաքրելու մասին։
