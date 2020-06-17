@@ -1,22 +1,22 @@
 ---
-title: Filters
-type: guide
+title: Ֆիլտերներ
+type: ուղեցույց
 order: 305
 ---
 
-Vue.js allows you to define filters that can be used to apply common text formatting. Filters are usable in two places: **mustache interpolations and `v-bind` expressions** (the latter supported in 2.1.0+). Filters should be appended to the end of the JavaScript expression, denoted by the "pipe" symbol:
+Vue.js-ը թույլ է տալիս ձեզ հայտարարել ֆիլտերներ որոնք կարող են օգտագործվել որպեսզի կիրառեն սովորական տեքստի ձևաչափում։ Ֆիլտերները կարելի է օգտագործել երկու տեղերում ․ **ձևավոր փակագծերով և `v-bind` արտահայտություններում** (երկուսնել հասանելի են 2.0.0+ տարբերակներում)։ Ֆիլտերները պետք է կցվեն JavaScript-ի արտահայտության վերջում, նշված «խողովակի» նշանով (|).
 
-``` html
-<!-- in mustaches -->
+```html
+<!-- ձևավոր փակագծերում -->
 {{ message | capitalize }}
 
-<!-- in v-bind -->
+<!-- v-bind-ում -->
 <div v-bind:id="rawId | formatId"></div>
 ```
 
-You can define local filters in a component's options:
+Դուք կարող եք հայտարարել լոկալ ֆիլտերներ կոմպոնենտի ընտրանքներում․
 
-``` js
+```js
 filters: {
   capitalize: function (value) {
     if (!value) return ''
@@ -26,25 +26,26 @@ filters: {
 }
 ```
 
-or define a filter globally before creating the Vue instance:
+կամ հայտարարեք ֆիլտեր գլոբալ կերպով նախքան Vue instance-ի ստեղծումը․
 
-``` js
-Vue.filter('capitalize', function (value) {
-  if (!value) return ''
-  value = value.toString()
-  return value.charAt(0).toUpperCase() + value.slice(1)
-})
+```js
+Vue.filter("capitalize", function (value) {
+  if (!value) return "";
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+});
 
 new Vue({
   // ...
-})
+});
 ```
 
-When the global filter has the same name as the local filter, the local filter will be preferred.
+Երբ գլոբալ ֆիլտերը ունի նույն անունը որպես լոկալ ֆիլտեր, լոկալ ֆիլտերը կնշվի։
 
-Below is an example of our `capitalize` filter being used:
+Ներքևում օրինակ է մեր `capitalize` ֆիլտերի օգտագործման համար․
 
 {% raw %}
+
 <div id="example_1" class="demo">
   <input type="text" v-model="message">
   <p>{{ message | capitalize }}</p>
@@ -68,20 +69,20 @@ Below is an example of our `capitalize` filter being used:
 </script>
 {% endraw %}
 
-The filter's function always receives the expression's value (the result of the former chain) as its first argument. In the above example, the `capitalize` filter function will receive the value of `message` as its argument.
+Ֆիլտերի ֆունկցիան միշտ ստանում է արտահայտության արժեքը (նախկինում գրված շղթային արդյունքը) որպես իր առաջին արգումենտ։ Վերևի օրինակում, `capitalize` ֆիլտեր ֆունկցիան կստանա `message`-ի արժեքը որպես արգումենտ։
 
-Filters can be chained:
+Ֆիլտերները կարող են շղթայվել․
 
-``` html
+```html
 {{ message | filterA | filterB }}
 ```
 
-In this case, `filterA`, defined with a single argument, will receive the value of `message`, and then the `filterB` function will be called with the result of `filterA` passed into `filterB`'s single argument.
+Այս դեպքում, `filterA`-ն, որը հայտարարված է մեկ արգումենտով, կստանա `message`-ի արժեքը, և անյուհետև `filterB` ֆունկցիան կկանչվի `filterA`-ի արժեքով փոխանցված `filterB`-ի մեկ արգումենտում։
 
-Filters are JavaScript functions, therefore they can take arguments:
+Ֆիլտերները JavaScript ֆունկցիաներ են, որից դատելով նրանք կարող են ստանալ արգումենտներ․
 
-``` html
+```html
 {{ message | filterA('arg1', arg2) }}
 ```
 
-Here `filterA` is defined as a function taking three arguments. The value of `message` will be passed into the first argument. The plain string `'arg1'` will be passed into the `filterA` as its second argument, and the value of expression `arg2` will be evaluated and passed in as the third argument.
+Այստեղ `filterA`-ն հայտարարված է որպես ֆունկցիան ստանալով երեք արգումենտներ։ `message`-ի արժեքը կփոխանցվի առաջին արգումենտին։ Պարզ string ՝«arg1»`-ը կփոխանցվի`filterA`-ին որպես իր երկրորդ արգումենտ, և`arg` արտահայտության արժեքը կհաշվարկվի և կփոխանցվի որպես երորդ արգումենտ։
