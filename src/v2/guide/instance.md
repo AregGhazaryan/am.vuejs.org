@@ -150,4 +150,4 @@ new Vue({
 
 Ներքևում դիագրամն է instance-ի lifecycle-ի։ Կարիք չկա մանրամասն հասկանալու այն ինչ կատարվում է նկարում, բայց ինչքան կառուցեք կամ սովորեք, այն կլինի օգտակար ռեսուրս։
 
-![The Vue Instance Lifecycle](/images/lifecycle.png)
+![Vue Instance-ի Lifecycle-ը](/images/lifecycle.png)
