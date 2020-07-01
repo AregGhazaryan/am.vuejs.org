@@ -1,15 +1,15 @@
 ---
-title: List Rendering
-type: guide
+title: Ցուցակների Rendering
+type: ուղեցույց
 order: 8
 ---
 
-<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-loops?friend=vuejs" target="_blank" rel="sponsored noopener" title="Learn how to render lists on Vue School">Learn how to render list with a free Vue School lesson</a></div>
+<div class="vueschool"><a href="https://vueschool.io/lessons/vuejs-loops?friend=vuejs" target="_blank" rel="sponsored noopener" title="Սովորեք թե ինչպես render անել ցուցակներ Vue School-ում">Սովորեք թե ինչպես render անել ցուցակներ անվճար Vue School-ի դասում</a></div>
 
 
-## Mapping an Array to Elements with `v-for`
+## Map-անելով Զանգվածը դեպի Էլեմենտներ `v-for`-ի շնորհիվ
 
-We can use the `v-for` directive to render a list of items based on an array. The `v-for` directive requires a special syntax in the form of `item in items`, where `items` is the source data array and `item` is an **alias** for the array element being iterated on:
+Մենք կարող ենք օգտագործել `v-for` ուղղորդիչը որպեսզի render անենք ցուցակ կախված զանգվածից։ `v-for` ուղղորդիչը պահանջում է հատուկ գրելաձև հետևյալ ձևով `item in items`, որտեղ `items`-ը հիմնական տվյալների զանգվածն է և `item` որպես **ծածկանուն** զանգվածի էլեմենտի համար,
 
 ``` html
 <ul id="example-1">
@@ -31,7 +31,7 @@ var example1 = new Vue({
 })
 ```
 
-Result:
+Արդյունքում:
 
 {% raw %}
 <ul id="example-1" class="demo">
@@ -52,7 +52,7 @@ var example1 = new Vue({
 </script>
 {% endraw %}
 
-Inside `v-for` blocks we have full access to parent scope properties. `v-for` also supports an optional second argument for the index of the current item.
+`v-for`-ի մեջի բլոկներում մենք ունենք մուտք գործելու հնարավորություն դեպի ծնողի scope-ի հատկություններ։ `v-for`—ը նաև ունի երկրորդ արգումենտ որը կարող է լրացվել ըստ ցանկությամբ, այն վերադարձնում ինդեքսը ընթացող էլեմենտի։
 
 ``` html
 <ul id="example-2">
@@ -66,7 +66,7 @@ Inside `v-for` blocks we have full access to parent scope properties. `v-for` al
 var example2 = new Vue({
   el: '#example-2',
   data: {
-    parentMessage: 'Parent',
+    parentMessage: 'Ծնող',
     items: [
       { message: 'Foo' },
       { message: 'Bar' }
@@ -75,7 +75,7 @@ var example2 = new Vue({
 })
 ```
 
-Result:
+Արդյունքում․
 
 {% raw%}
 <ul id="example-2" class="demo">
@@ -87,7 +87,7 @@ Result:
 var example2 = new Vue({
   el: '#example-2',
   data: {
-    parentMessage: 'Parent',
+    parentMessage: 'Ծնող',
     items: [
       { message: 'Foo' },
       { message: 'Bar' }
@@ -97,15 +97,15 @@ var example2 = new Vue({
 </script>
 {% endraw %}
 
-You can also use `of` as the delimiter instead of `in`, so that it is closer to JavaScript's syntax for iterators:
+Դուք կարող եք նաև օգտագործել `of` որպես սահմանափակիչ `in`-ի փոխարեն, այնպես որ այն մոտիկ կլինի JavaScript-ի գրելաձևին ընթացողների համար․
 
 ``` html
 <div v-for="item of items"></div>
 ```
 
-## `v-for` with an Object
+## `v-for`-ը Օբյեկտի հետ
 
-You can also use `v-for` to iterate through the properties of an object.
+Դուք նաև կարող եք օգտագործել `v-for`-ը որպեսզի ընթանաք օբյեկտի հատկությունների միջով։
 
 ``` html
 <ul id="v-for-object" class="demo">
@@ -120,8 +120,8 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
-      title: 'How to do lists in Vue',
-      author: 'Jane Doe',
+      title: 'ԻՆչպես ստեղծել ցանկեր Vue-ում',
+      author: 'Պողոս Պետրոսյան',
       publishedAt: '2016-04-10'
     }
   }
@@ -141,8 +141,8 @@ new Vue({
   el: '#v-for-object',
   data: {
     object: {
-      title: 'How to do lists in Vue',
-      author: 'Jane Doe',
+      title: 'ԻՆչպես ստեղծել ցանկեր Vue-ում',
+      author: 'Պողոս Պետրոսյան',
       publishedAt: '2016-04-10'
     }
   }
@@ -150,7 +150,7 @@ new Vue({
 </script>
 {% endraw %}
 
-You can also provide a second argument for the property's name (a.k.a. key):
+Դուք նաև կարող եք տրամադրել երկրորդ արգումենտը հատկության անվան համար (հայտնի է նաև որպես բանալի)․
 
 ``` html
 <div v-for="(value, name) in object">
@@ -169,8 +169,8 @@ new Vue({
   el: '#v-for-object-value-name',
   data: {
     object: {
-      title: 'How to do lists in Vue',
-      author: 'Jane Doe',
+      title: 'ԻՆչպես ստեղծել ցանկեր Vue-ում',
+      author: 'Պողոս Պետրոսյան',
       publishedAt: '2016-04-10'
     }
   }
@@ -178,7 +178,7 @@ new Vue({
 </script>
 {% endraw %}
 
-And another for the index:
+ԵՎ ևս մեկը ինդեքսի համար․
 
 ``` html
 <div v-for="(value, name, index) in object">
@@ -197,8 +197,8 @@ new Vue({
   el: '#v-for-object-value-name-index',
   data: {
     object: {
-      title: 'How to do lists in Vue',
-      author: 'Jane Doe',
+      title: 'ԻՆչպես ստեղծել ցանկեր Vue-ում',
+      author: 'Պողոս Պետրոսյան',
       publishedAt: '2016-04-10'
     }
   }
@@ -206,35 +206,35 @@ new Vue({
 </script>
 {% endraw %}
 
-<p class="tip">When iterating over an object, the order is based on the enumeration order of `Object.keys()`, which is **not** guaranteed to be consistent across JavaScript engine implementations.</p>
+<p class="tip">Երբ օբյեկտի միջով ենք ընթանում, հերթականությունը կախված է `Object.keys()`-ի հաշվարկված հերթականությանը, որը երաշխավորված **չէ** որ հետևողական է JavaScript engine-ի տեղադրումներում։</p>
 
-## Maintaining State
+## Վիճակի Պահպանումը
 
-When Vue is updating a list of elements rendered with `v-for`, by default it uses an "in-place patch" strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index. This is similar to the behavior of `track-by="$index"` in Vue 1.x.
+Երբ Vue—ն թարմացնում է էլեմենտների ցանկը որոնք render են եղել `v-for`-ի շնորհիվ, հիմնականում այն օգտագործում է «տեղում լուծելու» ստրատեգիա։ Եթե հերթականությունը տվյալների փոփոխվել է, ի փոխարեն շարժելով DOM-ի էլեմենտները որպեսզի համապատասխանեն տվյալների էլեմենտների հետ, Vue-ն կուղղի ամեն էլեմենտը հենց տեղում և կհամոզվի թե ինչ պետք է render լինի այդ ինդեքսում։ Սա նման է `track-by="$index"`-ին որը Vue 1.x.-ի մեջ էր։
 
-This default mode is efficient, but **only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)**.
+Այս հիմանական ռեժիմը արդյունավետ է, բայց **միայն հարմար է ձեր ցուցակների render-ի output-ը չի կախված ժառանգող կոմպոնենտի state-ից կամ ժամանակավոր DOM state-ից (օրինակ form-ի մուտքագրված արժեքները)**։
 
-To give Vue a hint so that it can track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item:
+Որպեսզի տալ Vue-ին հուշում որ այն կարողնա հետևի ամեն node-ի ինքնությանը, և դատելով դրանից վերօգտագործելով և վերադասավորով էլեմենտները, դուք պետք է տրամադրեք հատուկ `key` ատրիբուտ ամեն էլեմենտի համար․
 
 ``` html
 <div v-for="item in items" v-bind:key="item.id">
-  <!-- content -->
+  <!-- բովանդակություն -->
 </div>
 ```
 
-It is recommended to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
+Խորհուրդ է տրվում տրամադրել `key` ատրիբուտ `v-for`—ի հետ երբ հնարավոր է, բացառությամբ եթե ընթացվող DOM-ի բովանդակությունը պարզ է, կամ դուք դիտավորյալ հենվել եք հիմնական behavior-ի համար peformance—ի զարգացման համար։
 
-Since it's a generic mechanism for Vue to identify nodes, the `key` also has other uses that are not specifically tied to `v-for`, as we will see later in the guide.
+Մինչ այն սովորական մեխանիզմ է Vue-ի համար որպեսզի այն ճանաչի node-երը, `key`-ն նաև ունի ուրիշ կիրառումները որոնք կոնկրետ կապված չեն `v-for`—ի հետ, մենք կնայենք դրանք ավելի ուշ ուղեցույցի մեջ։
 
-<p class="tip">Don't use non-primitive values like objects and arrays as `v-for` keys. Use string or numeric values instead.</p>
+<p class="tip">Չօգտագործեք ոչ-հասարակ արժեքներ ինչպիսին են օբյեկտները և զանգվածները որպես `v-for`-ի key-եր։ Օգտագործեք string կամ թվային արժեքներ փոխարենը։</p>
 
-For detailed usage of the `key` attribute, please see the [`key` API documentation](https://vuejs.org/v2/api/#key).
+Ավելի մանրամասնը `key` ատրիբուտի օգտագործման համար, կարող եք նայել այս [`key` API փաստաթղթերը](https://vuejs.org/v2/api/#key)։
 
-## Array Change Detection
+## Զանգվածի Փոփոխման Հայտնաբերումը
 
-### Mutation Methods
+### Մուտացիայի Մեթոդները
 
-Vue wraps an observed array's mutation methods so they will also trigger view updates. The wrapped methods are:
+Vue-ն փաթաթվում է դիտարկված զանգվածի մուտացիայի մեթոդները որ նրանք նաև արձակեն տեսքի թարմացումներ։ Փաթաթված մեթոդները հետևյալն են․
 
 - `push()`
 - `pop()`
@@ -244,11 +244,11 @@ Vue wraps an observed array's mutation methods so they will also trigger view up
 - `sort()`
 - `reverse()`
 
-You can open the console and play with the previous examples' `items` array by calling their mutation methods. For example: `example1.items.push({ message: 'Baz' })`.
+Դւո կարող եք բացել console—ը և խաղալ նախորդ օրինակների հետ՝ `items`-ը զանգվածը կանչելով նրանց մուտացիայի մեթոդները։ Օրինակի համար․ `example1.items.push({ message: 'Baz' })`:
 
-### Replacing an Array
+### Զանգվածի Փոխանակումը
 
-Mutation methods, as the name suggests, mutate the original array they are called on. In comparison, there are also non-mutating methods, e.g. `filter()`, `concat()` and `slice()`, which do not mutate the original array but **always return a new array**. When working with non-mutating methods, you can replace the old array with the new one:
+Մուտացիայի մեթոդները, ինչպես անունն է հուշում, մուտացիայի են ենթարկում սկզբնական զանգվածը որի վրա նրանք կանչվել են։ Համեմատաբար, կան նաև ոչ-մուտացիոն մեթոդներ, օրինակ՝ `filter()`, `concat()` և `slice()`, որոնք մուտացիայի չեն ենթարկում սկզբնական զանգվածը բայց **միշտ վերադարձնում են նոր զանգված**։ Երբ աշխատում եք ոչ-մուտացիոն մեթոդներով, դուք կարող եք փոխարինել հին զանգվածները նորով․
 
 ``` js
 example1.items = example1.items.filter(function (item) {
@@ -256,17 +256,17 @@ example1.items = example1.items.filter(function (item) {
 })
 ```
 
-You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
+Դուք հնարավոր է որ կմտածեք որ դրա պատճառով Vue-ն կչեղարկի արդեն գոյություն ունեցող DOM և re-render կանի ամբողջ ցանկը - բարեբախտորեն, սա այդ դեպքը չէ։ Vue-ն ներառում է որոշ հաշվարկներ որպեսզի դարձնի DOM էլեմենտի մաքսիմալ վերօգտագործելի, այնպես որ փոխարինելով զանգվածը մեկ այլ զանգվածով որը պարունակում է համընկնող օբյեկտներ շատ արդյունավետ գործողություն է։
 
-### Caveats
+### Զգուշացումներ
 
-Due to limitations in JavaScript, there are types of changes that Vue **cannot detect** with arrays and objects. These are discussed in the [reactivity](reactivity.html#Change-Detection-Caveats) section.
+JavaScript-ի սահմանափակումների պատճառով, կան տիպերի փոփոխություններ որոնք Vue-ն **չի կարող նկատել** զանգվածների և օբյեկտների հետ։ Այս դեպքերը քննարկվում են [ռեակտիվության](reactivity.html#Change-Detection-Caveats) բաժնում։
 
-## Displaying Filtered/Sorted Results
+## Ֆիլտրված/Դասավորված Արդյունքների Ցուցադրումը
 
-Sometimes we want to display a filtered or sorted version of an array without actually mutating or resetting the original data. In this case, you can create a computed property that returns the filtered or sorted array.
+Երբեմն մենք ցանկանում ենք ցուցադրել ֆիլտրված կամ դասավորված տարբերակը զանգվածի առանց մուտացիայի ենթարկելու կամ սկզբնական տվյալների վերականգման։ Այս դեպում, դու կարող եք ստեղծել հաշվարկված հատկություն որը վերադարձնում է ֆիլտրված կամ դասավորված զանգված։
 
-For example:
+Օրինակի համար․
 
 ``` html
 <li v-for="n in evenNumbers">{{ n }}</li>
@@ -285,7 +285,7 @@ computed: {
 }
 ```
 
-In situations where computed properties are not feasible (e.g. inside nested `v-for` loops), you can use a method:
+Որոշ դեպքերում որտեղ հաշվարկված հատկությունները հասանելի չեն (օրինակ՝ nested `v-for`-ի ցիկլերում), դուք կարող եք օգտագործել մեթոդ։
 
 ```html
 <ul v-for="set in sets">
@@ -306,9 +306,9 @@ methods: {
 }
 ```
 
-## `v-for` with a Range
+## `v-for`-ը Միջակայքով
 
-`v-for` can also take an integer. In this case it will repeat the template that many times.
+`v-for`-ը նաև կարող է ստանալ integer: Այս դեպքում այն կկրկնի ձևանմուշը բազմաթիվ անգամ։
 
 ``` html
 <div>
@@ -316,7 +316,7 @@ methods: {
 </div>
 ```
 
-Result:
+Արդյունքում․
 
 {% raw %}
 <div id="range" class="demo">
@@ -327,9 +327,9 @@ Result:
 </script>
 {% endraw %}
 
-## `v-for` on a `<template>`
+## `v-for`-ը `<template>`-ի վրա
 
-Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
+Նման լինելով ձևանմուշի  `v-if`-ին, դուք կարող եք նաև օգտագործել `<template>` tag-ը `v-for`-ի հետ որպեսզի render անել բազմաթիվ էլեմենտների բլոկը։ Օրինակի համար․
 
 ``` html
 <ul>
@@ -340,11 +340,11 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 </ul>
 ```
 
-## `v-for` with `v-if`
+## `v-for`-ը `v-if`-ի հետ
 
-<p class="tip">Note that it's **not** recommended to use `v-if` and `v-for` together. Refer to [style guide](/v2/style-guide/#Avoid-v-if-with-v-for-essential) for details.</p>
+<p class="tip">Նշում որ խորհուրդ **չի** տրվում օգտագործել `v-if`-ը և `v-for` միասին։ Դիմեք [ոճի ուղեցույցին](/v2/style-guide/#Avoid-v-if-with-v-for-essential) մանրամասների համար։</p>
 
-When they exist on the same node, `v-for` has a higher priority than `v-if`. That means the `v-if` will be run on each iteration of the loop separately. This can be useful when you want to render nodes for only _some_ items, like below:
+Երբ նրանք գոյություն ունեն նույն node-ում, `v-for` ունի ավելի բարձր կարևորություն քան `v-if`—ը։ Սա նշանակում է որ `v-if`—ը կաշխատի ամեն ցիկլի ընթացքի վրա առանձին։ Սա կարող է օգտակար լինել երբ դուք ցանկանում եք render անել node—երը միայն _որոշ_ էլեմենտների համար, ինչպես ներքևում է․
 
 ``` html
 <li v-for="todo in todos" v-if="!todo.isComplete">
@@ -352,9 +352,9 @@ When they exist on the same node, `v-for` has a higher priority than `v-if`. Tha
 </li>
 ```
 
-The above only renders the todos that are not complete.
+Վերևում գրվածը միայն render է անում todo-ները որոնք ավարտված չեն։
 
-If instead, your intent is to conditionally skip execution of the loop, you can place the `v-if` on a wrapper element (or [`<template>`](conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt)). For example:
+Եթե փոխարենը, դուք մտադրություն ունեք պայմանականորեն բաց թողնել ցիկլի կատարումը, դուք կարող եք տեղադրել `v-if` փաթաթվող էլէմենտի վրա (կամ [`<template>`](conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt)-ի վրա)։ Օրինակի համար․
 
 ``` html
 <ul v-if="todos.length">
@@ -365,19 +365,19 @@ If instead, your intent is to conditionally skip execution of the loop, you can 
 <p v-else>No todos left!</p>
 ```
 
-## `v-for` with a Component
+## `v-for`-ը Կոմպոնենտի հետ
 
-> This section assumes knowledge of [Components](components.html). Feel free to skip it and come back later.
+> Այս բաժինը ենթադրում է որ դուք ունեք [Կոմպոնենտների](components.html) գիտելիքներ։ Ազատ ըզգացեք բաց թողնելու այս բաժին և վերադառնալ հետո։
 
-You can directly use `v-for` on a custom component, like any normal element:
+Դուք կարող եք ուղիղ օգտագործել `v-for`-ը custom կոմպոնենտի վրա, ինչպես ցանկացած հասարակ էլեմենտ․
 
 ``` html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-> In 2.2.0+, when using `v-for` with a component, a [`key`](list.html#key) is now required.
+> 2.2.0+-ի մեջ, երբ օգտագործում ենք `v-for`-ը կոմպոնենտի հետ, [`key`](list.html#key)-ն հիմա պահանջվում է։
 
-However, this won't automatically pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:
+Սակայն, սա ավտոմատ կերպով չի փոխանցի որևէ տվյալներ կոմպոնենտին, որովհետև կոմպոնենտները ունեն մեկուսացված scope-եր։ Որպեսզի փոխանցել ընթացող տվյալները դեպի կոմպոնենտ, մենք պետք է նաև օգտագործենք prop-ները:
 
 ``` html
 <my-component
@@ -388,9 +388,9 @@ However, this won't automatically pass any data to the component, because compon
 ></my-component>
 ```
 
-The reason for not automatically injecting `item` into the component is because that makes the component tightly coupled to how `v-for` works. Being explicit about where its data comes from makes the component reusable in other situations.
+Պատճառը ավտոմատ կերպով չներարկելու `item`-ը դեպի կոմպոնենտ որովհետև դա դարձնում է կոմպոնենտը սերտորեն զուգորդվում է թե ինչպես է `v-for`-ը աշխատում։ Լինելով բացահայտ թե որտեղից է իր տվյալները գալիս դաչձնում է կոմպոնենտը վերօգտագործելի այլ դեպքերում։
 
-Here's a complete example of a simple todo list:
+Այստեղ է ամբողջ օրինակը հասարակ todo ցանկի համար․
 
 ``` html
 <div id="todo-list-example">
@@ -415,7 +415,7 @@ Here's a complete example of a simple todo list:
 </div>
 ```
 
-<p class="tip">Note the `is="todo-item"` attribute. This is necessary in DOM templates, because only an `<li>` element is valid inside a `<ul>`. It does the same thing as `<todo-item>`, but works around a potential browser parsing error. See [DOM Template Parsing Caveats](components.html#DOM-Template-Parsing-Caveats) to learn more.</p>
+<p class="tip">Նշեք `is="todo-item"` ատրիբուտը։ Սա հարկավոր է DOM ձևանմուշներում, որովհետև միայն `<li>` էլեմենտն է վալիդ `<ul>`-ի ներսում։ Այն նույնն է ինչ `<todo-item>`-ը, բայց աշխատում է պոտենցիալ բրաուզերի parsing error-ի հետ։ Նայեք [DOM Ձևանմուշի Parsing-ի Զգուշացումները](components.html#DOM-Template-Parsing-Caveats) որպեսզի իմանալ ավելին։</p>
 
 ``` js
 Vue.component('todo-item', {
