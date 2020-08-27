@@ -1087,76 +1087,75 @@ function pluralizeKnife (count) {
 
 ### Երկուղի Ֆիլտերներ <sup>փոխարինված</sup>
 
-Որոշ օգտագործողներ վայելել են երկուղի ֆիլտերները `v-model`-ի հետ որպեսզի ստեղծել հետաքրքիր մուտքագրումներ ավելի քիչ կոդով։ Երբ _թվում է_ որ ավելի պարզ է, երկուղի ֆիլտերները կարող են նաև թաքցնել շատ մեծ բարդություն - և նույնիսկ
-Some users have enjoyed using two-way filters with `v-model` to create interesting inputs with very little code. While _seemingly_ simple however, two-way filters can also hide a great deal of complexity - and even encourage poor UX by delaying state updates. Instead, components wrapping an input are recommended as a more explicit and feature-rich way of creating custom inputs.
+Որոշ օգտագործողներ վայելել են երկուղի ֆիլտերները `v-model`-ի հետ որպեսզի ստեղծել հետաքրքիր մուտքագրումներ ավելի քիչ կոդով։ Երբ _թվում է_ որ ավելի պարզ է, երկուղի ֆիլտերները կարող են նաև թաքցնել շատ մեծ բարդություն - և նույնիսկ խրախուսել վատ UX-ը հետաձգելով state—ի թարմացումները։ Փոխարենը, կոմպոնենտները որոնք փաթաթվում են input-ի վրա խորհուրդ են տրվում որպես ավելի հստակ և հատկություններով հարուստ ուղի custom input-ներ պատրաստելու համար։
 
-As an example, we'll now walk the migration of a two-way currency filter:
+Որպես օրինակ, մենք հիմա կմանրամասնենք միգրացիան երկուղի արժույթի ֆիլտրների համար․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-10-two-way-currency-filter?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-It mostly works well, but the delayed state updates can cause strange behavior. For example, try entering `9.999` into one of those inputs. When the input loses focus, its value will update to `$10.00`. When looking at the calculated total however, you'll see that `9.999` is what's stored in our data. The version of reality that the user sees is out of sync!
+Հաճախ այն աշխատում է լավ, բայց հետաձգված state—ի թարմացումները կարող են հանգեցնել տարօրինակ արդյունքների։ Օրինակի համար, մուտքագրելով `9.999` ձեր input-ներից որևէ մեկի մեջ։ Երբ input-ը կորցնում է focus-ը, նրա արժեքը կթարմացվի դեպի `$10.00`։ Երբ նայում ենք ընդհանուր հաշվարկված արժեքին, դուք կտեսնեք որ `9.999`-ը դա այն է ինչ պահպանված է մեր տվյալներում։ Տարբերակը որը օգտագործողը տեսնում է սինխռոնիզացված չէ։
 
-To start transitioning towards a more robust solution using Vue 2.0, let's first wrap this filter in a new `<currency-input>` component:
+Որպեսզի սկսել շարժվել դեպի ավելի ամուր լուծման օգտագործելով Vue 2.0-ը, եկեք փաթաթենք այս ֆիլտերը նոր `<currency-input>` կոմպոնենտում․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-10-two-way-currency-filter-v2?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-This allows us add behavior that a filter alone couldn't encapsulate, such as selecting the content of an input on focus. Now the next step will be to extract the business logic from the filter. Below, we pull everything out into an external [`currencyValidator` object](https://gist.github.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e):
+Սա թույլ է տալիս մեզ ավելացնել փոփոխություն առանց որի ֆիլտերը չի կարող մեկուսացնել, ինչպիսին է բովանդակության նշումը երբ input-ը focus է լինում։ Հիմա հաջորդ քայլը կլինի բիզնեսի տրամաբանության առանձնացումը ֆիլտերից։ Ներքևում, մենք կտանենք ամենինչ դեպի արտաքին [`currencyValidator` օբյեկտ](https://gist.github.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e)․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-10-two-way-currency-filter-v3?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-This increased modularity not only makes it easier to migrate to Vue 2, but also allows currency parsing and formatting to be:
+Այս զարգացված մոդուլարությունը ոչ միայն դարձնում է ավելի հեշտ դեպի Vue 2 միգրացիային պրոցեսը, բայց նաև թույլ է տալիս մեզ որպեսզի արժույթի parse-ը և format-ը լինել․
 
-- unit tested in isolation from your Vue code
-- used by other parts of your application, such as to validate the payload to an API endpoint
+- unit թեստված մեկուսացման մեջ առանձին ձեր Vue կոդից
+- օգտագործվել այլ մասերի կողմից որոնք գտնվում են ձեր ծրագրում, ինչպիսին է payload-ի վավերացումը և ստացված API—ի վերջնակետից։
 
-Having this validator extracted out, we've also more comfortably built it up into a more robust solution. The state quirks have been eliminated and it's actually impossible for users to enter anything wrong, similar to what the browser's native number input tries to do.
+Ունենալով այս validator-ը առանձնացված վիճակում, մենք նաև կարող ենք ավելի հարմարավետ կերպով զարգացնել այն դեպի ավելի կայուն լուծման։ State-ի մասնիկները հեռացվել են և անհնարին է որ օգտագործողները մուտքագրել որևէ սխալ բան, նման լինելով բրաուզերի ներքին number input-ին։
 
-We're still limited however, by filters and by Vue 1.0 in general, so let's complete the upgrade to Vue 2.0:
+Մենք սակայն դեռ սահմանափակված են, ֆիլտերներով և Vue 1.0-ով հիմնականում, այնպես որ եկեք ավարտենք դեպի Vue 2.0—ի զարգացումը․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-two-way-currency-filter?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-You may notice that:
+Դուք հնարավոր է որ կնկատեք․
 
-- Every aspect of our input is more explicit, using lifecycle hooks and DOM events in place of the hidden behavior of two-way filters.
-- We can now use `v-model` directly on our custom inputs, which is not only more consistent with normal inputs, but also means our component is Vuex-friendly.
-- Since we're no longer using filter options that require a value to be returned, our currency work could actually be done asynchronously. That means if we had a lot of apps that had to work with currencies, we could easily refactor this logic into a shared microservice.
-
-{% raw %}
-<div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of filters used in directives like <code>v-model</code>. If you miss any, you should also see <strong>console errors</strong>.</p>
-</div>
-{% endraw %}
-
-## Slots
-
-### Duplicate Slots <sup>removed</sup>
-
-It is no longer supported to have `<slot>`s with the same name in the same template. When a slot is rendered it is "used up" and cannot be rendered elsewhere in the same render tree. If you must render the same content in multiple places, pass that content as a prop.
+- Ամեն մասը մեր input-ի ավելի հստակ է, օգտագործելով lifecycle hook-երը և DOM event-ները որտեղ նրա երկուղի ֆիլտերները թաքցված են։
+- Մենք հիմ կարող ենք օգտագործել `v-model`-ը ուղիղ մեր custom input-ներում, որը ոչ միայն ավելի հարմարավետ է հասարակ input—ների հետ, բայց նաև նշանակում է որ մեր կոմպոնենտը Vuex-ի հետ համատեղելի է։
+- Մինչ մենք այլևս չենք կարող օգտագործել ֆիլտերի ընտրանքները որոնք պահանջում են որպեսզի արժեք վերադարձվի, մեր արժույթի աշխատանքը կարող է կատարվել ասինխռոն։ Դա նշանակում է եթե մենք ունենաինք շատ ծրագրեր որոնք պետք է աշխատեն արժույթների հետ, մենք կարող ենք հեշտորեն ռեֆակտոր անել այս տրամաբանությունը դեպի բաժանված միկրոսերվիզ։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run your end-to-end test suite or app after upgrading and look for <strong>console warnings</strong> about duplicate slots <code>v-model</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ ֆիլտրների որոնք օգտագործվում են ուղղորդիչներում ինչպիսին է <code>v-model</code>-ը։ Եթե դուք բաց թողնեք որևէ մեկը, դուք պետք է նաև նայեք <strong>console-ի error-ները</strong>։</p>
 </div>
 {% endraw %}
 
-### `slot` Attribute Styling <sup>removed</sup>
+## Սլոտներ
 
-Content inserted via named `<slot>` no longer preserves the `slot` attribute. Use a wrapper element to style them, or for advanced use cases, modify the inserted content programmatically using [render functions](render-function.html).
+### Կրկնօրինակված Սլոտները <sup>ջնջված են</sup>
+
+Այլևս հասանելի չէ ունենալ `<slot>`-ներ նույն անունով նույն ձևանմուշի մեջ։ Երբ սլոտը render է լինում այն «օգտագործվում է» և չի կարող render լինել որևէ այլ տեղ նույն render-ի ծառի մեջ։ Եթե դուք պետք է render անեք նույն բովանդակությունը միքանի տեղում, փոխանցեք բովանդակությունը որպես prop:
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find CSS selectors targeting named slots (e.g. <code>[slot="my-slot-name"]</code>).</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Թարմացնելուց հետո աշխատացրեք ձեր end-to-end թեստերը կամ ծրագիրը և ուշադիր եղեք <strong>console-ի նախազգուշացումների համար</strong> որոնք վերաբերվում են կրկնօրինակված սլոտներին <code>v-model</code>-ում։</p>
 </div>
 {% endraw %}
 
-## Special Attributes
+### `slot` Ատրիբուտի Styling-ը <sup>ջնջված է</sup>
 
-### `keep-alive` Attribute <sup>replaced</sup>
+Բովանդակությունը որը տեղադրվել է անվանված `<slot>` այլևս չի պահպանում `slot` ատրիբուտը, Օգտագործեք փաթաթող էլեմենտ որպեսզի ոճավորել այն, կամ ավելի զարգացված օգտագործման համար, փոփոխեք տեղադրված բովանդակությունը ծրագրային կերպով օգտագործելով [render ֆունկցիաները](render-function.html):
 
-`keep-alive` is no longer a special attribute, but rather a wrapper component, similar to `<transition>`. For example:
+{% raw %}
+<div class="upgrade-path">
+  <h4>Թարմացման ուղ</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել CSS selector-ները ուղված դեպի սլոտներին (օրինակ՝ <code>[slot="my-slot-name"]</code>)։</p>
+</div>
+{% endraw %}
+
+## Հատուկ ատրիբուտներ
+
+### `keep-alive` Ատրիբուտը <sup>փոխարինված է</sup>
+
+`keep-alive`-ը այլևս հատուկ ատրիբուտ չէ, փոխարենը փաթաթվող կոմպոնենտ, նման լինելով `<transition>`-ին։ Օրինակի համար՝
 
 ``` html
 <keep-alive>
@@ -1164,7 +1163,7 @@ Content inserted via named `<slot>` no longer preserves the `slot` attribute. Us
 </keep-alive>
 ```
 
-This makes it possible to use `<keep-alive>` on multiple conditional children:
+Սա մեզ հնարավորություն է տալիս օգտագործել `<keep-alive>` մի քանի պայմանական ժառանգողների վրա․
 
 ``` html
 <keep-alive>
@@ -1173,9 +1172,9 @@ This makes it possible to use `<keep-alive>` on multiple conditional children:
 </keep-alive>
 ```
 
-<p class="tip">When `<keep-alive>` has multiple children, they should eventually evaluate to a single child. Any child other than the first one will be ignored.</p>
+<p class="tip">Երբ `<keep-alive>`-ը ունի մի քանի ժառանգող, նրանք ի վերջո հաշվարկվում են դեպի մեկ ժառանգողի։ Ցանկացած ժանագող բացի առաջինից կանտեսվի։</p>
 
-When used together with `<transition>`, make sure to nest it inside:
+Երբ օգտագործվում է `<transition>`-ի հետ, համոզվեք որ այն nest է եղած իր ներքում․
 
 ``` html
 <transition>
@@ -1187,28 +1186,29 @@ When used together with `<transition>`, make sure to nest it inside:
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find <code>keep-alive</code> attributes.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզսի փնտրել օրինակներ <code>keep-alive</code> ատրիբուտների վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Interpolation
+## Ինտերպոլացիա
 
-### Interpolation within Attributes <sup>removed</sup>
+### Ինտերպոլացիա Ատրիբուտներում <sup>ջնջված է</sup>
 
-Interpolation within attributes is no longer valid. For example:
+Ինտերպոլացիան ատրիբուտներում այլևս վավեր չէ։ Օրինակի համար․
 
 ``` html
 <button class="btn btn-{{ size }}"></button>
 ```
 
+Պետք է կամ թարմացվի որպեսզի օգտագործի inline արտահայտություն
 Should either be updated to use an inline expression:
 
 ``` html
 <button v-bind:class="'btn btn-' + size"></button>
 ```
 
-Or a data/computed property:
+Կամ պետք է լինի տվյալ/հաշվարկված հատկություն․
 
 ``` html
 <button v-bind:class="buttonClasses"></button>
@@ -1224,84 +1224,84 @@ computed: {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of interpolation used within attributes.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ ինտերպոլացիայի որը օգտագործվել է ատրիբուտներում։</p>
 </div>
 {% endraw %}
 
-### HTML Interpolation <sup>removed</sup>
+### HTML Ինտերպոլացիա <sup>ջնջված է</sup>
 
-HTML interpolations (`{% raw %}{{{ foo }}}{% endraw %}`) have been removed in favor of the [`v-html` directive](../api/#v-html).
+HTML ինտերպոլացիա (`{% raw %}{{{ foo }}}{% endraw %}`) ջնջվել է ի օգուտ [`v-html` ուղղորդիչի](../api/#v-html).
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find HTML interpolations.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ HTML ինտերպոլացիաների վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### One-Time Bindings <sup>replaced</sup>
+### Մեկ Անգամյա Կապումները <sup>փոխարինվել է</sup>
 
-One time bindings (`{% raw %}{{* foo }}{% endraw %}`) have been replaced by the new [`v-once` directive](../api/#v-once).
+Մեկ անգամյա կապուները (`{% raw %}{{* foo }}{% endraw %}`) փոխարինվել են նոր [`v-once` ուղղորդիչով](../api/#v-once)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find one-time bindings.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել մեկ անգամյա կապումները։</p>
 </div>
 {% endraw %}
 
-## Reactivity
+## Ռեակտիվություն
 
-### `vm.$watch` <sup>changed</sup>
+### `vm.$watch` <sup>փոփոխվել է</sup>
 
-Watchers created via `vm.$watch` are now fired before the associated component rerenders. This gives you the chance to further update state before the component rerender, thus avoiding unnecessary updates. For example, you can watch a component prop and update the component's own data when the prop changes.
+Watcher-ները ստեղծված `vm.$watch`-ի կողմի հիմա արձակվում են նախքան կապված կոմպոնենտի վերամատուցումը։ Սա տալիս է ձեր հնարավորություն որպեսզի հավելյալ վիճակի թարմացումներ իրականացնել նախքան կոմպոնենտի վերամատուցումը, որի շնորհիվ դուք կարող եք խուսափել անիմաստ թարմացումներից։ Օրինակի համար, դուք կարող եք watch անել կոմպոնենտի prop-ը և թարմացնել կոմպոնենտի տվյլաները երբ prop-ը փոփոխվում է։
 
-If you were previously relying on `vm.$watch` to do something with the DOM after a component updates, you can instead do so in the `updated` lifecycle hook.
+Եթե դուք նախկինում օգտագործում էիք `vm.$watch`-ը որպեսզի ինչ որ մի բան անել DOM—ի հետ երբ կոմպոնենտը թարմացվում էր, դուք կարող էք փոխարենը անել այն `updated` lifecycle hook-ում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run your end-to-end test suite, if you have one. The <strong>failed tests</strong> should alert to you to the fact that a watcher was relying on the old behavior.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք ձեր end-to-end թեստերը եթե ունեք։ <strong>ձախողված թետերը</strong> պետք է զգուշացնեն ձեր որ watcher—ը կախված էր հին behavior-ին։</p>
 </div>
 {% endraw %}
 
-### `vm.$set` <sup>changed</sup>
+### `vm.$set` <sup>փոփոխվել է</sup>
 
-`vm.$set` is now an alias for [`Vue.set`](../api/#Vue-set).
+`vm.$set` հիմա այլ անուն է [`Vue.set`-ի համար](../api/#Vue-set)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the obsolete usage.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ անվավեր օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `vm.$delete` <sup>changed</sup>
+### `vm.$delete` <sup>փոփոխվել է</sup>
 
-`vm.$delete` is now an alias for [`Vue.delete`](../api/#Vue-delete).
+`vm.$delete`-ը հիմա այլ անուն է [`Vue.delete`-ի համար](../api/#Vue-delete)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the obsolete usage.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայուն որպեսզի փնտրել օրինակներ անվավեր օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `Array.prototype.$set` <sup>removed</sup>
+### `Array.prototype.$set` <sup>ջնջվել է</sup>
 
-Use `Vue.set` instead.
+Փոխարենը օգտագործեք `Vue.set`-ը։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>.$set</code> on an array. If you miss any, you should see <strong>console errors</strong> from the missing method.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>.$set</code>-ի որը օգտագործվում է զանգվածի վրա։ Եթե դուք բաց թողնեք որևէ մեկը, դուք պետք է նայեք <strong>console-ի error-ները</strong> բացակայող մեթոդից։</p>
 </div>
 {% endraw %}
 
-### `Array.prototype.$remove` <sup>removed</sup>
+### `Array.prototype.$remove` <sup>ջնջվել է</sup>
 
-Use `Array.prototype.splice` instead. For example:
+Փոխարենը օգտագործեք `Array.prototype.splice`։ Օրաինակի համար․
 
 ``` js
 methods: {
@@ -1312,7 +1312,7 @@ methods: {
 }
 ```
 
-Or better yet, pass removal methods an index:
+Կամ ավելի լավ տարբերակ, փոխանցելով ջնջելու մեթոդները որպես index․
 
 ``` js
 methods: {
@@ -1324,49 +1324,49 @@ methods: {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>.$remove</code> on an array. If you miss any, you should see <strong>console errors</strong> from the missing method.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>.$remove</code>-ի որը օգտագործվում է զանգվածի վրա։ Եթե դուք բաց թողնեք որևէ մեկը, դուք պետք է նայեք <strong>console-ի error-ները</strong> բացակայող մեթոդից։</p>
 </div>
 {% endraw %}
 
-### `Vue.set` and `Vue.delete` on Vue instances <sup>removed</sup>
+### `Vue.set`-ը և `Vue.delete`-ը Vue instance-ներում <sup>ջնջվել է</sup>
 
-`Vue.set` and `Vue.delete` can no longer work on Vue instances. It is now mandatory to properly declare all top-level reactive properties in the data option. If you'd like to delete properties on a Vue instance or its `$data`, set it to null.
+`Vue.set`-ը և `Vue.delete`-ը այլևս չեն աշխատի Vue instance-ներում։ Հիմա պարտադիր է ճիշտ կերպով հայտարարել բոլոր բարձր կարգի ռեակտիվ հատկությունները data ընտրանքում։ Եթե դուք ցանկանում եք ջնջել հատկությունները Vue instance-ից կամ իր `$data`-ից, դրեք այն null:
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.set</code> or <code>Vue.delete</code> on a Vue instance. If you miss any, they'll trigger <strong>console warnings</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.set</code>-ի կամ <code>Vue.delete</code>-ի վերաբերյալ որոնք օգտագործվում են Vue-ի instance-ում։ Եթե դուք բաց թողնեք որևէ մեկը, նրանք կարձակեն <strong>console-ի նախազգուշացումներ</strong>։</p>
 </div>
 {% endraw %}
 
-### Replacing `vm.$data` <sup>removed</sup>
+### `vm.$data`-ի Փոխարինումը <sup>ջնջվել է</sup>
 
-It is now prohibited to replace a component instance's root $data. This prevents some edge cases in the reactivity system and makes the component state more predictable (especially with type-checking systems).
+Հիմա արգելվում է փոխարինել կոմպոնենտի instance-ի արմատային $data-ն։ Սա կանխում է որոշ հազվադեպ դեպքերը ռեակտիվության համակարգում և դարձնում է կոմպոնենտի վիճակը ավելի կանխատեսելի (հատկապես մուտքագրման համակարգերի հետ)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of overwriting <code>vm.$data</code>. If you miss any, <strong>console warnings</strong> will be emitted.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$data</code>-ի վերագրման վերաբերյալ։ Եթե բաց թողնեք որևէ մեկը,  <strong>console-ի նախազգուշացումներ</strong> կարձակվեն։</p>
 </div>
 {% endraw %}
 
-### `vm.$get` <sup>removed</sup>
+### `vm.$get` <sup>ջնջվել է</sup>
 
-Instead, retrieve reactive data directly.
+Փոխարենը, ուղիղ ստացեք ռեակտիվ տվյալները։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$get</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$get</code>-ի վերաբերյալ։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-## DOM-Focused Instance Methods
+## DOM-Կենտրոնացված Instance-ի Մեթոդներ
 
-### `vm.$appendTo` <sup>removed</sup>
+### `vm.$appendTo` <sup>ջնջվել է</sup>
 
-Use the native DOM API:
+Օգտագործեք ներքին DOM API-ը․
 
 {% codeblock lang:js %}
 myElement.appendChild(vm.$el)
@@ -1374,14 +1374,14 @@ myElement.appendChild(vm.$el)
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$appendTo</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$appendTo</code>-ի։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ները</strong>։</p>
 </div>
 {% endraw %}
 
-### `vm.$before` <sup>removed</sup>
+### `vm.$before` <sup>ջնջվել է</sup>
 
-Use the native DOM API:
+Օգտագործեք ներքին DOM API-ը․
 
 {% codeblock lang:js %}
 myElement.parentNode.insertBefore(vm.$el, myElement)
@@ -1389,20 +1389,20 @@ myElement.parentNode.insertBefore(vm.$el, myElement)
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$before</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$before</code>-ի օգտագործման վերաբերյալ։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-### `vm.$after` <sup>removed</sup>
+### `vm.$after` <sup>ջնջվել է</sup>
 
-Use the native DOM API:
+Օգտագործեք ներքին DOM API-ը․
 
 {% codeblock lang:js %}
 myElement.parentNode.insertBefore(vm.$el, myElement.nextSibling)
 {% endcodeblock %}
 
-Or if `myElement` is the last child:
+Կամ եթե `myElement`-ը վերջին ժառանգողն է․
 
 {% codeblock lang:js %}
 myElement.parentNode.appendChild(vm.$el)
@@ -1410,14 +1410,14 @@ myElement.parentNode.appendChild(vm.$el)
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$after</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$after</code>։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-### `vm.$remove` <sup>removed</sup>
+### `vm.$remove` <sup>ջնջվել է</sup>
 
-Use the native DOM API:
+Օգտագործեք ներքին DOM API-ը․
 
 {% codeblock lang:js %}
 vm.$el.remove()
@@ -1425,51 +1425,51 @@ vm.$el.remove()
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$remove</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$remove</code>-ի։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-## Meta Instance Methods
+## Meta Instance-ի Մեթոդները
 
-### `vm.$eval` <sup>removed</sup>
+### `vm.$eval` <sup>ջնջվել է</sup>
 
-No real use. If you do happen to rely on this feature somehow and aren't sure how to work around it, post on [the forum](https://forum.vuejs.org/) for ideas.
+Ոչ մի ռեալ օգտագործում։ Եթե դուք դեռ կախված եք այս հատկությունից և համոզված չեք թե ինչպես շրջանցեք այն, հրատարակեք խնդիրը այս [ֆորումում](https://forum.vuejs.org/) օգնության համար։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$eval</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$eval</code>-ի։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-### `vm.$interpolate` <sup>removed</sup>
+### `vm.$interpolate` <sup>ջնջվել է</sup>
 
-No real use. If you do happen to rely on this feature somehow and aren't sure how to work around it, post on [the forum](https://forum.vuejs.org/) for ideas.
+Ոչ մի ռեալ օգտագործում։ Եթե դուք դեռ կախված եք այս հատկությունից և համոզված չեք թե ինչպես շրջանցեք այն, հրատարակեք խնդիրը այս [ֆորումում](https://forum.vuejs.org/) օգնության համար։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$interpolate</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$interpolate</code>-ի։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-### `vm.$log` <sup>removed</sup>
+### `vm.$log` <sup>ջնջվել է</sup>
 
-Use the [Vue Devtools](https://github.com/vuejs/vue-devtools) for the optimal debugging experience.
+Օգտագործեք [Vue Devtools-ը](https://github.com/vuejs/vue-devtools) օպտիմալ debugging-ի համար։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>vm.$log</code>. If you miss any, you'll see <strong>console errors</strong>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>vm.$log</code>-ի։ Եթե դուք բաց թողնեք որևէ մեկը, դուք կտեսնեք <strong>console-ի error-ներ</strong>։</p>
 </div>
 {% endraw %}
 
-## Instance DOM Options
+## Instance-ի DOM Ընտրանքները
 
-### `replace: false` <sup>removed</sup>
+### `replace: false` <sup>ջնջվել է</sup>
 
-Components now always replace the element they're bound to. To simulate the behavior of `replace: false`, you can wrap your root component with an element similar to the one you're replacing. For example:
+Կոմպոնենտները հիմա միշտ փոխարինում են էլեմենտը որին նրանք կամպված են։ Որպեսզի ձևացնել `replace: false`-ի վարքը, դուք կարող եք փաթաթել ձեր արմատային կոմպոնենտը էլեմենտով որը նման կլինի այն էլեմենտին որը որ դուք ցանկանում եք փոխարինել։ Օրինակի համար․
 
 ``` js
 new Vue({
@@ -1478,7 +1478,7 @@ new Vue({
 })
 ```
 
-Or with a render function:
+Կամ render ֆունկիցայով․
 
 ``` js
 new Vue({
@@ -1495,92 +1495,92 @@ new Vue({
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>replace: false</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>replace: false</code>-ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Global Config
+## Գլոբալ Կոնֆիգուրացիա
 
-### `Vue.config.debug` <sup>removed</sup>
+### `Vue.config.debug` <sup>ջնջվել է</sup>
 
-No longer necessary, since warnings come with stack traces by default now.
+Այլևս անհրաժեշտ չէ, մինչ նախազգուշացումները գալիս են stack trace-երի հետ հանդերձ հիմնականում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.config.debug</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.config.debug</code>-ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `Vue.config.async` <sup>removed</sup>
+### `Vue.config.async` <sup>ջնջվել է</sup>
 
-Async is now required for rendering performance.
+Async-ը հիմա պահանջվում է render-ի performance—ի համար։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.config.async</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.config.async</code>-ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `Vue.config.delimiters` <sup>replaced</sup>
+### `Vue.config.delimiters` <sup>ջնջվել է</sup>
 
-This has been reworked as a [component-level option](../api/#delimiters). This allows you to use alternative delimiters within your app without breaking 3rd-party components.
+Սա վերանայվել է որպես [component-ի աստիճան ընտրանք](../api/#delimiters)։ Սա թույլ է տալիս ձեզ օգտագործել այլ դելիմետրներ ձեր ծրագրում առանց կոտրելու 3-րդ կողմի կոմպոնենտները։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.config.delimiters</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.config.delimiters</code>-ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `Vue.config.unsafeDelimiters` <sup>removed</sup>
+### `Vue.config.unsafeDelimiters` <sup>ջնջվել է</sup>
 
-HTML interpolation has been [removed in favor of `v-html`](#HTML-Interpolation-removed).
+HTML ինտերպոլացիան [ջնջվել է օգուտ `v-html`-ի](#HTML-Interpolation-removed)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.config.unsafeDelimiters</code>. After this, the helper will also find instances of HTML interpolation so that you can replace them with `v-html`.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.config.unsafeDelimiters</code>-ի վերաբերյալ։ Այնուհետև, helper-ը նաև կգտնի HTML-ի instance-ի ինտերպոլացիաներ որ դուք փոխարինեք նրանց `v-html`-ով։</p>
 </div>
 {% endraw %}
 
-## Global API
+## Գլոբալ API
 
-### `Vue.extend` with `el` <sup>removed</sup>
+### `Vue.extend`-ը `el`-ի հետ <sup>ջնջվել է</sup>
 
-The el option can no longer be used in `Vue.extend`. It's only valid as an instance creation option.
+el ընտրանքը այլևս չի կարող օգտագործվել `Vue.extend`-ում։ Այն միայն վավեր է որպես instance-ի ստեղծման ընտրանք։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run your end-to-end test suite or app after upgrading and look for <strong>console warnings</strong> about the <code>el</code> option with <code>Vue.extend</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Թարմացնելուց հետո աշխատացրեք ձեր end-to-end թեստերի հավաքածուն կամ ծրագիրը և նայեք <strong>console-ի նախազգուշացումների</strong> համար որը վերաբերվում է <code>el</code> ընտրանքի օգտագործումը <code>Vue.extend</code>-ի հանդերձ։</p>
 </div>
 {% endraw %}
 
-### `Vue.elementDirective` <sup>removed</sup>
+### `Vue.elementDirective` <sup>ջնջվել է</sup>
 
-Use components instead.
+Փոխարենը օգտագործեք կոմպոնենտներ։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.elementDirective</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.elementDirective</code>։</p>
 </div>
 {% endraw %}
 
-### `Vue.partial` <sup>removed</sup>
+### `Vue.partial` <sup>ջնջվել է</sup>
 
-Partials have been removed in favor of more explicit data flow between components, using props. Unless you're using a partial in a performance-critical area, the recommendation is to use a [normal component](components.html) instead. If you were dynamically binding the `name` of a partial, you can use a [dynamic component](components.html#Dynamic-Components).
+Partial-ները ջնջվել են օգուտ կոմպոնենտների միջև ավելի հստակ տվյալների հոսքի համար, օգտագործելով prop-ներ։ Չնայած դուք օգտագործում եք մասամբ իրագործման կրիտիկական մասերում, խորհուրդ է տրվում օգտագործել [հասարակ կոմպոնենտ](components.html) փոխարենը։ Եթե դուք դինամիկորեն կապում եք `name`-ը partial-ի, դուք կարող եք օգտագործել [դինամիկ կոմպոնենտ](components.html#Dynamic-Components)։
 
-If you happen to be using partials in a performance-critical part of your app, then you should upgrade to [functional components](render-function.html#Functional-Components). They must be in a plain JS/JSX file (rather than in a `.vue` file) and are stateless and instanceless, like partials. This makes rendering extremely fast.
+Եթե պատահի որ դուք օգտագործում եք partial-ներ ձեր ծրագրի իրագործման կրիտիկական մասերում, ուրեմն դուք պետք է զարգացնեք դեպի [ֆունկցիոնալ կոմպոնենտներ](render-function.html#Functional-Components)։ Նրանք պետք է լինել հասարակ JS/JSX ֆայլում (ի փոխարեն `.vue` ֆայլում) և նրանք state և instance չունեն, ինչպես partial-ները։ Սա դարձնում է rendering-ը բավականին արագ։
 
-A benefit of functional components over partials is that they can be much more dynamic, because they grant you access to the full power of JavaScript. There is a cost to this power however. If you've never used a component framework with render functions before, they may take a bit longer to learn.
+Առավելությունը ֆունկցիոնալ կոմպոնենտների partial—ների փոխարեն դա նրանց ավելի դինամիկ լինելու հնարավորությունն է, որովհետև նրանք թույլ են տալիս ձեզ օգտագործել ամբողջ ուժը JavaScript-ի։ Սակայն կա ծախս այս ուժի համար։ Եթե դուք երբեք չեք օգտագործել կոմպոնենտի framework render ֆունկցիաներով նախկինում, նրանք կարող են որոշ ժամանակ տանել ձեզանից սովորելու համար։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>Vue.partial</code>.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>Vue.partial</code>-ի վերաբերյալ։</p>
 </div>
 {% endraw %}

@@ -232,7 +232,7 @@ Vue.component('async-webpack-example', function (resolve) {
 ``` js
 Vue.component(
   'async-webpack-example',
-  // `import` ֆունկցիան վերադարձնում է Promise։
+  // դինամիկ իմպորտը վերադարձնում է Promise
   () => import('./my-async-component')
 )
 ```
@@ -262,11 +262,11 @@ const AsyncComponent = () => ({
   component: import('./MyComponent.vue'),
   // Այն կոմպոնենտը որը ցանկանում ենք օգտագործել երբ async կոմպոնենտը բեռնվում է
   loading: LoadingComponent,
-  // Այն կոմպոնենտը որը ցանկանում ենք օգտագործել եթե բեռնումը ձախողվում է 
+  // Այն կոմպոնենտը որը ցանկանում ենք օգտագործել եթե բեռնումը ձախողվում է
   error: ErrorComponent,
   // Հետաձգումը նախքան բեռնված կոմպոնենտի ցուցադրումը։ Հիմնական արժեք: 200ms։
   delay: 200,
-  // Սխալ կոմպոնենտը կցուցադրվի եթե timeout-ը 
+  // Սխալ կոմպոնենտը կցուցադրվի եթե timeout-ը
   // տրամադրված է և երկարացված: Հիմնական արժեք։ Infinity (անվերջ)
   timeout: 3000
 })

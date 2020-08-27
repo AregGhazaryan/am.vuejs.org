@@ -340,12 +340,12 @@ order: 803
     },
     {
       name: 'Pine Wu',
+      city: 'Shanghai, China',
       languages: ['zh', 'en', 'jp'],
       github: 'octref',
       twitter: 'octref',
       work: {
-        role: 'Engineer on VSCode',
-        org: 'Microsoft'
+        role: 'Nomad'
       },
       reposOfficial: [
         'vetur'
@@ -561,14 +561,6 @@ order: 803
       ]
     },
     {
-      name: 'Darek Gusto Wędrychowski',
-      title: 'Google Search Virtuoso',
-      city: 'Kraków, Poland',
-      languages: ['pl', 'en'],
-      github: 'gustojs',
-      twitter: 'gustojs'
-    },
-    {
       name: 'Phan An',
       title: 'Backend Designer & Process Poet',
       city: 'Munich, Germany',
@@ -625,12 +617,11 @@ order: 803
     },
     {
       name: 'Ben Hong',
-      title: 'Proud Ravenclaw Dragon',
       city: 'Washington, DC, USA',
       languages: ['en', 'zh'],
       work: {
-        role: 'Senior Frontend Engineer',
-        org: 'GitLab (Meltano)',
+        role: 'Developer Experience (DX) Engineer',
+        org: 'Cypress.io',
       },
       reposOfficial: [
         'vuejs.org',
@@ -804,6 +795,7 @@ order: 803
         role: 'Organizer',
         org: 'VueConf US'
       },
+      imageUrl:'https://pbs.twimg.com/profile_images/1541624512/profile-pic-09-11-2011_400x400.png',
       twitter: 'prpatel',
       links: [
         'https://us.vuejs.org/'
@@ -818,6 +810,7 @@ order: 803
         role: 'Organizer',
         org: 'VueConf US'
       },
+      imageUrl:'https://pbs.twimg.com/profile_images/916531463905992706/MNvTkO5K_400x400.jpg',
       twitter: 'vincentmayers',
       links: [
         'https://us.vuejs.org/'
@@ -832,6 +825,7 @@ order: 803
         role: 'Creator',
         org: 'Vue.js Amsterdam'
       },
+      imageUrl: 'https://pbs.twimg.com/profile_images/1123492769299877888/aviXE_M5_400x400.jpg',
       twitter: 'lukevscostas',
       linkedin: 'luke-kenneth-thomas-578b3916a',
       links: [
@@ -847,6 +841,7 @@ order: 803
         role: 'Event Manager',
         org: 'Vue.js Amsterdam'
       },
+      imageUrl:'https://pbs.twimg.com/profile_images/1110510517951627269/LDzDyd4N_400x400.jpg',
       twitter: 'josgerards88',
       linkedin: 'josgerards',
       links: [
