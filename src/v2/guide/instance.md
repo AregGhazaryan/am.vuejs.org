@@ -24,10 +24,10 @@ Vue-ի ծրագիրը բաղկացած է **արմատային Vue instance—ի
 Root Instance
 └─ TodoList
    ├─ TodoItem
-   │  ├─ DeleteTodoButton
-   │  └─ EditTodoButton
+   │  ├─ TodoButtonDelete
+   │  └─ TodoButtonEdit
    └─ TodoListFooter
-      ├─ ClearTodosButton
+      ├─ TodosButtonClear
       └─ TodoListStatistics
 ```
 
