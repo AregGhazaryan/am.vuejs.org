@@ -456,88 +456,88 @@ scrollBehavior: function (to, from, savedPosition) {
 </div>
 {% endraw %}
 
-### `transitionOnLoad` <sup>removed</sup>
+### `transitionOnLoad` <sup>ջնջված է</sup>
 
-This option is no longer necessary now that Vue's transition system has explicit [`appear` transition control](transitions.html#Transitions-on-Initial-Render).
-
-{% raw %}
-<div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>transitionOnLoad: true</code> option.</p>
-</div>
-{% endraw %}
-
-### `suppressTransitionError` <sup>removed</sup>
-
-Removed due to hooks simplification. If you really must suppress transition errors, you can use [`try`...`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) instead.
+Այս ընտրանքը այլևս պարտադիր չէ քանի որ հիմա Vue-ի անցումային համակարգը ունի հատուկ [`appear` անցման կառավարում](transitions.html#Transitions-on-Initial-Render)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>suppressTransitionError: true</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>transitionOnLoad: true</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Route Hooks
+### `suppressTransitionError` <sup>ջնջված է</sup>
 
-### `activate` <sup>replaced</sup>
-
-Use [`beforeRouteEnter`](https://router.vuejs.org/en/advanced/navigation-guards.html#incomponent-guards) in the component instead.
+Ջնջված է օգուտ hook֊երի պարզության համար։ Եթե դուք իրոք պետք է անցումային error֊ները բռնեք, փորձեք [`try`...`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) փոխարենը։ 
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>activate</code> hook.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>suppressTransitionError: true</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `canActivate` <sup>replaced</sup>
+## Route֊ի Hook֊եր
 
-Use [`beforeEnter`](https://router.vuejs.org/en/advanced/navigation-guards.html#perroute-guard) in the route instead.
+### `activate` <sup>փոխարինված է</sup>
+
+Փոխարենը օգտագործեք [`beforeRouteEnter`](https://router.vuejs.org/en/advanced/navigation-guards.html#incomponent-guards) կոմպոնենտում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>canActivate</code> hook.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>activate</code> hook֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `deactivate` <sup>removed</sup>
+### `canActivate` <sup>փոխարինված է</sup>
 
-Use the component's [`beforeDestroy`](../api/#beforeDestroy) or [`destroyed`](../api/#destroyed) hooks instead.
+Փոխարենը օգտագործեք [`beforeEnter`](https://router.vuejs.org/en/advanced/navigation-guards.html#perroute-guard) route֊ում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>deactivate</code> hook.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>canActivate</code> hook֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `canDeactivate` <sup>replaced</sup>
+### `deactivate` <sup>ջնջված է</sup>
 
-Use [`beforeRouteLeave`](https://router.vuejs.org/en/advanced/navigation-guards.html#incomponent-guards) in the component instead.
+Փոխարենը օգտագործեք կոմպոնենտի [`beforeDestroy`](../api/#beforeDestroy) կամ [`destroyed`](../api/#destroyed) hook֊երը։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>canDeactivate</code> hook.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>deactivate</code> hook֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `canReuse: false` <sup>removed</sup>
+### `canDeactivate` <sup>փոխարինված է</sup>
 
-There's no longer a use case for this in the new Vue Router.
+Փոխարենը օգտագործեք [`beforeRouteLeave`](https://router.vuejs.org/en/advanced/navigation-guards.html#incomponent-guards) կոմպոնենտում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>canReuse: false</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>canDeactivate</code> hook֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `data` <sup>replaced</sup>
+### `canReuse: false` <sup>ջնջված է</sup>
 
-The `$route` property is now reactive, so you can use a watcher to react to route changes, like this:
+Այլևս չկա օգտագործման դեպք նոր Vue Router֊ում։
+
+{% raw %}
+<div class="upgrade-path">
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>canReuse: false</code> ընտրանքի վերաբերյալ։</p>
+</div>
+{% endraw %}
+
+### `data` <sup>փոխարինված է</sup>
+
+`$route` հատկությունը հիմա ռեակտիվ է, այնպես որ դուք կարող էք օգտագործել watcher որպեսզի route֊ի փոփոխությունները դարձնեք ռեակտիվ, այս կերպ․
 
 ``` js
 watch: {
@@ -552,14 +552,14 @@ methods: {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>data</code> hook.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>data</code> hook֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `$loadingRouteData` <sup>removed</sup>
+### `$loadingRouteData` <sup>ջնջված է</sup>
 
-Define your own property (e.g. `isLoading`), then update the loading state in a watcher on the route. For example, if fetching data with [axios](https://github.com/mzabriskie/axios):
+Հայտարարեք ձեր հատկությունը (օրինակ՝ `isLoading`), այնուհետև թարմացրեք բեռնման state֊ը watcher֊ում route֊ի վրա։ Օրինակի համար, եթե ստանում ենք տվյալներ [axios֊ով](https://github.com/mzabriskie/axios)․
 
 ``` js
 data: function () {
@@ -594,7 +594,7 @@ methods: {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>$loadingRouteData</code> meta property.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>$loadingRouteData</code> meta հատկության վերաբերյալ։</p>
 </div>
 {% endraw %}
