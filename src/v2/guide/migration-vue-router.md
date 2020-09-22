@@ -287,39 +287,39 @@ Route-ի համապատասխանեցումը հիմա օգտագործում է
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the obsolete route syntax.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ հին route֊ի գրելաձևի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Links
+## Link֊եր
 
-### `v-link` <sup>replaced</sup>
+### `v-link` <sup>փոխարինված է</sup>
 
-The `v-link` directive has been replaced with a new [`<router-link>` component](https://router.vuejs.org/en/api/router-link.html), as this sort of job is now solely the responsibility of components in Vue 2. That means whenever wherever you have a link like this:
+`v-link` ուղղորդիչը փոխարինվել է նոր [`<router-link>` կոմպոնենտով](https://router.vuejs.org/en/api/router-link.html), որովհետև այս տիպի գործը հիմա միայն հենված է կոմպոնենտների վրա Vue 2֊ում։ Սա նշանակում է երբ որ դուք օրինակի համար ունեք այսպիսի հղում․
 
 ``` html
 <a v-link="'/about'">About</a>
 ```
 
-You'll need to update it like this:
+Դուք պետք է թարմացնեք այն այսպես․
 
 ``` html
 <router-link to="/about">About</router-link>
 ```
 
-Note that `target="_blank"` is not supported on `<router-link>`, so if you need to open a link in a new tab, you have to use `<a>` instead.
+Նշում որ `target="_blank"`֊ը այլևս չի համապատասխանում `<router-link>`֊ին, այնպես որ եթե ձեզ պետք է նոր պատուհան բացել հղման համար, դուք պետք է օգտագործեք `<a>`֊ն փոխարենը։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>v-link</code> directive.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>v-link</code> ուղորդիչի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `v-link-active` <sup>replaced</sup>
+### `v-link-active` <sup>փոխարինված է</sup>
 
-The `v-link-active` directive has also been replaced by the `tag` attribute on [the `<router-link>` component](https://router.vuejs.org/en/api/router-link.html). So for example, you'll update this:
+`v-link-active` ուղղորդիչը փոխարինվել է `tag` ատրիբուտով [`<router-link>` կոմպոնենտում](https://router.vuejs.org/en/api/router-link.html)։ Օրինակի համար, դուք պետք է թարմացնեք սա․
 
 ``` html
 <li v-link-active>
@@ -327,7 +327,7 @@ The `v-link-active` directive has also been replaced by the `tag` attribute on [
 </li>
 ```
 
-to this:
+դեպի
 
 ``` html
 <router-link tag="li" to="/about">
@@ -335,44 +335,44 @@ to this:
 </router-link>
 ```
 
-The `<a>` will be the actual link (and will get the correct href), but the active class will be applied to the outer `<li>`.
+`<a>`֊ն կլինի իրանական հղումը (և կստանա ճիշտ href֊ը), բայց ակտիվ class֊ը կկիրառվի արտաքին `<li>`֊ի վրա։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>v-link-active</code> directive.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>v-link-active</code> ուղորդիչի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Programmatic Navigation
+## Ծրագրավորված Navigation
 
-### `router.go` <sup>changed</sup>
+### `router.go` <sup>փոխված է</sup>
 
-For consistency with the [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API), `router.go` is now only used for [back/forward navigation](https://router.vuejs.org/en/essentials/navigation.html#routergon), while [`router.push`](https://router.vuejs.org/en/essentials/navigation.html#routerpushlocation) is used to navigate to a specific page.
+[HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)֊ի հետ կայուն լինելու պատճառով, `router.go`֊ն հիմա միայն կօգտագործվի [հետ/առաջ navigation֊ի համար](https://router.vuejs.org/en/essentials/navigation.html#routergon), երբ [`router.push`](https://router.vuejs.org/en/essentials/navigation.html#routerpushlocation)֊ը օգտագործվում է որպեսզի անցնել որևէ կոնկրետ էջի։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.go</code> being used where <code>router.push</code> should be used instead.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք<a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտերլ օրինակներ <code>router.go</code>֊ի օգտագործման որտեղ <code>router.push</code>֊ը պետք է օգտագործվի փոխարենը։</p>
 </div>
 {% endraw %}
 
-## Router Options: Modes
+## Router֊ի Ընտրանքներ: Mode
 
-### `hashbang: false` <sup>removed</sup>
+### `hashbang: false` <sup>ջնջված է</sup>
 
-Hashbangs are no longer required for Google to crawl a URL, so they are no longer the default (or even an option) for the hash strategy.
+Hashbang֊երը այլևս չեն պահանջվում որպեսզի Google֊ը դիտարկի URL֊ը, այնպես որ նրանք այլևս հիմնական (կամ նույնիսկ ընտրանք) չեն hash ստրատեգիայի համարԼ
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>hashbang: false</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>hashbang: false</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `history: true` <sup>replaced</sup>
+### `history: true` <sup>փոխարինված է</sup>
 
-All routing mode options have been condensed into a single [`mode` option](https://router.vuejs.org/en/api/options.html#mode). Update:
+Բոլոր route֊ների mode ընտրանքները ձուլվել են դեպի մեկ [`mode` ընտրանք](https://router.vuejs.org/en/api/options.html#mode)։ Թարմացրեք․
 
 ``` js
 var router = new VueRouter({
@@ -380,7 +380,7 @@ var router = new VueRouter({
 })
 ```
 
-to:
+դեպի․
 
 ``` js
 var router = new VueRouter({
@@ -390,14 +390,14 @@ var router = new VueRouter({
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>history: true</code> option.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>history: true</code> ընտրքանի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `abstract: true` <sup>replaced</sup>
+### `abstract: true` <sup>փոխարինված է</sup>
 
-All routing mode options have been condensed into a single [`mode` option](https://router.vuejs.org/en/api/options.html#mode). Update:
+Բոլոր route֊ների mode ընտրանքները ձուլվել են դեպի մեկ [`mode` ընտրանք](https://router.vuejs.org/en/api/options.html#mode)։ Թարմացրեք․
 
 ``` js
 var router = new VueRouter({
@@ -405,7 +405,7 @@ var router = new VueRouter({
 })
 ```
 
-to:
+դեպի․
 
 ``` js
 var router = new VueRouter({
@@ -415,22 +415,22 @@ var router = new VueRouter({
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>abstract: true</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>abstract: true</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Route Options: Misc
+## Route֊ի Ընտրանքներ: Այլ Ընտրանքներ
 
-### `saveScrollPosition` <sup>replaced</sup>
+### `saveScrollPosition` <sup>փոխարինված է</sup>
 
-This has been replaced with a [`scrollBehavior` option](https://router.vuejs.org/en/advanced/scroll-behavior.html) that accepts a function, so that the scroll behavior is completely customizable - even per route. This opens many new possibilities, but to replicate the old behavior of:
+Սա հիմա փոխարինված է [`scrollBehavior` ընտրանքով](https://router.vuejs.org/en/advanced/scroll-behavior.html) որը ընդունում է ֆունկցիա, այնպես որ scroll֊ի վարքը ամբողջովին վերափոխելի է - նույնիսկ ամեն route֊ի համար։ Սա բացում է շատ նոր հնարավորություններ, բայց հին օրինակը փոխելու համար դուք պետք է․
 
 ``` js
 saveScrollPosition: true
 ```
 
-You can replace it with:
+Փոխարինեք այն հետևյալով․
 
 ``` js
 scrollBehavior: function (to, from, savedPosition) {
@@ -440,19 +440,19 @@ scrollBehavior: function (to, from, savedPosition) {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>saveScrollPosition: true</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>saveScrollPosition: true</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `root` <sup>renamed</sup>
+### `root` <sup>վերանվանված է</sup>
 
-Renamed to `base` for consistency with [the HTML `<base>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base).
+Վերանվանվել է դեպի `base` որպեսզի կայուն լինի [HTML `<base>` էլեմենտի հետ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>root</code> option.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>root</code> ընտրանքի վերաբերյալնպմ option.</p>
 </div>
 {% endraw %}
 
