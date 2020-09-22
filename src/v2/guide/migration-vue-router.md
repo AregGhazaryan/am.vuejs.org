@@ -1,16 +1,16 @@
 ---
-title: Migration from Vue Router 0.7.x
-type: guide
+title: Միգրացիան Vue Router 0.7.x-ից
+type: ուղեցույց
 order: 702
 ---
 
-> Only Vue Router 2 is compatible with Vue 2, so if you're updating Vue, you'll have to update Vue Router as well. That's why we've included details on the migration path here in the main docs. For a complete guide on using the new Vue Router, see the [Vue Router docs](https://router.vuejs.org/en/).
+> Միայն Vue Router 2-ն է համապատասխան Vue 2-ի հետ, եթե դուք թարմացնում եք Vue-ն, դուք պետք է թարմացնեք Vue Router-ը նույնպես։ Այդ պատճառով մենք ներառել են մանրամասներ միգրացիայի ուղղում հիմնական փաստաթղթի մեջ։ Ամբողջական ուղեցույցը թե ինչպես օգտագործել նոր Vue Router-ը, նայեք [Vue Router-ի փաստաթղթերը](https://router.vuejs.org/en/).
 
-## Router Initialization
+## Router-ի Գործարկումը
 
-### `router.start` <sup>replaced</sup>
+### `router.start` <sup>փոխարինվել է</sup>
 
-There is no longer a special API to initialize an app with Vue Router. That means instead of:
+Այլևս գոյություն չունի հատուկ API որպեսզի գործարկել ծրագիրը Vue Router-ի հետ հանդերձ։ Դա նշանակում է որ ի փոխարեն․
 
 ``` js
 router.start({
@@ -18,7 +18,7 @@ router.start({
 }, '#app')
 ```
 
-You pass a router property to a Vue instance:
+Դուք փոխանցում եք router հատկությունը դեպի Vue instance.
 
 ``` js
 new Vue({
@@ -28,7 +28,7 @@ new Vue({
 })
 ```
 
-Or, if you're using the runtime-only build of Vue:
+Կամ, եթե դուք օգտագործում եք միայն runtime-ը build-ը Vue-ի․
 
 ``` js
 new Vue({
@@ -40,16 +40,16 @@ new Vue({
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.start</code> being called.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ որտեղ<code>router.start</code>-ը կանչվում է։</p>
 </div>
 {% endraw %}
 
-## Route Definitions
+## Route-ի Հայտարարումը
 
-### `router.map` <sup>replaced</sup>
+### `router.map` <sup>փոխարինված է</sup>
 
-Routes are now defined as an array on a [`routes` option](https://router.vuejs.org/en/essentials/getting-started.html#javascript) at router instantiation. So these routes for example:
+Route-ները հիմա հայտարարվում են որպես զանգված [`routes` ընտրանքի վրա](https://router.vuejs.org/en/essentials/getting-started.html#javascript) router-ի ստեղծման ժամանակ։ Այնպես որ այս route-ները օրինակի համար․
 
 ``` js
 router.map({
@@ -62,7 +62,7 @@ router.map({
 })
 ```
 
-Will instead be defined with:
+Կլինեն հայտարարված այսպես․
 
 ``` js
 var router = new VueRouter({
@@ -73,26 +73,26 @@ var router = new VueRouter({
 })
 ```
 
-The array syntax allows more predictable route matching, since iterating over an object is not guaranteed to use the same property order across browsers.
+Զանգվածի գրելաձևը թույլ է տալիս լինել ավելի կանխագուշակելի route-ի համապատասխանեցման մեջ, մինչ օբյեկտի միջով անցնելուց խորհուրդ չի տրվում օգտագործել նույն հատկությունների հերթականությունը տարբեր բրաուզերներում։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.map</code> being called.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.map</code>-ի կանչման մասին։</p>
 </div>
 {% endraw %}
 
-### `router.on` <sup>removed</sup>
+### `router.on` <sup>ջնջված է</sup>
 
-If you need to programmatically generate routes when starting up your app, you can do so by dynamically pushing definitions to a routes array. For example:
+Եթե դուք պետք է ծրագրավորմամբ գեներացնեք route-ներ երբ աշխատացնում եք ձեր ծրագիրը, դուք կարող էք դինամիկորեն ավելացնեք հայտարարությունները route-ների զանգվածին։ Օրինակի համար․
 
 ``` js
-// Normal base routes
+// Սովարական հիմնական route-ներ
 var routes = [
   // ...
 ]
 
-// Dynamically generated routes
+// Դինամիկորեն գեներացված route-ներ
 marketingPages.forEach(function (page) {
   routes.push({
     path: '/marketing/' + page.slug
@@ -110,7 +110,7 @@ var router = new Router({
 })
 ```
 
-If you need to add new routes after the router has been instantiated, you can replace the router's matcher with a new one that includes the route you'd like to add:
+Եթե դուք ցանկանում եք ավելացներ նոր route-ներ router-ի ստեղծումից հետո, դուք պետք է փոխարինեք router—ի համատասխանող մասը նորով որը ներառում է այն route—ի որը որ դուք ցանկանում եք ավելացնել․
 
 ``` js
 router.match = createMatcher(
@@ -123,14 +123,14 @@ router.match = createMatcher(
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.on</code> being called.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.on</code>-ի կանչման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `router.beforeEach` <sup>changed</sup>
+### `router.beforeEach` <sup>փոխված է</sup>
 
-`router.beforeEach` now works asynchronously and takes a `next` function as its third argument.
+`router.beforeEach` հիմա աշխատում է ասինխռոն կերպով և վերցնում է `next` ֆունկցիան որպես իր երրորդ արգումենտ։
 
 ``` js
 router.beforeEach(function (transition) {
@@ -152,20 +152,20 @@ router.beforeEach(function (to, from, next) {
 })
 ```
 
-### `subRoutes` <sup>renamed</sup>
+### `subRoutes` <sup>վերանվանված է</sup>
 
-[Renamed to `children`](https://router.vuejs.org/en/essentials/nested-routes.html) for consistency within Vue and with other routing libraries.
+[Վերանվանվել է `children`](https://router.vuejs.org/en/essentials/nested-routes.html) Vue-ի և այլ routing-ի գրադարանների հետ ավելի կայուն լինելով նպատակով։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>subRoutes</code> option.</p>
+  <h4>Թարմացման ճանապարհ</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>subRoutes</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `router.redirect` <sup>replaced</sup>
+### `router.redirect` <sup>փոխարինված է</sup>
 
-This is now an [option on route definitions](https://router.vuejs.org/en/essentials/redirect-and-alias.html). So for example, you will update:
+Հիմա այն [ընտրանք է route-ի հայտարարումներում](https://router.vuejs.org/en/essentials/redirect-and-alias.html)։ Օրինակի համար, դուք պետք է թարմացնեք․
 
 ``` js
 router.redirect({
@@ -173,7 +173,7 @@ router.redirect({
 })
 ```
 
-to a definition like below in your `routes` configuration:
+ինչպիսին է ներքևում գրված հայտարարումը այնպես էլ ձեր `routes` կոնֆիգուրացիան․
 
 ``` js
 {
@@ -184,14 +184,14 @@ to a definition like below in your `routes` configuration:
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.redirect</code> being called.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.redirect</code>-ի կանչելու վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### `router.alias` <sup>replaced</sup>
+### `router.alias` <sup>փոխարինված է</sup>
 
-This is now an [option on the definition for the route](https://router.vuejs.org/en/essentials/redirect-and-alias.html) you'd like to alias to. So for example, you will update:
+Հիմա այն [ընտրանք է route-ի հայտարարման համար](https://router.vuejs.org/en/essentials/redirect-and-alias.html) ցանկալի է օգտագործել փոխանուն։ Օրինակի համար, դուք պետք է թարմացնեք․
 
 ``` js
 router.alias({
@@ -199,7 +199,7 @@ router.alias({
 })
 ```
 
-to a definition like below in your `routes` configuration:
+ինչպիսին է ներքևում գրված հայտարարումը այնպես էլ ձեր `routes` կոնֆիգուրացիան․
 
 ``` js
 {
@@ -209,7 +209,7 @@ to a definition like below in your `routes` configuration:
 }
 ```
 
-If you need multiple aliases, you can also use an array syntax:
+Եթե դուք պետք է օգտագործեք բազմաթիվ փոխանուններ, դուք պետք է նաև օգտագործեք զանգվածի գրելաձևը․
 
 {% codeblock lang:js %}
 alias: ['/manage', '/administer', '/administrate']
@@ -217,14 +217,14 @@ alias: ['/manage', '/administer', '/administrate']
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>router.alias</code> being called.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.alias</code>-ի կանչելու վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-### Arbitrary Route Properties <sup>replaced</sup>
+### Կամայական Route-ի Հատկությունները <sup>փոխարինված է</sup>
 
-Arbitrary route properties must now be scoped under the new meta property, to avoid conflicts with future features. So for example, if you had defined:
+Կամայական route-ի հատկությունները պետք է լինեն նոր meta հատկությունների scope-ի ներքո, որպեսզի խուսափենք ապագա նորացումների կոնֆլիկտներից։ Օրինակի համար, եթե դուք ունեք հայտարարած․
 
 ``` js
 '/admin': {
@@ -233,7 +233,7 @@ Arbitrary route properties must now be scoped under the new meta property, to av
 }
 ```
 
-Then you would now update it to:
+Այնուհետև դուք պետք է թարմացնեք այն․
 
 ``` js
 {
@@ -245,7 +245,7 @@ Then you would now update it to:
 }
 ```
 
-Then when later accessing this property on a route, you will still go through meta. For example:
+Այնուհետև երբ հետո մուտք գործենք դեպի այս հատկություն route—ի վրա, դուք պետք է անցնեք meta—ի միջով։ Օրինակի համար․
 
 ``` js
 if (route.meta.requiresAuth) {
@@ -255,20 +255,20 @@ if (route.meta.requiresAuth) {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of arbitrary route properties not scoped under meta.</p>
+  <h4>Թարմացման ուղի</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ կամայական route-ի հատկաություների մասին որոնք որ չեն գտնվում meta-ի ներքո։</p>
 </div>
 {% endraw %}
 
-### [] Syntax for Arrays in Queries <sup>removed</sup>
+### [] Զանգվածների Գրելաձևը Հարցումներում <sup>ջնջված է</sup>
 
-When passing arrays to query parameters the QueryString syntax is no longer `/foo?users[]=Tom&users[]=Jerry`, instead, the new syntax is `/foo?users=Tom&users=Jerry`. Internally, `$route.query.users` will still be an Array, but if there's only one parameter in the query: `/foo?users=Tom`, when directly accessing this route, there's no way for the router to know if we were expecting `users` to be an Array. Because of this, consider adding a computed property and replacing every reference of `$route.query.users` with it:
+Երբ փոխանցում ենք զանգվածներ հարցումների պարամետրերին QueryString գրելաձևը այլևս գոյություն չունի `/foo?users[]=Tom&users[]=Jerry`, փոխարենը, նոր գրելաձևն է `/foo?users=Tom&users=Jerry`։ Ներքուստ, `$route.query.users` դեռ կլնի զանգված, բայց եթե ունենք ընդամենը մեկ պարամետր հարցման մեջ․ `/foo?users=Tom`, երբ ուղիղ մուտք ենք գործում այս route, ոչ մի ձև router-ը չի հասականա որ մենք ենթադրում ենք որ `users`-ը կլինի զանգված։ Այս պատճառով, ավելացրեք հաշվարկված հատկություն և փոխարինեք ամեն դիմումը `$route.query.users`-ին նրանով։
 
 ```javascript
 export default {
   // ...
   computed: {
-    // users will always be an array
+    // users-ը միշտ կլինի զանգված
     users () {
       const users = this.$route.query.users
       return Array.isArray(users) ? users : [users]
@@ -277,13 +277,13 @@ export default {
 }
 ```
 
-## Route Matching
+## Route-ի Համապատասխանեցում
 
-Route matching now uses [path-to-regexp](https://github.com/pillarjs/path-to-regexp) under the hood, making it much more flexible than previously.
+Route-ի համապատասխանեցումը հիմա օգտագործում է [path-to-regexp](https://github.com/pillarjs/path-to-regexp) ներքինում, դարձնելով այն ավելի ճկուն քան նախկինում։
 
-### One or More Named Parameters <sup>changed</sup>
+### Մեկ կամ Ավելին Անվանված Պարամետրեր <sup>փոփոխված է</sup>
 
-The syntax has changed slightly, so `/category/*tags` for example, should be updated to `/category/:tags+`.
+Գրելաձևը մի փոքր փոխվել է, օրինակի համար `/category/*tags`-ը, պետք է թարմացվի դեպի `/category/:tags+`։
 
 {% raw %}
 <div class="upgrade-path">
