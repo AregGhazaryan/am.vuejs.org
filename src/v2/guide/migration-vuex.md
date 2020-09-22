@@ -1,93 +1,93 @@
 ---
-title: Migration from Vuex 0.6.x to 1.0
-type: guide
+title: Միգրացիան Vuex 0.6.x֊ից դեպի 1.0
+type: ուղեցույց
 order: 703
 ---
 
-> Vuex 2.0 is released, but this guide only covers the migration to 1.0? Is that a typo? Also, it looks like Vuex 1.0 and 2.0 were released simultaneously. What's going on? Which one should I use and what's compatible with Vue 2.0?
+> Vuex 2.0 թողարկվել է, բա՞յց այս ուղեցույցը միայն նշում է միգրացիան 1.0, մի թե՞ սխալ է գրվալ։ Նաև կարծես թե Vuex 1.0 և 2.0֊ը թողարկվել են միաժամանակ։ Ի՞նչ է կատարվում, որը պետք է ես օգտագործեմ և ի՞նչն է համապատասխանում Vue 2.0֊ին
 
-Both Vuex 1.0 and 2.0:
+Եվ Vuex 1.0 և 2.0․
 
-- fully support both Vue 1.0 and 2.0
-- will be maintained for the foreseeable future
+- ամբողջովին համապատասխանում են և Vue 1.0 և 2.0
+- կպահպանվեն մոտ ապագայում
 
-They have slightly different target users however.
+Ուղված են մի փոքր տարբեր օգտագործողների համար, սակայն։ 
 
-__Vuex 2.0__ is a radical redesign and simplification of the API, for those who are starting new projects or want to be on the cutting edge of client-side state management. __It is not covered by this migration guide__, so you should check out [the Vuex 2.0 docs](https://vuex.vuejs.org/en/index.html) if you'd like to learn more about it.
+__Vuex 2.0__֊ը ռադիկալ վերափոխում և պարզեցումն է API֊ի, նրանց համար ովքեր սկսում են նոր նախագծեր և ցանկանում են ունենալ ամենավերջին և հզոր client-side state֊ի կառավարումը։ __Այն չի նշվում այս միգրացիային ուղեցույցի մեջ__, այնպես որ դուք պետք է նայեք [Vuex 2.0֊ի փաստաթղթերը](https://vuex.vuejs.org/en/index.html) եթե ցանկանում էք իմանալ ավելին։
 
-__Vuex 1.0__ is mostly backwards-compatible, so requires very few changes to upgrade. It is recommended for those with large existing codebases or who want the smoothest possible upgrade path to Vue 2.0. This guide is dedicated to facilitating that process, but only includes migration notes. For the complete usage guide, see [the Vuex 1.0 docs](https://github.com/vuejs/vuex/tree/1.0/docs/en).
+__Vuex 1.0__֊ը հիմնականում backwards-compatible է, այնպես որ այն պահանջում է մի քանի փոփոխություններ որպեսզի upgrade լինի։ խորհուրդ է տրվում նրանց ովքեր ունեն մեծ կոդային բազաներ կամ ովքեր ցանկանում են ամենահեշտ և հասանելի զարգացման ուղին դեպի Vue 2.0։ Այս ուղեցույցը նվիրված է ներկայացնելու այդ գործընթացը, բայց միայն ներառում է միգրացիոն նշումներ։ Ավելի կազմված օգտագործման ուղեցույցի համար, նայեք [Vuex 1.0 փաստաթղթերը](https://github.com/vuejs/vuex/tree/1.0/docs/en)։
 
-## `store.watch` with String Property Path <sup>replaced</sup>
+## `store.watch` String Հատկության Ճանապարհ <sup>փոխարինված է</sup>
 
-`store.watch` now only accept functions. So for example, you would have to replace:
+`store.watch` հիմա միայն ընդհունում է ֆունկցիաներ։ Այնպես որ օրինակի համար, դուք կցանկանաք փոխարինել․
 
 ``` js
 store.watch('user.notifications', callback)
 ```
 
-with:
+հետևյալով․
 
 ``` js
 store.watch(
-  // When the returned result changes...
+  // Երբ վերադարձված արդյունքը փոփոխվում է...
   function (state) {
     return state.user.notifications
   },
-  // Run this callback
+  // Աշխատացրեք այս callback
   callback
 )
 ```
 
-This gives you more complete control over the reactive properties you'd like to watch.
+Սա տալիս է ձեզ ավելի ամբողջական կառավարում այն ռեակտիվ հատկություններին որոնք որ դուք ցանկանում էք դիտարկել։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>store.watch</code> with a string as the first argument.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>store.watch</code>֊ի որը պարունակում է string որպես իր առաջին արգումենտ։</p>
 </div>
 {% endraw %}
 
-## Store's Event Emitter <sup>removed</sup>
+## Store֊ի Event Արձակող <sup>ջնջված է</sup>
 
-The store instance no longer exposes the event emitter interface (`on`, `off`, `emit`). If you were previously using the store as a global event bus, [see this section](migration.html#dispatch-and-broadcast-removed) for migration instructions.
+Store instance֊ը այլևս չունի event արձակող ինտերֆայսը (`on`, `off`, `emit`)։ Եթե դուք նախկինում օգտագործում էիք store֊ը որպես գլոբալ event֊ների գործակից, [նայեք այս բաժինը](migration.html#dispatch-and-broadcast-removed) միգրացիայի ցուցումների համար։
 
-Instead of using this interface to watch events emitted by the store itself (e.g. `store.on('mutation', callback)`), a new method `store.subscribe` is introduced. Typical usage inside a plugin would be:
+Փոխարենը այս օգտագործելով այս ինտերֆայսը որպեսզի դիտարկել event֊ներ որոնք արձակվել են store֊ի կողմից (օրինակ՝ `store.on('mutation', callback)`), նոր մեթոդ `store.subscribe`֊ն է ներկայացվել։ Սովորական օգտագործումը plugin֊ին ներքո կլիներ այսիպիսին․
 
 ``` js
 var myPlugin = store => {
   store.subscribe(function (mutation, state) {
-    // Do something...
+    // Մի գործողություն այստեղ...
   })
 }
 
 ```
 
-See example [the plugins docs](https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md) for more info.
+Նայեք օրինակը [plugin֊ների փաստաթղթերի](https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md) որպեսզի իմանալ ավելին։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of <code>store.on</code>, <code>store.off</code>, and <code>store.emit</code>.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>store.on</code>, <code>store.off</code>, և <code>store.emit</code>֊ի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
-## Middlewares <sup>replaced</sup>
+## Middleware֊ներ <sup>փոխարինված է</sup>
 
-Middlewares are replaced by plugins. A plugin is a function that receives the store as the only argument, and can listen to the mutation event on the store:
+Middleware֊ները հիմա փոխարինված են plugin֊ներով։ Plugin-ը ֆունկցիա է որը ստանում է store֊ը որպես միակ արգումենտ, և կարող է լսել mutation event֊ին store֊ում․
 
 ``` js
 const myPlugins = store => {
   store.subscribe('mutation', (mutation, state) => {
-    // Do something...
+    // Մի գործողություն այստեղ...
   })
 }
 ```
 
-For more details, see [the plugins docs](https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md).
+Ավելի մանրամասների համար, նայեք [plugin֊ների փաստաթղթերը](https://github.com/vuejs/vuex/blob/1.0/docs/en/plugins.md)։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Upgrade Path</h4>
-  <p>Run the <a href="https://github.com/vuejs/vue-migration-helper">migration helper</a> on your codebase to find examples of the <code>middlewares</code> option on a store.</p>
+  <h4>Թարմացման ուղին</h4>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>middlewares</code> ընտրանքի վերաբերյալ որը գտնվում է store֊ի վրա։</p>
 </div>
 {% endraw %}
