@@ -9,11 +9,7 @@ special_sponsors:
   - url: 'https://autocode.com/'
     img: autocode.svg
     name: Autocode
-<<<<<<< HEAD
     description: Կառուցեք ծրագրից ծրագիր ապահովող աշխատանքային հոսքեր և միացրեք API-ներ
-=======
-    description: 'Instant Webhooks, Scripts and APIs'
->>>>>>> 37237f9550fb49b9f12dbe9c5dc4864afd42f848
 platinum_sponsors:
   - url: >-
       https://vueschool.io/?utm_source=Vuejs.org&utm_medium=Banner&utm_campaign=Sponsored%20Banner&utm_content=V1
