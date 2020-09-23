@@ -1,49 +1,49 @@
 ---
-title: Mixins
-type: guide
+title: Mixin֊ներ
+type: ուղեցույց
 order: 301
 ---
 
-## Basics
+## Հիմքեր
 
-Mixins are a flexible way to distribute reusable functionalities for Vue components. A mixin object can contain any component options. When a component uses a mixin, all options in the mixin will be "mixed" into the component's own options.
+Mixin֊ները տրամադրում են ճկուն համակարգ որպեսզի բաշխել վերօգտագործելի ֆունկցիոնալությունները Vue կոմպոնենտների համար։ Mixin օբյեկտը կարող է պարունակել ցանկացած կոմպոնենտի ընտրանք։ Երբ կոմպոնենտը օգտագործում է mixin, բոլոր ընտրանքները mixin֊ում կխառնվեն կոմպոնենտի ընտրանքների հետ։
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/next-level-vue/mixins" target="_blank" rel="noopener" title="Mixins Tutorial">Watch a video explanation on Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/next-level-vue/mixins" target="_blank" rel="noopener" title="Mixins Tutorial">Դիտեք այս բացատրող տեսանյութը Vue Mastery֊ի ում</a></div>
 
-Example:
+Օրինակ․
 
 ``` js
-// define a mixin object
+// հայտարարեք mixin օբյեկտ
 var myMixin = {
   created: function () {
     this.hello()
   },
   methods: {
     hello: function () {
-      console.log('hello from mixin!')
+      console.log('բարև mixin֊ից!')
     }
   }
 }
 
-// define a component that uses this mixin
+// հայտարարեք կոմպոնենտ որը օգտագործում է այդ mixin֊ը
 var Component = Vue.extend({
   mixins: [myMixin]
 })
 
-var component = new Component() // => "hello from mixin!"
+var component = new Component() // => "բարև mixin֊ից"
 ```
 
-## Option Merging
+## Ընտրանքների Ձուլում
 
-When a mixin and the component itself contain overlapping options, they will be "merged" using appropriate strategies.
+Երբ mixin և կոմպոնենտը պարունակում են վերահայտարարվող ընտրանքներ, նրանք «կձուլվեն» օգտագործելով հաամապատասխան ստրատեգիաները։
 
-For example, data objects undergo a recursive merge, with the component's data taking priority in cases of conflicts.
+Օրինակի համար, տվյալների օբյեկտները անցնում են ռեկուրսիվ ձուլման միջով, և կոմպոնենտի տվյալները ստանում են ավելի բարձր կարևորություն կոնֆլիկտների դեպքում։
 
 ``` js
 var mixin = {
   data: function () {
     return {
-      message: 'hello',
+      message: 'բարև',
       foo: 'abc'
     }
   }
@@ -53,38 +53,38 @@ new Vue({
   mixins: [mixin],
   data: function () {
     return {
-      message: 'goodbye',
+      message: 'հաջող',
       bar: 'def'
     }
   },
   created: function () {
     console.log(this.$data)
-    // => { message: "goodbye", foo: "abc", bar: "def" }
+    // => { message: "հաջող", foo: "abc", bar: "def" }
   }
 })
 ```
 
-Hook functions with the same name are merged into an array so that all of them will be called. Mixin hooks will be called **before** the component's own hooks.
+Hook ֆունկցիաները նույն անունով ձուլվում են դեպի զանգված այնպես որ նրանք բոլորը կկանչվեն։ Mixin hook-երը կկանչվեն **նախքան** կոմպոնենտի hook֊երը։
 
 ``` js
 var mixin = {
   created: function () {
-    console.log('mixin hook called')
+    console.log('mixin֊ի hook֊ը կանչվել է')
   }
 }
 
 new Vue({
   mixins: [mixin],
   created: function () {
-    console.log('component hook called')
+    console.log('կոմպոնենտի hook֊ը կանչվել է')
   }
 })
 
-// => "mixin hook called"
-// => "component hook called"
+// => "mixin֊ի hook֊ը կանչվել է"
+// => "կոմպոնենտի hook֊ը կանչվել է"
 ```
 
-Options that expect object values, for example `methods`, `components` and `directives`, will be merged into the same object. The component's options will take priority when there are conflicting keys in these objects:
+Ընտրանքները որոնք սպասում են օբյեկտի արժեքներ, օրինակի համար `methods`, `components` և `directives`, կձուլվեն դեպի նույն օբյեկտ։ Կոմպոնենտի ընտրանքները կստանան կարևորություն երբ կոնֆիկտ ունեցող բանալիներ կան օբյեկտներում․
 
 ``` js
 var mixin = {
@@ -93,7 +93,7 @@ var mixin = {
       console.log('foo')
     },
     conflicting: function () {
-      console.log('from mixin')
+      console.log('mixin֊ից')
     }
   }
 }
@@ -105,24 +105,24 @@ var vm = new Vue({
       console.log('bar')
     },
     conflicting: function () {
-      console.log('from self')
+      console.log('mixin֊ից դուրս')
     }
   }
 })
 
 vm.foo() // => "foo"
 vm.bar() // => "bar"
-vm.conflicting() // => "from self"
+vm.conflicting() // => "mixin-ից դուրս"
 ```
 
-Note that the same merge strategies are used in `Vue.extend()`.
+Նշում որ նույն ձուլման ստրատեգիաները օգտագործվում են `Vue.extend()`֊ում։
 
-## Global Mixin
+## Գլոբալ Mixin
 
-You can also apply a mixin globally. Use with caution! Once you apply a mixin globally, it will affect **every** Vue instance created afterwards. When used properly, this can be used to inject processing logic for custom options:
+Դուք նաև կարող եք կիրառել mixin գլոբալ կերպով։ Օգտագործեք այն զգուշուցյամբ՛ այն կազդի **ամեն** Vue instance֊ի վրա որոնք ստեղծվել են հետո։ Երբ ճիշտ է օգտագործվում, այն կարող է օգտագործվել որպեսզի ներարկել գործընթացի տրամաբանություն custom ընտրանքների համար․
 
 ``` js
-// inject a handler for `myOption` custom option
+// ներարկեք handler `myOption` custom ընտրանքի համար
 Vue.mixin({
   created: function () {
     var myOption = this.$options.myOption
@@ -133,16 +133,16 @@ Vue.mixin({
 })
 
 new Vue({
-  myOption: 'hello!'
+  myOption: 'բարև՛'
 })
-// => "hello!"
+// => "բարև՛"
 ```
 
-<p class="tip">Use global mixins sparsely and carefully, because it affects every single Vue instance created, including third party components. In most cases, you should only use it for custom option handling like demonstrated in the example above. It's also a good idea to ship them as [Plugins](plugins.html) to avoid duplicate application.</p>
+<p class="tip">Օգտագործեք գլոբալ mixin֊ները քիչ և զգուշությամբ, որովհետև այն ազդում է ամեն ստեղծված Vue instance֊ի վրա, ներառյալ երրորդ կողմի կոմպոնենտների։ Շատ դեպքերում, դուք միայն պետք է օգտագործեք այն custom ընտրանքի handling֊ի համար ներկայացված վերևի օրինակի մեջ։ Նաև լավ միտք է դարձնել նրանց [Plugin](plugins.html) որպեսզի խուսափել կրկնօրինակ կիրառումից։</p>
 
-## Custom Option Merge Strategies
+## Custom Ընտրանքի Ձուլման Ստրատեգիաներ
 
-When custom options are merged, they use the default strategy which overwrites the existing value. If you want a custom option to be merged using custom logic, you need to attach a function to `Vue.config.optionMergeStrategies`:
+Երբ custom ընտրանքները ձուլված են, նրանք օգտագործոմ են հիմնական ստրատեգիան որը վերագրում է գոյություն ունեցիող արժեքը։ Եթե դուք ցանկանում էք որ custom ընտրանքը ձուլվի օգտագործելով հատուկ տրամաբանություն, դուք պետք է միացնեք ֆունկցիա `Vue.config.optionMergeStrategies`֊ին․
 
 ``` js
 Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
@@ -150,14 +150,14 @@ Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
 }
 ```
 
-For most object-based options, you can use the same strategy used by `methods`:
+Շատ օբյեկտով հիմնված ընտրանքներում, դուք կարող էք օգտագործել նույն ստրատեգիան որը օգտագործվում է `methods`֊ի կողմից․
 
 ``` js
 var strategies = Vue.config.optionMergeStrategies
 strategies.myOption = strategies.methods
 ```
 
-A more advanced example can be found on [Vuex](https://github.com/vuejs/vuex)'s 1.x merging strategy:
+Ավելի խորացված օրինակի համար կարող էք նայել [Vuex](https://github.com/vuejs/vuex)֊ի 1.x ձուլման ստրատեգիան․
 
 ``` js
 const merge = Vue.config.optionMergeStrategies.computed
