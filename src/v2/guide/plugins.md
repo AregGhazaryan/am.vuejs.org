@@ -1,85 +1,85 @@
 ---
-title: Plugins
-type: guide
+title: Plugin֊ներ
+type: ուղեցույց
 order: 304
 ---
 
-Plugins usually add global-level functionality to Vue. There is no strictly defined scope for a plugin - there are typically several types of plugins:
+Plugin֊ները սովորականում ավելացնում են գլոբալ աստիճանի ֆունկցիոնալություն Vue֊ին։ Խիստ հայտարարված scope չկա plugin֊ի համար - կան մի քանի տիպեր plugin֊ների․
 
-1. Add some global methods or properties. e.g. [vue-custom-element](https://github.com/karol-f/vue-custom-element)
+1. Ավելացնել որոշ գլոբալ մեթոդներ կամ հատկություններ օրինակ [vue-custom-element֊ը](https://github.com/karol-f/vue-custom-element)
 
-2. Add one or more global assets: directives/filters/transitions etc. e.g. [vue-touch](https://github.com/vuejs/vue-touch)
+2. Ավելացնել մեկ կամ ավելին գլոբալ asset֊ներ․ ուղղորդիչներ/ֆիլտրներ/անցումներ և այլն։ Օրինակ [vue-touch֊ը](https://github.com/vuejs/vue-touch)
 
-3. Add some component options by global mixin. e.g. [vue-router](https://github.com/vuejs/vue-router)
+3. Ավելացնել որոշ կոմպոնենտի ընտրանքներ գլոբալ mixin֊ով։ Օրինակ [vue-router֊ը](https://github.com/vuejs/vue-router)
 
-4. Add some Vue instance methods by attaching them to Vue.prototype.
+4. Ավելացնել որոշ Vue instance֊ի մեթոդներ միացնելով նրանց Vue.prototype֊ին։
 
-5. A library that provides an API of its own, while at the same time injecting some combination of the above. e.g. [vue-router](https://github.com/vuejs/vue-router)
+5. Գրադարան որը տրամադրում է իր API֊ը, միաժամանակ ներառելով վերևում նշվածներից որպես համադրություն։ Օրինակ [vue-router֊ը](https://github.com/vuejs/vue-router)
 
-## Using a Plugin
+## Plugin֊ի Օգտագործումը
 
-Use plugins by calling the `Vue.use()` global method. This has to be done before you start your app by calling `new Vue()`:
+Օգտագործեք plugin֊ները կանչելով `Vue.use()` գլոբալ մեթոդը։ Սա կարող է կատարվել նախքան սկսելով ձեր ծրագիրը կանչելով `new Vue()`֊ն․
 
 ``` js
-// calls `MyPlugin.install(Vue)`
+// կանչում է `MyPlugin.install(Vue)`
 Vue.use(MyPlugin)
 
 new Vue({
-  //... options
+  //... ընտրանքներ
 })
 ```
 
-You can optionally pass in some options:
+Դուք կարող էք փոխանցել որոշ ընտրանքներ․
 
 ``` js
 Vue.use(MyPlugin, { someOption: true })
 ```
 
-`Vue.use` automatically prevents you from using the same plugin more than once, so calling it multiple times on the same plugin will install the plugin only once.
+`Vue.use`֊ը ավտոմատ կերպով խոսւափում է նույն plugin֊ի վերօգոագործումից, այնպես որ կանչելով մի քանի անգամ նույն plugin֊ի վրա կտեղադրի plugin֊ը ընդհամենը մեկ անգամ։
 
-Some plugins provided by Vue.js official plugins such as `vue-router` automatically calls `Vue.use()` if `Vue` is available as a global variable. However in a module environment such as CommonJS, you always need to call `Vue.use()` explicitly:
+Որոշ plugin֊ներ տրամադրված Vue.js֊ի պաշտոնական plugin֊ներից ինչպիսին է `vue-router` ավտոմատ կերպով կանչում է `Vue.use()`֊ը եթե `Vue`֊ն հասանելի է որպես գլոբալ փոփոխական։ Սակայն մոդուլյար environment֊ում ինչպիսին է CommonJS, դուք միշտ պետք է կանչեք `Vue.use()` պարտադիր․
 
 ``` js
-// When using CommonJS via Browserify or Webpack
+// Երբ օգտագործում ենք CommonJS Browserify֊ով կամ Webpack֊ով
 var Vue = require('vue')
 var VueRouter = require('vue-router')
 
-// Don't forget to call this
+// Մի մոռացեք կանչել սա
 Vue.use(VueRouter)
 ```
 
-Checkout [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) for a huge collection of community-contributed plugins and libraries.
+Նայեք [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) մեծածավալ համայնքի կողմից ստեղծված plugin֊ների և գրադարանների համաքածուին:
 
-## Writing a Plugin
+## Plugin֊ի Ստեղծումը
 
-A Vue.js plugin should expose an `install` method. The method will be called with the `Vue` constructor as the first argument, along with possible options:
+Vue.js֊ի plugin֊ը պետք է ունենա `install` մեթոդ։ Այդ մեթոդը կկանչվի `Vue`֊ի կոնստրուկտորի հետ որպես առաջին արգումենտ, այլ հասանելի ընտրանքների հետ հանդերձ․
 
 ``` js
 MyPlugin.install = function (Vue, options) {
-  // 1. add global method or property
+  // 1. ավելացնել գլոբալ մեթոդ կամ հատկություն
   Vue.myGlobalMethod = function () {
-    // some logic ...
+    // որոշ տրամաբանություն ...
   }
 
-  // 2. add a global asset
+  // 2. ավելացնել գլոբալ asset
   Vue.directive('my-directive', {
     bind (el, binding, vnode, oldVnode) {
-      // some logic ...
+      // որոշ տրամաբանություն ...
     }
     ...
   })
 
-  // 3. inject some component options
+  // 3. ներարկենք որևէ կոմպոնենտի ընտրանքները
   Vue.mixin({
     created: function () {
-      // some logic ...
+      // որոշ տրամաբանություն ...
     }
     ...
   })
 
-  // 4. add an instance method
+  // 4. ավելացնենք instance֊ի մեթոդ
   Vue.prototype.$myMethod = function (methodOptions) {
-    // some logic ...
+    // որոշ տրամաբանություն ...
   }
 }
 ```
