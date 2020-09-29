@@ -1,30 +1,30 @@
 ---
-title: Reactivity in Depth
-type: guide
+title: Ռեակտիվությունը Խորացված
+type: ուղեցույց
 order: 601
 ---
 
-Now it's time to take a deep dive! One of Vue's most distinct features is the unobtrusive reactivity system. Models are just plain JavaScript objects. When you modify them, the view updates. It makes state management simple and intuitive, but it's also important to understand how it works to avoid some common gotchas. In this section, we are going to dig into some of the lower-level details of Vue's reactivity system.
+Հիմա ժամանակն է որպեսզի ավելի կենտրոնանալ։ Vue֊ի ամենա հատուկ հատկանիշներից մեկն դա իր ռեակտիվության համակարգն է։ Մոդելները ուղակի հասարակ JavaScript օբյեկտներ են։ Երբ որ դուք փոփոխումեք նրանց, տեսադաշտը թարմացվում է։ Այն դարձնում է state֊ի կառավարումը ավելի պարզ և կանխագուշակելի, բայց կարևոր է իմանալ թե ինչպես է այն աշխատում որպեսզի խուսափել որոշ հիմնական սխալներից։ Այս բաժինում, մենք ավելի մանրամասն են զննելու Vue֊ի ռեակտիվության համակարգի ցածր կարգի մասերը։ 
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="sponsored noopener" title="Vue Reactivity">Watch a video explanation on Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/advanced-components/build-a-reactivity-system" target="_blank" rel="sponsored noopener" title="Vue Reactivity">Դիտեք այս բացատրող տեսանյութը Vue Mastery֊ում</a></div>
 
-## How Changes Are Tracked
+## Ինչպես են Փոփոխությունները Դիտարկվում
 
-When you pass a plain JavaScript object to a Vue instance as its `data` option, Vue will walk through all of its properties and convert them to [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) using [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). This is an ES5-only and un-shimmable feature, which is why Vue doesn't support IE8 and below.
+Երբ դուք փոխանցում էք պարզ JavaScript օբյեկտ Vue instance֊ին որպես իր `data` ընտրանք, Vue֊ն կանցնի իր բոլոր հակություններով և կվերափոխի նրանց դեպի [getter/setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Defining_getters_and_setters) օգտագործելով [`Object.defineProperty`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)։ Սա միայն ES5 և անշուք հատկություն է, որի պատճառով Vue֊ն չի համապատասխանում IE8֊ին և ավելի ցածր։
 
-The getter/setters are invisible to the user, but under the hood they enable Vue to perform dependency-tracking and change-notification when properties are accessed or modified. One caveat is that browser consoles format getter/setters differently when converted data objects are logged, so you may want to install [vue-devtools](https://github.com/vuejs/vue-devtools) for a more inspection-friendly interface.
+Getter/setters֊ները անտեսանելի են օգտագործողին, բայց ներքինում նրանք թույլ են տալիս Vue֊ին որպեսզի կատարել dependency-tracking և change-notification երբ հատկությունները օգտագործվել կամ փոփոխվել են։ Մեկ դեպքն է երբ բրաուզերի console֊ները վերափոխում են getters/setters֊ները տարբերվող ձևով երբ փոփոխված օբյեկտները log են եղած, այնպես որ դուք հնարավոր է որ կցանկանաք տեղադրել [vue-devtools](https://github.com/vuejs/vue-devtools) զննման համար ավելի հարմար ինտերֆայսի համար։
 
-Every component instance has a corresponding **watcher** instance, which records any properties "touched" during the component's render as dependencies. Later on when a dependency's setter is triggered, it notifies the watcher, which in turn causes the component to re-render.
+Ամեն կոմպոնենտի instance ունի համապատասխան **watcher**  instance֊ը, որը դիտարկում է ցանկացած հատկությունները որոնք «դիպվել» են կոմպոնենտի render֊ի ժամանակ որպես dependency։ Հետո երբ dependency֊ի setter֊ը արձակված է, այն տեղյակ է պահում watcher֊ին, որը իր հերթին ստիպում է կոմպոնենտին որպեսզի re-render կատարի։
 
-![Reactivity Cycle](/images/data.png)
+![Ռեակտիվության Ցիկլ](/images/data.png)
 
-## Change Detection Caveats
+## Փոփոխությունների Հայտնաբերման Դեպքեր
 
-Due to limitations in JavaScript, there are types of changes that Vue **cannot detect**. However, there are ways to circumvent them to preserve reactivity.
+JavaScript֊ի սահմանափակումների պատճառով, կան մի քանի տիպի փոփոխություններ որոնց Vue֊ն **չի նկատում**։ Սակայն, կան շրջանցելու ճանապարհներ որպեսզի պահպանել ռեակտիվությունը։
 
-### For Objects
+### Օբյեկտների Համար
 
-Vue cannot detect property addition or deletion. Since Vue performs the getter/setter conversion process during instance initialization, a property must be present in the `data` object in order for Vue to convert it and make it reactive. For example:
+Vue֊ն չի կարող նկատել հատկության ավելացնումը և կամ ջնջումը։ Մինչ Vue֊ն կատարում է getter/setter֊ների վերափոխման պրոցես instance֊ի սկսզբում, հատկությունը պետք է ներկա լինի `data` օբյեկտում որպեսզի Vue֊ն նրանց վերափոխի և դարձնի ռեակտիվ։ Օրինակի համար,
 
 ``` js
 var vm = new Vue({
@@ -32,39 +32,39 @@ var vm = new Vue({
     a: 1
   }
 })
-// `vm.a` is now reactive
+// `vm.a`֊ը հիմա ռեակտիվ է
 
 vm.b = 2
-// `vm.b` is NOT reactive
+// `vm.b`֊ը ռեակտիվ չէ
 ```
 
-Vue does not allow dynamically adding new root-level reactive properties to an already created instance. However, it's possible to add reactive properties to a nested object using the `Vue.set(object, propertyName, value)` method:
+Vue֊ն թույլ չի տալիս դինամիկորեն ավելացնել արմատային մակարդակի ռեակտիվ հատկություններ արդեն ստեղծված instance֊ին։ Սակայն, հնարավոր է ավելացնել ռեակտիվ հատկություններ ներքին օբյեկտին օգտագործելով `Vue.set(object, propertyName, value)` մեթոդը․
 
 ``` js
 Vue.set(vm.someObject, 'b', 2)
 ```
 
-You can also use the `vm.$set` instance method, which is an alias to the global `Vue.set`:
+Դուք նաև կարող էք օգտագործել `vm.$set` instance֊ի մեթոդը, որը փոխանուն է համարվում գլոբալ `Vue.set`֊ի համար․
 
 ``` js
 this.$set(this.someObject, 'b', 2)
 ```
 
-Sometimes you may want to assign a number of properties to an existing object, for example using `Object.assign()` or `_.extend()`. However, new properties added to the object will not trigger changes. In such cases, create a fresh object with properties from both the original object and the mixin object:
+Երբեմն դուք կցանկանաք վերագրել մի քանի հատկություններ գոյություն ունեցող օբյեկտին, օրինակ օգտագործելով `Object.assign()` or `_.extend()`։ Սակայն, նոր հատկությունները որոնք ավելացվել են օբյեկտին չեն արձակի փոփոխությունները։ Այս դեպքերում, ստեղծեք նոր օբյեկտ հին և նոր հատկությունների հետ հանդերձ․
 
 ``` js
-// instead of `Object.assign(this.someObject, { a: 1, b: 2 })`
+// `Object.assign(this.someObject, { a: 1, b: 2 })`֊ի փոխարեն
 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
 ```
 
-### For Arrays
+### Զանգվածների Համար
 
-Vue cannot detect the following changes to an array:
+Vue֊ն չի կարող նկատել հետևյալ փոփոխությունները զանվածում․
 
-1. When you directly set an item with the index, e.g. `vm.items[indexOfItem] = newValue`
-2. When you modify the length of the array, e.g. `vm.items.length = newLength`
+1. Երբ որ դուք ուղիղ տեղադրում եք մասնիկ index֊ի հետ օրինակ՝ `vm.items[indexOfItem] = newValue`
+2. Երբ որ դուք փոփոխում էք զանգվածի երկարությունը օրինակ՝ `vm.items.length = newLength`
 
-For example:
+Օրինակի համար․
 
 ``` js
 var vm = new Vue({
@@ -72,11 +72,11 @@ var vm = new Vue({
     items: ['a', 'b', 'c']
   }
 })
-vm.items[1] = 'x' // is NOT reactive
-vm.items.length = 2 // is NOT reactive
+vm.items[1] = 'x' //  ռեակտիվ չէ
+vm.items.length = 2 // ռեակտիվ չէ
 ```
 
-To overcome caveat 1, both of the following will accomplish the same as `vm.items[indexOfItem] = newValue`, but will also trigger state updates in the reactivity system:
+Որպեսզի առաջին օրինակը շրջանցենք, այս երկու օրինակներնել կհասնեն նույնին ինչ `vm.items[indexOfItem] = newValue` է, բայց նաև կարձակեն state֊ի թարմացումներ ռեակտիվության համակարգում․
 
 ``` js
 // Vue.set
@@ -87,43 +87,43 @@ Vue.set(vm.items, indexOfItem, newValue)
 vm.items.splice(indexOfItem, 1, newValue)
 ```
 
-You can also use the [`vm.$set`](https://vuejs.org/v2/api/#vm-set) instance method, which is an alias for the global `Vue.set`:
+Դուք նաև կարող էք օգտագործել [`vm.$set`](https://vuejs.org/v2/api/#vm-set) instance֊ի մեթոդը, որը փոխանուն է գլոբալ `Vue.set`֊ի համար․
 
 ``` js
 vm.$set(vm.items, indexOfItem, newValue)
 ```
 
-To deal with caveat 2, you can use `splice`:
+Որպեսզի շրջանցել երկրորդ օրինակը, դուք կարող էք օգտագործել `splice`․
 
 ``` js
 vm.items.splice(newLength)
 ```
 
-## Declaring Reactive Properties
+## Ռեակտիվ Հատկությունների Հայտարարումը
 
-Since Vue doesn't allow dynamically adding root-level reactive properties, you have to initialize Vue instances by declaring all root-level reactive data properties upfront, even with an empty value:
+Մինչ Vue-ն թույլ չի տալիս դինամիկորեն ավելացնել արմատային աստիճանի ռեակտիվ հատկություններ, դուք պետք է հայտարարեք բոլոր արմատային աստիճանի ռեակտիվ հատկությունները Vue֊ի instance-ները ստեղծելու ժամանակ, նույնիսկ դատարկ արժեքով․
 
 ``` js
 var vm = new Vue({
   data: {
-    // declare message with an empty value
+    // հայտարարեք message֊ը դատարկ արժեքով
     message: ''
   },
   template: '<div>{{ message }}</div>'
 })
-// set `message` later
+// տեղադրեք `message`֊ի արժեքը հետո
 vm.message = 'Hello!'
 ```
 
-If you don't declare `message` in the data option, Vue will warn you that the render function is trying to access a property that doesn't exist.
+Եթե դուք չհայտարարեք `message`֊ը data ընտրանքում, Vue֊ն կզգուշացնի ձեզ որ render ֆունկցիան փորձում է օգտագործել հատկությունը որը գոյություն չունի։
 
-There are technical reasons behind this restriction - it eliminates a class of edge cases in the dependency tracking system, and also makes Vue instances play nicer with type checking systems. But there is also an important consideration in terms of code maintainability: the `data` object is like the schema for your component's state. Declaring all reactive properties upfront makes the component code easier to understand when revisited later or read by another developer.
+Կան տեխնիկական պատճառներ այս արգելափակման վերաբերյալ ֊ այն վերացնում է որոշ բացառիկ դեպքերը dependency֊ի վերահսկման համակարգում, և նաև դրաձնում է Vue֊ի instance֊ները ավելի լավը տիպերի ստուգման համակարգերի համար։ Բայց գոյություն ունի նաև կարևոր դիտողություն կոդի պահպանման համար․ `data` օբյեկտը սխեման է ձեր կոմպոնենտի state֊ի։ Հայտարարելով բոլոր ռեակտիվ հատկությունները սկզբում դարձնում է ձեր կոմպոնենտի կոդը ավելի հեշտ հասկանալու համար երբ այլ ծրագրավորող կկարդա այն։
 
-## Async Update Queue
+## Async Թարմացման Հերթը
 
-In case you haven't noticed yet, Vue performs DOM updates **asynchronously**. Whenever a data change is observed, it will open a queue and buffer all the data changes that happen in the same event loop. If the same watcher is triggered multiple times, it will be pushed into the queue only once. This buffered de-duplication is important in avoiding unnecessary calculations and DOM manipulations. Then, in the next event loop "tick", Vue flushes the queue and performs the actual (already de-duped) work. Internally Vue tries native `Promise.then`, `MutationObserver`, and `setImmediate` for the asynchronous queuing and falls back to `setTimeout(fn, 0)`.
+Եթե դուք դեռ չեք նկատել, Vue֊ն կատարում է DOM թարմացումներ **ասինխռոն**  կերպով։ Երբ տվյալի փոփոխություն է դիտարկվում, այն կբացի նոր հերթ և կտեղադրի բոլոր տվյալների փոփոխությունները որոնք կատարվում են նույն event֊ի ցիկլում։ Եթե նույն դիտարկողը արձակվել է մի քանի անգամ, այն կտեղադրվի հերթում միայն մեկ անգամ։ Այս բեռնված կրկնօրինակումը չեղարկումը  կարևոր է որպեսզի խուսափել անիմաստ հաշվարկումներից և DOM֊ի մանիպուլացիաներից։ Այնուհետև, հաջորդ event֊ի ցիկլի «tick»֊ում, Vue֊ն ջնջում է հերթը և կատարում է նոր մաքրված հերթագրված աշխատանքները։ Ներքինում Vue֊ն փորձում է `Promise.then`, `MutationObserver`, և `setImmediate` ասինխռոն հերթագրման համար և խնդիրների դեպքում ետ կգա դեպի `setTimeout(fn,0)`:
 
-For example, when you set `vm.someData = 'new value'`, the component will not re-render immediately. It will update in the next "tick", when the queue is flushed. Most of the time we don't need to care about this, but it can be tricky when you want to do something that depends on the post-update DOM state. Although Vue.js generally encourages developers to think in a "data-driven" fashion and avoid touching the DOM directly, sometimes it might be necessary to get your hands dirty. In order to wait until Vue.js has finished updating the DOM after a data change, you can use `Vue.nextTick(callback)` immediately after the data is changed. The callback will be called after the DOM has been updated. For example:
+Օրինակի համար, երբ դուք տեղադրում եք `vm.someData = 'new value'`, կոմպոնենտը անմիջապես re-render չի կատարի։ Այն կթարմացնի հաջորդ «tick»֊ում, երբ հերթը ջնջված է։ Շատ դեպքերում մեզ հարկավոր չէ սա, բայց այն կարող է լինել բարդ երբ որ դուք ցանկանում եք մի բան անել ինչը որ կախված է DOM֊ի state֊ի թարմացումից հետո։ Չնայած որ Vue.js֊ը հիմնականում խրախուսում է որպեսզի ծրագրավորողները մտածեն տվյալներով հիմնված» կերպով և չդիպչեն DOM֊ին ուղիղ, երբեմն հնարավոր որ հարկավոր լինի ձեր ձեռքերը կեղտոտել։ Որպեսզի սպասել մինչ Vue.js֊ը վերջացնի DOM֊ի թարմացումը տվյալների փոփոխումից հետո, դուք կարող էք օգտագործեք `Vue.nextTick(callback)` անմիջապես հենց տվյալները փոփոխվել են։ Այս callback֊ը կկանչվի DOM֊ի թարմացումից հետո։ Օրինակի համար․
 
 ``` html
 <div id="example">{{ message }}</div>
@@ -136,44 +136,44 @@ var vm = new Vue({
     message: '123'
   }
 })
-vm.message = 'new message' // change data
+vm.message = 'new message' // տվյալի փոփոխություն
 vm.$el.textContent === 'new message' // false
 Vue.nextTick(function () {
   vm.$el.textContent === 'new message' // true
 })
 ```
 
-There is also the `vm.$nextTick()` instance method, which is especially handy inside components, because it doesn't need global `Vue` and its callback's `this` context will be automatically bound to the current Vue instance:
+Կա նաև `vm.$nextTick()` instance մեթոդը, որը հատկապես օգտակար է կոմպոնենտների ներսում, որովհետև այն չի պահանջում գլոբալ `Vue`֊ն և իր callback֊ները `this` context֊ը ավտոմատ կերպով կկապվի ընթացիկ Vue instance֊ին․
 
 ``` js
 Vue.component('example', {
   template: '<span>{{ message }}</span>',
   data: function () {
     return {
-      message: 'not updated'
+      message: 'չի թարմացվել'
     }
   },
   methods: {
     updateMessage: function () {
-      this.message = 'updated'
-      console.log(this.$el.textContent) // => 'not updated'
+      this.message = 'թարմացվել է'
+      console.log(this.$el.textContent) // => 'չի թարմացվել'
       this.$nextTick(function () {
-        console.log(this.$el.textContent) // => 'updated'
+        console.log(this.$el.textContent) // => 'թարմացվել է'
       })
     }
   }
 })
 ```
 
-Since `$nextTick()` returns a promise, you can achieve the same as the above using the new [ES2017 async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) syntax:
+Մինչ `$nextTick()`֊ը վերադարձնում է promise, դուք կարող էք հասնել վերևում նշված արդյունքին օգտագործելով նոր [ES2017 async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) գրելաձևը․
 
 ``` js
   methods: {
     updateMessage: async function () {
       this.message = 'updated'
-      console.log(this.$el.textContent) // => 'not updated'
+      console.log(this.$el.textContent) // => 'չի թարմացվել'
       await this.$nextTick()
-      console.log(this.$el.textContent) // => 'updated'
+      console.log(this.$el.textContent) // => 'թարմացվել է'
     }
   }
 ```
