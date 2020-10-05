@@ -1,30 +1,30 @@
 ---
-title: Render Functions & JSX
-type: guide
+title: Render Ֆունկցիաներ և JSX
+type: ուղեցույց
 order: 303
 ---
 
-## Basics
+## Հիմքեր
 
-Vue recommends using templates to build your HTML in the vast majority of cases. There are situations however, where you really need the full programmatic power of JavaScript. That's where you can use the **render function**, a closer-to-the-compiler alternative to templates.
+Vue֊ն խորհուրդ է տալիս օգտագործել templates որպեսզի կառուցել ձեր HTML֊ը շատ դեպքերում։ Սակայն կան դեպքեր, երբ որ դուք պետք է օգտագործեք JavaScript֊ի ամբողջ ծրագրային ուժը։ Այստեղ դուք կարող եք օգտագործել **render ֆունկցիան**, compiler֊ին մոտիկ այլընտրանք template֊ների համար։
 
-Let's dive into a simple example where a `render` function would be practical. Say you want to generate anchored headings:
+Եկեք սուզվենք դեպի սովորական օրինակը որտեղ`render` ֆունկցիան կլինի պրակտիկ։ Պատկերացրեք որ դուք ցանկանում եք գեներացնել heading֊ով հղումներ․
 
 ``` html
 <h1>
   <a name="hello-world" href="#hello-world">
-    Hello world!
+    Բարև Աշխարհ!
   </a>
 </h1>
 ```
 
-For the HTML above, you decide you want this component interface:
+Վերևի HTML֊ի համար, դուք կորոշեք թե ցանկանում եք այս կոմպոնենտի ինտերֆեյսը․
 
 ``` html
 <anchored-heading :level="1">Hello world!</anchored-heading>
 ```
 
-When you get started with a component that only generates a heading based on the `level` prop, you quickly arrive at this:
+Երբ որ դուք սկսում եք կոմպոնենտով այն միայն գեներացնում է heading կախված `level` prop֊ից, դուք արագորեն հասնում եք հետևյալին․
 
 ``` html
 <script type="text/x-template" id="anchored-heading-template">
@@ -61,16 +61,16 @@ Vue.component('anchored-heading', {
 })
 ```
 
-That template doesn't feel great. It's not only verbose, but we're duplicating `<slot></slot>` for every heading level and will have to do the same when we add the anchor element.
+Այդ ձևանմուշը լավը չէ։ Այն ոչ միայն բառալի է, բայց նաև կրկնօրինակում է `<slot></slot>`֊ը ամեն heading֊ի աստիճանի համար և պետք է կրկնենք նույն բանը ամեն հղման էլեմենտի համար։
 
-While templates work great for most components, it's clear that this isn't one of them. So let's try rewriting it with a `render` function:
+Երբ ձևանմուշները աշխատում են լավ հիմնական կոմպոնենտների համար, շատ պարզ է որ սա նրանցից մեկը չէ։ Այնպես որ փորձենք վերագրել այն `render` ֆունկցիայով․
 
 ``` js
 Vue.component('anchored-heading', {
   render: function (createElement) {
     return createElement(
-      'h' + this.level,   // tag name
-      this.$slots.default // array of children
+      'h' + this.level,   // tag֊ի անունը
+      this.$slots.default // ժառանգողների զանգված
     )
   },
   props: {
@@ -82,11 +82,11 @@ Vue.component('anchored-heading', {
 })
 ```
 
-Much simpler! Sort of. The code is shorter, but also requires greater familiarity with Vue instance properties. In this case, you have to know that when you pass children without a `v-slot` directive into a component, like the `Hello world!` inside of `anchored-heading`, those children are stored on the component instance at `$slots.default`. If you haven't already, **it's recommended to read through the [instance properties API](../api/#Instance-Properties) before diving into render functions.**
+Ավելի պարզ! Որոշ չափով։ Կոդը ավելի կարճ է, բայց այն պահանջում է բավականին մեծ ծանոթություն Vue֊ի instance֊ի հատկությունների հետ։ Այս դեպքում, մենք պետք է իմանանք որ երբ որ փոխանցում ենք ժառանգողներին առանց `v-slot` ուղղորդիչի դեպի կոմպոնենտ, ինչպես `Բարև Աշխարհ!` է `anchored-heading`֊ի ներսում, այս ժառանգողները տեղադրված են կոմպոնենտի instance֊ում ավելի կոնկրետ `$slots.default`֊ում։ Եթե դուք չեք կարդացել, **խորհուրդ է տրվում ծանոթանալ [instance հատկությունների API](../api/#Instance-Properties)֊ի հետ նախքան render ֆունկցիաների մեջ սուզվելը։**
 
-## Nodes, Trees, and the Virtual DOM
+## Node֊եր, Ծառեր, և Virtual DOM
 
-Before we dive into render functions, it’s important to know a little about how browsers work. Take this HTML for example:
+Նախքան սուզվենք դեպի render ֆունկցիաներ, կարևոր է իմանալ միքիչ թէ ինչպես են բրաուզերները աշխատում։ Վերցեք այս HTML֊ը օրինակի համար․
 
 ```html
 <div>
@@ -96,21 +96,21 @@ Before we dive into render functions, it’s important to know a little about ho
 </div>
 ```
 
-When a browser reads this code, it builds a [tree of "DOM nodes"](https://javascript.info/dom-nodes) to help it keep track of everything, just as you might build a family tree to keep track of your extended family.
+Երբ բրաուզերը կարդում է այս կոդը, այն կառուցում է [«DOM node֊երի» ծառ](https://javascript.info/dom-nodes) որպեսզի օգնի հետևողական լինել ամեն ինչին, ինչպես որ դուք կկառուցեք ընտանիքի ծառ որպեսզի հետևողական լինել ձեր շարունակվող սերունդներին։
 
-The tree of DOM nodes for the HTML above looks like this:
+DOM node֊երի ծառը HTML֊ի համար նշված վերևում այսպիսի տեսք ունի»
 
-![DOM Tree Visualization](/images/dom-tree.png)
+![DOM Ծառի Վիզուալիզացիա](/images/dom-tree.png)
 
-Every element is a node. Every piece of text is a node. Even comments are nodes! A node is just a piece of the page. And as in a family tree, each node can have children (i.e. each piece can contain other pieces).
+Ամեն էլեմենտը node է։ Ամեն մասը տեքստի node է։ Նույնիսկ comment֊ները node֊եր են! node֊ը պարզապես մի մասն է էջի։ ԵՎ ինչպես ընտանիքի ծառն է, ամեն node֊ը կարող է ունենալ ժառանգողներ (օրինակ՝ ամեն մասնիկ կարող է պարունակել այլ մասնիկներ)։
 
-Updating all these nodes efficiently can be difficult, but thankfully, you never have to do it manually. Instead, you tell Vue what HTML you want on the page, in a template:
+Թարմացնելով բոլոր այս node֊երը արդյունավետորեն կարող է լինել դժվար, բայց բարեբախտորեն, դուք չպետք է այն ձեռքով անեք։ Փոխարենը, դուք պետք է տեղյակ պահեք Vue֊ի թե ինչ HTML էք դուք ցանկանում էջի վրա, template֊ում․
 
 ```html
 <h1>{{ blogTitle }}</h1>
 ```
 
-Or a render function:
+Կամ render ֆունկցիա․
 
 ``` js
 render: function (createElement) {
@@ -118,42 +118,42 @@ render: function (createElement) {
 }
 ```
 
-And in both cases, Vue automatically keeps the page updated, even when `blogTitle` changes.
+և երկու դեպքերում էլ, Vue ավտոմատ կերպով էջը թարմացված է պահում, նույնիսկ եթե `blogTitle`֊ը փոխվում է։
 
-### The Virtual DOM
+### Virtual DOM
 
-Vue accomplishes this by building a **virtual DOM** to keep track of the changes it needs to make to the real DOM. Taking a closer look at this line:
+Vue իրականացնում է սա կառուցելով **virtual DOM** որպեսզի հետևի փոփոխությունների որպեսզի այն տանի դեպի իրական DOM։ Զննելով հետևյալ տողը․
 
 ``` js
 return createElement('h1', this.blogTitle)
 ```
 
-What is `createElement` actually returning? It's not _exactly_ a real DOM element. It could perhaps more accurately be named `createNodeDescription`, as it contains information describing to Vue what kind of node it should render on the page, including descriptions of any child nodes. We call this node description a "virtual node", usually abbreviated to **VNode**. "Virtual DOM" is what we call the entire tree of VNodes, built by a tree of Vue components.
+Ի՞նչ է `createElement`֊ը իրոք վերադարձնում։ Այն _կոնկրետ_ իրական DOM էլեմենտ չէ։ Այն հնարավոր է ավելի կոնկրետ անվանվի `createNodeDescription`, որովհետև այն պարունակում է ինֆորմացիա նկարագրող Vue֊ին թե ինչ տիպի node պետք է render լինի էջում, ներառելով նկարագրությունը ցանկացած child node֊երի։ Մենք կանվանենք այս node֊ի նկարագրությունը "virtual node", կրճատ **VNode**։ "Virtual DOM"֊ը այն է ինչ որ անվանում ենք ամբող VNode֊երի ծառին, կառուցված Vue կոմպոնենտների ծառով։
 
-## `createElement` Arguments
+## `createElement` Արգումենտները
 
-The next thing you'll have to become familiar with is how to use template features in the `createElement` function. Here are the arguments that `createElement` accepts:
+Հաջորդը դուք պետք է ծանոթանաք թե ինչպես օգտագործել template֊ի հատկությունները `createElement` ֆունկցիայում։ Այստեղ կարող եք տեսնել այն արգումենտները որոնք `createElement`֊ը ընդհունում է․
 
 ``` js
 // @returns {VNode}
 createElement(
   // {String | Object | Function}
-  // An HTML tag name, component options, or async
-  // function resolving to one of these. Required.
+  // HTML tag֊ի անուն, կոմպոնենտի ընտրանք, կամ async
+  // ֆունկցիա վերադարձնող նրացնից մեկը։ Պահանջվում է։
   'div',
 
   // {Object}
-  // A data object corresponding to the attributes
-  // you would use in a template. Optional.
+  // Տվյալների օբյեկտ համապատասխանող ատրիբուտներին
+  // որոնց դուք կարող էք օգտագործել template֊ում։ Պարտադիր չէ։
   {
-    // (see details in the next section below)
+    // (նայեք մանրամասները հաջորդ բաժնում որը գտնվում է ներքևում)
   },
 
   // {String | Array}
-  // Children VNodes, built using `createElement()`,
-  // or using strings to get 'text VNodes'. Optional.
+  // Ժառանգող VNode֊եր, կառուցված օգտագործելով `createElement()`,
+  // կամ օգտագործելով string֊ներ որպեսզի ստանալ text VNodes'֊ը։ Պարտադիր չէ։
   [
-    'Some text comes first.',
+    'Որևէ տեքստ որը գալիս է սկզբում։',
     createElement('h1', 'A headline'),
     createElement(MyComponent, {
       props: {
