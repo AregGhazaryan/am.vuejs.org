@@ -164,52 +164,52 @@ createElement(
 )
 ```
 
-### The Data Object In-Depth
+### Տվյալների Օբյեկտը Մանրամասն
 
-One thing to note: similar to how `v-bind:class` and `v-bind:style` have special treatment in templates, they have their own top-level fields in VNode data objects. This object also allows you to bind normal HTML attributes as well as DOM properties such as `innerHTML` (this would replace the `v-html` directive):
+Մեկ բան է պետք նշել․ նման լինելով թե ինչպես `v-bind:class`֊ը և `v-bind:style` ունեն հատուկ վերլուծումներ ձևանմուշներում, նրանք ունեն իրենց բարձր կարգի դաշտերը VNode տվյալների օբյեկտում։ Այս օբյեկտը նաև թույլ է տալիս ձեզ կապելու սովորական HTML ատրիբուտներ ինչպես նաև DOM հատկություններ ինչպիսին `innerHTML` է (սա կփոխարինվի `v-html` ուղղորդիչը)․
 
 ``` js
 {
-  // Same API as `v-bind:class`, accepting either
-  // a string, object, or array of strings and objects.
+  // Նույն API֊ը ինչ `v-bind:class`֊ն է, ընդհունելով կամ
+  // string, օբյեկտ, կամ զանգված կազմված string֊ներից կամ օբյեկտներից։
   class: {
     foo: true,
     bar: false
   },
-  // Same API as `v-bind:style`, accepting either
-  // a string, object, or array of objects.
+  // Նույն API֊ը ինչ `v-bind:style`֊ն է, ընդհունելով կամ
+  // string, օբյեկտ, կամ զանգված կազմված օբյեկտներից։
   style: {
     color: 'red',
     fontSize: '14px'
   },
-  // Normal HTML attributes
+  // Սովորական HTML ատրիբուտներ
   attrs: {
     id: 'foo'
   },
-  // Component props
+  // Կոմպոնենտի prop֊ներ
   props: {
     myProp: 'bar'
   },
-  // DOM properties
+  // DOM հատկություններ
   domProps: {
     innerHTML: 'baz'
   },
-  // Event handlers are nested under `on`, though
-  // modifiers such as in `v-on:keyup.enter` are not
-  // supported. You'll have to manually check the
-  // keyCode in the handler instead.
+  // Event handler֊ները nest են եղած `on`֊ի տակ, չնայած
+  // փոփոխիչները ինչպիսին `v-on:keyup.enter`֊ն է այլևս չեն
+  // համապատասխանում։ Փոխարենը դուք պետք է ձեռքով ստուգեք
+  // keyCode֊ը handler֊ում։
   on: {
     click: this.clickHandler
   },
-  // For components only. Allows you to listen to
-  // native events, rather than events emitted from
-  // the component using `vm.$emit`.
+  // Միայն կոմպոնենտների համար։ Թույլ է տալիս ձեզ լսելու 
+  // ներքին event֊ներին, քան այն event֊ներին որոնք արձակվել են
+  // կոմպոնենտից օգտագործելով `vm.$emit`֊ը։
   nativeOn: {
     click: this.nativeClickHandler
   },
-  // Custom directives. Note that the `binding`'s
-  // `oldValue` cannot be set, as Vue keeps track
-  // of it for you.
+  // Custom ուղղորդիչներ։ Նշում որ `կապումների`
+  // `հին արժեքը` չի կարող տեղադրվել, որովհետև Vue֊ն հետևում փոփոխություններին
+  // ձեր փոխարեն։
   directives: [
     {
       name: 'my-custom-directive',
@@ -221,27 +221,26 @@ One thing to note: similar to how `v-bind:class` and `v-bind:style` have special
       }
     }
   ],
-  // Scoped slots in the form of
+  // Scope եղած սլոտները հետևյալ ձևով
   // { name: props => VNode | Array<VNode> }
   scopedSlots: {
     default: props => createElement('span', props.text)
   },
-  // The name of the slot, if this component is the
-  // child of another component
+  // Անունը սլոտի, եթե կոմպոնենտը 
+  // ժառանգում է այլ կոմպոնենտից
   slot: 'name-of-slot',
-  // Other special top-level properties
+  // Այլ հատուկ կարգի աստիճանի հատկություններ
   key: 'myKey',
   ref: 'myRef',
-  // If you are applying the same ref name to multiple
-  // elements in the render function. This will make `$refs.myRef` become an
-  // array
+  // Եթե դուք կիրառում էք նույն ref անունը մի քանի
+  // էլեմենտներին render ֆունկցիայում։ Սա կդարձնի `$refs.myRef` զանգված։
   refInFor: true
 }
 ```
 
-### Complete Example
+### Ամբողջական Օրինակ
 
-With this knowledge, we can now finish the component we started:
+Այս գիտելիքներով, մենք կարող ենք ավարտել կոմպոնենտը որը սկսել ենք․
 
 ``` js
 var getChildrenTextContent = function (children) {
@@ -254,7 +253,7 @@ var getChildrenTextContent = function (children) {
 
 Vue.component('anchored-heading', {
   render: function (createElement) {
-    // create kebab-case id
+    // ստեղծեք kebab-case id
     var headingId = getChildrenTextContent(this.$slots.default)
       .toLowerCase()
       .replace(/\W+/g, '-')
@@ -281,23 +280,23 @@ Vue.component('anchored-heading', {
 })
 ```
 
-### Constraints
+### Սահմանափակումները
 
-#### VNodes Must Be Unique
+#### VNode֊երը Պետք է Լինեն Հատուկ
 
-All VNodes in the component tree must be unique. That means the following render function is invalid:
+Բոլոր VNode֊երը կոմպոնենտի ծառում պետք է լինեն հատուկ։ Սա նշանակում է որ հետևյալ render ֆունկցիան սխալ է․
 
 ``` js
 render: function (createElement) {
   var myParagraphVNode = createElement('p', 'hi')
   return createElement('div', [
-    // Yikes - duplicate VNodes!
+    // Սխալ - կրկնօրինակված VNode֊ներ՛
     myParagraphVNode, myParagraphVNode
   ])
 }
 ```
 
-If you really want to duplicate the same element/component many times, you can do so with a factory function. For example, the following render function is a perfectly valid way of rendering 20 identical paragraphs:
+Եթե դուք իրոք ցանկանում եք կրկնօրինակել նույն էլեմենտ/կոմպոնենտը մի քանի անգամ, դուք կարող եք օգտագործել factory ֆունկցիա։ Օրինակի համար, հետևյալ render ֆունկցիան ճիշտ է 20 հատ նույնականացված պարբերություններ render անելու համար․
 
 ``` js
 render: function (createElement) {
@@ -309,20 +308,20 @@ render: function (createElement) {
 }
 ```
 
-## Replacing Template Features with Plain JavaScript
+## Template֊ի Փոխարինումը Հասարակ JavaScript֊ով
 
-### `v-if` and `v-for`
+### `v-if` և `v-for`
 
-Wherever something can be easily accomplished in plain JavaScript, Vue render functions do not provide a proprietary alternative. For example, in a template using `v-if` and `v-for`:
+Երբեմն ինչ որ մի բան կարող է ավելի հեշտ ստացվել հասարակ JavaScript֊ում, Vue֊ի render ֆունկցիաները չեն տրամադրում ուղիղ այլընտրանք։ Օրինակի համար, ձևանմուշում օգտագործելով `v-if`֊ը և `v-for`֊ը․
 
 ``` html
 <ul v-if="items.length">
   <li v-for="item in items">{{ item.name }}</li>
 </ul>
-<p v-else>No items found.</p>
+<p v-else>Ոչինչ չգտնվեց.</p>
 ```
 
-This could be rewritten with JavaScript's `if`/`else` and `map` in a render function:
+Սա կարող է վերագրվել JavaScript֊ի օգնությամբ օգտագործելով `if`/`else` և `map` render ֆունկցիայում․
 
 ``` js
 props: ['items'],
@@ -332,14 +331,14 @@ render: function (createElement) {
       return createElement('li', item.name)
     }))
   } else {
-    return createElement('p', 'No items found.')
+    return createElement('p', 'Ոչինչ չգտնվեց.')
   }
 }
 ```
 
 ### `v-model`
 
-There is no direct `v-model` counterpart in render functions - you will have to implement the logic yourself:
+Ուղիղ այլընտրանք չկա `v-model`֊ի համար render ֆունկցիաներում - դուք պետք է տեղադրեք այդ տրաբանությունը ինքներտ․
 
 ``` js
 props: ['value'],
@@ -358,20 +357,20 @@ render: function (createElement) {
 }
 ```
 
-This is the cost of going lower-level, but it also gives you much more control over the interaction details compared to `v-model`.
+Սա է ցածր կարգի անցնելու ծախսը, բայց այն նաև տրամադրում է ավելի շատ կառավարում ի համեմատ `v-model`-ի։
 
-### Event & Key Modifiers
+### Event և Key Փոփոխիչներ
 
-For the `.passive`, `.capture` and `.once` event modifiers, Vue offers prefixes that can be used with `on`:
+`.passive`, `.capture` և `.once` event֊ի փոփոխիչների համար, Vue֊ն տրամադրում է prefix֊ներ ուոնք կարող են օգտագործվել `on`֊ի հետ․
 
-| Modifier(s) | Prefix |
+| Փոփոխիչ(ներ) | Prefix |
 | ------ | ------ |
 | `.passive` | `&` |
 | `.capture` | `!` |
 | `.once` | `~` |
-| `.capture.once` or<br>`.once.capture` | `~!` |
+| `.capture.once` կամ<br>`.once.capture` | `~!` |
 
-For example:
+Օրինակի համար․
 
 ```javascript
 on: {
@@ -381,40 +380,40 @@ on: {
 }
 ```
 
-For all other event and key modifiers, no proprietary prefix is necessary, because you can use event methods in the handler:
+Բոլոր այլ event և key փոփոխիչների համար, prefix անհրաժեշտ չէ, որովհետև դուք կարող օգտագործել event֊ի մեթոդները handler֊ում․
 
-| Modifier(s) | Equivalent in Handler |
+| Փոփոխիչ(ներ) | Handler֊ում  |
 | ------ | ------ |
 | `.stop` | `event.stopPropagation()` |
 | `.prevent` | `event.preventDefault()` |
 | `.self` | `if (event.target !== event.currentTarget) return` |
-| Keys:<br>`.enter`, `.13` | `if (event.keyCode !== 13) return` (change `13` to [another key code](http://keycode.info/) for other key modifiers) |
-| Modifiers Keys:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (change `ctrlKey` to `altKey`, `shiftKey`, or `metaKey`, respectively) |
+| Key֊եր:<br>`.enter`, `.13` | `if (event.keyCode !== 13) return` (փոխեք `13`֊ը դեպի [մեկ այլ key code](http://keycode.info/) այլ key modifier֊ների համար) |
+| Փոփոխիչների Key֊եր:<br>`.ctrl`, `.alt`, `.shift`, `.meta` | `if (!event.ctrlKey) return` (փոխեք `ctrlKey` դեպի `altKey`, `shiftKey`, կամ `metaKey`, համապտասխանաբար) |
 
-Here's an example with all of these modifiers used together:
+Այստեղ օրինակն է բոլոր փոփոխիչները միաժամանակ օգտագործված․
 
 ```javascript
 on: {
   keyup: function (event) {
-    // Abort if the element emitting the event is not
-    // the element the event is bound to
+    // Կանխել եթե էլեմենտը որը արձակում է event֊ը 
+    // այլ էլեմենտը չէ որին որ event֊ը կապված է
     if (event.target !== event.currentTarget) return
-    // Abort if the key that went up is not the enter
-    // key (13) and the shift key was not held down
-    // at the same time
+    // Կանխել եթե կոճակը enter֊ը չէ
+    // key (13) և shift կոճակը չի սեղմված եղել
+    // նույն ժամանակ
     if (!event.shiftKey || event.keyCode !== 13) return
-    // Stop event propagation
+    // Կանգնացնել event֊ի propagation֊ը
     event.stopPropagation()
-    // Prevent the default keyup handler for this element
+    // Կանխում է հիմնական keyup handler֊ը այս էլեմենտի համար
     event.preventDefault()
     // ...
   }
 }
 ```
 
-### Slots
+### Սլոտները
 
-You can access static slot contents as Arrays of VNodes from [`this.$slots`](../api/#vm-slots):
+Դուք կարող էք մուտք գործել դեպի ստատիկ սլոտի բովանդակություններ ինչպիսին են Զանգվածները VNode֊երի [`this.$slots`֊ից](../api/#vm-slots)․
 
 ``` js
 render: function (createElement) {
@@ -423,7 +422,7 @@ render: function (createElement) {
 }
 ```
 
-And access scoped slots as functions that return VNodes from [`this.$scopedSlots`](../api/#vm-scopedSlots):
+ԵՎ մուտք գործել scope֊ված սլոտներ որպես ֆունկցիաներ որոնք վերադարձնում են VNode֊եր [`this.$scopedSlots`֊ի](../api/#vm-scopedSlots)․
 
 ``` js
 props: ['message'],
@@ -437,7 +436,7 @@ render: function (createElement) {
 }
 ```
 
-To pass scoped slots to a child component using render functions, use the `scopedSlots` field in VNode data:
+Որպեսզի փոխանցել scope֊ված սլոտներ ժառանգող կոմպոնենտին օգտագործելով render ֆունկցիաներ, օգտագործեք `scopedSlots` դաշտը VNode տվյալում
 
 ``` js
 render: function (createElement) {
@@ -458,7 +457,7 @@ render: function (createElement) {
 
 ## JSX
 
-If you're writing a lot of `render` functions, it might feel painful to write something like this:
+Եթե դուք գրում եք բավականին շատ `render` ֆունկցիաներ, կարող է լինել ցավոտ այսպիսի բան գրելը․
 
 ``` js
 createElement(
@@ -473,7 +472,7 @@ createElement(
 )
 ```
 
-Especially when the template version is so simple in comparison:
+Հատկապես երբ template֊ի version֊ը շատ պարզ է համեմատաբար․
 
 ``` html
 <anchored-heading :level="1">
@@ -481,7 +480,7 @@ Especially when the template version is so simple in comparison:
 </anchored-heading>
 ```
 
-That's why there's a [Babel plugin](https://github.com/vuejs/jsx) to use JSX with Vue, getting us back to a syntax that's closer to templates:
+Այդ պատճառով գոյություն ունի [Babel plugin](https://github.com/vuejs/jsx) որպեսզի օգտագործել JSX Vue֊ի հետ, ետ տանելով մեզ գրելաձև որը նման է template֊ներին․
 
 ``` js
 import AnchoredHeading from './AnchoredHeading.vue'
@@ -491,14 +490,14 @@ new Vue({
   render: function (h) {
     return (
       <AnchoredHeading level={1}>
-        <span>Hello</span> world!
+        <span>Բարև</span> աշխարհ!
       </AnchoredHeading>
     )
   }
 })
 ```
 
-<p class="tip">Aliasing `createElement` to `h` is a common convention you'll see in the Vue ecosystem and is actually required for JSX. Starting with [version 3.4.0](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) of the Babel plugin for Vue, we automatically inject `const h = this.$createElement` in any method and getter (not functions or arrow functions), declared in ES2015 syntax that has JSX, so you can drop the `(h)` parameter. With prior versions of the plugin, your app would throw an error if `h` was not available in the scope.</p>
+<p class="tip">Փոխանուն ստեղծելով `createElement`֊ից դեպի `h` շատ հազվադեպ է պատահում դուք կտեսնեք Vue֊ի էկոհամակարգում և հատկապես պահանջվում է  ecosystem and is actually required for JSX. Starting with [version 3.4.0](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) of the Babel plugin for Vue, we automatically inject `const h = this.$createElement` in any method and getter (not functions or arrow functions), declared in ES2015 syntax that has JSX, so you can drop the `(h)` parameter. With prior versions of the plugin, your app would throw an error if `h` was not available in the scope.</p>
 
 For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx#installation).
 
