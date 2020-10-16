@@ -497,7 +497,7 @@ new Vue({
 })
 ```
 
-<p class="tip">Փոխանուն ստեղծելով `createElement`֊ից դեպի `h` շատ հազվադեպ է պատահում դուք կտեսնեք Vue֊ի էկոհամակարգում և հատկապես պահանջվում է  ecosystem and is actually required for JSX. Starting with [version 3.4.0](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) of the Babel plugin for Vue, we automatically inject `const h = this.$createElement` in any method and getter (not functions or arrow functions), declared in ES2015 syntax that has JSX, so you can drop the `(h)` parameter. With prior versions of the plugin, your app would throw an error if `h` was not available in the scope.</p>
+<p class="tip">Փոխանուն ստեղծելով `createElement`֊ից դեպի `h` շատ հազվադեպ է պատահում Vue֊ի էկոհամակարգում և հատկապես պահանջվում է JSX֊ի կողղմից։ Սկսելով [3.4.0 տարբերակով](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) Babel plugin֊ից Vue֊ի համար, մենք ավտոմատ կերպով ներարկում ենք `const h = this.$createElement` ցանկացած մեթոդում և getter֊ում (ոչ ֆունկցիաներում կամ աղեղով ֆունկցիաներում), հայտարարված ES2015 գրելաձևով որը ունի JSX, այնպես որ դուք կարող էջ չօգտագործել `(h)` պարամետրը։ Plugin֊ի նախկին տարբերակներում, ձեև ծրագրիը կնետի error եթե `h`֊ը հասանելի չէր scope֊ում։</p>
 
 For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx#installation).
 
