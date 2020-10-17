@@ -201,7 +201,7 @@ createElement(
   on: {
     click: this.clickHandler
   },
-  // Միայն կոմպոնենտների համար։ Թույլ է տալիս ձեզ լսելու 
+  // Միայն կոմպոնենտների համար։ Թույլ է տալիս ձեզ լսելու
   // ներքին event֊ներին, քան այն event֊ներին որոնք արձակվել են
   // կոմպոնենտից օգտագործելով `vm.$emit`֊ը։
   nativeOn: {
@@ -226,7 +226,7 @@ createElement(
   scopedSlots: {
     default: props => createElement('span', props.text)
   },
-  // Անունը սլոտի, եթե կոմպոնենտը 
+  // Անունը սլոտի, եթե կոմպոնենտը
   // ժառանգում է այլ կոմպոնենտից
   slot: 'name-of-slot',
   // Այլ հատուկ կարգի աստիճանի հատկություններ
@@ -395,7 +395,7 @@ on: {
 ```javascript
 on: {
   keyup: function (event) {
-    // Կանխել եթե էլեմենտը որը արձակում է event֊ը 
+    // Կանխել եթե էլեմենտը որը արձակում է event֊ը
     // այլ էլեմենտը չէ որին որ event֊ը կապված է
     if (event.target !== event.currentTarget) return
     // Կանխել եթե կոճակը enter֊ը չէ
@@ -497,63 +497,63 @@ new Vue({
 })
 ```
 
-<p class="tip">Փոխանուն ստեղծելով `createElement`֊ից դեպի `h` շատ հազվադեպ է պատահում Vue֊ի էկոհամակարգում և հատկապես պահանջվում է JSX֊ի կողղմից։ Սկսելով [3.4.0 տարբերակով](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) Babel plugin֊ից Vue֊ի համար, մենք ավտոմատ կերպով ներարկում ենք `const h = this.$createElement` ցանկացած մեթոդում և getter֊ում (ոչ ֆունկցիաներում կամ աղեղով ֆունկցիաներում), հայտարարված ES2015 գրելաձևով որը ունի JSX, այնպես որ դուք կարող էջ չօգտագործել `(h)` պարամետրը։ Plugin֊ի նախկին տարբերակներում, ձեև ծրագրիը կնետի error եթե `h`֊ը հասանելի չէր scope֊ում։</p>
+<p class="tip">Փոխանուն ստեղծելով `createElement`֊ից դեպի `h` շատ հազվադեպ է պատահում Vue֊ի էկոհամակարգում և հատկապես պահանջվում է JSX֊ի կողղմից։ Սկսելով [3.4.0 տարբերակով](https://github.com/vuejs/babel-plugin-transform-vue-jsx#h-auto-injection) Babel plugin֊ից Vue֊ի համար, մենք ավտոմատ կերպով ներարկում ենք `const h = this.$createElement` ցանկացած մեթոդում և getter֊ում (ոչ ֆունկցիաներում կամ աղեղով ֆունկցիաներում), հայտարարված ES2015 գրելաձևով որը ունի JSX, այնպես որ դուք կարող էջ չօգտագործել `(h)` պարամետրը։ Plugin֊ի նախկին տարբերակներում, ձեև ծրագրիը կնետի error եթե `h`֊ը հասանելի չեր scope֊ում։</p>
 
-For more on how JSX maps to JavaScript, see the [usage docs](https://github.com/vuejs/jsx#installation).
+Ավելի մանրամասների համար թե ինչպես է JSX-ը կառուցվում դեպի JavaScript, նայեք հետևյալ [օգտագործման փաստաթղթերը](https://github.com/vuejs/jsx#installation)։
 
-## Functional Components
+## Ֆունկցիոնալ Կոմպոնենտներ
 
-The anchored heading component we created earlier is relatively simple. It doesn't manage any state, watch any state passed to it, and it has no lifecycle methods. Really, it's only a function with some props.
+Anchored heading կոմպոնենտը որը մենք քիչ առաջ ստեղծեցինք համեմատաբար ավելի պարզ է: Այն չի կառավարում որևէ state, չի դիտարկում որևէ փոխանցված state, և այն չունի որևէ lifecycle մեթոդներ։ Իրականում, այն միայն ֆունկցիա է որոշ prop-ներով։
 
-In cases like this, we can mark components as `functional`, which means that they're stateless (no [reactive data](../api/#Options-Data)) and instanceless (no `this` context). A **functional component** looks like this:
+Այսպիսի դեպքերում, մենք կարող են անվանել կոմպոնենտը որպես `ֆունկցիոնալ`, որը նշանակում է որ նրանք առանց վիճակի են այսինքն stateless (ոչ [ռեակտիվ տվյալներ](../api/#Options-Data)) և առանց սկզբնաղբյուրի (ոչ `this` մեջբերումը)։ **ֆունկցիոնալ կոմպոնենտը** նման է հետևյալին․
 
 ``` js
 Vue.component('my-component', {
   functional: true,
-  // Props are optional
+  // Props-ները պարտադիր չեն
   props: {
     // ...
   },
-  // To compensate for the lack of an instance,
-  // we are now provided a 2nd context argument.
+  // Որպեսզի instance-ի բացակայությունը փոխհատուցենք,
+  // մենք հիմա տրամադրում ենք երկրորդ արգումենտը context-ի համար։
   render: function (createElement, context) {
     // ...
   }
 })
 ```
 
-> Note: in versions before 2.3.0, the `props` option is required if you wish to accept props in a functional component. In 2.3.0+ you can omit the `props` option and all attributes found on the component node will be implicitly extracted as props.
-> 
-> The reference will be HTMLElement when used with functional components because they’re stateless and instanceless.
+> Նշաւմ: 2.3.0-ից ավելի վաղ տարբերակներում, `props` ընտրանքը պահանջվում է եթե դուք ցանկանում եք ընդհունել prop-ներ ֆունկցիոնալ կոմպոնենտում։ 2.3.0-ից ավելի վեր դուք կարող եք արձակել `props` ընտրանքը և բոլոր ատրիբուտները որոնք գտնվում են կոմպոնենտ node-ում ուղղակիորեն կստացվեն որպես prop-ներ։
+>
+> Դիմումը կլինի HTMLElement-ի շնորհիվ երբ օգտագործվում է ֆունկցիոնալ կոմպոնենտների հետ որովհետև նրանք վիճակ և սկզբնաղբյուր չունեն։
 
-In 2.5.0+, if you are using [single-file components](single-file-components.html), template-based functional components can be declared with:
+2.5.0-ից ավելի տարբերակներում, եթե դուք օգտագործում եք [մեկ ֆայլ կոմպոնենտները](single-file-components.html), ձևանմուշի վրա հիմնված ֆունկցիոնալ կոմպոնենտները կարող են հայտարարվել հետևյալ կերպ․
 
 ``` html
 <template functional>
 </template>
 ```
 
-Everything the component needs is passed through `context`, which is an object containing:
+Ամենինչ կոմպոնենտի պահանջվում է կարող է փոխանցվել `context`-ի միջոցով, որը օբյեկտ է պարունակող․
 
-- `props`: An object of the provided props
-- `children`: An array of the VNode children
+- `props`: Օբյեկտ տրամադրած prop-ներով
+- `children`: Զանգված պարունակող VNode-ի ժառագողները
 - `slots`: A function returning a slots object
-- `scopedSlots`: (2.6.0+) An object that exposes passed-in scoped slots. Also exposes normal slots as functions.
-- `data`: The entire [data object](#The-Data-Object-In-Depth), passed to the component as the 2nd argument of `createElement`
-- `parent`: A reference to the parent component
-- `listeners`: (2.3.0+) An object containing parent-registered event listeners. This is an alias to `data.on`
-- `injections`: (2.3.0+) if using the [`inject`](../api/#provide-inject) option, this will contain resolved injections.
+- `scopedSlots`: (2.6.0+) Օբյեկտ որը պարունակում է փոխանցված scoped սլոտները։ Նաև տրամադրում է հիմանական սլոտները որպես ֆունկցիա։
+- `data`: Ամբողջ [տվյալների օբյեկտը](#The-Data-Object-In-Depth), փոխանցվում է կոմպոնենտին որպես 2-րդ արգումենտ `createElement`-ի
+- `parent`: Դիմելու միջոց ծնող կոմպոնենտին
+- `listeners`: (2.3.0+) Օբյեկտ պարունակող ծնողներում գրանցված event-ի listener-ների։ Սա փոխանուն է `data.on`-ի
+- `injections`: (2.3.0+) եթե օգտագործում եք [`inject`](../api/#provide-inject) ընտրանքը, այն կպարունակի հաստատված ներարկումները (injection-ները)։
 
-After adding `functional: true`, updating the render function of our anchored heading component would require adding the `context` argument, updating `this.$slots.default` to `context.children`, then updating `this.level` to `context.props.level`.
+`functional: true` ավելացնելուց հետո, render ֆունկցիան թարմացնելու համար մեր anchored heading կոմպոնենտում կպահանջի ավելացնել `context` արգումենտը, թարմացնելով `this.$slots.default` դեպի `context.children`, այնուհետև թարմացնելով `this.level` դեպի `context.props.level`։
 
-Since functional components are just functions, they're much cheaper to render.
+Մինչ ֆունկցիոնալ կոմպոնենտը ուղակի ֆունկցիաներ են, նրանք շատ բան չեն պահանտում render անելու համար։
 
-They're also very useful as wrapper components. For example, when you need to:
+Նրանք նաև շատ օգտակար են որպես փաթաթող կոմպոնենտներ։ Օրինակի համար, երբ որ դուք պետք է․
 
-- Programmatically choose one of several other components to delegate to
-- Manipulate children, props, or data before passing them on to a child component
+- Ծրագրավորեն ընտրել մեկը մի քանի կոմպոնենտներից որպեսզի լիազորել
+- Ժառանգողների մանիպուլացիան, prop-ները, կամ տվյալները նախքան փոխանցելով նրանց ժառանգող կոմպոնենտի
 
-Here's an example of a `smart-list` component that delegates to more specific components, depending on the props passed to it:
+Ահա օրինակ `smart-list` կոմպոնենտի որը ընտրում ավելի հատուկ կոմպոնենտներ, կախված նրան փոխանցված prop-ներից․
 
 ``` js
 var EmptyList = { /* ... */ }
@@ -590,25 +590,25 @@ Vue.component('smart-list', {
 })
 ```
 
-### Passing Attributes and Events to Child Elements/Components
+### Ատրիբուտների Փոխանցումը և Event-ների Փոխանցումը դեպի Ժառանգող Էլեմենտների/Կոմպոնենտների
 
-On normal components, attributes not defined as props are automatically added to the root element of the component, replacing or [intelligently merging with](class-and-style.html) any existing attributes of the same name.
+Սովորական կոմպոնենտները, ատրիբուտները որոնք չեն հայտարարվել որպես prop-ներ ավտոմատ կերպով ավլեացվում են արմատային էլեմենտին կոմպոնենտի, փոխարինելով կամ [խելացիորեն ձուլելով](class-and-style.html) ցանկացած գոյություն ունեցող ատրիբուտների որոնք ունեն նույն անունը։
 
-Functional components, however, require you to explicitly define this behavior:
+Ֆունկցիոնալ կոմպոնենտները, սակայն, պահանջում են ձեզ որպեսզի պարտադիր հայտարարեք հետևյալ կերպ․
 
 ```js
 Vue.component('my-functional-button', {
   functional: true,
   render: function (createElement, context) {
-    // Transparently pass any attributes, event listeners, children, etc.
+    // Թափանցիկորեն փոխանցեք ցանկացած ատրիբուտներ, event listener-ներ, ժառանգողներ, և այլն։
     return createElement('button', context.data, context.children)
   }
 })
 ```
 
-By passing `context.data` as the second argument to `createElement`, we are passing down any attributes or event listeners used on `my-functional-button`. It's so transparent, in fact, that events don't even require the `.native` modifier.
+Փոխանցելով `context.data` որպես երկրորդ արգումենտ `createElement`-ին, մենք փոխանցում ենք ցանկացած ատրիբուտներ կամ event listener-ներ որոնք օգտագործվում են `my-functional-button`-ում։ Այն այնքան թափանցիկ է, նույնիսկ, event-ները չեն պահանջում `.native` փոփոխիչը։
 
-If you are using template-based functional components, you will also have to manually add attributes and listeners. Since we have access to the individual context contents, we can use `data.attrs` to pass along any HTML attributes and `listeners` _(the alias for `data.on`)_ to pass along any event listeners.
+Եթե դուք օգտագործում եք ձևանմուշի վրա հիմնված ֆունկցիոնալ կոմպոնենտներ, դուք պետք է ձեռքով ավելացնեք ատրիբուտները և listener-ները։ Մինչ մենք ունենք մուտք անհատական context-ի բովանդակություն, մենք կարող ենք օգտագործել `data.attrs` որպեսզի փոխանցել ցանկացած HTML ատրիբուտներ և `listener-ներ` _(`data.on`-ի փոխանուն է)_ որպեսզի փոխանցել ցանկացած event listener-ներ։
 
 ```html
 <template functional>
@@ -622,23 +622,23 @@ If you are using template-based functional components, you will also have to man
 </template>
 ```
 
-### `slots()` vs `children`
+### `slots()` ընդեմ `children`
 
-You may wonder why we need both `slots()` and `children`. Wouldn't `slots().default` be the same as `children`? In some cases, yes - but what if you have a functional component with the following children?
+Դուք հնարավոր է հարցնեք թե ի՞նչու է մեզ պետք `slots()` և `children` միաժամանակ։ Արդյ՞ոք `slots().default` չի լինի նույնը ինչ `children`-ը։ Որոշ դեպքերում, այո - բայց ի՞նչ եթե դուք ունեք ֆունկցիոնալ կոմպոնենտ հետևյալ ժառանգողներով։
 
 ``` html
 <my-functional-component>
   <p v-slot:foo>
-    first
+    առաջին
   </p>
-  <p>second</p>
+  <p>երկրորդ</p>
 </my-functional-component>
 ```
 
-For this component, `children` will give you both paragraphs, `slots().default` will give you only the second, and `slots().foo` will give you only the first. Having both `children` and `slots()` therefore allows you to choose whether this component knows about a slot system or perhaps delegates that responsibility to another component by passing along `children`.
+Այս կոմպոնենտի համար, `children`-ը կտա ձեզ երկու պարբերությունները, `slots().default`-ը միայն ձեզ կտա երկրորդը, և `slots().foo`-ը միայն կտա ձեզ առաջինը։ Ունենալով `children` և `slots()`-ը թույլ է տալիս ձեզ ընտրել թե այս կոմպոնենտը գիտի սլոտի համակարգի մասին կամ տալիս է այդ լիազորությունը այլ կոմպոնենտին փոխանցելով `children`-ը։
 
-## Template Compilation
+## Ձևանմուշի Կազմումը
 
-You may be interested to know that Vue's templates actually compile to render functions. This is an implementation detail you usually don't need to know about, but if you'd like to see how specific template features are compiled, you may find it interesting. Below is a little demo using `Vue.compile` to live-compile a template string:
+Դուք կարող է հետաքրքրվեք և ցանկանաք իմանալ որ Vue-ի ձևանմուշները իրականում compile են լինում դեպի render ֆունկցիաներ։ Սա տեղադրման մասնիկ է որը դուք պարտադիր չէ իմանաք, բայց եթե դուք ցանկանում եք տեսնել թե ինչպես է ձևանմուշի հատկությունները compile լինում, դուք կարող է հետաքրքրվեք։ Ներքևում կտեսնեք փոքր ցուցադրում օգտագործելով `Vue.compile`-ը որպեսզի կատարել live-compile ձևանմուշի string․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-template-compilation?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light&view=preview" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
