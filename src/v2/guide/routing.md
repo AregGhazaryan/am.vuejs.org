@@ -1,21 +1,21 @@
 ---
 title: Routing
-type: guide
+type: ուղեցույց
 order: 501
 ---
 
-## Official Router
+## Պաշտոնական Router
 
-For most Single Page Applications, it's recommended to use the officially-supported [vue-router library](https://github.com/vuejs/vue-router). For more details, see vue-router's [documentation](https://router.vuejs.org/).
+Շատ Մեկ Էջ Ծրագրերում, խորհուրդ է տրվում օգտագործել պաշտոնապես համապատասխանող [vue-router գրադարանը](https://github.com/vuejs/vue-router)։ Ավելի մանրամասների համար, նայեք vue-router-ի [փաստաթղթերը](https://router.vuejs.org/)։
 
-## Simple Routing From Scratch
+## Հասարակ Routing Զրոյից
 
-If you only need very simple routing and do not wish to involve a full-featured router library, you can do so by dynamically rendering a page-level component like this:
+Եթե դուք պետք է օգտագործեք շատ հասարակ routing և չեք ցանկանում օգտագործել մեծածավալ router-ի գրադարան, դուք կարող եք հասնել դրան դինամիկորեն render անելով էջի կարգի կոմպոնենտը հետևյալ կերպով․
 
 ``` js
-const NotFound = { template: '<p>Page not found</p>' }
-const Home = { template: '<p>home page</p>' }
-const About = { template: '<p>about page</p>' }
+const NotFound = { template: '<p>Էջ չի գտնվել</p>' }
+const Home = { template: '<p>Հիմնական էջ</p>' }
+const About = { template: '<p>Մեր մասին</p>' }
 
 const routes = {
   '/': Home,
@@ -36,8 +36,8 @@ new Vue({
 })
 ```
 
-Combined with the HTML5 History API, you can build a very basic but fully-functional client-side router. To see that in practice, check out [this example app](https://github.com/chrisvfritz/vue-2.0-simple-routing-example).
+Միակցված HTML5 History API-ի հետ, դուք կարող էք կառուցել շատ հասարակ բայց լիովին ֆունկցիոնալ օգտագործողի-կողմի router։ Որպեսզի այն տեսնել կիրառման ժամանակ, նայեք այս [ծրագրի օրինակը](https://github.com/chrisvfritz/vue-2.0-simple-routing-example)։
 
-## Integrating 3rd-Party Routers
+## 3-րդ Կողմի Router-ների Տեղադրումը
 
-If there's a 3rd-party router you prefer to use, such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director), integration is [similarly easy](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs). Here's a [complete example](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) using Page.js.
+Եթե ցանկանում եք օգտագործում եք 3-րդ կողմի router, ինչպիսին է [Page.js-ը](https://github.com/visionmedia/page.js) կամ [Director-ը](https://github.com/flatiron/director), տեղադրումը [բավականին պարզ է](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/compare/master...pagejs)։ Այստեղ կարող եք նայել [ամբողջական օրինակը](https://github.com/chrisvfritz/vue-2.0-simple-routing-example/tree/pagejs) օգտագործելով Page.js-ը։
