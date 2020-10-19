@@ -1,17 +1,17 @@
 ---
 title: Server-Side Rendering
-type: guide
+type: ուղեցույց
 order: 503
 ---
 
-## The Complete SSR Guide
+## Ամբողջական SSR-ի Ուղեցույցը
 
-We have created a standalone guide for creating server-rendered Vue applications. This is a very in-depth guide for those who are already familiar with client-side Vue development, server-side Node.js development and webpack. Check it out at [ssr.vuejs.org](https://ssr.vuejs.org/).
+Մենք ստեղծել ենք առանձին ուղեցույց server-render-ով Vue ծրագրեր ստեղծելու վերաբերյալ։ Սա շատ մանրամասն ուղեցույց է նրանց համար ովքեր արդեն ծանոթ են client-side Vue զարգացման, server-side Node.js-ի զարգացման և webpack-ի հետ։ Իմացեք ավելին այստեղ [ssr.vuejs.org](https://ssr.vuejs.org/)։
 
 ## Nuxt.js
 
-Properly configuring all the discussed aspects of a production-ready server-rendered app can be a daunting task. Luckily, there is an excellent community project that aims to make all of this easier: [Nuxt.js](https://nuxtjs.org/). Nuxt.js is a higher-level framework built on top of the Vue ecosystem which provides an extremely streamlined development experience for writing universal Vue applications. Better yet, you can even use it as a static site generator (with pages authored as single-file Vue components)! We highly recommend giving it a try.
+Ճիշտ կերպով կարգավորած բոլոր քննարկված հատկանիշները արտադրությանը պատրաստ և սեռվեռրի կողմից render լինող ծրագիրը կարող է լինել շատ ծանր հանձնարարություն։ Բարեբախտորեն, մենք ունենք հիանալի համայնքի նախագիծ որը հեշտացում է այս ամենը․ [Nuxt.js](https://nuxtjs.org/)։ Nuxt.js-ը բարձր կարգի framework է կառուցված Vue-ի էկոհամակարգի վրա որը տրամադրում է բավականին պարզեցված զարգացման փորձ համընդհանուր Vue ծրագրեր գրելու համար։ Ավելին, դուք կարող էք նույնիսկ օգտագործել այն որպես ստատիկ վեբկայքի գեներատոր (էջերը հեղինակվում են որպես մեկ ֆայլ Vue կոմպոնենտներ)՜ Մենք շատ ենք խորհուրդ տալիս այն փորձելը։
 
 ## Quasar Framework SSR + PWA
 
-[Quasar Framework](https://quasar.dev) will generate an SSR app (with optional PWA handoff) that leverages its best-in-class build system, sensible configuration and developer extensibility to make designing and building your idea a breeze. With over one hundred specific "Material Design 2.0"-compliant components, you can decide which ones to execute on the server, which are available in the browser - and even manage the `<meta>` tags of your site. Quasar is a node.js and webpack based development environment that supercharges and streamlines rapid development of SPA, PWA, SSR, Electron, Capacitor and Cordova apps - all from one codebase.
+[Quasar Framework](https://quasar.dev)-ը կգեներացնի SSR ծրագիր (ոչ պարտադիր PWA-ի ներկայությամբ) որը տրամադրում է լավագույնը իր կարգում կառուցման համակարգ, որը հեշտացնում է կարգավորումները և զարգացման ընդլայնումները որպեսզի դարձնել դիզայնավորումը և կառուցումը ավելի հասարակ և հասանելի։ Ավելի քան հարյուրից ավելի հատուկ "Material Design 2.0"-ին համապատասխան կոմպոնենտներ, դուք կարող էք որոշել թե որոնք պետք է աշխատեն սեռվեռում, և որոնք հասանելի կլինեն բրաուզերում - և նույնիսկ կառավարել `<meta>` tag-երը ձեր կայքի։ Quasar-ը node.js-ի և webpack-ի վրա հիմնված զարգացման environment է որը գերլարում և արագացնում է արագ զարգացումը SPA, PWA, SSR, Electron, Capacitor և Cordova ծրագրերի - բոլորը մեկ կոդային բազայում։
