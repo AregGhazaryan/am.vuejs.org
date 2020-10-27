@@ -1,22 +1,22 @@
 ---
-title: State Management
-type: guide
+title: State֊ի Կառավարում
+type: ուղեցույց
 order: 502
 ---
 
-## Official Flux-Like Implementation
+## Պաշտոնական Flux֊ին նման Տեղադրում
 
-Large applications can often grow in complexity, due to multiple pieces of state scattered across many components and the interactions between them. To solve this problem, Vue offers [vuex](https://github.com/vuejs/vuex): our own Elm-inspired state management library. It even integrates into [vue-devtools](https://github.com/vuejs/vue-devtools), providing zero-setup access to [time travel debugging](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif).
+Մեծ ծրագրերը հաճախ աճում են բարդությամբ, բազմաթիվ state֊ի մասերի պատճառով որոնք ցրված են բազմաթիվ կոմպոնենտներում և նրանց շփման միջև։ Որպեսզի լուծել այս խնդիրը, Vue֊ն առաջարկում է [vuex֊ը](https://github.com/vuejs/vuex)․ մեր անհատական Elm֊ով ոգեշնչված state֊ի կառավարման գրադարանը։ Այն նույնիսկ ինտեգրվում է դեպի [vue-devtools](https://github.com/vuejs/vue-devtools), տրամադրելով զրոյական տեղադրման մուտք դեպի [time travel debugging](https://raw.githubusercontent.com/vuejs/vue-devtools/master/media/demo.gif)։
 
-<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="sponsored noopener" title="Vuex Tutorial">Watch a video explanation on Vue Mastery</a></div>
+<div class="vue-mastery"><a href="https://www.vuemastery.com/courses/mastering-vuex/intro-to-vuex/" target="_blank" rel="sponsored noopener" title="Vuex֊ի Դաս">Դիտեք այս բացատրող տեսանյութը Vue Mastery֊ում</a></div>
 
-### Information for React Developers
+### Ինֆորմացիա React֊ի Ծրագրավորողների Համար
 
-If you're coming from React, you may be wondering how vuex compares to [redux](https://github.com/reactjs/redux), the most popular Flux implementation in that ecosystem. Redux is actually view-layer agnostic, so it can easily be used with Vue via [simple bindings](https://classic.yarnpkg.com/en/packages?q=redux%20vue&p=1). Vuex is different in that it _knows_ it's in a Vue app. This allows it to better integrate with Vue, offering a more intuitive API and improved development experience.
+Եթե դուք գալիս եք React֊ից, դուք կհետաքրքրվեք թե ինչպես է vuex֊ը համեմատվում [redux֊ի](https://github.com/reactjs/redux) հետ, ամենահայտնի Flux֊ի կիրառումը այդ էկոհամակարգում։ Redux֊ը իրականում տեսաշերտային ագնոստիկ է, այնպես որ այն կարող է հեշտորեն օգտագործվել Vue֊ի օգտագործելով [հասարակ կապումներ](https://classic.yarnpkg.com/en/packages?q=redux%20vue&p=1)։ Vuex֊ը տարբերվում է դրանով այն _գիտի_ որ այն գտնվում է Vue֊ի ծրագրում։ Սա թույլ է տալիս ավելի լավ ինտեգրացնել Vue֊ի հետ, տրամադրելով ավելի ինտուիտիվ API և կատարելագործված զարգացման փորձառություն։
 
-## Simple State Management from Scratch
+## Հասարակ State֊ի Կառավարում Զրոյից
 
-It is often overlooked that the source of truth in Vue applications is the raw `data` object - a Vue instance only proxies access to it. Therefore, if you have a piece of state that should be shared by multiple instances, you can share it by identity:
+Շատ հաճախ վերանայվում է որ սկզբնական տվյալները Vue ծրագրերում դա անմշակ `data` օբյեկտն է - Vue֊ի instance֊ը միայն տրամադրում է մուտք նրան միակողմանի։ Որից դատելով, եթե դուք ունեք state-ի որևէ կտոր որը պետք է տարածվի բազմաթիվ instance֊ներով, դուք կարող էք տարածել նրան օգտագործելով իր ինքնությունը։
 
 ``` js
 var sourceOfTruth = {}
@@ -30,15 +30,15 @@ var vmB = new Vue({
 })
 ```
 
-Now whenever `sourceOfTruth` is mutated, both `vmA` and `vmB` will update their views automatically. Subcomponents within each of these instances would also have access via `this.$root.$data`. We have a single source of truth now, but debugging would be a nightmare. Any piece of data could be changed by any part of our app at any time, without leaving a trace.
+Հիմա երբ `sourceOfTruth`֊ը մուտացիայի է ենթարկվում, `vmA`֊ն և `vmB`֊ն կթարմացնեն նրանց տեսադաշտերը ավտոմատ կերպով։ Սուբկոմպոնենտները այս instance֊ների ներքո նույնպես ունեն մուտք օգտագործելով `this.$root.$data`։ Մենք այս պահին ունենք միայն մեկ սկզբնաղբյուր, բայց debugging֊ը կլինի մղձավանջ։ Ցանկացած մաս տվյալների կարող է փոփոխվել մեր ծրագրի ցանկացած մասի կողմից ցանկացած ժամանակ, առանց հետքեր թողնելով։
 
-To help solve this problem, we can adopt a **store pattern**:
+Որպեսզի լուծենք այս խնդիրը, մենք կարող ենք ադապտացնենք **store pattern**֊ը․
 
 ``` js
 var store = {
   debug: true,
   state: {
-    message: 'Hello!'
+    message: 'Բարև'
   },
   setMessageAction (newValue) {
     if (this.debug) console.log('setMessageAction triggered with', newValue)
@@ -51,9 +51,9 @@ var store = {
 }
 ```
 
-Notice all actions that mutate the store's state are put inside the store itself. This type of centralized state management makes it easier to understand what type of mutations could happen and how they are triggered. Now when something goes wrong, we'll also have a log of what happened leading up to the bug.
+Եթե նկատեք բոլոր գործողությունները որոնք մուտացիայի են ենթարկում store֊ի state֊ը տեղադրում են store֊ի ներսում։ Այս տիպը կենտրոնացված state֊ի կառավարման դարձնում է ավելի հեշտ որպեսզի հասկանալ թէ ինչ տիպի մուտացիաներ կարող են լինել երբ նրանք արձակված են։ Հիմա երբ որևէ բան կձախողվի, մենք նաև ունենք log թէ ինչ է կատարվել նախքան ձախողվելը։
 
-In addition, each instance/component can still own and manage its own private state:
+Ի հավելումն, ամեն instance/կոմպոնենտ կարող է ունենալ և կառավարել իր անձնական state֊ը․
 
 ``` js
 var vmA = new Vue({
@@ -71,10 +71,10 @@ var vmB = new Vue({
 })
 ```
 
-![State Management](/images/state.png)
+![State֊ի Կառավարում](/images/state.png)
 
-<p class="tip">It's important to note that you should never replace the original state object in your actions - the components and the store need to share reference to the same object in order for mutations to be observed.</p>
+<p class="tip">Կարևոր է նշել որ դուք չպետք է փոխարինեք սկզբնական state օբյեկտը ձեր գործողություններում - կոմպոնենտները և store֊ը պետք ունենան նույն օբյեկտին դիմելու միջոց որպեսզի մուտացիաները դիտարկվեն։</p>
 
-As we continue developing the convention where components are never allowed to directly mutate state that belongs to a store, but should instead dispatch events that notify the store to perform actions, we eventually arrive at the [Flux](https://facebook.github.io/flux/) architecture. The benefit of this convention is we can record all state mutations happening to the store and implement advanced debugging helpers such as mutation logs, snapshots, and history re-rolls / time travel.
+Մինչ մենք շարունակում ենք զարգացնելու հարմարանքը որտեղ կոմպոնենտները չպետք է կարողանան ուղիղ մուտացիայի ենթարկել state֊ը որը պատկանում է store֊ին, բայց փոխարենը արձակեն event֊ներ որոնք տեղյակ են պահում store֊ին որպեսզի կատարել գործողություններ, մենք ի վերջո հասնում ենք [Flux֊ի](https://facebook.github.io/flux/) ճարտարապետությանը։ Այս հարմարության օգուտը դա որ մենք կարող ենք գրանցցել բոլոր state֊ի մուտացիաները որոնք կատարվում են store֊ին և տեղադրել ավելի զարգացած debugging֊ի օգնականներ ինչպիսիք են մուտացիայի log֊երը, snapshot֊երը, և պատմության վերականգնումը / ժամանակի ծամփորդումը։
 
-This brings us full circle back to [vuex](https://github.com/vuejs/vuex), so if you've read this far it's probably time to try it out!
+Սա վերադարձնում է մեզ հետ դեպի [vuex](https://github.com/vuejs/vuex), այնպես որ եթե դուք կարդացել եք այսքանը ուրմեն ժամանակն է փորձելու այն՜
