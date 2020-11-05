@@ -1,148 +1,147 @@
 ---
-title: Template Syntax
-type: guide
+title: Ձևանմուշի Գրելաձև
+type: ուղեցույց
 order: 4
 ---
 
-Vue.js uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying Vue instance's data. All Vue.js templates are valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+Vue.js֊ը օգտագործում է HTML-ով հիմնված ձևանմուշի գրելաձև որը թույլ է տալիս ձեզ հայտարարման կերպով կապել render եղած DOM֊ը դեպի Vue instance֊ի ներքին տվյալներին։ Բոլոր Vue.js֊ի ձևանմուշները ճիշտ HTML֊ներ են որոնք կարող են կարդացվել համապատասխանող բրաուզերներում և HTML կարդացողներում։
 
-Under the hood, Vue compiles the templates into Virtual DOM render functions. Combined with the reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+Ներքինում, Vue֊ն compile է անում ձևանմուշը դեպի Virtual DOM render ֆունկցիաներ։ Ի հանդերձ ռեակտիվության համակարգի, Vue֊ն կարողանում է խելացիորեն հասկանալու մինիմալ քանակը կոմպոնենտների որոնք պետք է կրկին render արվեն և կիրառել մինիմալ քանակի DOM մանիպուլացիաներ երբ ծրագրի state֊ը փոփոխվում է։
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](render-function.html) instead of templates, with optional JSX support.
+Եթե դուք ծանոթ եք Virtual DOM֊ի հասկացությունների հետ և նախընտրում եք JavaScript֊ի անմշակ ուժը, դուք նաև կարող եք [ուղիղ գրել render ֆունկցիաներ](render-function.html) ձևանմուշների փոխարեն, ոչ պարտադիր JSX֊ի համատասխանության հետ։
 
-## Interpolations
+## Ինտերպոլացիաներ
 
-### Text
+### Տեքստ
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+Ամենահիմնական ձևը տվյալների կապման դա տեքստի ինտերպոլացիան է օգտագործելով «Բեղավոր» գրելաձևը (զույգ ձևավոր փակագծեր)․
 
 ``` html
-<span>Message: {{ msg }}</span>
+<span>Նամակ: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property on the corresponding data object. It will also be updated whenever the data object's `msg` property changes.
+Բեղավոր tag֊ը կփոխարինվի `msg` հատկության արժեքով համապտասխան տվյալների օբյեկտի վրա։ Այն նաև կթարմացնի երբ տվյալների օբյեկտի `msg` հատկությունը փոփոխվի։
 
-You can also perform one-time interpolations that do not update on data change by using the [v-once directive](../api/#v-once), but keep in mind this will also affect any other bindings on the same node:
+Դուք կարող եք կատարել մեկ անգամյա ինտերպոլացիաներ որոնք չեն թարմացվում տվյալների փոփոխություններում օգտագործելով [v-once ուղղորդիչը](../api/#v-once), բայց մտքում պահեք որ սա նաև կազդի ցանկացած այլ կապումների վրա որոնք կատարվում են նույն node֊ի վրա․
 
 ``` html
-<span v-once>This will never change: {{ msg }}</span>
+<span v-once>Սա երբեք չի փոփոխվի: {{ msg }}</span>
 ```
 
-### Raw HTML
+### Չոր HTML
 
-The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](../api/#v-html):
+Զույգ բեղերը վերարտադրում է տվյալները որպես չոր տեքստ, այլ ոչ թե HTML։ Որպեսզի ելքագրել իրական HTML, դուք պետք է օգտագործեք [`v-html` ուղղորդիչը](../api/#v-html)․
 
 ``` html
-<p>Using mustaches: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>Օգտագործելով բեղերը: {{ rawHtml }}</p>
+<p>Օգտագործելով v-html ուղղորդիչը: <span v-html="rawHtml"></span></p>
 ```
 
 {% raw %}
 <div id="example1" class="demo">
-  <p>Using mustaches: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>Օգտագործելով բեղերը: {{ rawHtml }}</p>
+  <p>Օգտագործելով v-html ուղղորդիչը: <span v-html="rawHtml"></span></p>
 </div>
 <script>
 new Vue({
   el: '#example1',
   data: function () {
     return {
-      rawHtml: '<span style="color: red">This should be red.</span>'
+      rawHtml: '<span style="color: red">Սա պետք է լինի կարմիր։</span>'
     }
   }
 })
 </script>
 {% endraw %}
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+`span`-ի բովանդակությունը կփոխարինվի `rawHtml` հատկության արժեքով, վերարտադրված որպես չոր հասարակ HTML - տվյալների կապումները անտեսվում են։ Նշում որ դուք չեք կարող օգտագործել `v-html`֊ը որպեսզի գրել ձևանմուշի մասեր, որովհետև Vue֊ի տեքստով հենված ձևանմուշային գործիք չէ։ Փոխարենը, կոմպոնենտները նախտրելի են որպես հիմնական հիմք UI֊ի վերօգտագործման և կազմելու համար։
 
-<p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use HTML interpolation on trusted content and **never** on user-provided content.</p>
+<p class="tip">Դինամիկորեն HTML render անելը ձեր կայքում կարող է լինել շատ վտանգավոր որովհետև այն հեշտորեն կարող է հանգեցնել [XSS խոցելիությունների](https://en.wikipedia.org/wiki/Cross-site_scripting)։ Միայն օգտագործեք HTML ինտերպոլացիաներ հավաստալի բովանդակություններում և **երբեք** չօգտագործեք այն օգտագործողի կողմից տրամադրվող բովանդակություններում։</p>
 
-### Attributes
+### Ատրիբուտներ
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](../api/#v-bind):
+Բեղերը չեն կարող օգտագործվել HTML ատրիբուտների մեջ։ Փոխարենը, օգտագործեք [`v-bind` ուղղորդիչը](../api/#v-bind)․
 
 ``` html
 <div v-bind:id="dynamicId"></div>
 ```
 
-In the case of boolean attributes, where their mere existence implies `true`, `v-bind` works a little differently. In this example:
+Boolean ատրիբուտների դեպքում, որտեղ նրանց գոյությունը վկայում է `true`, `v-bind`֊ը աշխատում է մի փոքր ուրիշ ձևերով այստեղ։ Այս օրինակում․
 
 ``` html
-<button v-bind:disabled="isButtonDisabled">Button</button>
+<button v-bind:disabled="isButtonDisabled">Կոճակ</button>
 ```
 
-If `isButtonDisabled` has the value of `null`, `undefined`, or `false`, the `disabled` attribute will not even be included in the rendered `<button>` element.
+Եթե `isButtonDisabled` ունի `null`, `undefined`, կամ `false` ատրիբուտներից որևէ մեկը, `disabled` ատրիբուտը նույնիսկ չի ներառվի render եղած `<button>` էլեմենտում։
 
-### Using JavaScript Expressions
+### JavaScript֊ի Արտահայտությունների Օգտագործումը
 
-So far we've only been binding to simple property keys in our templates. But Vue.js actually supports the full power of JavaScript expressions inside all data bindings:
+Մինչ այժմ մենք միայն կապելենք հասարակ հատկությունների բանալիներ մեր ձևանմուշում։ Բայց Vue.js֊ը իրականում համապատասխանում է JavaScript արտահայտությունների ամբողջ ուժին բոլոր տվյալների կապումների ներսում․
 
 ``` html
 {{ number + 1 }}
 
-{{ ok ? 'YES' : 'NO' }}
+{{ ok ? 'Այո' : 'Ոչ' }}
 
 {{ message.split('').reverse().join('') }}
 
 <div v-bind:id="'list-' + id"></div>
 ```
 
-These expressions will be evaluated as JavaScript in the data scope of the owner Vue instance. One restriction is that each binding can only contain **one single expression**, so the following will **NOT** work:
+Այս արտահայտությունները կվերահաշվարկվեն որպես JavaScript տվյալների scope֊ում տնօրինող Vue instance֊ի։ Մեկ սահմանափակումը դա երբ որ ամեն կապումը կարող է միայն պարունակի **մեկ արտահայտություն**, այնպես որ հետևյալը **ՉԻ** աշխատի․
 
 ``` html
-<!-- this is a statement, not an expression: -->
+<!-- սա հայտարարում է, այլ ոչ թե արտահայտություն -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- հոսքի կառավարումը նույնպես չի աշխատի, օգտագործեք երեքական արտահայտությունները -->
 {{ if (ok) { return message } }}
 ```
 
-<p class="tip">Template expressions are sandboxed and only have access to a [whitelist of globals](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9) such as `Math` and `Date`. You should not attempt to access user-defined globals in template expressions.</p>
+<p class="tip">Ձևանմուշի արտահայտությունները սահմանափակված են և միայն ունեն հնարավորություն օգտագործելու [գլոբալների սպիտակ ցուցակ](https://github.com/vuejs/vue/blob/v2.6.10/src/core/instance/proxy.js#L9) ինչպիսին են `Math`֊ը և `Date`֊ը։ Դուք չպետք է փորձեք մուտք գործել դեպի օգտագործողի կողմից հայտարարված գլոբալներ ձեր ձևանմուշի արտահայտություններում։</p>
 
-## Directives
+## Ուղղորդիչներ
 
-Directives are special attributes with the `v-` prefix. Directive attribute values are expected to be **a single JavaScript expression** (with the exception of `v-for`, which will be discussed later). A directive's job is to reactively apply side effects to the DOM when the value of its expression changes. Let's review the example we saw in the introduction:
+Ուղղորդիչները հատուկ ատրիբուտներ են `v-` նախածանցով։ Ուղղորդիչ ատրիբուտները ակնկալվում է որպես **միայնակ JavaScript արտահայտություն** (բացառությամբ `v-for`֊ի, որը մենք կքնարկենք հետո)։ Ուղղորդիչի գործը դա այն է որ ռեակտիվորեն կիրառի կողմնակի ազդեցությունները DOM֊ին երբ արտահայտության արժեքը փոփոխվում է։ Եկեք վերանայենք օրինակը որը մենք տեսել եինք ներածությունում․
 
 ``` html
-<p v-if="seen">Now you see me</p>
+<p v-if="seen">Հիմա դու ինձ տեսնում էս</p>
 ```
 
-Here, the `v-if` directive would remove/insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+Այստեղ, `v-if` ուղղորդիչը կջնջի/տեղադրի `<p>` էլեմենտը կախված `seen` արտահայտության արժեքի ճշմարիտ լինելուց։
 
-### Arguments
+### Արգումենտներ
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+Որոշ ուղղորդիչներ կարող են ստանալ «արգումենտ», որը նշվում է վերջակետով ուղղորդիչի անունից հետո։ Օրինակի համար, `v-bind` ուղղորդիչը օգտագործվում է որպեսզի ռեակտիվորեն թարմացնի HTML ատրիբուտը․
 
 ``` html
 <a v-bind:href="url"> ... </a>
 ```
 
-Here `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`.
+Այստեղ `href`֊ը արգումենտն է, որը տեղյակ է պահում `v-bind` ուղղորդիչին որպեսզի կապի էլեմենտի `href` ատրիբուտը `url` արտահայտության արժեքի հետ։
 
-Another example is the `v-on` directive, which listens to DOM events:
+Մեկ այլ օրինակ դա `v-on` ուղղորդիչն է, որը լսում է DOM event֊ներին․
 
 ``` html
 <a v-on:click="doSomething"> ... </a>
 ```
 
-Here the argument is the event name to listen to. We will talk about event handling in more detail too.
+Այստեղ արգումենտը event֊ի անունն է որին պետք է լսել։ Մենկ կքնարկենք event֊ի գործարկման մասին ավելի մանրամասն նույնպես։
 
-### Dynamic Arguments
+### Դինամիկ Արգումենտներ
 
-> New in 2.6.0+
+> Նոր 2.6.0+֊ի մեջ
 
-Starting in version 2.6.0, it is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+Սկսած 2.6.0 տարբերակից, նաև հնարավոր է օգտագործել JavaScript արտահայտություն ուղղորդիչի արգումենտում փաթաթելով այն քառակուսի փակագծերով․
 
 ``` html
 <!--
-Note that there are some constraints to the argument expression, as explained
-in the "Dynamic Argument Expression Constraints" section below.
+Նշում որ կան որոշ կախվածություններ արգումենտի արտահայտությանը, ինչպես բացատրվում է "Դինամիկ Արգումենտի Արտահայտության Կախվածությունները" ներքևի բաժնում։
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 ```
 
-Here `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your Vue instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
+Այստեղ `attributeName`֊ը դինամիկորեն կհաշվարկվի որպես JavaScript արտահայտություն, և նրա հաշվարկված արժեքը կօգտագործվի որպես վերջնական արժեք արգումենտի համար։ Օրինակի համար, եթե ձեր Vue instance֊ը ունի տվյալների հատկություն, `attributeName`, որի արժեքը `"href"` է, այնուհետև այս կապումը հավասար կլինի `v-bind:href`֊ի։
 
 Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
 
