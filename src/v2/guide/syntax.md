@@ -143,77 +143,77 @@ Boolean ատրիբուտների դեպքում, որտեղ նրանց գոյո�
 
 Այստեղ `attributeName`֊ը դինամիկորեն կհաշվարկվի որպես JavaScript արտահայտություն, և նրա հաշվարկված արժեքը կօգտագործվի որպես վերջնական արժեք արգումենտի համար։ Օրինակի համար, եթե ձեր Vue instance֊ը ունի տվյալների հատկություն, `attributeName`, որի արժեքը `"href"` է, այնուհետև այս կապումը հավասար կլինի `v-bind:href`֊ի։
 
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+Նման կերպով, դուք կարող էք օգտագործել դինամիկ արգումենտներ որպեսզի կապել գործարկիչը դինամիկ event֊ի անունի․
 
 ``` html
 <a v-on:[eventName]="doSomething"> ... </a>
 ```
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+Այս օրինակում, երբ `eventName`֊ի արժեքը `«focus»` է, `v-on:[eventName]` հավասար կլինի `v-on:focus`։
 
-#### Dynamic Argument Value Constraints
+#### Դինամիկ Արգումենտի Արժեքի Կախվածությունները
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+Դինամիկ արգումենտները ակնկալում են որպեսզի վերարտադրվեն դեպի string, բացառությամբ `null`֊ի։ Հատուկ արժեք `null`֊ը կարող է օգտագործվել որպեսզի ջնջել կապումը։ Ցանկացած այլ ոչ string արժեք կարձակի նախազգուշացում։
 
-#### Dynamic Argument Expression Constraints
+#### Դինամիկ Արգումենտի Արտահայտության Կախվածությունները
 
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+Դինամիկ արգումենտի արտահայտությունները ունեն որոշակի գրելաձևի կախվածությունները որովհետև որոշ նշաններ, ինչպիսին են բացատները և չակերտները, վավեր են HTML ատրիբուտների անուններում։ Օրինակի համար, հետևյալը անվավեր է․
 
 ``` html
-<!-- This will trigger a compiler warning. -->
+<!-- Սա կարձակի compiler֊ի նախազգուշացում։ -->
 <a v-bind:['foo' + bar]="value"> ... </a>
 ```
 
-The workaround is to either use expressions without spaces or quotes, or replace the complex expression with a computed property.
+Շրջանցումը դա փոխարենը օգտագործելն է հատկությունը առանց բացատների կամ չակերտների, կամ փոխարինեք բարդ արտահայտությունը հաշվարկված հատկությամբ։
 
-When using in-DOM templates (i.e., templates written directly in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+Երբ օգտագործում ենք DOM֊ի միջի ձևանմուշները (օրինակ, ձևանմուշները ուղիղ գրվում է HTML ֆայլում), դուք պետք է պետք է խուսափեք անվանել բանալիները մեծատառ տառերով, որովհետև բրաուզերները կվերարտադրեն ատրիբուտների անունները դեպի փոքրատառ․
 
 ``` html
 <!--
-This will be converted to v-bind:[someattr] in in-DOM templates.
-Unless you have a "someattr" property in your instance, your code won't work.
+Սա կվերափոխվի դեպի v-bind:[someattr] ձեր DOM֊ի միջի ձևանմուշները։
+Բացառությամբ եթե ունեք «someattr» հատկությունը ձեր instance֊ում, ձեր կոդը չի աշխատի։
 -->
 <a v-bind:[someAttr]="value"> ... </a>
 ```
 
-### Modifiers
+### Փոփոխիչներ
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+Փոփոխիչները հատուկ կիրառումներ են որոնք կատարվում են արժեքի հաշվարկումից հետո և կապակցված են կետով, որը ցույց է տալիս որ ուղղորդիչը պետք է կապված լինի հատուկ ձևով։ Օրինակի համար, `.prevent` փոփոխիչը տեղյակ է պահում `v-on` ուղղորդիչին որպեսզի կանչել `event.preventDefault()` արձակված event֊ի վրա․
 
 ``` html
 <form v-on:submit.prevent="onSubmit"> ... </form>
 ```
 
-You'll see other examples of modifiers later, [for `v-on`](events.html#Event-Modifiers) and [for `v-model`](forms.html#Modifiers), when we explore those features.
+Դուք կտեսնեք այլ օրինակներ փոփոխիչների վերաբերյալ ավելի ուշ, [`v-on`֊ի](events.html#Event-Modifiers) և [`v-model`֊ի](forms.html#Modifiers) համար, երբ որ մենք ուսումնասիրենք այդ հատկությունները։
 
-## Shorthands
+## Կարճ Գրելաձև
 
-The `v-` prefix serves as a visual cue for identifying Vue-specific attributes in your templates. This is useful when you are using Vue.js to apply dynamic behavior to some existing markup, but can feel verbose for some frequently used directives. At the same time, the need for the `v-` prefix becomes less important when you are building a [SPA](https://en.wikipedia.org/wiki/Single-page_application), where Vue manages every template. Therefore, Vue provides special shorthands for two of the most often used directives, `v-bind` and `v-on`:
+`v-` նախածանցը ծառայում է որպես տեսական օգնություն որպեսզի ճանաչել Vue֊ին հատուկ ատրիբուտները ձեր ձևանմուշներում։ Սա օգտակար է երբ որ դուք օգտագործում եք Vue.js որպեսզի կիրառեք դինամիկ վարք գոյություն ունեցող հիմքին, բայց այն կարող է լինել ձեր համար ավելի բառալի հաճախ օգտագործվող ուղղորդիչների համար։ Միաժամանակ, `v-` նախածանցի պահանջը դառնում է ավելի քիչ կարևոր երբ դուք կառուցում եք [SPA](https://en.wikipedia.org/wiki/Single-page_application), որտեղ Vue֊ն կառավարում է ամեն ձևանմուշը։ Որից դատելով, Vue֊ն տրամադրում է հատուկ կարճ գրելաձև երկու ամենատարածված ուղղորդիչների համար, `v-bind`֊ի և `v-on`֊ի․
 
 ### `v-bind` Shorthand
 
 ``` html
-<!-- full syntax -->
+<!-- ամբողջական գրելաձև -->
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- կարճ -->
 <a :href="url"> ... </a>
 
-<!-- shorthand with dynamic argument (2.6.0+) -->
+<!-- կարճ դինամիկ արգումենտով (2.6.0+) -->
 <a :[key]="url"> ... </a>
 ```
 
-### `v-on` Shorthand
+### `v-on`֊ը Կարճ
 
 ``` html
-<!-- full syntax -->
+<!-- ամբողջական գրելաձև -->
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- կարճ -->
 <a @click="doSomething"> ... </a>
 
-<!-- shorthand with dynamic argument (2.6.0+) -->
+<!-- կարճ դինամիկ արգումենտով (2.6.0+) -->
 <a @[event]="doSomething"> ... </a>
 ```
 
-They may look a bit different from normal HTML, but `:` and `@` are valid characters for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is totally optional, but you will likely appreciate it when you learn more about its usage later.
+Նրանք կարող են մի փոքր տեսքով տարբերվել հասարակ HTML, բայց `:` և `@` վավեր նշաններ են ատրիբուտների համար և բոլոր Vue-ին համապատասխանող բրաուզերները կարող են կարդել նրանց ճիշտ։ Ի հավելումն, նրանք չեն հայտնվում վերջնական մատուցված օրինակում։ Կարճ գրելաձևը ամբողջովին պարտադիր չէ, բայց դուք հավանաբար կհավանեք այն երբ իմանաք ավելի ուշ իր օգտագործման մասին։
