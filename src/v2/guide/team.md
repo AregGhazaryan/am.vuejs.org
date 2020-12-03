@@ -1,6 +1,6 @@
 ---
-title: Meet the Team
-type: guide
+title: Ծանոթացեք Թիմին
+type: ուղեցույց
 order: 803
 ---
 
@@ -25,7 +25,7 @@ order: 803
       </h3>
       <dl>
         <template v-if="profile.reposOfficial">
-          <dt>Core focus</dt>
+          <dt>Կենտրոնացումը</dt>
           <dd>
             <ul>
               <li v-for="repo in profile.reposOfficial">
@@ -35,7 +35,7 @@ order: 803
           </dd>
         </template>
         <template v-if="profile.github && profile.reposPersonal">
-          <dt>Ecosystem</dt>
+          <dt>Էկոհամակարգ</dt>
           <dd>
             <ul>
               <li v-for="repo in profile.reposPersonal">
@@ -47,30 +47,30 @@ order: 803
         <template v-if="profile.work">
           <dt>
             <i class="fa fa-briefcase"></i>
-            <span class="sr-only">Work</span>
+            <span class="sr-only">Աշխատանք</span>
           </dt>
           <dd v-html="workHtml"></dd>
         </template>
         <span v-if="profile.distanceInKm" class="distance">
           <dt>
             <i class="fa fa-map-marker"></i>
-            <span class="sr-only">Distance</span>
+            <span class="sr-only">Հեռավորություն</span>
           </dt>
           <dd>
-            About
+            Մասին
             <span
               v-if="profile.distanceInKm <= 150"
               :title="profile.name + ' is close enough to commute to your location.'"
               class="user-match"
-            >{{ textDistance }} away</span>
-            <template v-else>{{ textDistance }} away</template>
+            >{{ textDistance }} հեռու</span>
+            <template v-else>{{ textDistance }} հեռու</template>
             in {{ profile.city }}
           </dd>
         </span>
         <template v-else-if="profile.city">
           <dt>
             <i class="fa fa-map-marker"></i>
-            <span class="sr-only">City</span>
+            <span class="sr-only">Քաղաք</span>
           </dt>
           <dd>
             {{ profile.city }}
@@ -79,14 +79,14 @@ order: 803
         <template v-if="profile.languages">
           <dt>
             <i class="fa fa-globe"></i>
-            <span class="sr-only">Languages</span>
+            <span class="sr-only">Լեզուներ</span>
           </dt>
           <dd v-html="languageListHtml" class="language-list"></dd>
         </template>
         <template v-if="profile.links">
           <dt>
             <i class="fa fa-link"></i>
-            <span class="sr-only">Links</span>
+            <span class="sr-only">Հղումներ</span>
           </dt>
           <dd>
             <ul>
@@ -123,7 +123,7 @@ order: 803
   <div class="team">
 
     <h2 id="active-core-team-members">
-      Active Core Team Members
+      Ակտիվ Հիմնական Թիմի Անդամներ
       <button
         v-if="geolocationSupported && !userPosition"
         @click="getUserPosition"
@@ -136,21 +136,22 @@ order: 803
         ></i>
         <template v-else>
           <i class="fa fa-map-marker"></i>
-          <span>find near me</span>
+          <span>փնտրել ինձ մոտիկ</span>
         </template>
       </button>
     </h2>
 
     <p v-if="errorGettingLocation" class="tip">
-      Failed to get your location.
+      Չհաջողվեց ստանալ ձեր գտնվելու վայրը։
     </p>
 
     <p>
-      The development of Vue and its ecosystem is guided by an international team, some of whom have chosen to be featured below.
+      Vue֊ի և իր էկոհամակարգի զարգացումը առաջնորդվում է միջազգային թիմի կողմից,
+      որոնցից ոմանք նախընտրել են ներկայացնել ներքևում։ 
     </p>
 
     <p v-if="userPosition" class="success">
-      The core team has been sorted by their distance from you.
+      Հիմնական թիմը դասավորվել է ըստ նրանց հեռավորության ձեզանից։
     </p>
 
     <vuer-profile
@@ -163,11 +164,11 @@ order: 803
 
   <div class="team">
     <h2 id="core-team-emeriti">
-      Core Team Emeriti
+      Հիմնական Թիմ Emeriti
     </h2>
 
     <p>
-      Here we honor some no-longer-active core team members who have made valuable contributions in the past.
+      Այստեղ մենք հարգում ենք որոշ այլևս ոչ ակտիվ թիմի անդամների որոնք կատարել են թանկ աջակցություններ նախկինում։
     </p>
 
     <vuer-profile
@@ -180,7 +181,7 @@ order: 803
 
   <div class="team">
     <h2 id="community-partners">
-      Community Partners
+      Համայնքի Գործընկերները
       <button
         v-if="geolocationSupported && !userPosition"
         @click="getUserPosition"
@@ -193,21 +194,21 @@ order: 803
         ></i>
         <template v-else>
           <i class="fa fa-map-marker"></i>
-          <span>find near me</span>
+          <span>փնտրել ինձ մոտիկ</span>
         </template>
       </button>
     </h2>
 
     <p v-if="errorGettingLocation" class="tip">
-      Failed to get your location.
+      Չհաջողվեց ստանալ ձեր գտնվելու վայրը։
     </p>
 
     <p>
-      Some members of the Vue community have so enriched it, that they deserve special mention. We've developed a more intimate relationship with these key partners, often coordinating with them on upcoming features and news.
+      Որոշ անդամներ Vue համայնքի այնքան են հարստացրել այն, որ նրանք արժանի են հատուկ նշում։ Մենք զարգացրել ենք ավելի մոտիկ կապ այս հատուկ գործընկերների հետ, հաճախ քննարկելով նրանց հետ առաջիկա հատկությունների և նորությունների վերաբերյալ։
     </p>
 
     <p v-if="userPosition" class="success">
-      The community partners have been sorted by their distance from you.
+      Համայնքի գործընկերները դասավորվել են ըստ հեռավորության ձեզանից։
     </p>
 
     <vuer-profile
@@ -222,45 +223,45 @@ order: 803
 <script>
 (function () {
   var cityCoordsFor = {
-    'Annecy, France': [45.899247, 6.129384],
-    'Alicante, Spain' : [38.346543, -0.483838],
-    'Amsterdam, Netherlands': [4.895168, 52.370216],
-    'Atlanta, GA, USA': [33.749051, -84.387858],
-    'Bangalore, India': [12.971599, 77.594563],
-    'Beijing, China': [39.904200, 116.407396],
-    'Bordeaux, France': [44.837789, -0.579180],
-    'Bucharest, Romania': [44.426767, 26.102538],
-    'Chengdu, China': [30.572815, 104.066801],
-    'Chongqing, China': [29.431586, 106.912251],
-    'Denver, CO, USA': [39.739236, -104.990251],
-    'Dublin, Ireland': [53.349918, -6.260174],
-    'Dubna, Russia': [56.732020, 37.166897],
-    'East Lansing, MI, USA': [42.736979, -84.483865],
-    'Fort Worth, TX, USA': [32.755331, -97.325735],
-    'Hangzhou, China': [30.274084, 120.155070],
-    'Jersey City, NJ, USA': [40.728157, -74.558716],
-    'Kingston, Jamaica': [18.017874, -76.809904],
-    'Krasnodar, Russia': [45.039267, 38.987221],
-    'Lansing, MI, USA': [42.732535, -84.555535],
-    'London, UK': [51.507351, -0.127758],
-    'Lyon, France': [45.764043, 4.835659],
-    'Mannheim, Germany': [49.487459, 8.466039],
-    'Moscow, Russia': [55.755826, 37.617300],
-    'Munich, Germany': [48.137154, 11.576124],
-    'Orlando, FL, USA': [28.538335, -81.379236],
-    'Paris, France': [48.856614, 2.352222],
-    'Poznań, Poland': [52.4006553, 16.761583],
-    'Seoul, South Korea': [37.566535, 126.977969],
-    'Shanghai, China': [31.230390, 121.473702],
-    'Singapore': [1.352083, 103.819839],
-    'Sydney, Australia': [-33.868820, 151.209290],
-    'Taquaritinga, Brazil': [-21.430094, -48.515285],
-    'Tehran, Iran': [35.689197, 51.388974],
-    'Thessaloniki, Greece': [40.640063, 22.944419],
-    'Tokyo, Japan': [35.689487, 139.691706],
-    'Toronto, Canada': [43.653226, -79.383184],
-    'Wrocław, Poland': [51.107885, 17.038538],
-    'Boston, MA, USA': [42.360081, -71.058884],
+    'Անսի, Ֆրանսիա': [45.899247, 6.129384],
+    'Ալիկանտե, Իսպանիա' : [38.346543, -0.483838],
+    'Ամստերդամ, Նիդերլանդներ': [4.895168, 52.370216],
+    'Ատլանտա, Ջորջիա, ԱՄՆ': [33.749051, -84.387858],
+    'Բանգալոր, Հնդկաստան': [12.971599, 77.594563],
+    'Պեկին, Չինաստան': [39.904200, 116.407396],
+    'Բորդո, Ֆրանսիա': [44.837789, -0.579180],
+    'Բուխարեստ,  Ռումինիա': [44.426767, 26.102538],
+    'Չենքդու, Չինաստան': [30.572815, 104.066801],
+    'Չոնգքինգ, Չինաստան': [29.431586, 106.912251],
+    'Դենվեր, Կալորադո, ԱՄՆ': [39.739236, -104.990251],
+    'Դուբլին, Իռլանդիա': [53.349918, -6.260174],
+    'Դուբնա, Ռուսաստան': [56.732020, 37.166897],
+    'Իստ Լանսինգ, Միննեսոտա, ԱՄՆ': [42.736979, -84.483865],
+    'Ֆորտ Վորթ, Տեքսաս, ԱՄՆ': [32.755331, -97.325735],
+    'Հանգզոու, Չինաստան': [30.274084, 120.155070],
+    'Ջերսի Սիթի, Նյու Ջերսի, ԱՄՆ': [40.728157, -74.558716],
+    'Կինգսթոն, Ճամայկա': [18.017874, -76.809904],
+    'Կրասնոդար, Ռուսաստան': [45.039267, 38.987221],
+    'Լենսինգ, Մինեսոտա, ԱՄՆ': [42.732535, -84.555535],
+    'Լոնդոն, ՄԹ': [51.507351, -0.127758],
+    'Լիոն, Ֆրանսիա': [45.764043, 4.835659],
+    'Մանհեիմ, Գերմանիա': [49.487459, 8.466039],
+    'Մոսկվա, Ռուսաստան': [55.755826, 37.617300],
+    'Մյունխ, Գերմանիա': [48.137154, 11.576124],
+    'Օռլանդո, Ֆլորիդա, ԱՄՆ': [28.538335, -81.379236],
+    'Փարիզ, Ֆրանսիա': [48.856614, 2.352222],
+    'Պոզնան,  Լեհաստան': [52.4006553, 16.761583],
+    'Սեուլ, Հարավային Կորեա': [37.566535, 126.977969],
+    'Շանգհայ, Չինաստան': [31.230390, 121.473702],
+    'Սինգապուր': [1.352083, 103.819839],
+    'Սիդնեյ, Ավստրալիա': [-33.868820, 151.209290],
+    'Տաքուառիտինգա, Բրազիլիա': [-21.430094, -48.515285],
+    'Թեհրան, Իրան': [35.689197, 51.388974],
+    'Թեսալոնիկի, Հունաստան': [40.640063, 22.944419],
+    'Տոկյո, Ճապոնյա': [35.689487, 139.691706],
+    'Տորոնտո, Կանադա': [43.653226, -79.383184],
+    'Վրոքլավ, Լոհաստան': [51.107885, 17.038538],
+    'Բոստոն, Մասաչուսետս, ԱՄՆ': [42.360081, -71.058884],
     'Kyiv, Ukraine': [50.450100, 30.523399],
     'Washington, DC, USA': [38.8935755,-77.0846156,12],
     'Kraków, Poland': [50.064650, 19.936579],
