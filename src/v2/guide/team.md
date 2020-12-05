@@ -147,7 +147,7 @@ order: 803
 
     <p>
       Vue֊ի և իր էկոհամակարգի զարգացումը առաջնորդվում է միջազգային թիմի կողմից,
-      որոնցից ոմանք նախընտրել են ներկայացնել ներքևում։ 
+      որոնցից ոմանք նախընտրել են ներկայացնել ներքևում։
     </p>
 
     <p v-if="userPosition" class="success">
@@ -262,11 +262,11 @@ order: 803
     'Տորոնտո, Կանադա': [43.653226, -79.383184],
     'Վրոքլավ, Լոհաստան': [51.107885, 17.038538],
     'Բոստոն, Մասաչուսետս, ԱՄՆ': [42.360081, -71.058884],
-    'Kyiv, Ukraine': [50.450100, 30.523399],
-    'Washington, DC, USA': [38.8935755,-77.0846156,12],
-    'Kraków, Poland': [50.064650, 19.936579],
-    'Oslo, Norway': [59.911491, 10.757933],
-    'Kanagawa, Japan': [35.44778, 139.6425]
+    'Կիև, Ուկրաինա': [50.450100, 30.523399],
+    'Վաշինգտոն, ԿՇ, ԱՄՆ': [38.8935755,-77.0846156,12],
+    'Խարկով, Լեհաստան': [50.064650, 19.936579],
+    'Օսլո, Նորվեգիա': [59.911491, 10.757933],
+    'Կանագավա, Ճապոնյա': [35.44778, 139.6425]
   }
   var languageNameFor = {
     en: 'English',
@@ -292,12 +292,12 @@ order: 803
   var team = [{
     name: 'Evan You',
     title: 'Benevolent Dictator For Life',
-    city: 'Jersey City, NJ, USA',
+    city: 'Ջերսի Սիթի, ՆՋ, ԱՄՆ',
     languages: ['zh', 'en'],
     github: 'yyx990803',
     twitter: 'youyuxi',
     work: {
-      role: 'Creator',
+      role: 'Ստեղծող',
       org: 'Vue.js'
     },
     reposOfficial: [
@@ -312,12 +312,12 @@ order: 803
     {
       name: 'Eduardo',
       title: 'Real-Time Rerouter',
-      city: 'Paris, France',
+      city: 'Փարիզ, Ֆրանսիա',
       languages: ['es', 'fr', 'en'],
       github: 'posva',
       twitter: 'posva',
       work: {
-        role: 'Freelance Developer & Consultant',
+        role: 'Freelance Developer և Խորհրդատու',
       },
       reposOfficial: [
         'vuefire', 'vue-router'
@@ -331,7 +331,7 @@ order: 803
     },
     {
       name: 'Sodatea',
-      city: 'Hangzhou, China',
+      city: 'Հանչժոու, Չինաստան',
       languages: ['zh', 'en'],
       github: 'sodatea',
       twitter: 'haoqunjiang',
@@ -341,7 +341,7 @@ order: 803
     },
     {
       name: 'Pine Wu',
-      city: 'Shanghai, China',
+      city: 'Շանհայ, China',
       languages: ['zh', 'en', 'jp'],
       github: 'octref',
       twitter: 'octref',
@@ -354,7 +354,7 @@ order: 803
     },
     {
       name: 'Jinjiang',
-      city: 'Singapore',
+      city: 'Սինգապուր',
       languages: ['zh', 'en'],
       github: 'jinjiang',
       twitter: 'zhaojinjiang',
@@ -368,10 +368,10 @@ order: 803
     {
       name: 'Katashin',
       title: 'One of a Type State Manager',
-      city: 'Singapore',
+      city: 'Սինգապուր',
       languages: ['jp', 'en'],
       work: {
-        role: 'Software Engineer',
+        role: 'Ծրագրավորող',
         org: 'ClassDo',
         orgUrl: 'https://classdo.com'
       },
@@ -387,12 +387,12 @@ order: 803
     {
       name: 'Kazupon',
       title: 'Validated Internationalizing Missionary',
-      city: 'Tokyo, Japan',
+      city: 'Տոկիո, Ճապոնիա',
       languages: ['jp', 'en'],
       github: 'kazupon',
       twitter: 'kazu_pon',
       work: {
-        role: 'Engineer',
+        role: 'Ինժիներ',
         org: 'PLAID, Inc.',
         orgUrl: 'https://plaid.co.jp'
       },
@@ -409,10 +409,10 @@ order: 803
     {
       name: 'Rahul Kadyan',
       title: 'Ecosystem Glue Chemist',
-      city: 'Bangalore, India',
+      city: 'Բանգալոր, Հնդկաստան',
       languages: ['hi', 'en'],
       work: {
-        role: 'Software Engineer',
+        role: 'Ծրագրավորող',
         org: 'Myntra',
         orgUrl: 'https://www.myntra.com/'
       },
@@ -431,7 +431,7 @@ order: 803
     {
       name: 'Linusborg',
       title: 'Hive-Mind Community Wrangler (Probably a Bot)',
-      city: 'Mannheim, Germany',
+      city: 'Մանհեիմ, Գերմանիա',
       languages: ['de', 'en'],
       github: 'LinusBorg',
       twitter: 'Linus_Borg',
@@ -448,12 +448,12 @@ order: 803
     {
       name: 'Guillaume Chau',
       title: 'Client-Server Astronaut',
-      city: 'Lyon, France',
+      city: 'Լիոն, Ֆրանսիա',
       languages: ['fr', 'en'],
       github: 'Akryum',
       twitter: 'Akryum',
       work: {
-        role: 'Frontend Developer',
+        role: 'Frontend Ծրագրավորող',
         org: 'Livestorm',
         orgUrl: 'https://livestorm.co/'
       },
@@ -471,10 +471,10 @@ order: 803
     },
     {
       name: 'Sarah Drasner',
-      city: 'Denver, CO, USA',
+      city: 'Դենվեր, ԿՈ, ԱՄՆ',
       languages: ['en'],
       work: {
-        role: 'Head of Developer Experience',
+        role: 'Ծրագրավորողի Փորձի Ղեկավար',
         org: 'Netlify',
         orgUrl: 'https://www.netlify.com/'
       },
@@ -494,12 +494,12 @@ order: 803
     {
       name: 'Damian Dulisz',
       title: 'Dark Mage of Plugins, News, and Confs',
-      city: 'Wrocław, Poland',
+      city: 'Վրոցլավ, Լեհաստան',
       languages: ['pl', 'en'],
       github: 'shentao',
       twitter: 'DamianDulisz',
       work: {
-        role: 'Consultant'
+        role: 'Խորհրդատու'
       },
       reposOfficial: [
         'news.vuejs.org'
@@ -511,12 +511,12 @@ order: 803
     },
     {
       name: 'Michał Sajnóg',
-      city: 'Poznań, Poland',
+      city: 'Պոզնան, Լեհաստան',
       languages: ['pl', 'en'],
       github: 'michalsnik',
       twitter: 'michalsnik',
       work: {
-        role: 'Senior Frontend Developer / Team Leader',
+        role: 'Senior Frontend Ծրագրավորող / Թիմի Ղեկավար',
         org: 'Netguru',
         orgUrl: 'https://netguru.co/'
       },
@@ -530,10 +530,10 @@ order: 803
     },
     {
       name: 'GU Yiling',
-      city: 'Shanghai, China',
+      city: 'Շանհայ, Չինաստան',
       languages: ['zh', 'en'],
       work: {
-        role: 'Senior web developer',
+        role: 'Senior ծրագրավորող',
         org: 'Baidu, inc.',
         orgUrl: 'https://www.baidu.com/'
       },
@@ -548,10 +548,10 @@ order: 803
     },
     {
       name: 'ULIVZ',
-      city: 'Hangzhou, China',
+      city: 'Հանչժոու, Չինաստան',
       languages: ['zh', 'en'],
       work: {
-        role: 'Senior Frontend Developer',
+        role: 'Senior Frontend Ծրագրավորող',
         org: 'AntFinancial',
         orgUrl: 'https://www.antfin.com'
       },
@@ -564,12 +564,12 @@ order: 803
     {
       name: 'Phan An',
       title: 'Backend Designer & Process Poet',
-      city: 'Munich, Germany',
+      city: 'Մյունխ, Գերմանիա',
       languages: ['vi', 'en'],
       github: 'phanan',
       twitter: 'notphanan',
       work: {
-        role: 'Engineering Team Lead',
+        role: 'Ինժիներական Թիմի Ղեկավար',
         org: 'InterNations',
         orgUrl: 'https://www.internations.org/'
       },
@@ -587,14 +587,14 @@ order: 803
     {
       name: 'Natalia Tepluhina',
       title: 'Fox Tech Guru',
-      city: 'Kyiv, Ukraine',
+      city: 'Կիև, Ուկրաինա',
       languages: ['uk', 'ru', 'en'],
       reposOfficial: [
         'vuejs.org',
         'vue-cli'
       ],
       work: {
-        role: 'Senior Frontend Engineer',
+        role: 'Senior Frontend Ինժիներ',
         org: 'GitLab',
         orgUrl: 'https://gitlab.com/'
       },
@@ -603,12 +603,12 @@ order: 803
     },
     {
       name: 'Yosuke Ota',
-      city: 'Kanagawa, Japan',
+      city: 'Կանագավա, Ճապոնիա',
       languages: ['jp'],
       github: 'ota-meshi',
       twitter: 'omoteota',
       work: {
-        role: 'Lead Web Engineer',
+        role: 'Գլխավոր Web Ինժիներ',
         org: 'Future Corporation',
         orgUrl: 'https://www.future.co.jp/'
       },
@@ -618,10 +618,10 @@ order: 803
     },
     {
       name: 'Ben Hong',
-      city: 'Washington, DC, USA',
+      city: 'Վաշինգտոն, ԿՇ, ԱՄՆ',
       languages: ['en', 'zh'],
       work: {
-        role: 'Developer Experience (DX) Engineer',
+        role: 'Ծրագրավորողի Փորձի (DX) Ինժիներ',
         org: 'Cypress.io',
       },
       reposOfficial: [
@@ -638,10 +638,10 @@ order: 803
     {
        name: 'Kia King Ishii',
        title: 'The optimist web designer/developer',
-       city: 'Kanagawa, Japan',
+       city: 'Կանագավա, Ճապոնիա',
        languages: ['en', 'jp'],
        work: {
-         role: 'Tech Talent',
+         role: 'Տեխնալոգիաների Տաղանդ',
          org: 'Global Brain',
          orgUrl: 'https://globalbrains.com/'
        },
@@ -660,12 +660,12 @@ order: 803
      {
       name: 'Chris Fritz',
       title: 'Good Word Putter-Togetherer',
-      city: 'Durham, NC, USA',
+      city: 'Դարհեմ, ՀԿ, ԱՄՆ',
       languages: ['en', 'de'],
       github: 'chrisvfritz',
       twitter: 'chrisvfritz',
       work: {
-        role: 'Educator & Consultant'
+        role: 'Կրթող և Խորհրդատու'
       },
       reposPersonal: [
         'vue-enterprise-boilerplate'
@@ -674,10 +674,10 @@ order: 803
     {
       name: 'Blake Newman',
       title: 'Performance Specializer & Code Deleter',
-      city: 'London, UK',
+      city: 'Լոնդոն, ՄԹ',
       languages: ['en'],
       work: {
-        role: 'Software Engineer',
+        role: 'Ծրագրավորող',
         org: 'Attest',
         orgUrl: 'https://www.askattest.com/'
       },
@@ -687,10 +687,10 @@ order: 803
     {
       name: 'kingwl',
       title: 'New Bee',
-      city: 'Beijing, China',
+      city: 'Պեկին, Չինաստան',
       languages: ['zh'],
       work: {
-        role: 'Software Development Engineer',
+        role: 'Ծրագրավորող',
         org: 'Chaitin',
         orgUrl: 'https://chaitin.cn/'
       },
@@ -702,10 +702,10 @@ order: 803
     {
       name: 'Alan Song',
       title: 'Regent of Routing',
-      city: 'Hangzhou, China',
+      city: 'Հանչժոու, Չինաստան',
       languages: ['zh', 'en'],
       work: {
-        role: 'Cofounder',
+        role: 'Համահիմնադիր',
         org: 'Futurenda',
         orgUrl: 'https://www.futurenda.com/'
       },
@@ -717,7 +717,7 @@ order: 803
     {
       name: 'defcc',
       title: 'Details Deity & Bug Surgeon',
-      city: 'Chongqing, China',
+      city: 'Չունցին, Չինաստան',
       languages: ['zh', 'en'],
       github: 'defcc',
       work: {
@@ -728,7 +728,7 @@ order: 803
     {
       name: 'gebilaoxiong',
       title: 'Issue Annihilator',
-      city: 'Chongqing, China',
+      city: 'Չունցին, Չինաստան',
       languages: ['zh', 'en'],
       github: 'gebilaoxiong',
       work: {
@@ -739,12 +739,12 @@ order: 803
     {
       name: 'Denis Karabaza',
       title: 'Director of Directives (Emoji-Human Hybrid)',
-      city: 'Dubna, Russia',
+      city: 'Դուբնա, Ռուսաստան',
       languages: ['ru', 'en'],
       github: 'simplesmiler',
       twitter: 'simplesmiler',
       work: {
-        role: 'Software Engineer',
+        role: 'Ծրագրավորող',
         org: 'Neolant',
         orgUrl: 'http://neolant.ru/'
       }
@@ -752,12 +752,12 @@ order: 803
     {
       name: 'Edd Yerburgh',
       title: 'Testatron Alpha 9000',
-      city: 'London, UK',
+      city: 'Լոնդոն, ՄԹ',
       languages: ['en'],
       github: 'eddyerburgh',
       twitter: 'EddYerburgh',
       work: {
-        role: 'Full Stack Developer'
+        role: 'Full Stack Ծրագրավորող'
       },
       reposOfficial: [
         'vue-test-utils'
@@ -775,10 +775,10 @@ order: 803
     {
       name: 'Maria Lamardo',
       title: 'Front End Engineer at Pendo',
-      city: 'Raleigh, NC, USA',
+      city: 'Ռոլի, ՀԿ, ԱՄՆ',
       languages: ['en', 'es'],
       work: {
-        role: 'Front End Engineer',
+        role: 'Front End Ծրագրավորող',
         org: 'Pendo'
       },
       github: 'mlama007',
@@ -790,10 +790,10 @@ order: 803
     {
       name: 'Pratik Patel',
       title: 'Organizer of VueConf US',
-      city: 'Atlanta, GA, USA',
+      city: 'Ատլանտա, ՋԱ, ԱՄՆ',
       languages: ['en'],
       work: {
-        role: 'Organizer',
+        role: 'Կազմակերպիչ',
         org: 'VueConf US'
       },
       imageUrl:'https://pbs.twimg.com/profile_images/1541624512/profile-pic-09-11-2011_400x400.png',
@@ -805,10 +805,10 @@ order: 803
     {
       name: 'Vincent Mayers',
       title: 'Organizer of VueConf US',
-      city: 'Atlanta, GA, USA',
+      city: 'Ատլանտա, ՋԱ, ԱՄՆ',
       languages: ['en'],
       work: {
-        role: 'Organizer',
+        role: 'Կազմակերպիչ',
         org: 'VueConf US'
       },
       imageUrl:'https://pbs.twimg.com/profile_images/916531463905992706/MNvTkO5K_400x400.jpg',
@@ -820,10 +820,10 @@ order: 803
     {
       name: 'Luke Thomas',
       title: 'Creator of Vue.js Amsterdam',
-      city: 'Amsterdam, Netherlands',
+      city: 'Ամստերդամ, Նիդերլանդներ',
       languages: ['nl', 'en', 'de'],
       work: {
-        role: 'Creator',
+        role: 'Ստեղծող',
         org: 'Vue.js Amsterdam'
       },
       imageUrl: 'https://pbs.twimg.com/profile_images/1123492769299877888/aviXE_M5_400x400.jpg',
@@ -836,10 +836,10 @@ order: 803
     {
       name: 'Jos Gerards',
       title: 'Organizer and Host of Vue.js Amsterdam & Frontend Love',
-      city: 'Amsterdam, Netherlands',
+      city: 'Ամստերդամ, Նիդերլանդներ',
       languages: ['nl', 'en', 'de'],
       work: {
-        role: 'Event Manager',
+        role: 'Իրադարձությունների ղեկավար',
         org: 'Vue.js Amsterdam'
       },
       imageUrl:'https://pbs.twimg.com/profile_images/1110510517951627269/LDzDyd4N_400x400.jpg',
@@ -852,10 +852,10 @@ order: 803
     {
       name: 'Jen Looper',
       title: 'Queen Fox',
-      city: 'Boston, MA, USA',
+      city: 'Բոստոն, ՄԱ, ԱՄՆ',
       languages: ['en', 'fr'],
       work: {
-        role: 'CEO',
+        role: 'Գործադիր տնօրեն',
         org: 'Vue Vixens'
       },
       github: 'jlooper',
@@ -868,10 +868,10 @@ order: 803
     {
       name: 'Alex Jover',
       title: 'Vue Components Squeezer',
-      city: 'Alicante, Spain',
+      city: 'Ալիկանտե, Իսպանիա',
       languages: ['es', 'en'],
       work: {
-        role: 'Web, PWA and Performance Consultant',
+        role: 'Web, PWA և Կատարման խորհրդատու',
         org: 'Freelance'
       },
       github: 'alexjoverm',
@@ -886,7 +886,7 @@ order: 803
     {
       name: 'Sebastien Chopin',
       title: '#1 Nuxt Brother',
-      city: 'Bordeaux, France',
+      city: 'Բորդո, Ֆրանսիա',
       languages: ['fr', 'en'],
       github: 'Atinux',
       twitter: 'Atinux',
@@ -901,7 +901,7 @@ order: 803
     {
       name: 'Alexandre Chopin',
       title: '#1 Nuxt Brother',
-      city: 'Bordeaux, France',
+      city: 'Բորդո, Ֆրանսիա',
       languages: ['fr', 'en'],
       github: 'alexchopin',
       twitter: 'iamnuxt',
@@ -916,7 +916,7 @@ order: 803
     {
       name: 'Khary Sharpe',
       title: 'Viral Newscaster',
-      city: 'Kingston, Jamaica',
+      city: 'Քինգսթոն, Ջամայկա',
       languages: ['en'],
       github: 'kharysharpe',
       twitter: 'kharysharpe',
@@ -928,12 +928,12 @@ order: 803
     {
       name: 'Pooya Parsa',
       title: 'Nuxtification Modularizer',
-      city: 'Tehran, Iran',
+      city: 'Թեհրան, Իրան',
       languages: ['fa', 'en'],
       github: 'pi0',
       twitter: '_pi0_',
       work: {
-        role: 'Technical Advisor',
+        role: 'Տեխնիկական Խորհրդատու',
         org: 'Fandogh (AUT University)',
         orgUrl: 'https://fandogh.org'
       },
@@ -944,7 +944,7 @@ order: 803
     {
       name: 'Xin Du',
       title: 'Nuxpert',
-      city: 'Dublin, Ireland',
+      city: 'Դուբլին, Իրլանդիա',
       languages: ['zh', 'en'],
       github: 'clarkdo',
       twitter: 'ClarkDu_',
@@ -954,7 +954,7 @@ order: 803
     },
     {
       name: 'Yi Yang',
-      city: 'Shanghai, China',
+      city: 'Շանհայ, Չինաստան',
       title: 'Interface Elementologist',
       languages: ['zh', 'en'],
       github: 'Leopoldthecoder',
@@ -969,12 +969,12 @@ order: 803
     {
       name: 'Bruno Lesieur',
       title: 'French Community Director',
-      city: 'Annecy, France',
+      city: 'Անեսի, Ֆրանսիա',
       languages: ['fr', 'en'],
       github: 'Haeresis',
       twitter: 'ZetesEthique',
       work: {
-        role: 'Cofounder',
+        role: 'Համահիմնադիր',
         org: 'Orchard ID',
         orgUrl: 'https://www.orchard-id.com/'
       },
@@ -988,7 +988,7 @@ order: 803
     {
       name: 'ChangJoo Park',
       title: 'Vuenthusiastic Korean Community Organizer',
-      city: 'Seoul, South Korea',
+      city: 'Սեուլ, Հարավային Կորեա',
       languages: ['ko', 'en'],
       github: 'changjoo-park',
       twitter: 'pcjpcj2',
@@ -1008,7 +1008,7 @@ order: 803
       github: 'ErickPetru',
       twitter: 'erickpetru',
       work: {
-        role: 'Teacher',
+        role: 'Ուսուցիչ',
         org: 'Fatec Taquaritinga',
         orgUrl: 'http://www.fatectq.edu.br/'
       },
@@ -1019,12 +1019,12 @@ order: 803
     {
       name: 'Razvan Stoenescu',
       title: 'Deep Space Quasar Creator',
-      city: 'Bucharest, Romania',
+      city: 'Բուխարեստ, Ռումինիա',
       languages: ['ro', 'en'],
       github: 'rstoenescu',
       twitter: 'quasarframework',
       work: {
-        role: 'Developer',
+        role: 'Ծրագրավորող',
         org: 'Quasar Framework',
         orgUrl: 'http://quasar-framework.org/'
       },
@@ -1035,12 +1035,12 @@ order: 803
     {
       name: 'Jilson Thomas',
       title: 'Vue Promoter and VueJobs Guy',
-      city: 'Toronto, Canada',
+      city: 'Տորոնտո, Կանադա',
       languages: ['en'],
       github: 'JillzTom',
       twitter: 'jilsonthomas',
       work: {
-        role: 'Senior Frontend Developer',
+        role: 'Senior Frontend Ծրագրավորող',
         org: 'Nominator',
         orgUrl: 'https://nominator.com/'
       },
@@ -1051,12 +1051,12 @@ order: 803
     {
       name: 'Israel Ortuño',
       title: 'VueJobs Buccaneer',
-      city: 'Alicante, Spain',
+      city: 'Ալիկանտե, Իսպանիա',
       languages: ['es', 'en'],
       github: 'IsraelOrtuno',
       twitter: 'IsraelOrtuno',
       work: {
-        role: 'Full Stack Web Developer',
+        role: 'Full Stack Ծրագրավորող',
         org: 'Freelance'
       },
       links: [
@@ -1066,12 +1066,12 @@ order: 803
     {
       name: 'John Leider',
       title: 'Vuetiful Framework Sculptor',
-      city: 'Fort Worth, TX, USA',
+      city: 'Ֆորտ Ուորթ, ՏԽ, ԱՄՆ',
       languages: ['en'],
       github: 'vuetifyjs',
       twitter: 'vuetifyjs',
       work: {
-        role: 'CEO',
+        role: 'Գործադիր տնօրեն',
         org: 'Vuetify LLC',
         orgUrl: 'https://vuetifyjs.com'
       },
@@ -1082,11 +1082,11 @@ order: 803
     {
       name: 'Grigoriy Beziuk',
       title: 'Translation Gang Leader',
-      city: 'Moscow, Russia',
+      city: 'Մոսկվա, Ռուսաստան',
       languages: ['ru', 'de', 'en'],
       github: 'gbezyuk',
       work: {
-        role: 'Full Stack Web Developer',
+        role: 'Full Stack Ծրագրավորող',
         org: 'Self Employed',
         orgUrl: 'http://gbezyuk.ru'
       },
@@ -1097,7 +1097,7 @@ order: 803
     {
       name: 'Alexander Sokolov',
       title: 'Russian Translation Sharp Eye',
-      city: 'Krasnodar, Russia',
+      city: 'Կրասնոդար, Ռուսաստան',
       languages: ['ru', 'en'],
       github: 'Alex-Sokolov',
       reposPersonal: [
@@ -1107,12 +1107,12 @@ order: 803
     {
       name: 'Anthony Gore',
       title: '',
-      city: 'Sydney, Australia',
+      city: 'Սիդնեյ, Ավստրալիա',
       languages: ['en'],
       github: 'anthonygore',
       twitter: 'anthonygore',
       work: {
-        role: 'Author',
+        role: 'Հեղինակ',
         org: 'Vue.js Developers',
         orgUrl: 'https://vuejsdevelopers.com/'
       },
@@ -1123,7 +1123,7 @@ order: 803
     {
       name: 'EGOIST',
       title: 'Build Tool Simplificator',
-      city: 'Chengdu, China',
+      city: 'Չենգդու, Չինաստան',
       languages: ['zh', 'en'],
       github: 'egoist',
       twitter: '_egoistlily',
@@ -1134,7 +1134,7 @@ order: 803
     {
       name: 'Alex Kyriakidis',
       title: 'Vueducator Extraordinaire',
-      city: 'Thessaloniki, Greece',
+      city: 'Սալոնիկ, Հունաստան',
       languages: ['el', 'en'],
       github: 'hootlex',
       twitter: 'hootlex',
@@ -1151,12 +1151,12 @@ order: 803
     {
       name: 'Rolf Haug',
       title: 'Educator & Consultant',
-      city: 'Oslo, Norway',
+      city: 'Օսլո, Նորվեգիա',
       languages: ['en', 'no'],
       github: 'rahaug',
       twitter: 'rahaug',
       work: {
-        role: 'Educator & Co-founder',
+        role: 'Դաստիարակ և համահիմնադիր',
         org: 'Vue School',
         orgUrl: 'https://vueschool.io/'
       },
@@ -1167,7 +1167,7 @@ order: 803
     {
       name: 'Andrew Tomaka',
       title: 'The Server Server',
-      city: 'East Lansing, MI, USA',
+      city: 'Իստ Լենսինգ, ՄԻ, ԱՄՆ',
       languages: ['en'],
       github: 'atomaka',
       twitter: 'atomaka',
@@ -1185,10 +1185,10 @@ order: 803
     {
       name: 'Blake Newman',
       title: 'Performance Specializer & Code Deleter',
-      city: 'London, UK',
+      city: 'Լոնդոն, ՄԹ',
       languages: ['en'],
       work: {
-        role: 'Software Engineer',
+        role: 'Ծրագրավորող',
         org: 'Attest',
         orgUrl: 'https://www.askattest.com/'
       },
@@ -1201,12 +1201,12 @@ order: 803
     {
       name: 'Filip Rakowski',
       title: 'eCommerce & PWA mastah',
-      city: 'Wrocław, Poland',
+      city: 'Վրոցլավ, Լեհաստան',
       languages: ['pl', 'en'],
       github: 'filrak',
       twitter: 'filrakowski',
       work: {
-        role: 'Co-founder of Vue Storefront',
+        role: 'Vue Storefront-ի համահիմնադիր',
         org: 'Divante',
         orgUrl: 'https://divante.co/'
       },
@@ -1221,12 +1221,12 @@ order: 803
     {
       name: 'Gregg Pollack',
       title: '',
-      city: 'Orlando, FL, USA',
+      city: 'Օրլանդո, Ֆլորիդա, ԱՄՆ',
       languages: ['en'],
       github: 'gregg',
       twitter: 'greggpollack',
       work: {
-        role: 'Vue Instructor',
+        role: 'Vue Հրահանգիչ',
         org: 'Vue Mastery',
         orgUrl: 'https://www.vuemastery.com/'
       },
@@ -1238,12 +1238,12 @@ order: 803
     {
       name: 'Adam Jahr',
       title: '',
-      city: 'Orlando, FL, USA',
+      city: 'Օրլանդո, Ֆլորիդա, ԱՄՆ',
       languages: ['en'],
       github: 'atomjar',
       twitter: 'adamjahr',
       work: {
-        role: 'Vue Instructor',
+        role: 'Vue Հրահանգիչ',
         org: 'Vue Mastery',
         orgUrl: 'https://www.vuemastery.com/'
       },
