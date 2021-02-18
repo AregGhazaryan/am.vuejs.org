@@ -4,7 +4,7 @@ type: ուղեցույց
 order: 702
 ---
 
-> Միայն Vue Router 2-ն է համապատասխան Vue 2-ի հետ, եթե դուք թարմացնում եք Vue-ն, դուք պետք է թարմացնեք Vue Router-ը նույնպես։ Այդ պատճառով մենք ներառել են մանրամասներ միգրացիայի ուղղում հիմնական փաստաթղթի մեջ։ Ամբողջական ուղեցույցը թե ինչպես օգտագործել նոր Vue Router-ը, նայեք [Vue Router-ի փաստաթղթերը](https://router.vuejs.org/en/).
+> Միայն Vue Router 2-ն է համապատասխան Vue 2-ի հետ, եթե դուք թարմացնում եք Vue-ն, դուք պետք է թարմացնեք Vue Router-ը նույնպես։ Այդ պատճառով մենք ներառել ենք մանրամասներ միգրացիայի ուղղում հիմնական փաստաթղթի մեջ։ Ամբողջական ուղեցույցը թե ինչպես օգտագործել նոր Vue Router-ը, նայեք [Vue Router-ի փաստաթղթերը](https://router.vuejs.org/en/).
 
 ## Router-ի Գործարկումը
 
@@ -28,7 +28,7 @@ new Vue({
 })
 ```
 
-Կամ, եթե դուք օգտագործում եք միայն runtime-ը build-ը Vue-ի․
+Կամ, եթե դուք օգտագործում եք միայն runtime build-ը Vue-ի․
 
 ``` js
 new Vue({
@@ -78,7 +78,7 @@ var router = new VueRouter({
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղի</h4>
-  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.map</code>-ի կանչման մասին։</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.map</code>-ի օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
@@ -110,7 +110,7 @@ var router = new Router({
 })
 ```
 
-Եթե դուք ցանկանում եք ավելացներ նոր route-ներ router-ի ստեղծումից հետո, դուք պետք է փոխարինեք router—ի համատասխանող մասը նորով որը ներառում է այն route—ի որը որ դուք ցանկանում եք ավելացնել․
+Եթե դուք ցանկանում եք ավելացներ նոր route-ներ router-ի ստեղծումից հետո, դուք պետք է փոխարինեք router—ի համատասխանող մասը նորով որը ներառում է այն route—ը որը որ դուք ցանկանում եք ավելացնել․
 
 ``` js
 router.match = createMatcher(
@@ -124,7 +124,7 @@ router.match = createMatcher(
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղի</h4>
-  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.on</code>-ի կանչման վերաբերյալ։</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.on</code>-ի օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
@@ -154,11 +154,11 @@ router.beforeEach(function (to, from, next) {
 
 ### `subRoutes` <sup>վերանվանված է</sup>
 
-[Վերանվանվել է `children`](https://router.vuejs.org/en/essentials/nested-routes.html) Vue-ի և այլ routing-ի գրադարանների հետ ավելի կայուն լինելով նպատակով։
+[Վերանվանվել է `children`](https://router.vuejs.org/en/essentials/nested-routes.html) Vue-ի և այլ routing գրադարանների հետ պրակտիկ լինելու նպատակով։
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Թարմացման ճանապարհ</h4>
+  <h4>Թարմացման ուղին</h4>
   <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>subRoutes</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
@@ -185,7 +185,7 @@ router.redirect({
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղին</h4>
-  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.redirect</code>-ի կանչելու վերաբերյալ։</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.redirect</code>-ի օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
@@ -218,7 +218,7 @@ alias: ['/manage', '/administer', '/administrate']
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղին</h4>
-  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.alias</code>-ի կանչելու վերաբերյալ։</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.alias</code>-ի օգտագործման վերաբերյալ։</p>
 </div>
 {% endraw %}
 
@@ -262,7 +262,7 @@ if (route.meta.requiresAuth) {
 
 ### [] Զանգվածների Գրելաձևը Հարցումներում <sup>ջնջված է</sup>
 
-Երբ փոխանցում ենք զանգվածներ հարցումների պարամետրերին QueryString գրելաձևը այլևս գոյություն չունի `/foo?users[]=Tom&users[]=Jerry`, փոխարենը, նոր գրելաձևն է `/foo?users=Tom&users=Jerry`։ Ներքուստ, `$route.query.users` դեռ կլնի զանգված, բայց եթե ունենք ընդամենը մեկ պարամետր հարցման մեջ․ `/foo?users=Tom`, երբ ուղիղ մուտք ենք գործում այս route, ոչ մի ձև router-ը չի հասականա որ մենք ենթադրում ենք որ `users`-ը կլինի զանգված։ Այս պատճառով, ավելացրեք հաշվարկված հատկություն և փոխարինեք ամեն դիմումը `$route.query.users`-ին նրանով։
+Երբ փոխանցում ենք զանգվածներ հարցումների պարամետրերին QueryString գրելաձևը այլևս գոյություն չունի `/foo?users[]=Tom&users[]=Jerry`, փոխարենը, նոր գրելաձևն է `/foo?users=Tom&users=Jerry`։ Ներքուստ, `$route.query.users` դեռ կլինի զանգված, բայց եթե ունենք ընդամենը մեկ պարամետր հարցման մեջ․ `/foo?users=Tom`, երբ ուղիղ մուտք ենք գործում այս route, ոչ մի ձև router-ը չի հասականա որ մենք ենթադրում ենք որ `users`-ը կլինի զանգված։ Այս պատճառով, ավելացրեք հաշվարկված հատկություն և փոխարինեք ամեն դիմումը `$route.query.users`-ին նրանով։
 
 ```javascript
 export default {
@@ -353,7 +353,7 @@ Route-ի համապատասխանեցումը հիմա օգտագործում է
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղի</h4>
-  <p>Աշխատացրեք<a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտերլ օրինակներ <code>router.go</code>֊ի օգտագործման որտեղ <code>router.push</code>֊ը պետք է օգտագործվի փոխարենը։</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>router.go</code>֊ի որտեղ <code>router.push</code>֊ը պետք է օգտագործվի փոխարենը։</p>
 </div>
 {% endraw %}
 
@@ -361,7 +361,7 @@ Route-ի համապատասխանեցումը հիմա օգտագործում է
 
 ### `hashbang: false` <sup>ջնջված է</sup>
 
-Hashbang֊երը այլևս չեն պահանջվում որպեսզի Google֊ը դիտարկի URL֊ը, այնպես որ նրանք այլևս հիմնական (կամ նույնիսկ ընտրանք) չեն hash ստրատեգիայի համարԼ
+Hashbang֊ները այլևս չեն պահանջվում որպեսզի Google֊ը դիտարկի URL֊ը, այնպես որ նրանք այլևս հիմնական (կամ նույնիսկ ընտրանք) չեն hash ստրատեգիայի համար։
 
 {% raw %}
 <div class="upgrade-path">
@@ -452,7 +452,7 @@ scrollBehavior: function (to, from, savedPosition) {
 {% raw %}
 <div class="upgrade-path">
   <h4>Թարմացման ուղին</h4>
-  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>root</code> ընտրանքի վերաբերյալնպմ option.</p>
+  <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper֊ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ <code>root</code> ընտրանքի վերաբերյալ։</p>
 </div>
 {% endraw %}
 
@@ -469,7 +469,7 @@ scrollBehavior: function (to, from, savedPosition) {
 
 ### `suppressTransitionError` <sup>ջնջված է</sup>
 
-Ջնջված է օգուտ hook֊երի պարզության համար։ Եթե դուք իրոք պետք է անցումային error֊ները բռնեք, փորձեք [`try`...`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) փոխարենը։ 
+Ջնջված է օգուտ hook֊երի պարզության համար։ Եթե ձեզ իրոք պետք է անցումային error֊ները բռնելը, փորձեք [`try`...`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) փոխարենը։
 
 {% raw %}
 <div class="upgrade-path">

@@ -609,7 +609,7 @@ strings.map(function (str) {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Թարմացման ճանապարհ</h4>
+  <h4>Թարմացման ուղին</h4>
   <p>Եթե ունեք թեստեր, աշխատացրեք դրանք։ <strong>Ձախողված թեստերը</strong> պետք է ձեզ զգուշացնեն ձեր ծրագրի ցանկացած մասերից որոնք ազդվել են այս փոփոխությունից։</p>
 </div>
 {% endraw %}
@@ -630,7 +630,7 @@ strings.map(function (str) {
 
 {% raw %}
 <div class="upgrade-path">
-  <h4>Թարմացման ճանապարհ</h4>
+  <h4>Թարմացման ուղին</h4>
   <p>Աշխատացրեք <a href="https://github.com/vuejs/vue-migration-helper">migration helper-ը</a> ձեր կոդային բազայում որպեսզի փնտրել օրինակներ ոճային կապումների որոնք ունեն <code>!important</code> օբյեկտներում։</p>
 </div>
 {% endraw %}
