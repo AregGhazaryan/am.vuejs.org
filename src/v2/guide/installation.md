@@ -41,7 +41,7 @@ Vue-ն հետևում է [Սեմանտիկ Տարբերակման](https://semve
 Prototyping-ի կամ սովորելու համար կարող եք նաև օգտագործել ամենանոր տարբերակը հետևյալ ձևով։
 
 ``` html
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 ```
 
 Արտադրության ժամանակ, մենք խորհուրդ ենք տալիս օգտագործել կոնկրետ տարբերակ որպեսզի խուսափեք անսպասելի խափանումներից ավելի նոր տարբերակներում։
@@ -83,7 +83,7 @@ Vue-ն տրամադրում է [պաշտոնական CLI](https://github.com/vue
 
 ## Տարբեր Build-ների բացատրությունը
 
-[`dist/` բաժնում NPM package-ի մեջ](https://cdn.jsdelivr.net/npm/vue/dist/) դուք կարող եք փնտրել տարբեր build-ներ Vue.js-ի։ Ահա ցուցակ որը ցույց է տալիս տարբերությունները:
+[`dist/` բաժնում NPM package-ի մեջ](https://cdn.jsdelivr.net/npm/vue@2/dist/) դուք կարող եք փնտրել տարբեր build-ներ Vue.js-ի։ Ահա ցուցակ որը ցույց է տալիս տարբերությունները:
 
 | | UMD | CommonJS | ES Մոդուլ (bundler-ների համար) | ES Մոդուլ (բրաուզերների համար) |
 | --- | --- | --- | --- | --- |
@@ -100,7 +100,7 @@ Vue-ն տրամադրում է [պաշտոնական CLI](https://github.com/vue
 
 - **Runtime**: կոդ որը պատասխանատու է ստեղծել Vue-ի օբյեկտ, տպելու և միացնելու virtual DOM-ը, և այլն։ Պարզապես ունի ամեն ինչ բացի compiler-ից։
 
-- **[UMD](https://github.com/umdjs/umd)**: UMD build-ը կարելի է օգտագործել ուղիղ բրաուզերի մեջ օգտագործելով `<script>` tag։ Հիմնական ֆայլը jsDelivr CDN-ից է [https://cdn.jsdelivr.net/npm/vue](https://cdn.jsdelivr.net/npm/vue) այն պարունակում է Runtime + Compiler UMD build-ը (`vue.js`)։
+- **[UMD](https://github.com/umdjs/umd)**: UMD build-ը կարելի է օգտագործել ուղիղ բրաուզերի մեջ օգտագործելով `<script>` tag։ Հիմնական ֆայլը jsDelivr CDN-ից է [https://cdn.jsdelivr.net/npm/vue@2](https://cdn.jsdelivr.net/npm/vue@2) այն պարունակում է Runtime + Compiler UMD build-ը (`vue.js`)։
 
 - **[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)**: CommonJS build-ները նախատեսված են այլ bundler-ների համար ինչպիսիք են [browserify-ը](http://browserify.org/) կամ [webpack 1-ը](https://webpack.github.io)։ Հիմնական ֆայլը այս bundler-ների համար  (`pkg.main`) է որը միայն Runtime CommonJS build է (`vue.runtime.common.js`)։
 

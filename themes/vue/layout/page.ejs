@@ -8,6 +8,11 @@
   </div>
 <% } %>
 <div class="content <%- page.type ? page.type + ' with-sidebar' : '' %> <%- page.type === 'guide' ? page.path.replace(/.+\//, '').replace('.html', '') + '-guide' : '' %>">
+  <p class="tip warning v3-warning">
+    Դուք զննում եք 2․x-ի և ավելի վաղ տարբերակների փաստաթղթերը։
+    3.x տարբերակի համար <a href="https://v3.vuejs.org/">սեղմեք այստեղ</a>։
+  </p>
+
   <% if (page.type) { %>
     <% if (page.type === 'menu') { %>
       <form id="search-form">

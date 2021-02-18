@@ -347,6 +347,7 @@ Vue.component('base-input', {
 
 ```html
 <base-input
+  label="Username:"
   v-model="username"
   required
   placeholder="Enter your username"
