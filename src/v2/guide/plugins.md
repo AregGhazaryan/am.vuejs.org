@@ -35,7 +35,7 @@ new Vue({
 Vue.use(MyPlugin, { someOption: true })
 ```
 
-`Vue.use`֊ը ավտոմատ կերպով խոսւափում է նույն plugin֊ի վերօգոագործումից, այնպես որ կանչելով մի քանի անգամ նույն plugin֊ի վրա կտեղադրի plugin֊ը ընդհամենը մեկ անգամ։
+`Vue.use`֊ը ավտոմատ կերպով խուսափում է նույն plugin֊ի վերօգոագործումից, այնպես որ կանչելով մի քանի անգամ նույն plugin֊ի վրա կտեղադրի plugin֊ը ընդհամենը մեկ անգամ։
 
 Որոշ plugin֊ներ տրամադրված Vue.js֊ի պաշտոնական plugin֊ներից ինչպիսին է `vue-router` ավտոմատ կերպով կանչում է `Vue.use()`֊ը եթե `Vue`֊ն հասանելի է որպես գլոբալ փոփոխական։ Սակայն մոդուլյար environment֊ում ինչպիսին է CommonJS, դուք միշտ պետք է կանչեք `Vue.use()` պարտադիր․
 
@@ -48,7 +48,7 @@ var VueRouter = require('vue-router')
 Vue.use(VueRouter)
 ```
 
-Նայեք [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) մեծածավալ համայնքի կողմից ստեղծված plugin֊ների և գրադարանների համաքածուին:
+Նայեք [awesome-vue](https://github.com/vuejs/awesome-vue#components--libraries) մեծածավալ համայնքի կողմից ստեղծված plugin֊ների և գրադարանների համաքածուն:
 
 ## Plugin֊ի Ստեղծումը
 

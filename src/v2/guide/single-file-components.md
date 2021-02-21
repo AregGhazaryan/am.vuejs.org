@@ -17,9 +17,9 @@ order: 401
 - **CSS-ի Համապատասխանում Չկա** նշանակում է որ մինչ HTML-ը և JavaScript-ը մոդուլարիզացվում են դեպի կոմպոնենտներ, CSS-ը ուղակի դուրս է մնում
 - **Կառուցման Քայլեր Չկան** արգելում է մեզ HTML-ից և ES5 JavaScript-ից, քան preprocessor-ներից ինչպիսին են Pug-ը (նախկինում Jade) և Babel-ը
 
-Բոլոր այս խնդիրները լուծում են **մեկ ֆայլ կոմպոնենտները** `.vue` extension-ով, որը դառել է հասանելի կառուցման գործիքների շնորհիվ ինչպիսին են Webpack-ը կամ Browserify։
+Բոլոր այս խնդիրները լուծում են **մեկ ֆայլ կոմպոնենտները** `.vue` extension-ով, որը դարձել է հասանելի կառուցման գործիքների շնորհիվ ինչպիսին են Webpack-ը կամ Browserify։
 
-Այստեղ է օրինակ ֆայլի որը մենք կանվանենք `Hello.vue`:
+Այստեղ է ֆայլի օրինակը որը մենք կանվանենք `Hello.vue`:
 
 <a href="https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-single-file-components" target="_blank" rel="noopener noreferrer"><img src="/images/vue-component.png" alt="Մեկ Ֆայլ կոմպոնենտի օրինակ (սեղմեք կոդին որպես տեքստ)" style="display: block; margin: 30px auto;"></a>
 
@@ -29,7 +29,7 @@ order: 401
 - [CommonJS մոդուլներ](https://webpack.js.org/concepts/modules/#what-is-a-webpack-module)
 - [Կոմպոնենտով Սահմանափակված CSS](https://vue-loader.vuejs.org/en/features/scoped-css.html)
 
-Ինչպես խոսք էր տրվել, մենք հիմա նաև կարող ենք օգտագործել preprocessor-ներ ինչպիսին են Pug-ը, Babel-ը (ES2015 մոդուլների հետ), և Stylus-ը ավլիե մաքուր և հատկություններով հարուստ կոմպոնենտների համար։
+Ինչպես խոսք էր տրվել, մենք հիմա նաև կարող ենք օգտագործել preprocessor-ներ ինչպիսին են Pug-ը, Babel-ը (ES2015 մոդուլների հետ), և Stylus-ը ավելի մաքուր և հատկություններով հարուստ կոմպոնենտների համար։
 
 <a href="https://gist.github.com/chrisvfritz/1c9f2daea9bc078dcb47e9a82e5f7587" target="_blank" rel="noopener noreferrer"><img src="/images/vue-component-with-preprocessors.png" alt="Մեկ ֆայլ կոմպոնենտի օրինակը preprocessors-ի հետ (սեղմեք կոդին որպես տեքստ)" style="display: block; margin: 30px auto;"></a>
 
@@ -54,13 +54,13 @@ order: 401
 
 ### Sandbox-ի Օրինակ
 
-Եթե դուք ցանկանում եք սուզվել և սկսել խաղալը մեկ ֆայլ կոմպոնենտների հետ, նայեք [այս հասարակ todo ծրագիչը](https://codesandbox.io/s/o29j95wx9) CodeSandbox-ում։
+Եթե դուք ցանկանում եք սուզվել և սկսել խաղալը մեկ ֆայլ կոմպոնենտների հետ, նայեք [այս հասարակ todo ծրագիրը](https://codesandbox.io/s/o29j95wx9) CodeSandbox-ում։
 
 ### Օգտագործողների Համար Որոնք Նոր են Ծանոթանում Մոդուլային Կառուցման Համակարգերի Հետ JavaScript-ում
 
 `.vue` կոմպոնենտների հետ, մենք մուտք են գործում ավելի զարգացված JavaScript-ի ծրագրերի աշխարհ։ Որը նշանակում է որ պետք է սովորել մի քանի հավելյալ գործիքներ եթե դուք դեռ չգիտեք նրանց մասին․
 
-- **Node Package Manager-ը (NPM)**: Կարդացեք [Սկսելու ուղեցույցի](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) բաժինը թե ինչպես ստանալ գրադարաններ գրացակետից։
+- **Node Package Manager-ը (NPM)**: Կարդացեք [Սկսելու ուղեցույցի](https://docs.npmjs.com/packages-and-modules/getting-packages-from-the-registry) բաժինը թե ինչպես ստանալ գրադարաններ գրանցակետից։
 
 - **Ժամանակակից JavaScript ES2015/16-ի Հետ**: Կարդացեք Babel-ի [Սովորել ES2015 ուղեցույցը](https://babeljs.io/docs/learn-es2015/)։ Դուք չպետք է հիշեք ամեն հատկություն այս պահին, բայց պահեք այս էջը հետագայում դիմելու համար։
 
