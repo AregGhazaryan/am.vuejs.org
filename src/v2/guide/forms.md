@@ -47,7 +47,7 @@ new Vue({
 <span>Բազմատող նամակը:</span>
 <p style="white-space: pre-line;">{{ message }}</p>
 <br />
-<textarea v-model="message" placeholder="ավելացրեք միքանի տողեր"></textarea>
+<textarea v-model="message" placeholder="ավելացրեք մի քանի տողեր"></textarea>
 ```
 
 {% raw %}
@@ -56,7 +56,7 @@ new Vue({
   <span>Բազմատող նամակը:</span>
   <p style="white-space: pre-line;">{{ message }}</p>
   <br>
-  <textarea v-model="message" placeholder="ավելացրեք միքանի տողեր"></textarea>
+  <textarea v-model="message" placeholder="ավելացրեք մի քանի տողեր"></textarea>
 </div>
 <script>
 new Vue({
@@ -221,7 +221,7 @@ new Vue({
 
 <p class="tip">Երե սկզբնական արժեքը ձեր `v-model` արտահայտության չի համապատասխանում ընտրանքներից որև մեկին, `<select>` էլեմենտը render կլինի «չնշված» վիճակում։ iOS-ում, սա չի թողնի օգտագործողին նշել առաջին ընտրանքը, որովհետև iOS-ը չի արձակում `change` event այս դեպքում։ Այս պատճառով խորհուրդ է տրվում տրամադրել `disabled` ընտրանք դատարկ արժեքով, ինչպես ներկայացված է վերևում գտվող օրինակում։</p>
 
-Միքանի select (կապված զանգվածին):
+Մի քանի select (կապված զանգվածին):
 
 ```html
 <select v-model="selected" multiple>

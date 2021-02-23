@@ -8,7 +8,7 @@ order: 701
 
 > Սա շատ երկար էջ է՜ Դա նշանակում է որ Vue 2.0-ը լրիվ այլ բան է, ես պետք է սովորեմ ամեն ինչ նորից, և միգրացիան կլինի պրակտիկորեն անհնարի՞ն։
 
-Ուրախ եմ որ տվեցիր այդ հարցը, պատասխանն է ոչ։ API-ի 90%-ը նույնն է և իր հիմնական հասկացությունները չեն փոփոխվել։ Այն երկար է որովհետև մենք ցանկանում ենք տրամադրել շատ մանրամասն բացատրություններ և ներառել շատ օրինակներ։ Մնացածում համոզված եղեք, __հարկավոր չէ կարդալ ամենինչ սկզբից մինչև վերջ__
+Ուրախ եմ որ տվեցիր այդ հարցը, պատասխանն է ոչ։ API-ի 90%-ը նույնն է և իր հիմնական հասկացությունները չեն փոփոխվել։ Այն երկար է որովհետև մենք ցանկանում ենք տրամադրել շատ մանրամասն բացատրություններ և ներառել շատ օրինակներ։ Մնացածում համոզված եղեք, __հարկավոր չէ կարդալ ամեն ինչ սկզբից մինչև վերջ__
 
 > Որտեղի՞ց ես կարող եմ սկել միգրացիան
 
@@ -1099,7 +1099,7 @@ function pluralizeKnife (count) {
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-10-two-way-currency-filter-v2?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-Սա թույլ է տալիս մեզ ավելացնել փոփոխություն առանց որի ֆիլտերը չի կարող մեկուսացնել, ինչպիսին է բովանդակության նշումը երբ input-ը focus է լինում։ Հիմա հաջորդ քայլը կլինի բիզնեսի տրամաբանության առանձնացումը ֆիլտերից։ Ներքևում, մենք կտանենք ամենինչ դեպի արտաքին [`currencyValidator` օբյեկտ](https://gist.github.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e)․
+Սա թույլ է տալիս մեզ ավելացնել փոփոխություն առանց որի ֆիլտերը չի կարող մեկուսացնել, ինչպիսին է բովանդակության նշումը երբ input-ը focus է լինում։ Հիմա հաջորդ քայլը կլինի բիզնեսի տրամաբանության առանձնացումը ֆիլտերից։ Ներքևում, մենք կտանենք ամեն ինչ դեպի արտաքին [`currencyValidator` օբյեկտ](https://gist.github.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e)․
 
 <iframe src="https://codesandbox.io/embed/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-10-two-way-currency-filter-v3?codemirror=1&hidedevtools=1&hidenavigation=1&theme=light" style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;" title="vue-20-template-compilation" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
@@ -1131,7 +1131,7 @@ function pluralizeKnife (count) {
 
 ### Կրկնօրինակված Սլոտները <sup>ջնջված են</sup>
 
-Այլևս հասանելի չէ ունենալ `<slot>`-ներ նույն անունով նույն ձևանմուշի մեջ։ Երբ սլոտը render է լինում այն «օգտագործվում է» և չի կարող render լինել որևէ այլ տեղ նույն render-ի ծառի մեջ։ Եթե դուք պետք է render անեք նույն բովանդակությունը միքանի տեղում, փոխանցեք բովանդակությունը որպես prop:
+Այլևս հասանելի չէ ունենալ `<slot>`-ներ նույն անունով նույն ձևանմուշի մեջ։ Երբ սլոտը render է լինում այն «օգտագործվում է» և չի կարող render լինել որևէ այլ տեղ նույն render-ի ծառի մեջ։ Եթե դուք պետք է render անեք նույն բովանդակությունը մի քանի տեղում, փոխանցեք բովանդակությունը որպես prop:
 
 {% raw %}
 <div class="upgrade-path">
