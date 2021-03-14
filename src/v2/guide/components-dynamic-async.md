@@ -14,7 +14,7 @@ order: 105
 <component v-bind:is="currentTabComponent"></component>
 {% endcodeblock %}
 
-Երբ փոփոխում ենք այս կոմպոնենտները, հնարավոր է որ երբեմն դուք կցանկանաք maintain անել նրանց վիճակը կամ խուսափել re-rendering-ից performance-ի պատճառներով։ Օրինակ՝ երբ երկարացնում ենք մեր tabbed interface-ի մի փոքր։
+Երբ փոփոխում ենք այս կոմպոնենտները, հնարավոր է որ երբեմն դուք կցանկանաք կառավարել նրանց վիճակը կամ խուսափել re-rendering-ից performance-ի պատճառներով։ Օրինակ՝ երբ երկարացնում ենք մեր tabbed interface-ի մի փոքր։
 
 {% raw %}
 <div id="dynamic-component-demo" class="demo">
@@ -74,7 +74,7 @@ Vue.component('tab-posts', {
           <div v-html="selectedPost.content"></div>\
         </div>\
         <strong v-else>\
-          Սեղմեք բլոգի վեռնագրի վրա ձախ կողմում որպեսզի դիտեք այն։\
+          Սեղմեք բլոգի վերնագրի վրա ձախ կողմում որպեսզի դիտեք այն։\
         </strong>\
       </div>\
     </div>\
@@ -217,7 +217,7 @@ Vue.component('async-example', function (resolve, reject) {
 })
 ```
 
-Ինչպես տեսնում եք, factory ֆունկցիան ստանում է `resolve` callback, որը պետք է աշխատի երբ որ դուք ստանում եք ձեր կոմպոնենտի սահմանումը սերվերից։ Դուք նաև կարող է կանչեք `reject(reason)`—ը որպեսզի նշեք, որ բեռնելը ձախողվել է։ `setTimeout`-ը այստեղ ուղակի ցուցադրելու համար է; թե ինչպես ստանալ կոմպոնենտը դա դուք պետք է որոշեք։ Մեկ առաջարկվող մոտեցումը դա async կոմպոնենտների օգտագործումն է [Webpack's code-splitting feature-ի](https://webpack.js.org/guides/code-splitting/) հետ հանդերձ:
+Ինչպես տեսնում եք, factory ֆունկցիան ստանում է `resolve` callback, որը պետք է աշխատի երբ որ դուք ստանում եք ձեր կոմպոնենտի սահմանումը սերվերից։ Դուք նաև կարող է կանչեք `reject(reason)`—ը որպեսզի նշեք, որ բեռնելը ձախողվել է։ `setTimeout`-ը այստեղ ուղղակի ցուցադրելու համար է; թե ինչպես ստանալ կոմպոնենտը դա դուք պետք է որոշեք։ Մեկ առաջարկվող մոտեցումը դա async կոմպոնենտների օգտագործումն է [Webpack's code-splitting feature-ի](https://webpack.js.org/guides/code-splitting/) հետ հանդերձ:
 
 ``` js
 Vue.component('async-webpack-example', function (resolve) {
@@ -249,7 +249,7 @@ new Vue({
 })
 ```
 
-<p class="tip">Եթե դուք <strong>Browserify-ի</strong> օգտագործող եք ով ցանկություն ունի օգտագործելու async կոմպոնենտներ, նրա ստեղծողը ցավոք այդ [հարցին պատասխանել է](https://github.com/substack/node-browserify/issues/58#issuecomment-21978224) որ async բեռնումը "դա ինչոր մի բան է որը Browserify-ը երբեք չի ունենա։"  Պաշտոնապես, գոնե, Browserify-ի համայնքը գտել է [որոշ շրջանցումներ](https://github.com/vuejs/vuejs.org/issues/620), որը կարող է օգտակար լինել գոյություն ունեցող բարդ ծրագրերի համար։ Մյուս դեպքերում, մենք խորհուրդ ենք տալիս օգտագործելու Webpack որը ունի, first-class async համապատասխանություն։
+<p class="tip">Եթե դուք <strong>Browserify-ի</strong> օգտագործող էք ով ցանկություն ունի օգտագործելու async կոմպոնենտներ, նրա ստեղծողը ցավոք այդ [հարցին պատասխանել է](https://github.com/substack/node-browserify/issues/58#issuecomment-21978224) որ async բեռնումը «դա ինչ որ մի բան է որը Browserify-ը երբեք չի ունենա»։  Պաշտոնապես, գոնե, Browserify-ի համայնքը գտել է [որոշ շրջանցումներ](https://github.com/vuejs/vuejs.org/issues/620), որը կարող է օգտակար լինել գոյություն ունեցող բարդ ծրագրերի համար։ Մյուս դեպքերում, մենք խորհուրդ ենք տալիս օգտագործելու Webpack որը ունի, first-class async համապատասխանություն։
 
 ### Բեռնման Վիճակի Կառավարում
 
