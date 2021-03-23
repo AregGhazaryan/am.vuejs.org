@@ -142,7 +142,7 @@ new Vue({
 
 ## Custom Ընտրանքի Ձուլման Ստրատեգիաներ
 
-Երբ custom ընտրանքները ձուլված են, նրանք օգտագործում են հիմնական ստրատեգիան որը վերագրում է գոյություն ունեցող արժեքը։ Եթե դուք ցանկանում էք որ custom ընտրանքը ձուլվի օգտագործելով հատուկ տրամաբանություն, դուք պետք է միացնեք ֆունկցիա `Vue.config.optionMergeStrategies`֊ին․
+Երբ custom ընտրանքները ձուլված են, նրանք օգտագործում են հիմնական ստրատեգիան որը վերագրում է գոյություն ունեցող արժեքը։ Եթե դուք ցանկանում եք որ custom ընտրանքը ձուլվի օգտագործելով հատուկ տրամաբանություն, դուք պետք է միացնեք ֆունկցիա `Vue.config.optionMergeStrategies`֊ին․
 
 ``` js
 Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
@@ -150,14 +150,14 @@ Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
 }
 ```
 
-Շատ օբյեկտով հիմնված ընտրանքներում, դուք կարող էք օգտագործել նույն ստրատեգիան որը օգտագործվում է `methods`֊ի կողմից․
+Շատ օբյեկտով հիմնված ընտրանքներում, դուք կարող եք օգտագործել նույն ստրատեգիան որը օգտագործվում է `methods`֊ի կողմից․
 
 ``` js
 var strategies = Vue.config.optionMergeStrategies
 strategies.myOption = strategies.methods
 ```
 
-Ավելի խորացված օրինակի համար կարող էք նայել [Vuex](https://github.com/vuejs/vuex)֊ի 1.x ձուլման ստրատեգիան․
+Ավելի խորացված օրինակի համար կարող եք նայել [Vuex](https://github.com/vuejs/vuex)֊ի 1.x ձուլման ստրատեգիան․
 
 ``` js
 const merge = Vue.config.optionMergeStrategies.computed
