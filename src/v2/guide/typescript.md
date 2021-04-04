@@ -1,140 +1,140 @@
 ---
-title: TypeScript Support
-type: guide
+title: TypeScript-ի Համապտասխանեցում
+type: ուղեցույց
 order: 403
 ---
 
-> [Vue CLI](https://cli.vuejs.org) provides built-in TypeScript tooling support.
+> [Vue CLI-ը](https://cli.vuejs.org) դրամադրում է արդեն պատրաստ TypeScript-ի գործիքներ։
 
-## Official Declaration in NPM Packages
+## Պաշտոնական Հայտարարումը NPM Գրադարաններում
 
-A static type system can help prevent many potential runtime errors, especially as applications grow. That's why Vue ships with [official type declarations](https://github.com/vuejs/vue/tree/dev/types) for [TypeScript](https://www.typescriptlang.org/) - not only in Vue core, but also for [vue-router](https://github.com/vuejs/vue-router/tree/dev/types) and [vuex](https://github.com/vuejs/vuex/tree/dev/types) as well.
+Ստատիկ տիպի համակարգը կարող է մեզ օգնել խուսափել բազմաթիվ runtime error-ներից, հատկապես երբ ծրագիրը աճում է։ Այս պատճառով Vue-ն ունի [պաշտոնական տիպի հայտարարումները](https://github.com/vuejs/vue/tree/dev/types) [TypeScript-ի համար](https://www.typescriptlang.org/) - ոչ միայն Vue-ի հիմնական գրադարանում, այլ նաև [vue-router-ում](https://github.com/vuejs/vue-router/tree/dev/types) և [vuex-ում](https://github.com/vuejs/vuex/tree/dev/types) նույնպես։
 
-Since these are [published on NPM](https://cdn.jsdelivr.net/npm/vue@2/types/), and the latest TypeScript knows how to resolve type declarations in NPM packages, this means when installed via NPM, you don't need any additional tooling to use TypeScript with Vue.
+Մինչ նրանք [հրատարակված են NPM-ում](https://cdn.jsdelivr.net/npm/vue@2/types/), և վերջին TypeScript-ը գիտի թե ինչպես վերլուծի տիպերի հայտարարումը NPM գրադարաններում, սա նշանակում է երբ այն տեղադրված է NPM-ի շնորհիվ, ձեզ անհրաժեշտ չէ հավելյալ գործիքներ որպեսզի օգտագործել TypeScript-ը Vue-ի հետ։
 
-## Recommended Configuration
+## Առաջարկվող Կոնֆիգուրացիան
 
 ``` js
 // tsconfig.json
 {
   "compilerOptions": {
-    // this aligns with Vue's browser support
+    // սա նշում է Vue-ի բրաուզերի համապատասխանեցումը
     "target": "es5",
-    // this enables stricter inference for data properties on `this`
+    // սա տրամադրում է մեզ ավելի խիստ ինտերֆեյս տվյալների հատկությունների համար `this`-ում
     "strict": true,
-    // if using webpack 2+ or rollup, to leverage tree shaking:
+    // եթե օգտագործում եք webpack 2+ կամ rollup, որպեսզի օգտագործել tree shaking․
     "module": "es2015",
     "moduleResolution": "node"
   }
 }
 ```
 
-Note that you have to include `strict: true` (or at least `noImplicitThis: true` which is a part of `strict` flag) to leverage type checking of `this` in component methods otherwise it is always treated as `any` type.
+Նշում որ դուք պետք է ներառեք `strict: true` (կամ գոնե `noImplicitThis: true` որը `strict` նշանի մի մասն է) որպեսզի օգտագործել տիպի ստուգում `this`-ի վրա կոմպոնենտի մեթոդներում, հակառակ դեպքում այն միշտ կվարվի որպես `any` տիպ։
 
-See [TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html) for more details.
+Նայեք [TypeScript-ի compiler-ի ընտրանքների փաստաթղթերը](https://www.typescriptlang.org/docs/handbook/compiler-options.html) ավելի մանրամասների համար։
 
-## Development Tooling
+## Զարգացման Գործիքներ
 
-### Project Creation
+### Նախագծի Ստեղծում
 
-[Vue CLI 3](https://github.com/vuejs/vue-cli) can generate new projects that use TypeScript. To get started:
+[Vue CLI 3](https://github.com/vuejs/vue-cli) կարող է ստեղծել նոր նախագծեր որոնք օգտագործում են TypeScript։ Որպեսզի սկսենք․
 
 ```bash
-# 1. Install Vue CLI, if it's not already installed
+# 1. Տեղադրեք Vue CLI, եթե այն դեռ տեղադրված չե
 npm install --global @vue/cli
 
-# 2. Create a new project, then choose the "Manually select features" option
+# 2. Ստեղծեք նոր նախագիծ, այնուհետև ընտրեք "Manually select features" (Ձեռքով ընտրել նախընտրանքները) ընտրանքը
 vue create my-project-name
 ```
 
-### Editor Support
+### Խմբագրման Համապատասխանեցում
 
-For developing Vue applications with TypeScript, we strongly recommend using [Visual Studio Code](https://code.visualstudio.com/), which provides great out-of-the-box support for TypeScript. If you are using [single-file components](./single-file-components.html) (SFCs), get the awesome [Vetur extension](https://github.com/vuejs/vetur), which provides TypeScript inference inside SFCs and many other great features.
+Որպեսզի զարգացնել Vue ծրագրեր TypeScript-ի հետ, մենք խորհուրդ ենք տալիս օգտագործել [Visual Studio Code-ը](https://code.visualstudio.com/), որը տրամադրում է հիանալի համապատասխանեցում TypeScript-ի համար։ Եթե դուք օգտագործում եք [մեկ-ֆայլ կոմպոնենտները](./single-file-components.html) (SFC-ներ), տեղադրեք հրաշալի [Vetur extension-ը](https://github.com/vuejs/vetur), որը տրամադրում է TypeScript-ի ինտերֆեյս SFC-ների ներքո և այլ շատ լավ հատկություններ։
 
-[WebStorm](https://www.jetbrains.com/webstorm/) also provides out-of-the-box support for both TypeScript and Vue.
+[WebStorm](https://www.jetbrains.com/webstorm/) նաև տրամադրում է համապատասխանեցում TypeScript-ի և Vue-ի համար։
 
-## Basic Usage
+## Սովորական Օգտագործում
 
-To let TypeScript properly infer types inside Vue component options, you need to define components with `Vue.component` or `Vue.extend`:
+Որպեսզի թույլ տալ TypeScript-ի ճշտգրտորեն նշի տիպերը Vue կոմպենտնի ընտրանքներում, դուք պետք է հայտարարեք կոմպոնենտները `Vue.component` կամ `Vue.extend`-ով․
 
 ``` ts
 import Vue from 'vue'
 
 const Component = Vue.extend({
-  // type inference enabled
+  // տիպերի ինտերֆեյսը միացված է
 })
 
 const Component = {
-  // this will NOT have type inference,
-  // because TypeScript can't tell this is options for a Vue component.
+  // սա չի ունենա տիպի ինտերֆեյս,
+  // որովհետև TypeScript-ը չի հասկանա որ սա ընտրանք է Vue կոմպոնենտի համար։
 }
 ```
 
-## Class-Style Vue Components
+## Class-ի Ոճով Vue Կոմպոնենտներ
 
-If you prefer a class-based API when declaring components, you can use the officially maintained [vue-class-component](https://github.com/vuejs/vue-class-component) decorator:
+Եթե դուք նախընտրում եք class-ով հիմնված API երբ հայտարարում եք կոմպոնենտներ, դուք կարող եք օգտագործել պաշտոնական [vue-class-component](https://github.com/vuejs/vue-class-component) դեկորատորը․
 
 ``` ts
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-// The @Component decorator indicates the class is a Vue component
+// @Component դեկորատորը ցույց է տալիս որ class-ը Vue component է
 @Component({
-  // All component options are allowed in here
+  // Բոլոր կոմպոնենտի ընտրանքրը թույլ են տրվում այստեղ
   template: '<button @click="onClick">Click!</button>'
 })
 export default class MyComponent extends Vue {
-  // Initial data can be declared as instance properties
+  // Սկզբնական տվյալները կարող են հայտարարվել որպես instance-ի հատկություններ
   message: string = 'Hello!'
 
-  // Component methods can be declared as instance methods
+  // Կոմպոնենտի մեթոդները կարող են հայտարարվել որպես instance-ի մեթոդներ
   onClick (): void {
     window.alert(this.message)
   }
 }
 ```
 
-## Augmenting Types for Use with Plugins
+## Տիպերի Աուգմենտացիան Plugin-ների Հետ Օգտագործման Համար
 
-Plugins may add to Vue's global/instance properties and component options. In these cases, type declarations are needed to make plugins compile in TypeScript. Fortunately, there's a TypeScript feature to augment existing types called [module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation).
+Plugin-ները կարող են ավելացնել global/instance հատկություններ և կոմպոնենտի ընտրանքներ Vue-ում։ Այս դեպքերում, տիպերի հայտարարումը պահանջվում է որպեսզի plugin-ները compile լինեն TypeScript-ում։ Բարեբախտորեն, գոյություն ունի TypeScript-ի հատկություն որպեսզի ագումենտացիայի ենթարկել գոյություն ունեցող տիպերը որը անվանվում է [մոդուլի աուգմենտացիա](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation)։
 
-For example, to declare an instance property `$myProperty` with type `string`:
+Օրինակի համար, որպեսզի հայտարարել instance-ի հատկություն `$myProperty` `string` տիպով․
 
 ``` ts
-// 1. Make sure to import 'vue' before declaring augmented types
+// 1. Համողվեք որ import 'vue'-ն ավելացված է նախքան աուգմենտացված տիպերի հայտարարումը
 import Vue from 'vue'
 
-// 2. Specify a file with the types you want to augment
-//    Vue has the constructor type in types/vue.d.ts
+// 2. Նշեք ֆայլը տիպերով հանդերձ որոնք որ դուք ցանկանում եք աուգմենտացնել
+//    Vue-ն ունի կոնստրուկտոր տիպ types/vue.d.ts-ում
 declare module 'vue/types/vue' {
-  // 3. Declare augmentation for Vue
+  // 3. Հայտարարեք աուգմենտացիա Vue-ի համար
   interface Vue {
     $myProperty: string
   }
 }
 ```
 
-After including the above code as a declaration file (like `my-property.d.ts`) in your project, you can use `$myProperty` on a Vue instance.
+Վերևի կոդը ձեր նախագծում որպես հայտարարման ֆայլ ներառելուց հետո (ինչպես `my-property.d.ts`), դուք կարող եք օգտագործել `$myProperty` Vue instance-ում։
 
 ```ts
 var vm = new Vue()
-console.log(vm.$myProperty) // This should compile successfully
+console.log(vm.$myProperty) // Սա պետք է հաջողությամբ compile լինի
 ```
 
-You can also declare additional global properties and component options:
+Դուք կարող եք նաև հայտարարել հավելյալ գլոբալ հատկություններ և կոմպոնենտի ընտրանքներ․
 
 ```ts
 import Vue from 'vue'
 
 declare module 'vue/types/vue' {
-  // Global properties can be declared
-  // on the `VueConstructor` interface
+  // Գլոբալ հատկությունները կարող են հայտարարվել
+  // `VueConstructor` ինտերֆեյսում
   interface VueConstructor {
     $myGlobal: string
   }
 }
 
-// ComponentOptions is declared in types/options.d.ts
+// ComponentOptions-ը հայտարարված է types/options.d.ts
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
     myOption?: string
@@ -142,21 +142,21 @@ declare module 'vue/types/options' {
 }
 ```
 
-The above declarations allow the following code to be compiled:
+Վերևում հայտարարները թույլ են տալիս որ հետևյալ կոդը compile լինի․
 
 ```ts
-// Global property
+// Գլոբալ հատկություն
 console.log(Vue.$myGlobal)
 
-// Additional component option
+// Հավելյալ կոմպոնենտի ընտրանք
 var vm = new Vue({
-  myOption: 'Hello'
+  myOption: 'Բարև'
 })
 ```
 
-## Annotating Return Types
+## Վերադարձի Տիպերի Նշումները
 
-Because of the circular nature of Vue's declaration files, TypeScript may have difficulties inferring the types of certain methods. For this reason, you may need to annotate the return type on methods like `render` and those in `computed`.
+Vue-ի հայտարարման ֆայլերի օղակային կազմվածքի պատճառով, TypeScript-ը կարող է ունենալ դժվարություններ եզրակացնելու տիպերը որոշ մեթոդների։ Այս պատճառով, դուք պետք է նշեք վերադարձի տիպը մեթոդներում ինչպիսիք են `render` և այն բոլորը որոնք `computed`-ում են։
 
 ```ts
 import Vue, { VNode } from 'vue'
@@ -168,29 +168,29 @@ const Component = Vue.extend({
     }
   },
   methods: {
-    // need annotation due to `this` in return type
+    // պետք է նշում որովհետև `this`-ն է վերադառնում տիպով
     greet (): string {
       return this.msg + ' world'
     }
   },
   computed: {
-    // need annotation
+    // պետք է նշում
     greeting(): string {
       return this.greet() + '!'
     }
   },
-  // `createElement` is inferred, but `render` needs return type
+  // `createElement`-ը եզրակացրած է, բայց `render`-ին պետք է վերադարձման տիպ
   render (createElement): VNode {
     return createElement('div', this.greeting)
   }
 })
 ```
 
-If you find type inference or member completion isn't working, annotating certain methods may help address these problems. Using the `--noImplicitAny` option will help find many of these unannotated methods.
+Եթե տիպերի եզրակացումը չի աշխատում, որոշ մեթոդների նշումը կարող է օգնել լուծել այս խնդիրները։ Օգտագործելով `--noImplicitAny` ընտրանքը կօգնի փնտրել նման շատ չնշված մեթոդներ։
 
 
 
-## Annotating Props
+## Հատկությունների Նշումները
 
 ```ts
 import Vue, { PropType } from 'vue'
@@ -217,4 +217,4 @@ const Component = Vue.extend({
   }
 })
 ```
-If you find validator not getting type inference or member completion isn't working, annotating the argument with the expected type may help address these problems.
+Եթե ձեր վալիդատորը չի ստանում տիպերի ինտերֆեյսը, կամ այն չի աշխատում, նշելով արգումենտը սպասվող տիպով կարող է օգնել ձեզ լուծել այս խնդիրները։
