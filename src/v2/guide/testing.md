@@ -1,168 +1,168 @@
 ---
-title: Testing
-type: guide
+title: Թեստեր
+type: ուղեցույց
 order: 402
 ---
 
-## Introduction
+## Ներածություն
 
-When it comes to building reliable applications, tests can play a critical role in an individual or team's ability to build new features, refactor code, fix bugs, etc. While there are many schools of thought with testing, there are three categories often discussed in the context of web applications:
+Երբ բանը հասնում է հուսալի ծրագրեր կառուցելուն, թեստերը կարող են լինել կրիտիկական անհատական կամ թիմի ունակություններում որպեսզի կառուցել նոր հատկություններ, վերանայել կոդը, ուղղել սխալները, և այլն։ Չնայած փորձարկման շատ դպրոցներ կան, գոյություն ունի երեք բաժին քննարկվող վեբ ծրագրերի կոնտեքստում․
 
-- Unit Testing
-- Component Testing
-- End-To-End (E2E) Testing
+- Unit Թեստերը
+- Կոմպոնենտի Թեստերը
+- End-To-End (E2E) Թեստեր
 
-This section aims to provide guidance to navigating the testing ecosystem and choosing the right tools for your Vue application or component library.
+Այս բաժինը ուղղված է տրամադրելու ուղի որպեսզի ճամփորդել թեստային էկոհամակարգով և ընտրել ճիշտ գործիքները ձեր Vue ծրագրի կամ կոմպոնենտի գրադարանի համար։
 
-## Unit Testing
+## Unit Թեստավորում
 
-### Introduction
+### Ներածություն
 
-Unit tests allow you to test individual units of code in isolation. The purpose of unit testing is to provide developers with confidence in their code. By writing thorough, meaningful tests, you achieve the confidence that as new features are built or your code is refactored your application will remain functional and stable.
+Unit թեստերը թույլ է տալիս ձեզ որպեսզի փորձակել ձեր կոդից որոշ մաս մեկուսացված վիճակում։ Unit թեստերի իմաստը դա ծրագրավորողներին իրենց կոդի մեջ վստահություն տրամադրելն է։ Գրելով մանրամասն, իմաստալից թեստեր, դուք կհասնեք այն վստահությանը որ նոր հատկությունները կառուցելուց կամ ձեր կոդի փոփոխություններից ձեր ծրագիրը կմնա ֆունկցիոնալ և կայուն։
 
-Unit testing a Vue application does not significantly differ from testing other types of applications.
+Unit թեստավորումը Vue ծրագրում շատ չի տարբերվում այլ ծրագրերի թեստերից։
 
-### Choosing Your Framework
+### Framework-ի Ընտրությունը
 
-Since unit testing advice is often framework-agnostic, here are some basic guidelines to keep in mind when evaluating which unit testing tool is best for your application.
+Մինչ unit թեստերի անհրաժեշտությունը կախված է framework-ից, կան նաև որոշ հասարակ ուղեցույցներ, որոնք պետք է հիշել, երբ որոշում եք, թե որ unit թեստերի գործիքն է լավագույնը ձեր ծրագրի համար:
 
-#### First-class error reporting
+#### Առաջի կարգի սխալների զեկուցում
 
-When tests fail, it is critical that your unit testing framework provides useful errors. This is the job of the assertion library. An assertion with high-quality error messages helps minimize the amount of time it takes to debug the problem. In addition to simply telling you what test is failing, assertion libraries provide context for why a test fails, e.g., what is expected vs what was received.
+Երբ թեստերը կձախողվեն, կրիտիկական է որ ձեր unit թեստերի framework-ը տրամադրի օգտակար error-ներ։ Սա assertion գրադարանի գործն է։ Ենթադրումը բարձր որակի error նամակների կօգնի ձեզ նվազեցնել ժամանակը որը դուք ծախսելու եք լուծելու վրա։ Հավելյալ ձեզ տեղյակ պահելով որ թեստը ձախողվում է, assertion գրադարանները տրամադրում են կոնտեքստ թե ինչու է թեստը ձախողվել, օրինակ՝ ինչ էր սպասվում և ինչ է արդյունքում ստացվել։
 
-Some unit testing frameworks, like Jest, include assertion libraries. Others, like Mocha, require you to install assertion libraries separately (usually Chai).
+Որոշ unit թեստերի framework—եր, ինչպիսին է Jest-ը, ներառում են assertion գրադարաններ։ Մյուսները, ինչպիսին է Mocha-ն, պահանջում է ձեզանից որպեսզի տեղադրել assertion գրադարաններ առանձին (հիմնականում Chai):
 
-#### Active community and team
+#### Ակտիվ համայնք և թիմ
 
-Since the majority of unit testing frameworks are open-source, having a community that is active can be critical to some teams that will be maintaining their tests for a long period of time and needs to ensure that a project will be actively maintained. In addition, having an active community has the benefit of providing more support whenever you run into issues.
+Մինչ մեծամասնությունը unit թեստավորման framework-երի open-source է, ունենալով համայնք որը ակտիվ է կարող է լինել կրիտիկական որոշ թիմերին որոնք կկառավարեն նրանց թեստերը երկար ժամանակի ընթացքում և անհրաժեշտ է համոզվել որ նախագիծը կլինի ակտիվորեն պահպանվող։ Հավելյալ, ունենալով ակտիվ համայնք ունի իր առավելությունները տրամադրելով աջակցություն երբ որ դուք խնդիրների հետ կառնչվեք։
 
-### Frameworks
+### Framework-ներ
 
-While there are many tools in the ecosystem, here are some common unit testing tools that are being used in the Vue.js ecosystem.
+Մինչ կան շատ գործիքներ էկոհամակարգում, այստեղ դուք կտեսնեք որոշ հասարակ unit թեստավորման գործիքներ որոնք կօգտագործվեն Vue.js-ի էկոհամակարգում։
 
 #### Jest
 
-Jest is a JavaScript test framework that is focused on simplicity. One of its unique features is the ability to take snapshots of tests in order to provide an alternative means of verifying units of your application.
+Jest-ը JavaScript-ի թեստերի framework է որը կենտրոնացված է հասարակ լինելուն մեջ։ Հատուկ հատկություններից մեկն է որ դուք կարողանաք ստանալ snapshot-ներ թեստերի որպեսզի տրամադրել այլ ճանապարհ հաստատելու ձեր ծրագրի մասնիկները։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [Official Jest Website](https://jestjs.io)
-- [Official Vue 2 CLI Plugin - Jest](https://cli.vuejs.org/core-plugins/unit-jest.html)
+- [Պաշտոնական Jest-ի Կայքը](https://jestjs.io)
+- [Պաշտոնական Vue 2 CLI Plugin - Jest](https://cli.vuejs.org/core-plugins/unit-jest.html)
 
 #### Mocha
 
-Mocha is a JavaScript test framework that is focused on being flexible. Because of this flexibility, it allows you to choose different libraries to fulfill other common features such as spying (e.g., Sinon) and assertions (e.g., Chai). Another unique feature of Mocha is that it can also execute tests in the browser in addition to Node.js.
+Mocha-ն դա JavaScript թեստ framework է որը կենտրոնացված է ավելի ճկուն լինելու վրա։ Այս ճկունության պատճառով, այն թույլ է տալիս ձեզ որպեսզի ընտրեք տարբեր գրադարաններ որպեսզի լրացնել այլ սովորական հատկությունները ինչպիսին է spying-ը (օրինակ՝ Sinon) և assertion-ներ (oրինակ՝ Chai)։ Այլ հատուկ հատկությունը Mocha-ի դա որ այն կարող է նաև աշխատացնել թեստեր ձեր բրաուզերում հավելված Node.js-ում։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [Official Mocha Website](https://mochajs.org)
-- [Official Vue CLI Plugin - Mocha](https://cli.vuejs.org/core-plugins/unit-mocha.html)
+- [Պաշտոնական Mocha Website](https://mochajs.org)
+- [Պաշտոնական Vue CLI Plugin - Mocha](https://cli.vuejs.org/core-plugins/unit-mocha.html)
 
-## Component Testing
+## Կոմպոնենտի Թեստավորում
 
-### Introduction
+### Ներածություն
 
-To test most Vue components, they must be mounted to the DOM (either virtual or real) in order to fully assert that they are working. This is another framework-agnostic concept. As a result, component testing frameworks were created to give users the ability to do this in a reliable way while also providing Vue-specific conveniences such as integrations for Vuex, Vue Router, and other Vue plugins.
+Որպեսզի թեստավորենք հիմնական Vue կոմպոնենտները, նրանք պետք է միացված լինեն DOM-ին (կամ վիրտուալ կամ ռեալ) որպեսզի ամբողջովին համոզվենք որ նրանք աշխատում են։ Սա մեկ այլ framework-ին հենված հասկացություն է։ Որպես արդյունք, կոմպոնենտի թեստավորման framework-ները ստեղծված էին որպեսզի տրամադրեն օգտագործողներին ունակությունը կատարելու այն հուսալի ձևով, նաև տրամադրելու Vue-ին հատուկ հարմարանքներ ինչպիսիք են տեղադրումը Vuex-ում, Vue Router-ում, և այլ Vue plugin-ներում։
 
-### Choosing Your Framework
+### Ձեր Framework-ի Ընտրությունը
 
-The following section provides guidelines on things to keep in mind when evaluating which component testing framework is best for your application.
+Հետևյալ բաժինը տրամադրում է ուղեցույց այն բաների մասին որոնք պետք է մտքում պահել երբ որոշում եք թե որ կոմպոնենտի թեստավորման framework-ն է լավագույնը ձեր ծրագրի համար։
 
-#### Optimal compatibility with the Vue ecosystem
+#### Այլընտրանքային Համապատասխանեցում Vue Էկոհամակարգի Հետ
 
-It should be no surprise that one of the first criteria is that a component testing library should have is being as compatible with the Vue ecosystem as possible. While this may seem comprehensive, some key integration areas to keep in mind include single file components (SFCs), Vuex, Vue Router, and any other Vue specific plugins that your application relies on.
+Անակնկալ չպետք է լինի որ առաջին պահանջներից մեկը որ կոմպոնենտի թեստավորման գրադարանը պետք է ունենա դա լինել որքան հնարավոր է համապատասխանող Vue էկոհամակարգի հետ։ Երբ որ սա կարող է թվալ սպառիչ, որոշ հիմնական ինտեգրացման բաժինները պետք է պահել մտքում ներառյալ մեկ ֆայլ կոմպոնենտները (SFC-ները), Vuex-ը, Vue Router-ը, և այլ Vue-ին հատուկ plugin-ներ որոնցից ձեր ծրագիրը կախված է։
 
-#### First-class error reporting
+#### Առաջին կարգի սխալների զեկուցում
 
-When tests fail, it is critical that your component testing framework provides useful error logs that help to minimize the amount of time it takes to debug the problem. In addition to simply telling you what test fails, they should also provides context for why a test fails, e.g., what is expected vs what was received.
+Երբ թեստերը կձախողվեն, կրիտիկական է որ կոմպոնենտի թեստային framwork-ը տրամադրի օգտակար error log-եր որոնք կօգնեն ձեզ նվազեցնել ժամանակը որը դուք կծախսեք խնդիրը լուծելու վրա։ Հավելյալ ձեզ տեղյակ պահելու թե որ թեստը կձախողվի, նրանք պետք է նաև տրամադրեն կոնտեքստ թե ինչու թեստը ձախողվեց, օրինակ՝ ինչ էր սպասվում և ինչ է արդյունքում ստացվել։
 
-### Recommendations
+### Խորհուրդ է Տրվում
 
-#### Vue Testing Library (@testing-library/vue)
+#### Vue Թեստավորման Գրադարանը (@testing-library/vue)
 
-Vue Testing Library is a set of tools focused on testing components without relying on implementation details. Built with accessibility in mind, its approach also makes refactoring a breeze.
+Vue Թեստավորման Գրադարանը դա գործիքների մի հավաքածու է կենտրոնացված կոմպոնենտները թեստ անելու վրա կախված չլինելով տեղադրման մանրամասներից։ Կառուցված է մատչելիությունը մտքում, իր մոտեցումը նաև refactoring-ը դարձնում է խաղ ու պար։
 
-Its guiding principle is that the more tests resemble the way software is used, the more confidence they can provide.
+Իր առաջնորդող սկզբունքը դա որ որքան թեստերը նմանվում են ծրագրի օգտագործման նման, այնքան ավելի վստահություն կարող են նրանք ապահովել։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [Official Vue Testing Library Website](https://testing-library.com/docs/vue-testing-library/intro)
+- [Պաշտոնական Vue Թեստավորման Գրադարանների Վեբկայքը](https://testing-library.com/docs/vue-testing-library/intro)
 
-#### Vue Test Utils
+#### Vue Test Utils-ը
 
-Vue Test Utils is the official low-level component testing library that was written to provide users access to Vue specific APIs. If you are new to testing Vue applications, we would recommend using Vue Testing Library, which is an abstraction over Vue Test Utils.
+Vue Test Utils-ը դա պաշտոնական ցածր-կարգի կոմպոնենտի թեստավորման գրադարան է որը գրված է եղել որպեսզի տրամադրի օգտագործողներին մուտք դեպի Vue-ի հատուկ API-ներ։ Եթե դուք նոր եք Vue ծրագրերը թեստավորման մեջ, մենք խորհուրդ ենք տալիս օգտագործել Vue—ի Թեստավորման Գրադարանը, որը աբստրակցիա է Vue Test Utils-ի վրայից։
 
-**Resources**
+**Ռեսուրսներ**
 
-- [Official Vue Test Utils Documentation](https://vue-test-utils.vuejs.org)
-- [Vue Testing Handbook](https://lmiller1990.github.io/vue-testing-handbook/#what-is-this-guide) by Lachlan Miller
-- [Cookbook: Unit Testing Vue Components](https://vuejs.org/v2/cookbook/unit-testing-vue-components.html)
+- [Պաշտոնական Vue Test Utils-ի Փաստաթղթերը](https://vue-test-utils.vuejs.org)
+- [Vue-ի Թեստավորման Գրքույկ](https://lmiller1990.github.io/vue-testing-handbook/#what-is-this-guide) Lachlan Miller-ի կողմից
+- [Cookbook: Unit Թեստավորումը Vue Component-ների](https://vuejs.org/v2/cookbook/unit-testing-vue-components.html)
 
-## End-to-End (E2E) Testing
+## End-to-End (E2E) Թեստավորում
 
-### Introduction
+### Ներածություն
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+Մինչ unit թեստերը տրամադրում են ծրագրավորողներին որոշակի աստիճանի վստահություն, unit և կոմպոնենտ թեստերը սահմանափակ են իրենց ունակություններով որպեսզի տրամադրեն ամբողջական լուսաբանում ծրագրի վերաբերյալ երբ այն արտադրության մեջ է։ Որպես արդյունք, end-to-end (E2E) թեստերը տրամադրում են լուսաբանում թե որն է ամենակարևոր մասնիկը ձեր ծրագրում․ ինչ կլինի երբ օգտագործողը իրականում կօգտագործի ձեր ծրագրերը։
 
-In other words, E2E tests validate all of the layers in your application. This not only includes your frontend code, but all associated backend services and infrastructure that are more representative of the environment that your users will be in. By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+Այլ խոսքերով, E2E թեստերը հաստատում են բոլոր շերտերը ձեր ծրագրում։ Սա ոչ միայն ներառում է ձեր frontend կոդը, բայց նաև բոլոր կապված backend service—ները և ենթակառուցվածքներ որոնք ավելի կխորհրդանշեն այն environmenet-ը որոնց մեջ ձեր օգտատերերը կլինեն։ Թեստավորելով թե ինչպես օգտագործողի գործողությունները կազդեն ձեր ծրագրին, E2E թեստերը բանալին են որպեսզի համոզվել թե ձեր ծրագիրը աշխատում է ճիշտ թե ոչ։
 
-### Choosing Your Framework
+### Ձեր Framework-ի Ընտրությունը
 
-While end-to-end (E2E) testing on the web has gained a negative reputation for unreliable (flaky) tests and slowing down development processes, modern E2E tools have made strides forward to create more reliable, interactive, and useful tests. When choosing an E2E testing framework, the following sections provide some guidance on things to keep in mind when choosing a testing framework for your application.
+Երբ end-to-end (E2E) թեստավորումը վեբում ստացել է բացասական հեղինակություն ոչ հուսալի (թեթև) թեստերի և դանդաղեցնելու զարգացման պրոցեսները, ժամանակակից E2E գործիքները արել են քայլեր առաջ որպեսզի ստեղծել ավելի հուսալի, ինտերակտիվ, և օգտակար թեստեր։ Երբ ընտրում ենք E2E թեստավորման framework, հետևյալ բաժինները տրամադրում են որոշ ուղղություն այն բաների մասին որոնք պետք է մտքում ունենաք երբ ընտրում եք թեստավորման framework ձեր ծրագրի համար։
 
-#### Cross-browser testing
+#### Բրաուզերների թեստավորում
 
-One of the primary benefits that end-to-end (E2E) testing is known for is its ability to test your application across multiple browsers. While it may seem desirable to have 100% cross-browser coverage, it is important to note that cross browser testing has diminishing returns on a team's resources due the additional time and machine power required to run them consistently. As a result, it is important to be mindful of this trade-off when choosing the amount of cross-browser testing your application needs.
+Հիմնական առավելություններից մեկը դա որ end-to-end (E2E) թեստավորումը հայտնի է որ այն ունակ է թեստավորել ձեր ծրագիրը տարբեր բրաուզերներում։ Մինչ կարող է ավելի ցանկալի լինել որպեսզի ունենալ 100% բրաուզերների արդյունք, կարևոր է նշել որ բրաուզերի թեստավորումը նվազեցնում է թիմի ռեսուրսները ստեղծելով հավելյալ ժամանակ և մեքենայական ուժ որպեսզի աշխատացնել դրանք հետևողականորեն։ Որպես արդյունք, կարևոր է լինել ուշադիր այս հակասությունների վերաբերյալ երբ ընտրում ենք քանակը բրաուզերների թեստավորման ձեր ծրագրում։
 
-<p class="tip">A recent development in E2E for catching browser-specific issues is using application monitoring and error reporting tools (e.g., Sentry, LogRocket, etc.) for browsers that are not as commonly used (e.g., < IE11, older Safari versions, etc.).</p>
+<p class="tip">Մոտ զարգացումը E2E-ի որպեսզի նկատի բրաուզերին հատուկ խնդիրները օգտագործելով ծրագիր դիտարկող և սխալների զեկուցման գործիքներ (օրինակ՝ Sentry, LogRocket, և այլն.) բրաուզերների համար որոնք շատ չեն օգտագործվում (օրինակ՝ < IE11, հին Safari տարբերակներ, և այլն.).</p>
 
-#### Faster feedback loops
+#### Ավելի արագ արձագանքման օղակներ
 
-One of the primary problems with end-to-end (E2E) tests and development is that running the entire suite takes a long time. Typically, this is only done in continuous integration and deployment (CI/CD) pipelines. Modern E2E testing frameworks have helped to solve this by adding features like parallelization, which allows for CI/CD pipelines to often run magnitudes faster than before. In addition, when developing locally, the ability to selectively run a single test for the page you are working on while also providing hot reloading of tests can help to boost a developer's workflow and productivity.
+Հիմնական խնդիրներից մեկը end-to-end (E2E) թեստերի և զարգացման դա որ ամբողջական աշխատացնելը շատ ժամանակ է տանում։ Սովորաբար, սա կարող է միայն արվել շարունակական ինտեգրումում և տեղակայման (CI/CD) pipeline-ներում։ Ժամանակակից E2E թեստային framework-երը օգնել են լուծելու այս խնդիրը ավելացնելով հատկություններ ինչպիսիք են զուգահեռացում, որը թույլ է տալիս CI/CD pipeline-ներին որ աշխատեն բավականին արագ քան նախկինում։ Հավելյալ, երբ զարգացնում եք լոկալ կերպով, հնարավորությունը որպեսզի աշխատացնել մեկ թեստ այն էջում որում որ դուք աշխատում եք որը նաև տրամադրում է hot reloading թեստերի համար կարող է արագացնել ծրագրավորողի աշխատընթացը և արտադրողականություն։
 
-#### First class debugging experience
+#### Առաջին կարգի debugging-ի փորձառություն
 
-While developers have traditionally relied on scanning logs in a terminal window to help determine what went wrong in a test, modern end-to-end (E2E) test frameworks allow developers to leverage tools that they are already familiar with, e.g. browser developer tools.
+Երբ ծրագրավորողները ավանդաբար հենվել են դիտարկելու log—երը տերմինալի պատուհանում որպեսզի օգնել հասկանալ թե ինչը չստացվեց թեստում, ժամանակակից end-to-end (E2E) թեստավորման framework—երը թույլ են տալիս ծրագրավորողներին որպեսզի ստանան այն գործիքները որոնց հետ նրանք արդեն ծանոթ են, օրինակ՝ բրաուզերի զարգացման գործիքները։
 
-#### Visibility in headless mode
+#### Տեսանելիությունը headless ռեժիմում
 
-When end-to-end (E2E) tests are run in continuous integration / deployment pipelines, they are often run in headless browsers (i.e., no visible browser is opened for the user to watch). As a result, when errors occur, a critical feature that modern E2E testing frameworks provide 1st class support for is the ability to see snapshots and/or videos of your applications during various testing stages in order to provide insight into why errors are happening. Historically, it was tedious to maintain these integrations.
+Երբ end-to-end (E2E) թեստերը աշխատում են շարունակական ինտեգրման / տեղակայման pipeline-ներում, նրանք հիմանկանում աշխատում են headless բրաուզերներում (օրինակ՝ ոչ մի տեսանելի բրաուզեր բաց չի օգտագործողի համար)։ Որպես արդյունք, երբ սխալներ են հանդիպում, կրիտիկական հատկություն է որ ժամանակակից E2E թեստավորման framework-եր տրամադրում են առաջին կարգի աջակցություն որը snapshot-երը կամ/և տեսահոլովակներն են ձեր ծրագրի տարբեր թեստային փուլերի որպեսզի տրամադրեն խորաթափանցություն թե ինչու են սխալները հայտնվում։ Պատմականորեն, ձանձրալի էր պահպանել այս ինտեգրումները։
 
-### Recommendations
+### Խորհուրդ է տրվում
 
-While there are many tools in the ecosystem, here are some common end-to-end (E2E) testing frameworks that are being used in the Vue.js ecosystem.
+Մինչ կան բազմաթիվ գործիքներ ձեր էկոհամակարգում, կան նաև որոշ հիմնական end-to-end (E2E) թեստավորման framework-ներ որոնք օգտագործվում են Vue.js էկոհամակարգում։
 
 #### Cypress.io
 
-Cypress.io is a testing framework that aims to enhance developer productivity by enabling developers to reliably test their applications while providing a first class developer experience.
+Cypress.io թեստավորման framework է որը ուղղված է բարելավելու ծրագրավորողի արտադրողականություն թույլ տալով ծրագրավորողներին հուսալիորեն թեստավորելու նրանց ծրագրերը տրամադրելով առաջին կարգի ծրագրավորողի փորձառություն։
 
-**Resources**
+**Ռեսուրսներ**
 
-- [Cypress' Official Website](https://www.cypress.io)
-- [Official Vue CLI Cypress Plugin](https://cli.vuejs.org/core-plugins/e2e-cypress.html)
-- [Cypress Testing Library](https://github.com/testing-library/cypress-testing-library)
+- [Cypress' Պաշտոնական Վեբկայք](https://www.cypress.io)
+- [Պաշտոնական Vue CLI Cypress Plugin](https://cli.vuejs.org/core-plugins/e2e-cypress.html)
+- [Cypress Թեստավորման Գրադարան](https://github.com/testing-library/cypress-testing-library)
 
 #### Nightwatch.js
 
-Nightwatch.js is an end-to-end testing framework that can be used to test web applications and websites, as well as Node.js unit and integration testing.
+Nightwatch.js-ը end-to-end թեստավորման framework է որը կարող է օգտագործվել որպեսզի թեստավորել վեբ ծրագրերը և վեբկայքերը, ինչպես նաև Node.js-ի unit և ինտեգրացման թեստավորում։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [Nightwatch's Official Website](https://nightwatchjs.org)
-- [Official Vue CLI Nightwatch Plugin](https://cli.vuejs.org/core-plugins/e2e-nightwatch.html)
+- [Nightwatch-ի Պաշտոնական Վեբկայք](https://nightwatchjs.org)
+- [Պաշտոնական Vue CLI Nightwatch Plugin](https://cli.vuejs.org/core-plugins/e2e-nightwatch.html)
 
 #### Puppeteer
 
-Puppeteer is a Node library that provides a high-level API to control the browser and can pair with other test runners (e.g., Jest) to test your application.
+Puppeteer-ը Node-ի գրադարան է որը տրամադրում է բարձր կարգի API որպեսզի կառավարել բրաուզերը և կարող է միացվել այլ թեստերի գործարկիչների հետ (օրինակ՝ Jest) որպեսզի թեստավորել ձեր ծրագիրը։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [Puppeteer's Official Website](https://pptr.dev)
+- [Puppeteer-ի Պաշտոնական Վեբկայք](https://pptr.dev)
 
 #### TestCafe
 
-TestCafe is a Node.js based end-to-end framework that aims to provide easy setup so that developers can focus on creating tests that are easy to write and reliable.
+TestCafe-ն Node.js-ով հիմնված end-to-end framework է որը կենտրոնացված է տրամադրելու հեշտ տեղադրում որ ծրագրավորողները կենտրոնանան թեստերը ստեղծելու վրա որը բավականին հեշտ է և արդյունավետ։
 
-**Resources:**
+**Ռեսուրսներ․**
 
-- [TestCafe's Official Website](https://devexpress.github.io/testcafe/)
+- [TestCafe-ի Հիմնական Վեբկայք](https://devexpress.github.io/testcafe/)
