@@ -1,38 +1,38 @@
 ---
-title: Enter/Leave & List Transitions
-type: guide
+title: Մուտք/Ելք և Ցանկի Անցումներ
+type: ուղեցույց
 order: 201
 ---
 
-## Overview
+## Ակնարկ
 
-Vue provides a variety of ways to apply transition effects when items are inserted, updated, or removed from the DOM. This includes tools to:
+Vue-ն տրամադրում է բազմաթիվ ուղիներ որպեսզի կիրառել անցումային էֆեկտներ երբ մասնիկներ են տեղադրված, թարմացված, կամ ջնջված DOM-ից։ Սա ներառում է գործիքներ որպեսզի․
 
-- automatically apply classes for CSS transitions and animations
-- integrate 3rd-party CSS animation libraries, such as Animate.css
-- use JavaScript to directly manipulate the DOM during transition hooks
-- integrate 3rd-party JavaScript animation libraries, such as Velocity.js
+- ավտոմատ կերպով կիրառել class-ներ CSS անցումների և անիմացիաների համար
+- ինտեգրացնել 3-րդ կողմի CSS անիմացիայի գրադարաններ, ինչպիսին Animate.css-ն է
+- օգտագործելլ JavaScript որպեսզի ուղիղ կերպով մանիպուլացիայի ենթարկել DOM-ը անցումային hook-երի ժամանակ
+- ինտեգրացնել 3-րդ կողմի JavaScript անիմացիայի գրադարաններ, ինչպիսին Velocity.js-ն է
 
-On this page, we'll only cover entering, leaving, and list transitions, but you can see the next section for [managing state transitions](transitioning-state.html).
+Այս էջում, մենք միայն կնշենք մուտքը, ելքը, և ցանկի անցումները, բայց դուք կարող եք նայել հաջորդ բաաժինը [անցումների վիճակի կառավարման](transitioning-state.html) վերաբերյալ։
 
-## Transitioning Single Elements/Components
+## Մեկական Էլեմենտների/Կոմպոնենտների Անցումները
 
-Vue provides a `transition` wrapper component, allowing you to add entering/leaving transitions for any element or component in the following contexts:
+Vue-ն տրամադրում է `transition` փաթաթվող կոմպոնենտ, թույլ տալով ձեզ ավելացնելու մուտքի/ելքի անցումներ ցանկացած էլեմենտի կամ կոմպոնենտի համար հետևյալ մեջբերումներում․
 
-- Conditional rendering (using `v-if`)
-- Conditional display (using `v-show`)
-- Dynamic components
-- Component root nodes
+- Պայմանական rendering (օգտագործելով `v-if`)
+- Պայմանական ցուցադրում (օգտագործելով `v-show`)
+- Դինամիկ կոմպոնենտներ
+- Կոմպոնենտի արմատային node-եր
 
-This is what an example looks like in action:
+Հետևյալը օրինակն է թե ինչպես այն կլինի իրականում․
 
 ``` html
 <div id="demo">
   <button v-on:click="show = !show">
-    Toggle
+    Փոխարկել
   </button>
   <transition name="fade">
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 ```
@@ -58,10 +58,10 @@ new Vue({
 {% raw %}
 <div id="demo">
   <button v-on:click="show = !show">
-    Toggle
+    Փոխարկել
   </button>
   <transition name="demo-transition">
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 <script>
@@ -82,47 +82,47 @@ new Vue({
 </style>
 {% endraw %}
 
-When an element wrapped in a `transition` component is inserted or removed, this is what happens:
+Երբ էլեմենտը փաթաթված է `transition` կոմպոնենտում որը տեղադրված կամ ջնջված է, ահա թե ինչ է կատարվում․
 
-1. Vue will automatically sniff whether the target element has CSS transitions or animations applied. If it does, CSS transition classes will be added/removed at appropriate timings.
+1. Vue-ն ավտոմատ կերպով կնկատի եթե նշված էլեմենտը ունի CSS անցումներ կամ անիմացիաներ կիրառված։ Եթե կիրառված են նրանք, CSS անցումների class-ները կլինեն ավելացված/ջնջված ճիշտ ժամանակներում։
 
-2. If the transition component provided [JavaScript hooks](#JavaScript-Hooks), these hooks will be called at appropriate timings.
+2. Եթե անցումային կոմպոնենտը տրամադրել է [JavaScript hook-եր](#JavaScript-Hooks), այդ hook-երը կկանչվեն ճիշտ ժամանակներում։
 
-3. If no CSS transitions/animations are detected and no JavaScript hooks are provided, the DOM operations for insertion and/or removal will be executed immediately on next frame (Note: this is a browser animation frame, different from Vue's concept of `nextTick`).
+3. Եթե ոչ CSS անցումներ/անիմացիաներ են նկատվել և ոչ ել JavaScript hook-եր են տրամադրված, DOM-ի գործողությունները տեղադրման կամ/և ջնջվելու համար կկատարվեն անմիջապես հաջորդ շրջանակում (Նշում․ սա բրաուզերների անիմացիայի շրջանակ է, որը տարբերվում է Vue-ի `nextTick`-ի նկարագրումից)
 
-### Transition Classes
+### Անցումային Class-ներ
 
-There are six classes applied for enter/leave transitions.
+Կան վեց class-ներ որոնք կիրառրվում են մուտքի/ելքի անցումներին։
 
-1. `v-enter`: Starting state for enter. Added before element is inserted, removed one frame after element is inserted.
+1. `v-enter`․ Սկզբնական վիճակը մուտքի համար։ Ավելանում է երբ էլեմենտը տեղադրված է, ջնջվում է մեկ շրջանակ հետո երբ էլէմենտը տեղադրված է։
 
-2. `v-enter-active`: Active state for enter. Applied during the entire entering phase. Added before element is inserted, removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve for the entering transition.
+2. `v-enter-active`․ Ակտիվ վիճակը մուտքի համար։ Կիրառված է մուտքի ամբողջ ընթացքում։ Ավելացվում է նախքան էլեմենտը տեղադրված է, ջնջվում է երբ անցումը/անիմացիան ավարտվում է։ Այս class-ը կարելի է օգտագործել որպեսզի նկարագրել տևողությունը, կանխումը և տևողության կորությունը մուտքի անցման համար։
 
-3. `v-enter-to`: **Only available in versions 2.1.8+.** Ending state for enter. Added one frame after element is inserted (at the same time `v-enter` is removed), removed when transition/animation finishes.
+3. `v-enter-to`․ **Միայն հասանելի է 2.1.8+ տարբերակներում։** Վերջնական վիճակը մուտքի համար։ Ավելացվում է մեկ շրջանակ հետո երբ էլեմենտը տեղադրված է (միաժամանակ `v-enter`-ը ջնջվում է), ջնջվում է երբ անցումը/անիմացիան վերջանում է։
 
-4. `v-leave`: Starting state for leave. Added immediately when a leaving transition is triggered, removed after one frame.
+4. `v-leave`․ Սկզբնական վիճակը ելքի համար։ Ավելացվում է անմիջապես երբ ելքի անցումը արձակված է, ջնջվում է մեկ շրջանակ հետո։
 
-5. `v-leave-active`: Active state for leave. Applied during the entire leaving phase. Added immediately when leave transition is triggered, removed when the transition/animation finishes. This class can be used to define the duration, delay and easing curve for the leaving transition.
+5. `v-leave-active`․ Ակտիվ վիճակը ելքի համար։ Կիրառվում է ելքի ամբողջ ընթացքում։ Ավելացվում է անմիջապես երբ ելքի անցումը արձակված է, ջնջվում է երբ անցումը/անիմացիան ավարտվում է։ Այս class-ը կարելի է օգտագործել որպեսզի նկարագրել տևողությունը, կանխումը և տևողության կորությունը ելքի անցման համար։
 
-6. `v-leave-to`: **Only available in versions 2.1.8+.** Ending state for leave. Added one frame after a leaving transition is triggered (at the same time `v-leave` is removed), removed when the transition/animation finishes.
+6. `v-leave-to`: **Միայն հասանելի է 2.1.8+ տարբերակներում։** Վերջնական վիճակը ելքի համար։ Ավելացվում է մեկ շրջանակ հետո երբ ելքի անցումը արձակված է (միաժամանակ `v-leave`-ը ջնջվում է), ջնջվում է երբ անցումը/անիմացիան ավարտվում է։
 
-![Transition Diagram](/images/transition.png)
+![Անցումի Դիագրամ](/images/transition.png)
 
-Each of these classes will be prefixed with the name of the transition. Here the `v-` prefix is the default when you use a `<transition>` element with no name. If you use `<transition name="my-transition">` for example, then the `v-enter` class would instead be `my-transition-enter`.
+Այս class-ներից ամեն մեկը կնախածանցվի անցումի անունով։ Այստեղ `v-` նախածանցը հիմնականն է երբ դուք օգտագործում եք `<transition>` էլեմենտը առանց անունի։ Եթե դուք օգտագործեք `<transition name="my-transition">` օրինակի համար, այնուհետև `v-enter` class-ը փոխարենը կլինի `my-transition-enter`։
 
-`v-enter-active` and `v-leave-active` give you the ability to specify different easing curves for enter/leave transitions, which you'll see an example of in the following section.
+`v-enter-active` և `v-leave-active` կտա ձեզ հնարավորություն մատնանշելու տարբեր ժամանակի կորություններ մուտքի/ելքի անցումների համար, որոնք դուք կտեսնեք օրինակում հետևյալ բաժնի։
 
-### CSS Transitions
+### CSS Անցումներ
 
-One of the most common transition types uses CSS transitions. Here's an example:
+Ամենատարածված անցումային տիպերից մեկը օգտագործում է CSS անցումներ։ Այստեղ է օրինակը․
 
 ``` html
 <div id="example-1">
   <button @click="show = !show">
-    Toggle render
+    Փոխարկել render
   </button>
   <transition name="slide-fade">
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 ```
@@ -137,8 +137,8 @@ new Vue({
 ```
 
 ``` css
-/* Enter and leave animations can use different */
-/* durations and timing functions.              */
+/* Մուտքի և ելքի անիմացիաները կարող են օգտագործել տարբեր */
+/* տևողություններ և ժամանակի ֆունկցիաներ։              */
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
@@ -146,7 +146,7 @@ new Vue({
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
+/* .slide-fade-leave-active 2.1.8 տարբերակից ներքև */ {
   transform: translateX(10px);
   opacity: 0;
 }
@@ -155,10 +155,10 @@ new Vue({
 {% raw %}
 <div id="example-1" class="demo">
   <button @click="show = !show">
-    Toggle render
+    Փոխարկել render
   </button>
   <transition name="slide-fade">
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 <script>
@@ -183,15 +183,15 @@ new Vue({
 </style>
 {% endraw %}
 
-### CSS Animations
+### CSS Անիմացիաներ
 
-CSS animations are applied in the same way as CSS transitions, the difference being that `v-enter` is not removed immediately after the element is inserted, but on an `animationend` event.
+CSS անիմացիաները կիրառվում են նույն ձև ինչպես CSS անցումները, տարբերությունը կայանում է որ `v-enter`-ը չի ջնջվում անմիջապես երբ էլեմենտը տեղադրվում է, բայց `animationend` event-ում։
 
-Here's an example, omitting prefixed CSS rules for the sake of brevity:
+Այստեղ օրինակն է, բաց թողնելով նախածանցային CSS կանոնները հակիրճության համար։
 
 ``` html
 <div id="example-2">
-  <button @click="show = !show">Toggle show</button>
+  <button @click="show = !show">Փոխարկել show-ը</button>
   <transition name="bounce">
     <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
   </transition>
@@ -229,7 +229,7 @@ new Vue({
 
 {% raw %}
 <div id="example-2" class="demo">
-  <button @click="show = !show">Toggle show</button>
+  <button @click="show = !show">Փոխարկել show-ը</button>
   <transition name="bounce">
     <p v-show="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
   </transition>
@@ -283,9 +283,9 @@ new Vue({
 </script>
 {% endraw %}
 
-### Custom Transition Classes
+### Custom Անցումային Class-ներ
 
-You can also specify custom transition classes by providing the following attributes:
+Դուք կարող եք նաև մատնանշել custom անցումային class-ներ տրամադրելով հետևյալ ատրիբուտները․
 
 - `enter-class`
 - `enter-active-class`
@@ -294,23 +294,23 @@ You can also specify custom transition classes by providing the following attrib
 - `leave-active-class`
 - `leave-to-class` (2.1.8+)
 
-These will override the conventional class names. This is especially useful when you want to combine Vue's transition system with an existing CSS animation library, such as [Animate.css](https://daneden.github.io/animate.css/).
+Նրանք կվերագրեն հիմնական class անունները։ Սա հատկապես օգտակար է երբ դուք ցանկանում եք ձուլել Vue-ի անցումային համակարգը արդեն գոյություն ունեցող CSS անիմացիայի գրադարանի հետ, ինչպիսին [Animate.css](https://daneden.github.io/animate.css/) է։
 
-Here's an example:
+Այստեղ է օրինակը․
 
 ``` html
 <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
 
 <div id="example-3">
   <button @click="show = !show">
-    Toggle render
+    Փոխարկել render-ը
   </button>
   <transition
     name="custom-classes-transition"
     enter-active-class="animated tada"
     leave-active-class="animated bounceOutRight"
   >
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 ```
@@ -328,14 +328,14 @@ new Vue({
 <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
 <div id="example-3" class="demo">
   <button @click="show = !show">
-    Toggle render
+    Փոխարկել render-ը
   </button>
   <transition
     name="custom-classes-transition"
     enter-active-class="animated tada"
     leave-active-class="animated bounceOutRight"
   >
-    <p v-if="show">hello</p>
+    <p v-if="show">բարև</p>
   </transition>
 </div>
 <script>
@@ -348,33 +348,33 @@ new Vue({
 </script>
 {% endraw %}
 
-### Using Transitions and Animations Together
+### Անցումների և Անիմացիաների Օգտագործումը Միասին
 
-Vue needs to attach event listeners in order to know when a transition has ended. It can either be `transitionend` or `animationend`, depending on the type of CSS rules applied. If you are only using one or the other, Vue can automatically detect the correct type.
+Vue-ն պետք է միացնի event listener-ներ որպեսզի հասկանա թե երբ է անցումը ավարտվել։ Այն կարող է լինել `transitionend` կամ `animationend`, կախված լինելով կիրառված CSS կանոնի տիպից։ Եթե դուք միայն օգտագործում եք մեկը կամ մյուսը, Vue կարող է ավտոմատ կերպով նկատել ճիշտ տիպը։
 
-However, in some cases you may want to have both on the same element, for example having a CSS animation triggered by Vue, along with a CSS transition effect on hover. In these cases, you will have to explicitly declare the type you want Vue to care about in a `type` attribute, with a value of either `animation` or `transition`.
+Սակայն, որոշ դեպքերում դուք հնարավոր է որ կցանկանաք ունենալ երկուսն էլ մեկ էլեմենտի վրա, օրինակի համար ունենալով CSS անիմացիա որը բաց է թողնվում Vue-ի կողմից, CSS անցումային էֆեկտի հետ հանդերձ hover-ի ժամանակ։ Այս դեպքերում, դուք պետք է պարտադիր հայտարարեք տիպը որը որ դուք ցանկանում եք որ Vue-ն ունենա `type` ատրիբուտում, արժեքը լինելով `animation` կամ `transition`։
 
-### Explicit Transition Durations
+### Հատուկ Անցումային Տևողություններ
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
-In most cases, Vue can automatically figure out when the transition has finished. By default, Vue waits for the first `transitionend` or `animationend` event on the root transition element. However, this may not always be desired - for example, we may have a choreographed transition sequence where some nested inner elements have a delayed transition or a longer transition duration than the root transition element.
+Շատ դեպքերում, Vue-ն կարող է ավտոմատ կերպով հասկանալ թե երբ է անցումը ավարտվել։ Հիմնականում, Vue-ն սպասում է առաջին `transitionend` կամ `animationend` event-ին արմատային անցումային էլեմենտում։ Սակայն, սա կարող է միշտ չլինել ցանկալի - օրինակի համար, մենք հնարավոր է որ կունենանք ժամանակագրված անցումային հաջորդականություն որտեղ որոշ ներդրված էլեմենտներ ունեն հետաձգված անցում կամ երկար անցման տևողություն քան արմատային անցումային էլեմենտը։
 
-In such cases you can specify an explicit transition duration (in milliseconds) using the `duration` prop on the `<transition>` component:
+Այս դեպքերում դուք կարող եք հայտարարել անցման տևողությունը (միլիվարկյաններում) օգտագործելով `duration` հատկությունը `<transition>` կոմպոնենտում․
 
 ``` html
 <transition :duration="1000">...</transition>
 ```
 
-You can also specify separate values for enter and leave durations:
+Դուք կարող եք նաև նկարագրել առանձին արժեքներ մուտքի և ելքի տևողությունների համար․
 
 ``` html
 <transition :duration="{ enter: 500, leave: 800 }">...</transition>
 ```
 
-### JavaScript Hooks
+### JavaScript-ի Hook-եր
 
-You can also define JavaScript hooks in attributes:
+Դուք կարող եք նաև հայտարարել JavaScript hook-եր ատրիբուտներում․
 
 ``` html
 <transition
@@ -396,14 +396,14 @@ You can also define JavaScript hooks in attributes:
 // ...
 methods: {
   // --------
-  // ENTERING
+  // ՄՈՒՏՔ
   // --------
 
   beforeEnter: function (el) {
     // ...
   },
-  // the done callback is optional when
-  // used in combination with CSS
+  // done callback-ը պարտադիր չէ երբ
+  // օգտագործում ենք CSS-ի հետ հանդերձ
   enter: function (el, done) {
     // ...
     done()
@@ -416,14 +416,14 @@ methods: {
   },
 
   // --------
-  // LEAVING
+  // ԵԼՔ
   // --------
 
   beforeLeave: function (el) {
     // ...
   },
-  // the done callback is optional when
-  // used in combination with CSS
+  // done callback-ը պարտադիր չէ երբ
+  // օգտագործում ենք CSS-ի հետ հանդերձ
   leave: function (el, done) {
     // ...
     done()
@@ -431,31 +431,31 @@ methods: {
   afterLeave: function (el) {
     // ...
   },
-  // leaveCancelled only available with v-show
+  // leaveCancelled-ը միայն հասանելի է v-show-ի հետ
   leaveCancelled: function (el) {
     // ...
   }
 }
 ```
 
-These hooks can be used in combination with CSS transitions/animations or on their own.
+Այս hook-երը կարող են օգտագործվել CSS անցումների/անիմացիաների հետ հանդերձ կամ առանձին։
 
-<p class="tip">When using JavaScript-only transitions, **the `done` callbacks are required for the `enter` and `leave` hooks**. Otherwise, the hooks will be called synchronously and the transition will finish immediately.</p>
+<p class="tip">Երբ օգտագործում ենք միայն JavaScript-ի անցումները, **`done` callback-ները միայն պահանջվում են `enter` և `leave` hook-երի համար**։ Հակառակ դեպքում, hook-երը կկանչվեն սինխռոն կերպով և անցումը միանգամից չի ավարտվի։</p>
 
-<p class="tip">It's also a good idea to explicitly add `v-bind:css="false"` for JavaScript-only transitions so that Vue can skip the CSS detection. This also prevents CSS rules from accidentally interfering with the transition.</p>
+<p class="tip">Նաև լավ միտք է ավելացնել `v-bind:css="false"` JavaScript-ի անցումների համար որ Vue-ն բաց թողնի CSS-ի նկատումը։ Սա նաև խուսափում է CSS-ի կանոններից որոնք միամիտ կխանգարեն անցումը։</p>
 
-Now let's dive into an example. Here's a JavaScript transition using Velocity.js:
+Հիմա եկեք սուզվենք դեպի օրինակը։ Այստեղ է JavaScript անցում օգտագործելով Velocity.js-ը․
 
 ``` html
 <!--
-Velocity works very much like jQuery.animate and is
-a great option for JavaScript animations
+Velocity-ն աշխատում է շատ նման լինելով jQuery.animate-ին և այն
+շատ լավ ընտրանք է JavaScript անիմացիաների համար
 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
 
 <div id="example-4">
   <button @click="show = !show">
-    Toggle
+    Փոխարկել
   </button>
   <transition
     v-on:before-enter="beforeEnter"
@@ -464,7 +464,7 @@ a great option for JavaScript animations
     v-bind:css="false"
   >
     <p v-if="show">
-      Demo
+      Դեմո
     </p>
   </transition>
 </div>
@@ -502,7 +502,7 @@ new Vue({
 {% raw %}
 <div id="example-4" class="demo">
   <button @click="show = !show">
-    Toggle
+    Փոխարկել
   </button>
   <transition
     v-on:before-enter="beforeEnter"
@@ -510,7 +510,7 @@ new Vue({
     v-on:leave="leave"
   >
     <p v-if="show">
-      Demo
+      Դեմո
     </p>
   </transition>
 </div>
@@ -545,9 +545,9 @@ new Vue({
 </script>
 {% endraw %}
 
-## Transitions on Initial Render
+## Անցումները Սկզբնական Render-ում
 
-If you also want to apply a transition on the initial render of a node, you can add the `appear` attribute:
+Եթե դուք նաև ցանկանում եք կիրառել անցումներ սկզբնական node-ի render—ում, դուք կարող եք ավելանցել `appear` ատրիբուտը․
 
 ``` html
 <transition appear>
@@ -555,7 +555,7 @@ If you also want to apply a transition on the initial render of a node, you can 
 </transition>
 ```
 
-By default, this will use the transitions specified for entering and leaving. If you'd like however, you can also specify custom CSS classes:
+ՀԻմնականում, սա կօգտագործի անցումները նշված մուտքի և ելքի համար։ եթե դուք ցանկանում եք, դուք կարող եք նշել custom CSS class-ներ․
 
 ``` html
 <transition
@@ -568,7 +568,7 @@ By default, this will use the transitions specified for entering and leaving. If
 </transition>
 ```
 
-and custom JavaScript hooks:
+և custom JavaScript hook-եր․
 
 ``` html
 <transition
@@ -582,26 +582,26 @@ and custom JavaScript hooks:
 </transition>
 ```
 
-In the example above, either `appear` attribute or `v-on:appear` hook will cause an appear transition.
+Վերևում նշված օրինակում, կամ `appear` ատրիբուտը կամ ել `v-on:appear` hook կգործարկեն appear անցումը։
 
-## Transitioning Between Elements
+## Անցումը Էլեմենտների Միջև
 
-We discuss [transitioning between components](#Transitioning-Between-Components) later, but you can also transition between raw elements using `v-if`/`v-else`. One of the most common two-element transitions is between a list container and a message describing an empty list:
+Մենք քննարկում ենք [անցումը կոմպոնենտների միջև](#Transitioning-Between-Components) հետո, բայց դուք կարող եք նաև անցում կատարել անմշակ էլեմենտների միջև օգտագործելով `v-if`/`v-else`։ Շատ հաճախ օգտագործվող երկու էլեմենտ անցումներից մեկը դա ցանկերի խմբի և նամակ նկարագրող դատարկ ցանկ է․
 
 ``` html
 <transition>
   <table v-if="items.length > 0">
     <!-- ... -->
   </table>
-  <p v-else>Sorry, no items found.</p>
+  <p v-else>Ներեցեք, ոչ մի ապրանք չի գտնվել։</p>
 </transition>
 ```
 
-This works well, but there's one caveat to be aware of:
+Սա աշխատում է լավ, բայց կա մեկ նախազգուշացում որ պետք է դուք տեղյակ լինել․
 
-<p class="tip">When toggling between elements that have **the same tag name**, you must tell Vue that they are distinct elements by giving them unique `key` attributes. Otherwise, Vue's compiler will only replace the content of the element for efficiency. Even when technically unnecessary though, **it's considered good practice to always key multiple items within a `<transition>` component.**</p>
+<p class="tip">Երբ փոխարկում ենք էլեմենտների միջև որոնք ունեն նույն **tag-ի անունը**, դուք պետք է տեղյակ պահեք Vue-ին որ նրանք տարբեր էլեմենտներ են տրամադրելով նրանց հատուկ `key` ատրիբուտներ։ Հակառակ դեպքում, Vue-ի compiler-ը միայն կփոխանակի բովանդակությունը էլեմենտի արդյունավետության համար։ Նույնիսկ երբ տեխնիկապես անիմաստ է, **շատ ճիշտ է միշտ ունենալ մի քանի մասնիկեր `<transition>` կոմպոնենտում։**</p>
 
-For example:
+Օրինակի համար․
 
 ``` html
 <transition>
@@ -614,7 +614,7 @@ For example:
 </transition>
 ```
 
-In these cases, you can also use the `key` attribute to transition between different states of the same element. Instead of using `v-if` and `v-else`, the above example could be rewritten as:
+Այս դեպքերում, դուք կարող եք նաև օգտագործել `key` ատրիբուտը որպեսզի անցում կատարել նույն էլեմենտի տարբեր վիճակներից։ `v-if` և `v-else`-ի փոխարեն, վերևում օրինակը կարող է վերագրվել ինչպես․
 
 ``` html
 <transition>
@@ -624,23 +624,23 @@ In these cases, you can also use the `key` attribute to transition between diffe
 </transition>
 ```
 
-It's actually possible to transition between any number of elements, either by using multiple `v-if`s or binding a single element to a dynamic property. For example:
+Իրականում հնարավոր է անցում կատարել ցանկացած էլեմենտների քանակի միջև, կամ օգտագործելով բազմաթիվ `v-if`-ներ կամ կապելով մեկական էլեմենտը դինամիկ հատկության։ Օրինակի համար․
 
 ``` html
 <transition>
   <button v-if="docState === 'saved'" key="saved">
-    Edit
+    Խմբագրել
   </button>
   <button v-if="docState === 'edited'" key="edited">
-    Save
+    Հիշել
   </button>
   <button v-if="docState === 'editing'" key="editing">
-    Cancel
+    Չեղարկել
   </button>
 </transition>
 ```
 
-Which could also be written as:
+Որը կարող է գրվել որպես․
 
 ``` html
 <transition>
@@ -655,26 +655,26 @@ Which could also be written as:
 computed: {
   buttonMessage: function () {
     switch (this.docState) {
-      case 'saved': return 'Edit'
-      case 'edited': return 'Save'
-      case 'editing': return 'Cancel'
+      case 'saved': return 'Խմբագրել'
+      case 'edited': return 'Հիշել'
+      case 'editing': return 'Չեղարկել'
     }
   }
 }
 ```
 
-### Transition Modes
+### Անցումների Ռեժիմները
 
-There's still one problem though. Try clicking the button below:
+Կա դեռ մեկ խնդիր։ Փորձեք սեղմել ստորև կոճակի վրա․
 
 {% raw %}
 <div id="no-mode-demo" class="demo">
   <transition name="no-mode-fade">
     <button v-if="on" key="on" @click="on = false">
-      on
+      միացված
     </button>
     <button v-else key="off" @click="on = true">
-      off
+      անջատված
     </button>
   </transition>
 </div>
@@ -696,19 +696,19 @@ new Vue({
 </style>
 {% endraw %}
 
-As it's transitioning between the "on" button and the "off" button, both buttons are rendered - one transitioning out while the other transitions in. This is the default behavior of `<transition>` - entering and leaving happens simultaneously.
+Մինչ նա անցում է կատարում «միացված» և «անջատված» կոճակների միջև, երկու կոճակներնել rendered են եղած - մեկը անցում է կատարում դեպի դուրս միչև մյուսը ներս։ Սա հիմնական վարքն է `<transition>`-ի - մուտքը և ելքը կատարվում է միաժամանակ։
 
-Sometimes this works great, like when transitioning items are absolutely positioned on top of each other:
+Որոշ դեպքերում սա լավ է աշխատում, ինչպես անցումային մասնիկներն են absolute տեղադրված մեկը մյուսի վրա։
 
 {% raw %}
 <div id="no-mode-absolute-demo" class="demo">
   <div class="no-mode-absolute-demo-wrapper">
     <transition name="no-mode-absolute-fade">
       <button v-if="on" key="on" @click="on = false">
-        on
+        միացված
       </button>
       <button v-else key="off" @click="on = true">
-        off
+        անջատված
       </button>
     </transition>
   </div>
@@ -738,17 +738,17 @@ new Vue({
 </style>
 {% endraw %}
 
-And then maybe also translated so that they look like slide transitions:
+ԵՎ հետո երևի նաև translate արած որ նրանք նման լինեն slide անցումների․
 
 {% raw %}
 <div id="no-mode-translate-demo" class="demo">
   <div class="no-mode-translate-demo-wrapper">
     <transition name="no-mode-translate-fade">
       <button v-if="on" key="on" @click="on = false">
-        on
+        միացված
       </button>
       <button v-else key="off" @click="on = true">
-        off
+        անջատված
       </button>
     </transition>
   </div>
@@ -784,17 +784,17 @@ new Vue({
 </style>
 {% endraw %}
 
-Simultaneous entering and leaving transitions aren't always desirable though, so Vue offers some alternative **transition modes**:
+Միաժամանակ մուտքի և ելքի անցումները միշտ ցանկալի չեն, այդ դեպքում Vue-ն տրամադրում է այլընտրանքային **անցումային ռեժիմներ**․
 
-- `in-out`: New element transitions in first, then when complete, the current element transitions out.
+- `in-out`․ նոր էլեմենտի անցումները առաջինը, հետո երբ ավարտվում է, ընթացիկ էլեմենտի անցումները դեպի դուրս։
 
-- `out-in`: Current element transitions out first, then when complete, the new element transitions in.
+- `out-in`․ Ընթացիկ էլեմենտի անցումները դուրս առաջինը, հետո երբ ավարտվում է, նոր էլեմենտի անցումները դեպի ներս։
 
-Now let's update the transition for our on/off buttons with `out-in`:
+Հիմա եկեք թարմացնենք անցումները մեր միացնել/անջատել կոճակների համար `out-in`-ի հետ հանդերձ․
 
 ``` html
 <transition name="fade" mode="out-in">
-  <!-- ... the buttons ... -->
+  <!-- ... կոճակները ... -->
 </transition>
 ```
 
@@ -802,10 +802,10 @@ Now let's update the transition for our on/off buttons with `out-in`:
 <div id="with-mode-demo" class="demo">
   <transition name="with-mode-fade" mode="out-in">
     <button v-if="on" key="on" @click="on = false">
-      on
+      միացնել
     </button>
     <button v-else key="off" @click="on = true">
-      off
+      անջատել
     </button>
   </transition>
 </div>
@@ -827,19 +827,19 @@ new Vue({
 </style>
 {% endraw %}
 
-With one attribute addition, we've fixed that original transition without having to add any special styling.
+Մեկ ատրիբուտի հետ հանդերձ, մենք ուղղել ենք հիմնական անցումը առանց ավելացնելու հատուկ ոճեր։
 
-The `in-out` mode isn't used as often, but can sometimes be useful for a slightly different transition effect. Let's try combining it with the slide-fade transition we worked on earlier:
+`in-out` ռեժիմը չի օգտագործվում հաճախ, բայց կարող եք որոշ դեպքերում օգտակար լինել որոշակի տարբեր անցումային էֆեկտի համար։ Եկեք փորձենք միացնել այն slide-fade անցման հետ որի վրա մենք աշխատել էինք ավելի վաղ․
 
 {% raw %}
 <div id="in-out-translate-demo" class="demo">
   <div class="in-out-translate-demo-wrapper">
     <transition name="in-out-translate-fade" mode="in-out">
       <button v-if="on" key="on" @click="on = false">
-        on
+        միացնել
       </button>
       <button v-else key="off" @click="on = true">
-        off
+        անջատել
       </button>
     </transition>
   </div>
@@ -875,11 +875,11 @@ new Vue({
 </style>
 {% endraw %}
 
-Pretty cool, right?
+Լավն է, չ՞ե
 
-## Transitioning Between Components
+## Անցումը Կոմպոնենտների Միջև
 
-Transitioning between components is even simpler - we don't even need the `key` attribute. Instead, we wrap a [dynamic component](components.html#Dynamic-Components):
+Անցումը կոմպոնենտների միջև ավելի հեշտ է - մեզանից նույնիսկ հարկավոր չե ավելացնել `key` ատրիբուտը։ Փոխարենը, մենք փաթաթում ենք [դինամիկ կոմպոնենտ](components.html#Dynamic-Components)․
 
 ``` html
 <transition name="component-fade" mode="out-in">
@@ -895,10 +895,10 @@ new Vue({
   },
   components: {
     'v-a': {
-      template: '<div>Component A</div>'
+      template: '<div>Կոմպոնենտ Ա</div>'
     },
     'v-b': {
-      template: '<div>Component B</div>'
+      template: '<div>Կոմպոնենտ Բ</div>'
     }
   }
 })
@@ -916,8 +916,8 @@ new Vue({
 
 {% raw %}
 <div id="transition-components-demo" class="demo">
-  <input v-model="view" type="radio" value="v-a" id="a" name="view"><label for="a">A</label>
-  <input v-model="view" type="radio" value="v-b" id="b" name="view"><label for="b">B</label>
+  <input v-model="view" type="radio" value="v-a" id="a" name="view"><label for="a">Ա</label>
+  <input v-model="view" type="radio" value="v-b" id="b" name="view"><label for="b">Բ</label>
   <transition name="component-fade" mode="out-in">
     <component v-bind:is="view"></component>
   </transition>
@@ -938,38 +938,38 @@ new Vue({
   },
   components: {
     'v-a': {
-      template: '<div>Component A</div>'
+      template: '<div>Կոմպոնենտ Ա</div>'
     },
     'v-b': {
-      template: '<div>Component B</div>'
+      template: '<div>Կոմպոնենտ Բ</div>'
     }
   }
 })
 </script>
 {% endraw %}
 
-## List Transitions
+## Ցանկի Անցումները
 
-So far, we've managed transitions for:
+Մինչ դեռ, մենք կառավարել ենք անցումները հետևյալների համար․
 
-- Individual nodes
-- Multiple nodes where only 1 is rendered at a time
+- Անհատական node-երի
+- Բազմաթիվ node-երի որտեղ միայն 1-ն է render լինում միաժամանակ
 
-So what about for when we have a whole list of items we want to render simultaneously, for example with `v-for`? In this case, we'll use the `<transition-group>` component. Before we dive into an example though, there are a few things that are important to know about this component:
+Իսկ ի՞նչ եթե մենք ցանկանում ենք render անել ցանկ մասնիկների միաժամանակ, օրինակի համար `v-for`-ի հետ։ Այս դեպքում, մենք կօգտագործենք `<transition-group>` կոմպոնենտը։ Նախքան դեպի օրինակը սուզվելը, կան մի քանի բաներ որոնք կարևոր են իմանալ այս կոմպոնենտի մասին․
 
-- Unlike `<transition>`, it renders an actual element: a `<span>` by default. You can change the element that's rendered with the `tag` attribute.
-- [Transition modes](#Transition-Modes) are not available, because we are no longer alternating between mutually exclusive elements.
-- Elements inside are **always required** to have a unique `key` attribute.
-- CSS transition classes will be applied to inner elements and not to the group/container itself.
+- Ի տարբերություն `<transition>`-ի, այն render է անում իրական էլեմենտ․ `<span>` հիմնականում։ Դուք կարող եք փոխել էլեմենտը որը render է եղած `tag` ատրիբուտով։
+- [Անցումային ռեժիմները](#Transition-Modes) հասանելի չեն լինի, որովհետև նրանք այլևս չեն փոփոխի փոխադարձ բացառող էլեմենտների միջև։
+- Էլեմենտները ներսում **միշտ պահանջվում են** որպեսզի ունենալ հատուկ `key` ատրիբուտ։
+- CSS անցումային class-ները կկիրառվեն ներքին էլմենենտներին և ոչ խմբին/պարունակողին։
 
-### List Entering/Leaving Transitions
+### Ցանկի Մուտքի/Ելքի Անցումները
 
-Now let's dive into an example, transitioning entering and leaving using the same CSS classes we've used previously:
+Հիմա եկեք սուզվենք դեպի օրինակը, անցումների մուտքը և ելքը օգտագործելով նույն CSS class-ները մենք նախկինում օգտագործեցինք․
 
 ``` html
 <div id="list-demo">
-  <button v-on:click="add">Add</button>
-  <button v-on:click="remove">Remove</button>
+  <button v-on:click="add">Ավելացնել</button>
+  <button v-on:click="remove">Ջնջել</button>
   <transition-group name="list" tag="p">
     <span v-for="item in items" v-bind:key="item" class="list-item">
       {{ item }}
@@ -1015,8 +1015,8 @@ new Vue({
 
 {% raw %}
 <div id="list-demo" class="demo">
-  <button v-on:click="add">Add</button>
-  <button v-on:click="remove">Remove</button>
+  <button v-on:click="add">Ավելացնել</button>
+  <button v-on:click="remove">Ջնջել</button>
   <transition-group name="list" tag="p">
     <span v-for="item in items" :key="item" class="list-item">
       {{ item }}
@@ -1058,19 +1058,19 @@ new Vue({
 </style>
 {% endraw %}
 
-There's one problem with this example. When you add or remove an item, the ones around it instantly snap into their new place instead of smoothly transitioning. We'll fix that later.
+Կա մեկ խնդիր այս օրինակի հետ։ Եթե դուք ավելացնում կամ ջնջում եք մասնիկ, այդ մասնիկի հարևանները միանգամից կդիպչեն դեպի իրենց նոր տեղերը գեղեցիկ անցումի փոխարեն։ Մենք կուղղենք այն հետո։
 
-### List Move Transitions
+### Ցանկի Շարժի Անցումները
 
-The `<transition-group>` component has another trick up its sleeve. It can not only animate entering and leaving, but also changes in position. The only new concept you need to know to use this feature is the addition of **the `v-move` class**, which is added when items are changing positions. Like the other classes, its prefix will match the value of a provided `name` attribute and you can also manually specify a class with the `move-class` attribute.
+`<transition-group>` կոմպոնենը ունի մեկ այլ առավելություն։ Այն ոչ միայն կարող է անիմացիայի ենթարկել մուտքը և ելքը, բայց նաև փոփոխությունները դիրքում։ Միակ նոր գաղափարը որը դուք պետք է իմանալ որպեսզի օգտագործել դա **`v-move` class-ի** հավելումն է, որը ավելացվում է երբ մասնիկները փոխում են դիրքերը։ Ինչպես նաև այլ class-ներ, իր նախածանցը կհամապատասխանի `name` ատրիբուտի արժեքին և դուք կարող եք ձեռքով նշել class-ը `move-class` ատրիբուտի շնորհիվ։
 
-This class is mostly useful for specifying the transition timing and easing curve, as you'll see below:
+Այս class-ը հատկապես օգտակար է նշելու անցման ժամանակը և ժամանակի կորությունը, ինչպես կտեսնեք այն ներքևում․
 
 ``` html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 
 <div id="flip-list-demo" class="demo">
-  <button v-on:click="shuffle">Shuffle</button>
+  <button v-on:click="shuffle">Խառնել</button>
   <transition-group name="flip-list" tag="ul">
     <li v-for="item in items" v-bind:key="item">
       {{ item }}
@@ -1129,17 +1129,17 @@ new Vue({
 </style>
 {% endraw %}
 
-This might seem like magic, but under the hood, Vue is using an animation technique called [FLIP](https://aerotwist.com/blog/flip-your-animations/) to smoothly transition elements from their old position to their new position using transforms.
+Սա կարող է թվալ կախարդական, բայց իրականում, Vue-ն օգտագործում է անիմացիոն տեխնիկա անվանված [FLIP](https://aerotwist.com/blog/flip-your-animations/) որպեսզի սահուն անցում կատարի էլեմենտների հին դիրքից դեպի նրանց նոր դիրք օգտագործելով transform-ներ։
 
-We can combine this technique with our previous implementation to animate every possible change to our list!
+Մենք կարող ենք միացնել այս տեխնիկան մեր նախկին տեղադրումների հետ որպեսզի անիմացիայի ենթարկել ամեն հասանելի փոփոխությունը մեր ցանկում։
 
 ``` html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 
 <div id="list-complete-demo" class="demo">
-  <button v-on:click="shuffle">Shuffle</button>
-  <button v-on:click="add">Add</button>
-  <button v-on:click="remove">Remove</button>
+  <button v-on:click="shuffle">Խառնել</button>
+  <button v-on:click="add">Ավելացնել</button>
+  <button v-on:click="remove">Ջնջել</button>
   <transition-group name="list-complete" tag="p">
     <span
       v-for="item in items"
@@ -1195,9 +1195,9 @@ new Vue({
 {% raw %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
 <div id="list-complete-demo" class="demo">
-  <button v-on:click="shuffle">Shuffle</button>
-  <button v-on:click="add">Add</button>
-  <button v-on:click="remove">Remove</button>
+  <button v-on:click="shuffle">Խառնել</button>
+  <button v-on:click="add">Ավելացնել</button>
+  <button v-on:click="remove">Ջնջել</button>
   <transition-group name="list-complete" tag="p">
     <span v-for="item in items" :key="item" class="list-complete-item">
       {{ item }}
@@ -1243,16 +1243,16 @@ new Vue({
 </style>
 {% endraw %}
 
-<p class="tip">One important note is that these FLIP transitions do not work with elements set to `display: inline`. As an alternative, you can use `display: inline-block` or place elements in a flex context.</p>
+<p class="tip">Մեկ կարևոր նշում որ այս FLIP անցումները չեն աշխատում էլեմենտների հետ որոնք ունեն `display: inline` հատկությունը։ Որպես այլընտրանք, դուք կարող եք օգտագործել `display: inline-block` կամ տեղադրել էլեմենտները flex մեջբերումում։</p>
 
-These FLIP animations are also not limited to a single axis. Items in a multidimensional grid can be [transitioned too](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions):
+Այս FLIP անիմացիաները նաև սահմանափակված չեն մեկ առանցքի շուրջ։ Մասնիկները բազմաչափ ցանցում կարող են նաև [անցում կատարել](https://codesandbox.io/s/github/vuejs/vuejs.org/tree/master/src/v2/examples/vue-20-list-move-transitions)։
 
 {% raw %}
 <div id="sudoku-demo" class="demo">
-  <strong>Lazy Sudoku</strong>
-  <p>Keep hitting the shuffle button until you win.</p>
+  <strong>Ծույլ Sudoku</strong>
+  <p>Անընդհատ սեղմեք խառնել կոճակը մինչ կհաղթեք։</p>
   <button @click="shuffle">
-    Shuffle
+    Խառնել
   </button>
   <transition-group name="cell" tag="div" class="sudoku-container">
     <div v-for="cell in cells" :key="cell.id" class="cell">
@@ -1308,9 +1308,9 @@ new Vue({
 </style>
 {% endraw %}
 
-### Staggering List Transitions
+### Ցնցող Ցուցակի Անցումներ
 
-By communicating with JavaScript transitions through data attributes, it's also possible to stagger transitions in a list:
+Կապ հաստատելով JavaScript անցումների հետ տվյալների ատրիբուտների շնորհիվ, նաև հնարավոր է ցնցել անցումները ցանկում․
 
 ``` html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
@@ -1454,11 +1454,11 @@ new Vue({
 </script>
 {% endraw %}
 
-## Reusable Transitions
+## Վերօգտագործվող Անցումներ
 
-Transitions can be reused through Vue's component system. To create a reusable transition, all you have to do is place a `<transition>` or `<transition-group>` component at the root, then pass any children into the transition component.
+Անցումները կարող են վերօգտագործվել Vue-ի կոմպոնենտի համակարգի շնորհիվ։ Որպեսզի ստեղծել վերօգտագործվեղ անցումներ, մեզ ընդհամենը պետք է տեղադրել `<transition>` կամ `<transition-group>` կոմպոնենտը արմատում, այնուհետև փոխանցել ցանկացած ժառանգողներ դեպի անցումային կոմպոնենտ։
 
-Here's an example using a template component:
+Այստեղ է օրինակը օգտագործելով ձևանմուշ կոմպոնենտ․
 
 ``` js
 Vue.component('my-special-transition', {
@@ -1483,7 +1483,7 @@ Vue.component('my-special-transition', {
 })
 ```
 
-And [functional components](render-function.html#Functional-Components) are especially well-suited to this task:
+ԵՎ [ֆունկցիոնալ կոմպոնենտները](render-function.html#Functional-Components) հատկապես շատ հարմար են այս հանձնարարության համար․
 
 ``` js
 Vue.component('my-special-transition', {
@@ -1508,9 +1508,9 @@ Vue.component('my-special-transition', {
 })
 ```
 
-## Dynamic Transitions
+## Դինամիկ Անցումներ
 
-Yes, even transitions in Vue are data-driven! The most basic example of a dynamic transition binds the `name` attribute to a dynamic property.
+Այո, նույնիսկ անցումները Vue-ում տվյալներով հենված են՜ Ամենա հասարակ օրինակը դինամիկ անցումների դա `name` ատրիբուտի կապումն է դինամիկ հատկությանը։
 
 ```html
 <transition v-bind:name="transitionName">
@@ -1518,9 +1518,9 @@ Yes, even transitions in Vue are data-driven! The most basic example of a dynami
 </transition>
 ```
 
-This can be useful when you've defined CSS transitions/animations using Vue's transition class conventions and want to switch between them.
+Սա կարող է օգտակար լինել եթե դուք հայտարարել եք CSS անցումներ/անիմացիաներ օգտագործելով Vue-ի անցումների class-ի հարմարավետությունները և ցանկանում եք փոփոխել նրանց միջև։
 
-Really though, any transition attribute can be dynamically bound. And it's not only attributes. Since event hooks are methods, they have access to any data in the context. That means depending on the state of your component, your JavaScript transitions can behave differently.
+Իրականում չնայած, ցանկացած անցման ատրիբուտ կարող է դինամիկորեն կապվել։ ԵՎ ոչ միայն ատրիբուտները։ Մինչ event hook-երը մեթոդներ են, նրանք կարող են մուտք գործել դեպի տվյալները նույն մեջբերման մեջ։ Սա նշանակում է կախված լինելով ձեր կոմպոնենտնի վիճակի վրա, ձեր JavaScript անցումները կարող են ունենալ այլ վարք։
 
 ``` html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
@@ -1534,16 +1534,16 @@ Really though, any transition attribute can be dynamically bound. And it's not o
     v-on:enter="enter"
     v-on:leave="leave"
   >
-    <p v-if="show">hello</p>
+    <p v-if="show">Բարև</p>
   </transition>
   <button
     v-if="stop"
     v-on:click="stop = false; show = false"
-  >Start animating</button>
+  >Սկսել անիմացիան</button>
   <button
     v-else
     v-on:click="stop = true"
-  >Stop it!</button>
+  >Ավարտել</button>
 </div>
 ```
 
@@ -1605,16 +1605,16 @@ new Vue({
     v-on:enter="enter"
     v-on:leave="leave"
   >
-    <p v-if="show">hello</p>
+    <p v-if="show">Բարև</p>
   </transition>
   <button
     v-if="stop"
     v-on:click="stop = false; show = false"
-  >Start animating</button>
+  >Սկսել անիմացիան</button>
   <button
     v-else
     v-on:click="stop = true"
-  >Stop it!</button>
+  >Ավարտել</button>
 </div>
 <script>
 new Vue({
@@ -1664,5 +1664,5 @@ new Vue({
 </script>
 {% endraw %}
 
-Finally, the ultimate way of creating dynamic transitions is through components that accept props to change the nature of the transition(s) to be used. It may sound cheesy, but the only limit really is your imagination.
+Վերջապես, ճիշտ ուղին ստեղծելու դինամիկ անցումները դա կոմպոնենտների շնորհիվ է որոնք ընդհունում են prop-ներ որպեսզի փոփոխել անցումների օգտագործման հիմնական ձևը։ Սա կարող է թվալ բարդ, բայց այն սահմանափակված է միայն պատկերացուման կողմից։
 
