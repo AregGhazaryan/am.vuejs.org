@@ -321,7 +321,7 @@ function (slotProps) {
 }
 ```
 
-Սա նշանակում է `v-slot`-ի արժեքը իրականում կարող է ընդհունել ցանկցած ճիշտ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
+Սա նշանակում է `v-slot`-ի արժեքը իրականում կարող է ընդունել ցանկցած ճիշտ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
 
 ``` html
 <current-user v-slot="{ user }">
@@ -538,7 +538,7 @@ Or, the `slot` attribute can also be used directly on a normal element:
 </slot-example>
 ```
 
-Սա նշանակում է `slot-scope`-ի արժեքը իրականում կարող է ընդհունել ցանկցած վալիդ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
+Սա նշանակում է `slot-scope`-ի արժեքը իրականում կարող է ընդունել ցանկցած վալիդ JavaScript արտահայտություն որը կարող է հայտնվել ֆունկցիայի հայտարարման արգումենտում։ Այնպես որ համապատասխանող enviroment-ներում ([մեկ ֆայլ կոմպոնենտներում](single-file-components.html) կամ [ժամանակակից բրաուզերներում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Browser_compatibility)), դուք նաև կարող եք օգտագործել [ES2015 ապակառուցում](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) որպեսզի դուրս հանեք կոնկրետ սլոտի prop-ներ, ինչպես այստեղ․
 
 ``` html
 <slot-example>

@@ -9,11 +9,11 @@ type: api
 
 ### silent
 
-- **Տիպ:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Հիմնական Արժեքը:** `false`
+- **Հիմնական Արժեքը․** `false`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.silent = true
@@ -23,11 +23,11 @@ type: api
 
 ### optionMergeStrategies
 
-- **Տիպ:** `{ [key: string]: Function }`
+- **Տիպ․** `{ [key: string]: Function }`
 
-- **Հիմնական Արժեքը:** `{}`
+- **Հիմնական Արժեքը․** `{}`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.optionMergeStrategies._my_option = function (parent, child, vm) {
@@ -45,15 +45,15 @@ type: api
 
   Ձուլման ստրատեգիան ստանում է արժեք ընտրանքից որը սահմանված է ծնող և ժառանգող instance-ում որպես առաջին և երկրորդ արգումենտ։ Vue-ի կոնտեքստը փոխանցվում է որպես երրորդ արգումենտ։
 
-- **Նաև նայեք:** [Custom Ընտրանքի Ձուլման Ստրատեգիա](../guide/mixins.html#Custom-Option-Merge-Strategies)
+- **Նաև նայեք․** [Custom Ընտրանքի Ձուլման Ստրատեգիա](../guide/mixins.html#Custom-Option-Merge-Strategies)
 
 ### devtools
 
-- **Տիպ:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Հիմնական Արժեքը:** `true` (`false` արտադրության build-ներում)
+- **Հիմնական Արժեքը․** `true` (`false` արտադրության build-ներում)
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   // համոզվեք, որ սա համաժամորեն տեղադրել եք Vue-ն բեռնավորելուց անմիջապես հետո
@@ -64,11 +64,11 @@ type: api
 
 ### errorHandler
 
-- **Տիպ:** `Function`
+- **Տիպ․** `Function`
 
-- **Հիմնական Արժեքը:** `undefined`
+- **Հիմնական Արժեքը․** `undefined`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.errorHandler = function (err, vm, info) {
@@ -92,11 +92,11 @@ type: api
 
 > Նոր 2.4.0+
 
-- **Տիպ:** `Function`
+- **Տիպ․** `Function`
 
-- **Հիմնական Արժեքը:** `undefined`
+- **Հիմնական Արժեքը․** `undefined`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.warnHandler = function (msg, vm, trace) {
@@ -108,11 +108,11 @@ type: api
 
 ### ignoredElements
 
-- **Տիպ:** `Array<string | RegExp>`
+- **Տիպ․** `Array<string | RegExp>`
 
-- **Հիմնական Արժեքը:** `[]`
+- **Հիմնական Արժեքը․** `[]`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.ignoredElements = [
@@ -128,11 +128,11 @@ type: api
 
 ### keyCodes
 
-- **Տիպ:** `{ [key: string]: number | Array<number> }`
+- **Տիպ․** `{ [key: string]: number | Array<number> }`
 
-- **Հիմնական Արժեքը:** `{}`
+- **Հիմնական Արժեքը․** `{}`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   ``` js
   Vue.config.keyCodes = {
@@ -156,9 +156,9 @@ type: api
 
 > Նոր 2.2.0+
 
-- **Տիպ:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Հիմնական Արժեքը:** `false (2.2.3+ -ից)`
+- **Հիմնական Արժեքը․** `false (2.2.3+ -ից)`
 
 - **Օգտագործումը**:
 
@@ -168,9 +168,9 @@ type: api
 
 > Նոր 2.2.0+
 
-- **Տիպ:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Հիմնական Արժեքը:** `true`
+- **Հիմնական Արժեքը․** `true`
 
 - **Օգտագործումը**:
 
@@ -180,10 +180,10 @@ type: api
 
 ### Vue.extend( options )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object} options`
 
-- **Օգտագործում:**
+- **Օգտագործում․**
 
   Ստեղծեք ենթադաս Vue-ի կոնստրուկտորի հենքից։ Արգումենտը պետք է լինի օբյեկտ պարունակող կոմպոնենտի ընտրանքները։
 
@@ -215,15 +215,15 @@ type: api
   <p>Walter White aka Heisenberg</p>
   ```
 
-- **Նաև Նայեք:** [Կոմպոնենտներ](../guide/components.html)
+- **Նաև Նայեք․** [Կոմպոնենտներ](../guide/components.html)
 
 ### Vue.nextTick( [callback, context] )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Function} [callback]`
   - `{Object} [context]`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Հետաձգեք callback-ը որպեսզի այն աշխատի հաջորդ DOM-ի թարմացման ցիկլի ժամանակ։ Օգտագործեք այն անմիջապես հետո երբ որ դուք փոփոխել եք որոշ տվյալներ որպեսզի սպասեք DOM-ի թարմեցմանը։
 
@@ -244,48 +244,48 @@ type: api
 
   > Նոր 2.1.0+ մեջ: Վերադարձնում է Promise եթե callback տրամադրած չէ և Promise աջակցվում է կատարման միջավայրում։ Խնդրում ենք նկատի ունենալ, որ Vue-ն չունի Promise-ի polyfill, այնպես որ, եթե դուք ստեղծում եք ծրագիր այն բրաուզերների մեջ որոնք չունեն Promise-ներ (նայում են քեզ, IE), դուք ստիպված կլինեք ինքներդ ձեզ տրամադրել polyfill:
 
-- **Նաև Նայեք:** [Async Թարմեցման Հերթ](../guide/reactivity.html#Async-Update-Queue)
+- **Նաև Նայեք․** [Async Թարմեցման Հերթ](../guide/reactivity.html#Async-Update-Queue)
 
 ### Vue.set( target, propertyName/index, value )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
   - `{any} value`
 
-- **Վերադարձնում է:** Դրված արժեքը.
+- **Վերադարձնում է․** Դրված արժեքը.
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Ավելացնում է հատկություն ռեակիվ օբյեկտին, համոզվելով որ նոր հատկություն նույնպես ռեակտիվ է, և այն թարմեցնում է տեսքը։ Այն պետք է օգտագործվի որպեսզի ավելացվեն նոր հատկություններ ռեակտիվ օբյեկտներին, որովհետև Vue-ն չի կարող նկատել հասարակ հատկության ավելացումները (օրինակ՝ `this.myObject.newProperty = 'hi'`):
 
   <p class="tip">Այս օբյեկտը չի կարող լինել Vue-ի instance, կամ արմատային տվյալների օբյեկտը Vue instance-ի։</p>
 
-- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
+- **Նաև Նայեք․** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.delete( target, propertyName/index )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
 
   > Միայն 2.2.0+ և ավելի նոր: Նաև աշխատում է Array + index-ով։
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Ջնջել օբյեկտի հատկություն։ Եթե օբյեկտը ռեակտիվ է, համոզվեք որ ջնջելը կթամացնի տեսքը։ Սա հիմնականում օգտագործվում է որպեսզի շրջանցել այն սահմանաձակումը որը Vue-ն չի կարող նկատել հատկության ջնջումները, բայց դուք հազվադեպ պետք է օգտագործեք այն։
 
   <p class="tip">ս օբյեկտը չի կարող լինել Vue-ի instance, կամ արմատային տվյալների օբյեկտը Vue instance-ի։</p>
 
-- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
+- **Նաև Նայեք․** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.directive( id, [definition] )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{string} id`
   - `{Function | Object} [definition]`
 
-- **Օգտագործում:**
+- **Օգտագործում․**
 
   Գրանցել կամ ստանալ գլոբալ ուղղորդիչ։
 
@@ -308,15 +308,15 @@ type: api
   var myDirective = Vue.directive('my-directive')
   ```
 
-- **Նաև Նայեք:** [Custom Ուղղորդիչներ](../guide/custom-directive.html)
+- **Նաև Նայեք․** [Custom Ուղղորդիչներ](../guide/custom-directive.html)
 
 ### Vue.filter( id, [definition] )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{string} id`
   - `{Function} [definition]`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Գրանցեք կամ ստացեք գլոբալ ֆիլտեր։
 
@@ -330,15 +330,15 @@ type: api
   var myFilter = Vue.filter('my-filter')
   ```
 
-- **Նաև Նայեք:** [Ֆիլտերներ](../guide/filters.html)
+- **Նաև Նայեք․** [Ֆիլտերներ](../guide/filters.html)
 
 ### Vue.component( id, [definition] )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{string} id`
   - `{Function | Object} [definition]`
 
-- **Օգտագործում:**
+- **Օգտագործում․**
 
   Գրանցել կամ ստանալ գլոբալ կոմպոնենտ։ Գրանցումմը նաև ավտոմատ կերպով դնում է կոմպոնենտի `name`-ը իրան տված `id`—ով։
 
@@ -353,14 +353,14 @@ type: api
   var MyComponent = Vue.component('my-component')
   ```
 
-- **Նաև Նայեք:** [Կոմպոնենտներ](../guide/components.html)
+- **Նաև Նայեք․** [Կոմպոնենտներ](../guide/components.html)
 
 ### Vue.use( plugin )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object | Function} plugin`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Տեղադրելով Vue.js plugin: Եթե plugin—ը օբյեկտ է, ապա այն կպարունակի `install` մեթոդ։ Եթե այն ամբողջությամբ ֆունկցիա է, այն կվերաբերվի որպես տեղադրման մեթոդ։ Տեղադրման մեթոդը կկանչվի Vue-ի հետ որպես արգումենտ։
 
@@ -368,25 +368,25 @@ type: api
 
   Երբ այս մեթոդը կանչվում է նույն plugin—ի մեջ մի քանի անգամ, ապա այս plugin-ի կտեղադրվի միայն մեկ անգամ։
 
-- **Նաև Նայեք:** [Plugin-ներ](../guide/plugins.html)
+- **Նաև Նայեք․** [Plugin-ներ](../guide/plugins.html)
 
 ### Vue.mixin( mixin )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object} mixin`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Կիրառեք mixin գլոբալ վիճակով, որը կփոխազդի ամեն Vue instance-ի վրա որը ստեղծվել է հետո։ Սա կարող է օգտագործվել plugin-ի հեղինակների կողմից որպեսզի ներարկել custom behavior-ներ կոմպոնենտների մեջ։ **Խորհուրդ Չի Տրվում Ծրագրի Կոդի Մեջ**։
 
-- **Նաև Նայեք:** [Գլոբալ Mixin-ներ](../guide/mixins.html#Global-Mixin)
+- **Նաև Նայեք․** [Գլոբալ Mixin-ներ](../guide/mixins.html#Global-Mixin)
 
 ### Vue.compile( template )
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{string} template`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Compile անել ձևանմուշի string-ները դեպի render ֆունկցիա։ **Հասանելի է միայն full build-ում։**
 
@@ -402,16 +402,16 @@ type: api
   })
   ```
 
-- **Նաև Նայեք:** [Render Ֆունկցիաներ](../guide/render-function.html)
+- **Նաև Նայեք․** [Render Ֆունկցիաներ](../guide/render-function.html)
 
 ### Vue.observable( object )
 
 > Նոր 2.6.0+ մեջ
 
-- **Արգումենտներ:**
+- **Արգումենտներ․**
   - `{Object} object`
 
-- **Օգտագործումը:**
+- **Օգտագործումը․**
 
   Ստեղծել օբյեկտ ռեակտիվ։ Ներքինով, Vue-ն օգտագործում է սա օբյեկտի վրա որը վերադարձվել է `data` ֆունկցիայի միջոցով։
 
@@ -431,7 +431,7 @@ type: api
 
   <p class="tip">Vue 2.x-ի մեջ, `Vue.observable` ուղիղ մուտացիայի է ենթարկում այն օբյեկտը որը փոխանցված է, այն հավասար է նույն վերադարձված օբյեկտին որը [ցուցադրված է այստեղ](../guide/instance.html#Data-and-Methods). Vue 3.x-ի մեջ, ռեակտիվ proxy կվերադարձվի դրա փոխարեն, թողնելով սկզբնական օբյեկտը որպես ոչ ռեակտիվ եթե մուտատված է ուղիղ։ Այնուհետև, ապագա համատեղելիության համար, մենք խորհուրդ ենք տալիս միշտ աշխատել այն օբյեկտի հետը որը վերադարձվել է `Vue.observable`-ի միջոցով, ի փոխարեն այն օբյեկտի որը որ փոխանցվել էր իրեն։</p>
 
-- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
+- **Նաև Նայեք․** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### Vue.version
 
@@ -455,11 +455,11 @@ type: api
 
 ### data
 
-- **Տիպ:** `Object | Function`
+- **Տիպ․** `Object | Function`
 
-- **Սահմանափակում:** Միայն ընդհունում է `Function` երբ օգտագործվում է կոմպոնենտի նկարագրության մեջ։
+- **Սահմանափակում․** Միայն ընդհունում է `Function` երբ օգտագործվում է կոմպոնենտի նկարագրության մեջ։
 
-- **Մանրամասն:**
+- **Մանրամասն․**
 
   Տվյալների օբյեկտը Vue instance-ի համար։ Vue-ն ռեկուրսիվ ձևով կփոփոխի նրա հատկությունները դեպի getter/setter-ներ որպեսզի այն դարձնի «ռեակտիվ»։ **Այս օբյեկտը պետք է լինի պարզ**․ ներքին օբյեկտները ինչպիսիք են բրաուզերի API օբյեկտները կամ prototype հատկություննեը նրանք անտեսված են։ Հիմնական կանոնն այն է, որ տվյալները պարզապես պետք է լինեն տվյալներ - խորհուրդ չի տրվում դիտարկել օբյեկտները իրեց սեփական վիչակի behavior-ներով։
 
@@ -473,7 +473,7 @@ type: api
 
   Եթե պահանջվում է, խորը կրկնօրինակ սկզբնական օբյեկտից դուք կարող եք այն ստանալ փոխանցելով `vm.$data` `JSON.parse(JSON.stringify(...))`-ի միջով։
 
-- **Օրինակ:**
+- **Օրինակ․**
 
   ``` js
   var data = { a: 1 }
@@ -499,39 +499,39 @@ type: api
   data: vm => ({ a: vm.myProp })
   ```
 
-- **Նաև Նայեք:** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
+- **Նաև Նայեք․** [Ռեակտիվությունը ավելի խորացված](../guide/reactivity.html)
 
 ### props
 
-- **Տիպ:** `Array<string> | Object`
+- **Տիպ․** `Array<string> | Object`
 
-- **Մանրամասն:**
+- **Մանրամասն․**
 
-  A list/hash of attributes that are exposed to accept data from the parent component. It has an Array-based simple syntax and an alternative Object-based syntax that allows advanced configurations such as type checking, custom validation and default values.
+  Ատրիբուտների ցանկը/հաշերը որոնք հասանելի են որպեսզի ընդունել տվյալները ծնող կոմպոնենտից։ Այն ունի զանգվածով հիմնված պարզ գրելաձև և այլընտրանքային օբյեկտով հիմնված գրելաձև որը թույլ է տալիս ավելի մանրամասն կոնֆիգուրացիա ինչպիսիք են տիպերի ստուգումները, custom վալիդացիա և հիմնական արժեքներ։
 
-  With Object-based syntax, you can use following options:
-    - `type`: can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. Will check if a prop has a given type, and will throw a warning if it doesn't. [More information](../guide/components-props.html#Prop-Types) on prop types.
+  Օբյեկտով հիմնված գրելաձևում, դուք կարեղ եք օգտագործել հետևյալ ընտրանքները․
+    - `type`․ կարող է լինել հետևյալ native կոնստրուկտորներից մեկը․ `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, ցանկացած custom կոնստրուկտոր ֆունկցիա կամ զանգված նրանցից։ Կստուգի եթե prop ունի տրված տիպը, և կնետի նախազգուշացում եթե այն չունի։ [Ավելի մանրամասն](../guide/components-props.html#Prop-Types) prop-ի տիպերի վերաբերյալ։
     - `default`: `any`
-    Specifies a default value for the prop. If the prop is not passed, this value will be used instead. Object or array defaults must be returned from a factory function.
+    Նշում է հիմնական արժեքը prop-ի համար։ Եթե prop-ը փոխանցված չէ, այս արժեքը կօգտագործվի փոխարենը։ Օբյեկտի կամ զանգվածի հիմնական արժեքները պետք է վերադարձվի factory ֆունկցիայից։
     - `required`: `Boolean`
-    Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+    Հայտարարում է եթե prop-ը պահանջվում է։ Ոչ արտադրողական environment-ում, console-ում նախազգուշացում կնետվի եթե այս արժեքը ճիշտ է և prop-ը փոխանցված չէ։
     - `validator`: `Function`
-    Custom validator function that takes the prop value as the sole argument. In a non-production environment, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails). You can read more about prop validation [here](../guide/components-props.html#Prop-Validation).
+    Custom վալիդացիայի ֆունկցիա որը ստանում է prop-ի արժեքը որպես իր միակ արգումենտ։ Ոչ արտադրողական environment-ում, console-ում նախազգուշացում կնետվի եթե այս ֆունկցիան վերադարձնում է ոչ ճշմարիտ արժեք (օրինակ վալիդացիան ձախողվում է)։ Դուք կարող եք կարդալ ավելին prop-ի վալիդացիայի վերաբերյալ [այստեղ](../guide/components-props.html#Prop-Validation)։
 
-- **Example:**
+- **Օրինակներ․**
 
   ``` js
-  // simple syntax
+  // հասարակ գրելաձև
   Vue.component('props-demo-simple', {
     props: ['size', 'myMessage']
   })
 
-  // object syntax with validation
+  // օբյեկտի գրելաձև վալիդացիայի հետ
   Vue.component('props-demo-advanced', {
     props: {
-      // type check
+      // տիպի ստուգում
       height: Number,
-      // type check plus other validations
+      // տիպի ստուգում և մեկ այլ վալիդացիա
       age: {
         type: Number,
         default: 0,
@@ -544,19 +544,19 @@ type: api
   })
   ```
 
-- **See also:** [Props](../guide/components-props.html)
+- **Նաև նայեք․** [Prop-ներ](../guide/components-props.html)
 
 ### propsData
 
-- **Type:** `{ [key: string]: any }`
+- **Տիպ․** `{ [key: string]: any }`
 
-- **Restriction:** only respected in instance creation via `new`.
+- **Սահմանափակումները․** միայն սահմանափակված է instance-ի ստեղծումից `new`-ի շնորհիվ։
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Pass props to an instance during its creation. This is primarily intended to make unit testing easier.
+  Փոխանցեք prop-ներ instance-ին իր ստեղծման ժամանակ։ Սա նախատեսված է որպեսզի հեշտացնի unit թեստերը։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   var Comp = Vue.extend({
@@ -573,13 +573,13 @@ type: api
 
 ### computed
 
-- **Type:** `{ [key: string]: Function | { get: Function, set: Function } }`
+- **Տիպը․** `{ [key: string]: Function | { get: Function, set: Function } }`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Computed properties to be mixed into the Vue instance. All getters and setters have their `this` context automatically bound to the Vue instance.
+  Հաշվարկված հատկությունները որոնք խառնվում են Vue instance-ի հետ։ Բոլոր getter-ները և setter-ները ունեն իրենց `this` մեջբերումը ավտոմատ կերպով կապված Vue instance-ին։
 
-  Note that if you use an arrow function with a computed property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+  Նշում որ եթե դուք օգտագործեք սլաքի ֆունկցիաներ հաշվարկված հատկությունների հետ, `this`-ը չի լինի կոմպոնենտի instance-ը, բայց դուք դեռ կարող եք մուտք գործել դեպի instance որպես ֆունկցիայի առաջին արգումենտ․
 
   ```js
   computed: {
@@ -587,19 +587,19 @@ type: api
   }
   ```
 
-  Computed properties are cached, and only re-computed on reactive dependency changes. Note that if a certain dependency is out of the instance's scope (i.e. not reactive), the computed property will __not__ be updated.
+  Հաշվարկված հատկությունները cache են եղած, և վերահաշվարկվում են ռեակտիվ կախվածության փոփոխություններում։ Նշում որ եթե որևէ կախվածություն դուրս է instance-ի scope-ից (օրինակ ռեակտիվ չէ), հաշվարկված հատկությունը __չի__ թարմացվի։
 
-- **Example:**
+- **Օրինակ․**
 
   ```js
   var vm = new Vue({
     data: { a: 1 },
     computed: {
-      // get only
+      // ստանալ միայն
       aDouble: function () {
         return this.a * 2
       },
-      // both get and set
+      // և ստանալ և տեղադրել
       aPlus: {
         get: function () {
           return this.a + 1
@@ -616,19 +616,19 @@ type: api
   vm.aDouble // => 4
   ```
 
-- **See also:** [Computed Properties](../guide/computed.html)
+- **նաև նայեք․** [Հաշվարկված Հատկությունները](../guide/computed.html)
 
 ### methods
 
-- **Type:** `{ [key: string]: Function }`
+- **Տիպ․** `{ [key: string]: Function }`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Methods to be mixed into the Vue instance. You can access these methods directly on the VM instance, or use them in directive expressions. All methods will have their `this` context automatically bound to the Vue instance.
+  Մեթոդներ որոնք պետք է խառնվեն Vue instance-ի հետ։ Դուք կարող եք ուղիղ կերպով մուտք գործել այս մեթոդներ VM instance-ում, կամ օգտագործել նրանց ուղղորդիչների արտահայտություններում։ Բոլոր մեթոդները կունենան իրենց `this` մեջբերումը ավտոմատ կերպով միացված Vue instance-ին։
 
-  <p class="tip">Note that __you should not use an arrow function to define a method__ (e.g. `plus: () => this.a++`). The reason is arrow functions bind the parent context, so `this` will not be the Vue instance as you expect and `this.a` will be undefined.</p>
+  <p class="tip">Նշում որ __դուք չպետք է օգտագործեք սլաքով ֆունկցիաներ որպեսզի հայտարարեք մեթոդ__ (օրինակ՝ `plus: () => this.a++`)։ Պատճառը կայանում է որ սլաքով ֆունկցիաները կկապվեն ծնողի մեջբերման հետ, որի պատճառով `this`-ը այլևս չի լինի Vue instance-ը ինչպես որ դուք ակնկալում եք և `this.a`-ը կլինի undefined։</p>
 
-- **Example:**
+- **Օրինակ․**
 
   ```js
   var vm = new Vue({
@@ -643,17 +643,17 @@ type: api
   vm.a // 2
   ```
 
-- **See also:** [Event Handling](../guide/events.html)
+- **Նաև Նայեք․** [Event-ի Handling-ը](../guide/events.html)
 
 ### watch
 
-- **Type:** `{ [key: string]: string | Function | Object | Array}`
+- **Տիպ․** `{ [key: string]: string | Function | Object | Array}`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  An object where keys are expressions to watch and values are the corresponding callbacks. The value can also be a string of a method name, or an Object that contains additional options. The Vue instance will call `$watch()` for each entry in the object at instantiation.
+  Օբյեկտ որտեղ key-երը արտահայտություններ են որպեսզի դիտարկվեն և արժեքները համապատասխանող callback-ներն են։ Արժեքը կարող են նաև լինել string որպես մեթոդի անուն, կամ օբյեկտ որը պարունակում հավելյալ ընտրանքներ։ Vue instance կկանչի `$watch()` ամեն օբյեկտի մուտքում ստեղծման ժամանակ։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   var vm = new Vue({
@@ -672,19 +672,19 @@ type: api
       a: function (val, oldVal) {
         console.log('new: %s, old: %s', val, oldVal)
       },
-      // string method name
+      // string մեթոդի անուն
       b: 'someMethod',
-      // the callback will be called whenever any of the watched object properties change regardless of their nested depth
+      // այս callback-ը կաշխատի երբ ցանկացած դիտարկված օբյեկտի հատկությունները կփոփոխվեն անկախ նրանց խորությունից
       c: {
         handler: function (val, oldVal) { /* ... */ },
         deep: true
       },
-      // the callback will be called immediately after the start of the observation
+      // այս անմիջապես կկանչվի դիտարկման սկզբում
       d: {
         handler: 'someMethod',
         immediate: true
       },
-      // you can pass array of callbacks, they will be called one-by-one
+      // դուք կարող եք փոխանցել զանգված callback-ների, նրանք մեկ առ մեկ կկանչվեն
       e: [
         'handle1',
         function handle2 (val, oldVal) { /* ... */ },
@@ -700,79 +700,79 @@ type: api
   vm.a = 2 // => new: 2, old: 1
   ```
 
-  <p class="tip">Note that __you should not use an arrow function to define a watcher__ (e.g. `searchQuery: newValue => this.updateAutocomplete(newValue)`). The reason is arrow functions bind the parent context, so `this` will not be the Vue instance as you expect and `this.updateAutocomplete` will be undefined.</p>
+  <p class="tip">Նշում որ __դուք չպետք է օգտագործեք սլաքով ֆունկցիաներ որպեսզի հայտարարել watcher__ (օրինակ. `searchQuery: newValue => this.updateAutocomplete(newValue)`)։ Պատճառը կայանում է որ սլաքով ֆունկցիաները կկապվեն ծնողի մեջբերման հետ, այնպես որ `this`-ը չի լինի Vue instance-ը ինչպես որ դուք սպասում եք և `this.updateAutocomplete` կլինի undefined։</p>
 
-- **See also:** [Instance Methods / Data - vm.$watch](#vm-watch)
+- **Նաև Նայեք․** [Instance-ի Մեթոդներ / Տվյալներ - vm.$watch](#vm-watch)
 
-## Options / DOM
+## Ընտրանքներ / DOM
 
 ### el
 
-- **Type:** `string | Element`
+- **Տիպ** `string | Element`
 
-- **Restriction:** only respected in instance creation via `new`.
+- **Սահմանափակում** միայն հարգված է instance-ի ստեղծման ժամանակ `new`-ի շնորհիվ։
 
-- **Details:**
+- **Մանրամասներ**
 
-  Provide the Vue instance an existing DOM element to mount on. It can be a CSS selector string or an actual HTMLElement.
+  Տրամադրել Vue instance-ին գոյություն ունեցող DOM էլեմենտ որպեսզի այն տեղադրվի։ Այն կարող է լինել CSS selector string կամ իրական HTMLElement։
 
-  After the instance is mounted, the resolved element will be accessible as `vm.$el`.
+  Instance-ի տեղադրումից հետո, հաստատված էլեմենտը կլինի հասանելի որպես `vm.$el`։
 
-  If this option is available at instantiation, the instance will immediately enter compilation; otherwise, the user will have to explicitly call `vm.$mount()` to manually start the compilation.
+  Եթե այս ընտրանքը հասանելի է ստեղծման ժամանակ, instance-ի անիմջապես մուտք կգործի դեպի կոմպիլացիա; հակառակ դեպքում, օգտագործողը պետք է պարտադիր կանչի `vm.$mount()` որպեսզի ձեռքով միացնի կոմպիլացիան։
 
-  <p class="tip">The provided element merely serves as a mounting point. Unlike in Vue 1.x, the mounted element will be replaced with Vue-generated DOM in all cases. It is therefore not recommended to mount the root instance to `<html>` or `<body>`.</p>
+  <p class="tip">Տրամադրած էլեմենտը ծառայում է որպես տեղադրման կետ։ Տարբերվելով Vue 1.x-ից, տեղադրված էլեմենտը բոլոր դեպքերում կփոխարինվի Vue-ով գեներացված DOM-ով։ Այդ պատճառով խորհուրդ չի տրվում տեղադրելու արմատային instance `<html>` կամ `<body>`-ին։</p>
 
-  <p class="tip">If neither `render` function nor `template` option is present, the in-DOM HTML of the mounting DOM element will be extracted as the template. In this case, Runtime + Compiler build of Vue should be used.</p>
+  <p class="tip">Եթե ոչ `render` ֆունկցիան և ոչ էլ `template` ընտրանքն է ներկա, տեղադրվող DOM էլեմենտի ներքին DOM-ը HTML-ի դուրս կհանվի որպես որպես ձևանմուշ։ Այս դեպքում, Runtime + Compiler կառույցը Vue-ի պետք է օգտագործվի։</p>
 
-- **See also:**
-  - [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
-  - [Runtime + Compiler vs. Runtime-only](../guide/installation.html#Runtime-Compiler-vs-Runtime-only)
+- **Նաև Նայեք․**
+  - [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
+  - [Runtime + Compiler ընդեմ միայն Runtime-ի](../guide/installation.html#Runtime-Compiler-vs-Runtime-only)
 
 ### template
 
-- **Type:** `string`
+- **Տիպ․** `string`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  A string template to be used as the markup for the Vue instance. The template will **replace** the mounted element. Any existing markup inside the mounted element will be ignored, unless content distribution slots are present in the template.
+  String ձևանմուշը որը պետք է օգտագործվի որպես markup Vue instance-ի համար։ Ձևանմուշը **կփոխարինի** տեղադրված էլեմենտը։ Ցանկացած markup տեղադրված էլեմենտի ներսում կանտեսվի, եթե բովանդակության ընդլայման սլոտները ներկա չեն ձևանմուշում։
 
-  If the string starts with `#` it will be used as a querySelector and use the selected element's innerHTML as the template string. This allows the use of the common `<script type="x-template">` trick to include templates.
+  Եթե string-ը սկսում է `#` այն կօգտագործվի որպես querySelector և կօգտագործի ընտրած էլեմենտի innerHTML-ը որպես ձևանմուշի string։ Սա թույլ է տալիս ձեզ օգտագործելու հաճախ հանդիպող `<script type="x-template">` որպեսզի ներառել ձևանմուշներ։
 
-  <p class="tip">From a security perspective, you should only use Vue templates that you can trust. Never use user-generated content as your template.</p>
+  <p class="tip">Անվտանգության հեռանկարից, դուք պետք է միայն օգտագործեք այն Vue-ի ձևանմուշները որոնք դուք վստահում եք։ Երբեք մի օգտագործեք օգտագործողի կողմից ստեղծված ձևանմուշ։</p>
 
-  <p class="tip">If render function is present in the Vue option, the template will be ignored.</p>
+  <p class="tip">Եթե render ֆունկցիան հասանելի է Vue-ի ընտրանքում, ձևանմուշը կանտեսվի։</p>
 
-- **See also:**
-  - [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
-  - [Content Distribution with Slots](../guide/components.html#Content-Distribution-with-Slots)
+- **Նաև նայեք․**
+  - [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
+  - [Բովանդակության Ընդլայնում Սլոտների Օգնությամբ](../guide/components.html#Content-Distribution-with-Slots)
 
 ### render
 
-  - **Type:** `(createElement: () => VNode) => VNode`
+  - **Տիպ․** `(createElement: () => VNode) => VNode`
 
-  - **Details:**
+  - **Մանրամասներ․**
 
-    An alternative to string templates allowing you to leverage the full programmatic power of JavaScript. The render function receives a `createElement` method as it's first argument used to create `VNode`s.
+    Այլընտրանքային string ձևանմուշների փոխարեն թույլ տալով ձեզ ստանալու JavaScript-ի ամբողջ ծրագրային ուժը։ Render ֆունկցիան ստանում է `createElement` մեթոդը որպես իր առաջին արգումենտ որի միջոցով ստեղծում է `VNode`-երը։
 
-    If the component is a functional component, the render function also receives an extra argument `context`, which provides access to contextual data since functional components are instance-less.
+    Եթե կոմպոնենտը ֆունկցիոնալ կոմպոնենտ է, render ֆունկցիան նաև ստանում է հավելյալ արգումենտ `context`, որը տրամադրում է մուտք դեպի կոնտեքստային տվյալներ մինչ ֆունկցիոնալ կոմպոնենտները առանց instance-ի են։
 
-    <p class="tip">The `render` function has priority over the render function compiled from `template` option or in-DOM HTML template of the mounting element which is specified by the `el` option.</p>
+    <p class="tip">`render` ֆունկցիան ունի կարևորություն միուս render ֆունկցիայից որը compile է եղել `template` ընտրանքից կամ տեղադրված էլեմենտի DOM-ի ներքին HTML ձևանմուշից որը նշված է եղել `el` ընտրանքով։</p>
 
-  - **See also:** [Render Functions](../guide/render-function.html)
+  - **See also:** [Render Ֆունկցիաներ](../guide/render-function.html)
 
 ### renderError
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
-  - **Type:** `(createElement: () => VNode, error: Error) => VNode`
+  - **Տիպ․** `(createElement: () => VNode, error: Error) => VNode`
 
-  - **Details:**
+  - **Մանրամասներ․**
 
-    **Only works in development mode.**
+    **Միայն աշխատում է զարգացման ռեժիմում։**
 
-    Provide an alternative render output when the default `render` function encounters an error. The error will be passed to `renderError` as the second argument. This is particularly useful when used together with hot-reload.
+    Տրամադրել այլընտրանքային render-ի ելքագրում երբ հիմնական `render` ֆունկցիան հանդիպում է սխալի։ Սխալը կփոխանցվի `renderError`-ին որպես իր երկրորդ արգումենտ։ Սա հատկապես օգտակար է երբ օգտագործվում է hot-reload-ի հետ։
 
-  - **Example:**
+  - **Օրինակ․**
 
     ``` js
     new Vue({
@@ -785,233 +785,233 @@ type: api
     }).$mount('#app')
     ```
 
-  - **See also:** [Render Functions](../guide/render-function.html)
+  - **Նաև Նայեք․** [Render Ֆունկցիաներ](../guide/render-function.html)
 
-## Options / Lifecycle Hooks
+## Ընտրանքներ / Lifecycle Hook-եր
 
-<p class="tip">All lifecycle hooks automatically have their `this` context bound to the instance, so that you can access data, computed properties, and methods. This means __you should not use an arrow function to define a lifecycle method__ (e.g. `created: () => this.fetchTodos()`). The reason is arrow functions bind the parent context, so `this` will not be the Vue instance as you expect and `this.fetchTodos` will be undefined.</p>
+<p class="tip">Բոլոր lifecycle hook-երը ավտոմատ կերպով կունենան իրենց `this` կոնտեքստ միացված instance-ին, այնպես որ դուք կարող եք մուտք գործել դեպի տվյալներ, հաշվարկված հատկություններ, և մեթոդներ։ Սա նշանակում է որ __դուք չպետք է օգտագործեք սլաքով ֆունկցիաներ որպեսզի հայտարարեք lifecycle մեթոդ__ (օրինակ՝ `created: () => this.fetchTodos()`)։ Պատճառը կայանում է որ սլաքով ֆունկցիաները միացվում են ծնողի կոնտեքստին, այնպես որ `this`-ը չի լինի Vue instance-ը ինչպես դուք եք պատկերացնում և `this.fetchTodos` կլինի undefined։</p>
 
 ### beforeCreate
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called synchronously immediately after the instance has been initialized, before data observation and event/watcher setup.
+  Կանչվում է սինխրոն ձևով անմիջապես instance-ի գործարկումից հետո, նախքան տվյալների դիտարկումը և event/watcher-ի տեղադրումը։
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### created
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called synchronously after the instance is created. At this stage, the instance has finished processing the options which means the following have been set up: data observation, computed properties, methods, watch/event callbacks. However, the mounting phase has not been started, and the `$el` property will not be available yet.
+  Կանչվում է սինխրոն կերպով instance-ի ստեղծումից հետո։ Այս փուլում, instance ավարտել է վերամշակել ընտրանքները որը նշանակում է որ հետևյալ տեղադրվել է․ տվյալների դիտարկումը, հաշվարկված հատկությունները, մեթոդները, watch/event callback-ները։ Սակայն, տեղադրման փուլը դեռ չի սկսվել, և `$el` հատկությունը դեռ հասանելի չի լինի։
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### beforeMount
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called right before the mounting begins: the `render` function is about to be called for the first time.
+  Կանչվում է նախքան տեղադրման սկսումը․ `render` ֆունկցիան կկանչվի առաջին անագամ։
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### mounted
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called after the instance has been mounted, where `el` is replaced by the newly created `vm.$el`. If the root instance is mounted to an in-document element, `vm.$el` will also be in-document when `mounted` is called.
+  Կանչվում է instance-ի տեղադրումից հետո, որտեղ `el`-ը փոխարինվում է նոր ստեղծված `vm.$el`-ով։ Եթե արմատային instance-ը տեղադրում է փաստաթղթի ներքին էլեմենտին, `vm.$el`-ը նաև կլինի փաստաթղթի ներսում երբ `mounted`-ը կանչվում է։
 
-  Note that `mounted` does **not** guarantee that all child components have also been mounted. If you want to wait until the entire view has been rendered, you can use [vm.$nextTick](#vm-nextTick) inside of `mounted`:
+  Նշում որ `mounted`-ը **չի** երաշխավորում որ նաև բոլոր ժառանգող կոմպոնենտները կտեղադրվեն։ Եթե դուք ցանկանում եք սպասել մինչ տեսադաշտը render է եղել, դուք կարող եք օգտագործել [vm.$nextTick](#vm-nextTick) `mounted`-ի ներսում․
 
   ``` js
   mounted: function () {
     this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been rendered
+      // Կոդ որը միայն կաշխատի երբ ամբողջ
+      // տեսադաշտը render կլինի
     })
   }
   ```
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### beforeUpdate
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called when data changes, before the DOM is patched. This is a good place to access the existing DOM before an update, e.g. to remove manually added event listeners.
+  Կանչվում է երբ տվյալները փոփոխվում են, նախքան DOM-ը կապակցված է։ Սա կարող է լավ դիրք լինել որպեսզի մուտք գործել գոյություն ունեցող DOM նախքան թարմացումը, օրինակ․ որպեսզի ջնջել ձեռքով ավելացված event listener-ները։
 
-  **This hook is not called during server-side rendering, because only the initial render is performed server-side.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ, որովհետև միայն սկզբնական render-ն է կատարվում server-side։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### updated
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called after a data change causes the virtual DOM to be re-rendered and patched.
+  Կանչվում է երբ տվյալների փոփոխությունը պատճառում է որ virtual DOM-ը վերամշակվի և կրկին render լինի։
 
-  The component's DOM will have been updated when this hook is called, so you can perform DOM-dependent operations here. However, in most cases you should avoid changing state inside the hook. To react to state changes, it's usually better to use a [computed property](#computed) or [watcher](#watch) instead.
+  Կոմպոնենտի DOM-ը կթարմացվի երբ այս hook-ը կանչվել է, այնպես որ դուք կարող եք կատարել DOM-ին կախված գործողությունները այստեղ։ Սակայն, շատ դեպքերում դուք պետք է խուսափեք վիճակը փոփոխելուց այս hook-ի մեջ։ Որպեսզի արձագանքել վիճակի փոփոխություններին, փոխարենը ավելի հարմար է օգտագործել [հաշվարկված հատկություն](#computed) կամ [watcher](#watch)։
 
-  Note that `updated` does **not** guarantee that all child components have also been re-rendered. If you want to wait until the entire view has been re-rendered, you can use [vm.$nextTick](#vm-nextTick) inside of `updated`:
+  Նշում որ `updated`-ը **չի** երաշխավորում որ բոլոր ժառանգող կոմպոնենտները նաև կրկին render կլինեն։ Եթե դուք ցանկանում եք սպասել մինչ ամբողջ տեսադաշտի կրկին render լինելը, դուք կարող եք օգտագործել [vm.$nextTick](#vm-nextTick) `updated`-ի ներսում․
 
   ``` js
   updated: function () {
     this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been re-rendered
+      // Կոդը որը միայն կաշխատի ամբողջ
+      //  տեսադաշտի կրկին render լինելուց հետո
     })
   }
   ```
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### activated
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called when a kept-alive component is activated.
+  Կանչվում է երբ keep-alive կոմպոնենտը ակտիվացրած է։
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:**
-  - [Built-in Components - keep-alive](#keep-alive)
-  - [Dynamic Components - keep-alive](../guide/components.html#keep-alive)
+- **Նաև նայեք․**
+  - [Ներքին Կոմպոնենտներ - keep-alive](#keep-alive)
+  - [Դինամիկ Կոմպոնենտներ - keep-alive](../guide/components.html#keep-alive)
 
 ### deactivated
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called when a kept-alive component is deactivated.
+  Կանչվում է երբ keep-alive կոմպոնենտը ապակտիվացվում է։
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:**
-  - [Built-in Components - keep-alive](#keep-alive)
-  - [Dynamic Components - keep-alive](../guide/components.html#keep-alive)
+- **Նաև նայեք․**
+  - [Ներքին Կոմպոնենտներ - keep-alive](#keep-alive)
+  - [Դինամիկ Կոմպոնենտներ - keep-alive](../guide/components.html#keep-alive)
 
 ### beforeDestroy
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called right before a Vue instance is destroyed. At this stage the instance is still fully functional.
+  Կանչվում է նախքան Vue instance-ի ոչնչացումը։ Այս փուլում instance-ը դեռ ամբողջովին ֆունկիցոնալ է։
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև Նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### destroyed
 
-- **Type:** `Function`
+- **Տիպ․** `Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called after a Vue instance has been destroyed. When this hook is called, all directives of the Vue instance have been unbound, all event listeners have been removed, and all child Vue instances have also been destroyed.
+  Կանչվում է Vue instance-ի ոչնչացումից հետո։ Երբ այս hook-ը կանչվում է, բոլոր ուղղորդիչները Vue instance-ի կլինեն արձակված, բոլոր event listener-ները կլինեն ջնջված, և բոլոր ժառանգող Vue instance-ները կլինեն ոչնչացված։
 
-  **This hook is not called during server-side rendering.**
+  **Այս hook-ը չի կանչվում server-side rendering-ի ժամանակ։**
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
 ### errorCaptured
 
-> New in 2.5.0+
+> Նոր 2.5.0+-ի մեջ
 
-- **Type:** `(err: Error, vm: Component, info: string) => ?boolean`
+- **Տիպ․** `(err: Error, vm: Component, info: string) => ?boolean`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Called when an error from any descendent component is captured. The hook receives three arguments: the error, the component instance that triggered the error, and a string containing information on where the error was captured. The hook can return `false` to stop the error from propagating further.
+  Կանչվում է երբ որևէ սխալ է ժառանգողից հանդիպում։ Այս hook-ը ստանում է երեք արգումենտ․ սխալը, կոմպոնենտի instance-ը որը արձակել է այդ սխալը, և string պարունակող ինֆորմացիա թե որտեղ է սխալը հանդիպել։ Այս hook-ը կարող է վերադարձնել `false` որպեսզի կանգնեցնել սխալը զարգանալուց։
 
-  <p class="tip">You can modify component state in this hook. However, it is important to have conditionals in your template or render function that short circuits other content when an error has been captured; otherwise the component will be thrown into an infinite render loop.</p>
+  <p class="tip">Դուք կարող եք փոփոխել կոմպոնենտի վիճակը այս hook-ում։ Սակայն, կարևոր է ունենալ պայմանականներ ձեր ձևանմուշում կան render ֆունկցիա որը կարճ միացում երբ սխալ է հանդիպում; հակառակ դեպքում կոմպոնենտը կլինի անվերջ render ցիկլում։</p>
 
-  **Error Propagation Rules**
+  **Սխալների Զարգացման Կանոնները**
 
-  - By default, all errors are still sent to the global `config.errorHandler` if it is defined, so that these errors can still be reported to an analytics service in a single place.
+  - Հիմնականում, բոլոր սխալները կուղարկվեն դեպի գլոբալ `config.errorHandler` եթե այն հայտարարված է, այնպես որ այս սխալները կարող են մեկ տեղում զեկուցվել դեպի վերլուծության ծառայություններ։
 
-  - If multiple `errorCaptured` hooks exist on a component's inheritance chain or parent chain, all of them will be invoked on the same error.
+  - Եթե բազմաթիվ `errorCaptured` hook-եր գոյություն ունեն կոմպոնենտի ժառանգականության շխթայում կամ ծնողի շխթայում, բոլորը նրանցից կկանչվեն նույն սխալի վրա։
 
-  - If the `errorCaptured` hook itself throws an error, both this error and the original captured error are sent to the global `config.errorHandler`.
+  - Եթե `errorCaptured` hook-ը նետում է սխալ, այս սխալը և օրիգինալը կպահվեն և կուղարկվեն գլոբալ `config.errorHandler`։
 
-  - An `errorCaptured` hook can return `false` to prevent the error from propagating further. This is essentially saying "this error has been handled and should be ignored." It will prevent any additional `errorCaptured` hooks or the global `config.errorHandler` from being invoked for this error.
+  - `errorCaptured` hook-ը կարող է վերադարձնել `false` որպեսզի կանգնացնել սխալը զարգացումից։ Սա պարզապես ասում է որ «այս սխալը կարգավորվել է և պետք է անտեսել այն»։ Այն կկանխի ցանկացած հավելյալ `errorCaptured` hook-եր կամ գլոբալ `config.errorHandler` որը կարձակվի այս սխալի շնորհիվ։
 
-## Options / Assets
+## Ընտրանքներ / Asset-ներ
 
 ### directives
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  A hash of directives to be made available to the Vue instance.
+  Ուղղորդիչների հաշեր որոնք հասանելի են Vue instance-ին։
 
-- **See also:** [Custom Directives](../guide/custom-directive.html)
+- **Նաև նայեք․** [Custom Ուղղորդիճներ](../guide/custom-directive.html)
 
 ### filters
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  A hash of filters to be made available to the Vue instance.
+  Ֆիլտերների հաշեր որոնք հասանելի են Vue instance-ին։
 
-- **See also:** [`Vue.filter`](#Vue-filter)
+- **Նաև նայեք․** [`Vue.filter`](#Vue-filter)
 
 ### components
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  A hash of components to be made available to the Vue instance.
+  Կոմպոնենտների հաշեր որոնք հասանելի են Vue instance-ին։
 
-- **See also:** [Components](../guide/components.html)
+- **Նաև նայեք․** [Կոմպոնենտներ](../guide/components.html)
 
-## Options / Composition
+## Ընտրանքներ / Կազմ
 
 ### parent
 
-- **Type:** `Vue instance`
+- **Տիպ․** `Vue instance`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Specify the parent instance for the instance to be created. Establishes a parent-child relationship between the two. The parent will be accessible as `this.$parent` for the child, and the child will be pushed into the parent's `$children` array.
+  Նշեք ծնող instance-ը ստեղծվող instance-ին որը պետք է ստեղծվի։ Հաստատում է ծնող-ժառանգող կապ երկուսի միջև։ Ծնողը հասանելի կլինի որպես `this.$parent` ժառանգողի համար, և ժառանգողը կտեղադրվի դեպի ծնողի `$children` զանգվածը։
 
-  <p class="tip">Use `$parent` and `$children` sparingly - they mostly serve as an escape-hatch. Prefer using props and events for parent-child communication.</p>
+  <p class="tip">Օգտագործեք `$parent` և `$children` խնայողաբար - և հաճախ ծառայում են որպես այլընտրանք։ Նախընտրեք օգտագործել prop-ները և event-ները ծնող-ժառանգող կապի համար։</p>
 
 ### mixins
 
-- **Type:** `Array<Object>`
+- **Տիպ․** `Array<Object>`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The `mixins` option accepts an array of mixin objects. These mixin objects can contain instance options like normal instance objects, and they will be merged against the eventual options using the same option merging logic in `Vue.extend()`. e.g. If your mixin contains a created hook and the component itself also has one, both functions will be called.
+  `mixins` ընտրանքը ընդունում է զանգված mixin օբյեկտների։ Այս mixin օբյեկտները կարող են պարունակել instance-ի ընտրանքներ ինչպես պարզ instance օբյեկտներն են, և նրանք կարող են ձուլվել սկզբնական ընտրանքների հետ օգտագործելով նույն ընտրանքների ձուլման տրամաբանությունը `Vue.extend()`-ում։ Օրինակ եթե ձեր mixin-ը պարունակում է created hook-ը և կոմպոնենտը նույնպես ունի այն, երկու ֆունկցիաներն ել կկանչվեն։
 
-  Mixin hooks are called in the order they are provided, and called before the component's own hooks.
+  Mixin hook-երը կանչվում են այն հերթականությամբ որոնք որ նրանք տրամադրվել են, և կանչվում է նախքան կոմպոնենտի hook-երը։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   var mixin = {
@@ -1025,24 +1025,24 @@ type: api
   // => 2
   ```
 
-- **See also:** [Mixins](../guide/mixins.html)
+- **Նաև նայեք․** [Mixin-ներ](../guide/mixins.html)
 
 ### extends
 
-- **Type:** `Object | Function`
+- **Տիպ․** `Object | Function`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Allows declaratively extending another component (could be either a plain options object or a constructor) without having to use `Vue.extend`. This is primarily intended to make it easier to extend between single file components.
+  Թույլ է տալիս դեկլարատիվ կերպով ընդլայնել այլ կոմպոնենտ (կարող է լինել հասարակ ընտրանքների օբյեկտ կամ կոնստրուկտոր) առանց օգտագործելու `Vue.extend`-ը։ Սա հիմնականում նախատեսված է որպեսզի հեշտացնել մեկ ֆայլ կոմպոնենտների ընդլայնումը։
 
-  This is similar to `mixins`.
+  Այն նման է `mixin`-ներին։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   var CompA = { ... }
 
-  // extend CompA without having to call `Vue.extend` on either
+  // ընդլայնենք CompA առանց կանչելու `Vue.extend` երկուսի վրա
   var CompB = {
     extends: CompA,
     ...
@@ -1051,34 +1051,34 @@ type: api
 
 ### provide / inject
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
-- **Type:**
+- **Տիպ․**
   - **provide:** `Object | () => Object`
   - **inject:** `Array<string> | { [key: string]: string | Symbol | Object }`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  <p class="tip">`provide` and `inject` are primarily provided for advanced plugin / component library use cases. It is NOT recommended to use them in generic application code.</p>
+  <p class="tip">`provide` և `inject`-ը նախատեսված են հատուկ plugin / կոմպոնենտ գրադարանների օգտագործման համար։ Այն խորհուրդ ՉԻ տրվում օգտագործել հասարակ կոդի մեջ։</p>
 
-  This pair of options are used together to allow an ancestor component to serve as a dependency injector for all its descendants, regardless of how deep the component hierarchy is, as long as they are in the same parent chain. If you are familiar with React, this is very similar to React's context feature.
+  Այս ընտրանքների զույգը օգտագործվում է միասին որպեսզի թույլ տալ ծնող կոմպոնենտին ծառայել որպես կախվածության ներարկիչ իր բոլոր ժառանգողների համար, չնայած թե ինչքան խորն է կոմպոնենտների հիերարխիան, քանի դեռ նրանք գտնվում են նույն ծնողի շղթայում։ Եթե դուք ծանող եք React-ին, սա շատ նման է React-ի կոնտեքստի հատկությանը։
 
-  The `provide` option should be an object or a function that returns an object. This object contains the properties that are available for injection into its descendants. You can use ES2015 Symbols as keys in this object, but only in environments that natively support `Symbol` and `Reflect.ownKeys`.
+  `provide` ընտրանքը պետք է լինի օբյեկտ կամ ֆունկցիա որը վերադարձնում է օբյեկտ։ Այս օբյեկտը պարունակում է հատկություններ որոնք հասանելի են որպեսզի ներարկվեն դեպի իր ժառանգողները։ Դուք կարող եք օգտագործել ES2015 Symbol-ները որպես բանալիներ այս օբյեկտում, բայց միայն միջավայրերում որոնք ներքինով տրամադրում են `Symbol` և `Reflect.ownKeys`։
 
-  The `inject` option should be either:
-  - an array of strings, or
-  - an object where the keys are the local binding name and the value is either:
-    - the key (string or Symbol) to search for in available injections, or
-    - an object where:
-      - the `from` property is the key (string or Symbol) to search for in available injections, and
-      - the `default` property is used as fallback value
+  `inject` ընտրանքը կարող է լինել հետևյալը․
+  - զանգված կամ string-ներ, կամ
+  - օբյեկտ որտեղ բանալիները լոկալ կապման անուններն են և արժեքը նշվածներից մեկը․
+    - բանալին (string կամ Symbol) որպեսզի փնտրել հասանելի ներարկումները, կամ
+    - օբյեկտ որտեղ․
+      - `from` հատկությունը բանալին է (string կամ Symbol) որպեսզի փնտրել հասանելի ներարկումները, և
+      - `default` հատկությունը օգտագործվում է որպես կանխման արժեք
 
-  > Note: the `provide` and `inject` bindings are NOT reactive. This is intentional. However, if you pass down an observed object, properties on that object do remain reactive.
+  > Նշում․ `provide` և `inject` կապումները ռեակտիվ չեն։ Սա դիտավորյալ է։ Սակայն, եթե դուք փոխանցեք դիտարկված օբյեկտ, հատկությունները այդ օբյեկտում կմնան ռեակտիվ։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
-  // parent component providing 'foo'
+  // ծնող կոմպոնենտը տրամադրում է 'foo'
   var Provider = {
     provide: {
       foo: 'bar'
@@ -1086,7 +1086,7 @@ type: api
     // ...
   }
 
-  // child component injecting 'foo'
+  // ժառանգող կոմպոնենտը ներարկում է 'foo'-ն
   var Child = {
     inject: ['foo'],
     created () {
@@ -1096,7 +1096,7 @@ type: api
   }
   ```
 
-  With ES2015 Symbols, function `provide` and object `inject`:
+  ES2015 Symbol-ների հետ, ֆունկցիա `provide` և օբյեկտ `inject`․
   ``` js
   const s = Symbol()
 
@@ -1114,9 +1114,9 @@ type: api
   }
   ```
 
-  > The next 2 examples work with Vue 2.2.1+. Below that version, injected values were resolved after the `props` and the `data` initialization.
+  > Հաջորդ 2 օրինակները աշխատում են 2.2.1+-ի հետ։ Այդ տարբերակից ներքև, ներարկված արժեքները հաստատվում են `props`-ի և `data`-ի տեղադրումից հետո։
 
-  Using an injected value as the default for a prop:
+  Օգտագործել ներարկված արժեքը որպես հիմնական արժեք prop-ի համար․
   ```js
   const Child = {
     inject: ['foo'],
@@ -1130,7 +1130,7 @@ type: api
   }
   ```
 
-  Using an injected value as data entry:
+  Օգտագործել ներարկված արժեքը որպես տվյալի սկզբնակետ․
   ```js
   const Child = {
     inject: ['foo'],
@@ -1142,7 +1142,7 @@ type: api
   }
   ```
 
-  > In 2.5.0+ injections can be optional with default value:
+  > 2.5.0+-ի մեջ ներարկումները կարող են լինել այլընտրանքային հիմնական արժեքի հետ․
 
   ``` js
   const Child = {
@@ -1152,7 +1152,7 @@ type: api
   }
   ```
 
-  If it needs to be injected from a property with a different name, use `from` to denote the source property:
+  Եթե անհրաժեշտ է ներարկել հատկություն մեկ այլ անունով, օգտագործեք `from`-ը որպեսզի նշել սկզբնական հատկությունը․
 
   ``` js
   const Child = {
@@ -1165,7 +1165,7 @@ type: api
   }
   ```
 
-  Similar to prop defaults, you need to use a factory function for non primitive values:
+  Նման լինելով prop default-ին, դուք կարող եք օգտագործել factory ֆունկցիա ոչ հասարակ արժեքների համար․
 
   ``` js
   const Child = {
@@ -1178,63 +1178,63 @@ type: api
   }
   ```
 
-## Options / Misc
+## Ընտրանքներ / Այլն
 
 ### name
 
-- **Type:** `string`
+- **Տիպ․** `string`
 
-- **Restriction:** only respected when used as a component option.
+- **Սահմանափակումներ․** միայն հարգվում է երբ օգտագործվում է որպես կոմպոնենտի ընտրանք։
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Allow the component to recursively invoke itself in its template. Note that when a component is registered globally with `Vue.component()`, the global ID is automatically set as its name.
+  Թույլ տալ կոմպոնենտի որպեսզի ռեկուրսիվ կերպով կանչի ինքն իրեն ձևանմուշի մեջ։ Նշում որ երբ կոմպոնենտը գլոբալ կերպով է գրանցված `Vue.component()`-ով, գլոբալ ID-ն ավտոմատ կերպով տեղղադրվում է որպես իր անունը
 
-  Another benefit of specifying a `name` option is debugging. Named components result in more helpful warning messages. Also, when inspecting an app in the [vue-devtools](https://github.com/vuejs/vue-devtools), unnamed components will show up as `<AnonymousComponent>`, which isn't very informative. By providing the `name` option, you will get a much more informative component tree.
+  Մեկ այլ առավելություն նշելով `name` ընտրանքը դա debugging-ն է։ Անվանված կոմպոնենտները առաջացնում են ավելի օգտակար նախազգուշացման նամակներ։ Նաև, երբ ստուգում եք ծրագիրը [vue-devtools-ում](https://github.com/vuejs/vue-devtools), անանուն կոմպոնենտները կերևան որպես `<AnonymousComponent>`, որը ինֆորմատիվ չե։ Տրամադրելով `name` ընտրանքը, դուք կստանաք ավելի շատ տվյալներ կոմպոնենտի ծառի վերաբերյալ։
 
 ### delimiters
 
-- **Type:** `Array<string>`
+- **Տիպ․** `Array<string>`
 
-- **Default:** `{% raw %}["{{", "}}"]{% endraw %}`
+- **Հիմնական Արժեքը․** `{% raw %}["{{", "}}"]{% endraw %}`
 
-- **Restrictions:** This option is only available in the full build, with in-browser compilation.
+- **Սահմանափակումներ․** Այս ընտրանքը միայն հասանելի է վերջնական կառույցում, բրաուզերի կոմպիլացիայի հետ հանդերձ։
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Change the plain text interpolation delimiters.
+  Փոփոխել հասարակ տեքստի ինտերպոլացիայի սահմանազատիչները:
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   new Vue({
     delimiters: ['${', '}']
   })
 
-  // Delimiters changed to ES6 template string style
+  // Սահմանազատիչները փոփոխվել են դեպի ES6 ձևանմուշի string-ի ոճի
   ```
 
 ### functional
 
-- **Type:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Causes a component to be stateless (no `data`) and instanceless (no `this` context). They are only a `render` function that returns virtual nodes making them much cheaper to render.
+  Պատճառում է կոմպոնենտին որպեսզի այն լինի առանց վիճակի (ոչ `data`) և առանց instance-ի (ոչ `this` կոնտեքստ)։ Նրանք միայն `render` ֆունկցիա են որը վերադարձնում է վիրտուալ node-երը դարձնելով նրանց ավելի արագ render-ի համար։
 
-- **See also:** [Functional Components](../guide/render-function.html#Functional-Components)
+- **Նաև նայեք․** [Ֆունկցիոնալ Կոմպոնենտներ](../guide/render-function.html#Functional-Components)
 
 ### model
 
-> New in 2.2.0
+> Նոր 2.2.0-ի մեջ
 
-- **Type:** `{ prop?: string, event?: string }`
+- **Տիպ․** `{ prop?: string, event?: string }`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Allows a custom component to customize the prop and event used when it's used with `v-model`. By default, `v-model` on a component uses `value` as the prop and `input` as the event, but some input types such as checkboxes and radio buttons may want to use the `value` prop for a different purpose. Using the `model` option can avoid the conflict in such cases.
+  Թույլ է տալիս custom կոմպոնենտին որպեսզի փոփոխել prop և event-ը որոնք որ օգտագործվում է `v-model`-ի հետ։ Հիմնականում, `v-model`-ը կոմպոնենտում օգտագործում է `value` որպես prop և `input` որպես event, բայց որոշ մուտքագրման տիպեր ինչպիսին են checkbox-երը և radio կոճակները կցանկանան օգտագործել `value` prop մեկ այլ նպատակով։ Օգտագործելով `model` ընտրանքը դուք կարող եք խուսափել կոնֆլիկտներից այս դեպքերում։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   Vue.component('my-checkbox', {
@@ -1243,9 +1243,9 @@ type: api
       event: 'change'
     },
     props: {
-      // this allows using the `value` prop for a different purpose
+      // սա թույլ է տալիս օգտագործել `value` prop-ը այլ նպատակի համար
       value: String,
-      // use `checked` as the prop which take the place of `value`
+      // օգտագործեք `checked` որպես prop որը կփոխարինի `value`-ին
       checked: {
         type: Number,
         default: 0
@@ -1259,7 +1259,7 @@ type: api
   <my-checkbox v-model="foo" value="some value"></my-checkbox>
   ```
 
-  The above will be equivalent to:
+  Վերևինը հավասար կլինի․
 
   ``` html
   <my-checkbox
@@ -1271,73 +1271,73 @@ type: api
 
 ### inheritAttrs
 
-> New in 2.4.0+
+> Նոր 2.4.0+-ի մեջ
 
-- **Type:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Default:** `true`
+- **Հիմնական Արժեքը․** `true`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  By default, parent scope attribute bindings that are not recognized as props will "fallthrough" and be applied to the root element of the child component as normal HTML attributes. When authoring a component that wraps a target element or another component, this may not always be the desired behavior. By setting `inheritAttrs` to `false`, this default behavior can be disabled. The attributes are available via the `$attrs` instance property (also new in 2.4) and can be explicitly bound to a non-root element using `v-bind`.
+  Հիմնականում, ծնող scope-ի ատրիբուտի կապուները որոնք չեն ճանաչվել որպես prop-ներ «կձախողվեն» և կկիրառվեն ժառանգող կոմպոնենտի արմատային էլեմենտին որպես հասարակ HTML ատրիբուտներ։ Հեղինակելուց կոմպոնենտը որը փաթաթվում է որևէ էլեմենտի կամ մեկ այլ կոմպոնենտին, սա կարող է միշտ չլինել ցանկացած վիճակը։ Տեղադրելով `inheritAttrs` դեպի `false`, այս հիմնական վիճակը կարող է անջատվել։ Ատրիբուտները հասանելի են `$attrs` instance հատկությունում (նաև նոր է 2.4-ի մեջ) և կարող է հատուկ ձևով կապվել ոչ արմատային էլեմենտին օգտագործելով `v-bind`-ը։
 
-  Note: this option does **not** affect `class` and `style` bindings.
+  Նշում․ այս ընտրանքը **չի** ազդում `class` և `style` կապումների վրա։
 
 ### comments
 
-> New in 2.4.0+
+> Նոր 2.4.0+-ի մեջ
 
-- **Type:** `boolean`
+- **Տիպ․** `boolean`
 
-- **Default:** `false`
+- **Հիմնական արժեքը․** `false`
 
-- **Restrictions:** This option is only available in the full build, with in-browser compilation.
+- **Սահմանափակումներ․** Այս ընտրանքը միայն հասանելի է ամբողջական կառույցում, բրաուզերի ներքին կոմպիլացիայի հետ հանդերձ։
 
-- **Details:**
+- **Մանրամասներ․**
 
-  When set to `true`, will preserve and render HTML comments found in templates. The default behavior is discarding them.
+  Երբ տեղադրված է դեպի `true`, այն կպահպանի և render կանի HTML comment-ները որոնք գտնվում են ձևանմուշում։ Հիմնական վիճակը նրանց անտեսումն է։
 
-## Instance Properties
+## Instance-ի Հատկություններ
 
 ### vm.$data
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The data object that the Vue instance is observing. The Vue instance proxies access to the properties on its data object.
+  Տվյալների օբյեկտը որը Vue instance-ը դիտարկում է։ Vue instance-ը proxy մուտք է գործում դեպի հատկությունները իր տվյալների օբյեկտում։
 
-- **See also:** [Options / Data - data](#data)
+- **Նաև նայեք․** [Ընտրանքներ / Տվյալներ - data](#data)
 
 ### vm.$props
 
-> New in 2.2.0+
+> Նոր 2.2.0+-ի մեջ
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  An object representing the current props a component has received. The Vue instance proxies access to the properties on its props object.
+  Օբյեկտը որը ներկայացնում է ընթացիկ prop-ները որը կոմպոնենտը ստացել է։ Vue instance proxy մուտք է գործում դեպի հատկություններ իր props օբյեկտում։
 
 ### vm.$el
 
-- **Type:** `Element`
+- **Տիպ․** `Element`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The root DOM element that the Vue instance is managing.
+  Արմատային DOM էլեմենտը որը Vue instance-ը կառավարում է։
 
 ### vm.$options
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The instantiation options used for the current Vue instance. This is useful when you want to include custom properties in the options:
+  Տեղադրելու ընտրանքները որոնք օգտագործվում են ընթացիկ Vue instance-ի համար։ Սա կարող է օգտակար լինել երբ դուք ցանկանում եք ներառել custom հատկություններ ընտրանքներում․
 
   ``` js
   new Vue({
@@ -1350,67 +1350,67 @@ type: api
 
 ### vm.$parent
 
-- **Type:** `Vue instance`
+- **Տիպ․** `Vue instance`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The parent instance, if the current instance has one.
+  Ծնողի instanceժ-ը, եթե ընթացիկ instance-ը ունի։
 
 ### vm.$root
 
-- **Type:** `Vue instance`
+- **Տիպ․** `Vue instance`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The root Vue instance of the current component tree. If the current instance has no parents this value will be itself.
+  Ընթացիկ կոմպոնենտի ծառի արմատային Vue instance-ը։ Եթե ընթացիկ instance-ը չունի ծնողներ այս արժեքը կլինի հենց ինքը։
 
 ### vm.$children
 
-- **Type:** `Array<Vue instance>`
+- **Տիպ․** `Array<Vue instance>`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  The direct child components of the current instance. **Note there's no order guarantee for `$children`, and it is not reactive.** If you find yourself trying to use `$children` for data binding, consider using an Array and `v-for` to generate child components, and use the Array as the source of truth.
+  Ուղիղ ժառանգող կոմպոնենտները ընթացիկ instance-ի։ **Նշում որ հերթականության երաշխիք չկա `$children`-ի, և այն ռեակտիվ չէ։** Եթե դուք ցանկանում է օգտագործել `$children`-ը տվյալների կապման համար, հաշվի առեք զանգվածի օգտագործքումը և `v-for`-ը որպեսզի գեներացնել ժառանգող կոմպոնենտներ, և օգտագործել զանգվածը որպես ճշմարտության աղբյուր։
 
 ### vm.$slots
 
-- **Type:** `{ [name: string]: ?Array<VNode> }`
+- **Տիպ․** `{ [name: string]: ?Array<VNode> }`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Reactive?** No
+- **Ռեակտիվ Է՞** Ոչ
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Used to programmatically access content [distributed by slots](../guide/components.html#Content-Distribution-with-Slots). Each [named slot](../guide/components.html#Named-Slots) has its own corresponding property (e.g. the contents of `v-slot:foo` will be found at `vm.$slots.foo`). The `default` property contains either nodes not included in a named slot or contents of `v-slot:default`.
+  Օգտագործվում է որպեզի ծրագրավորեն մուտք գործել դեպի բովանդակություն [բաշխված slot-ներով](../guide/components.html#Content-Distribution-with-Slots)։ Ամեն [անվանված սլոտ](../guide/components.html#Named-Slots) ունի իր համապատասխան հատկությունը (օրինակ. բովանդակությունը `v-slot:foo`-ի հասանելի կլինի `vm.$slots.foo`-ում)։ `default` հատկությունը պարունակում է կամ node-եր որոնք չեն ներառված անվանված սլոտներում կամ բովանդակությունը `v-slot:default`-ի։
 
-  Please note that slots are **not** reactive. If you need a component to re-render based on changes to data passed to a slot, we suggest considering a different strategy that relies on a reactive instance option, such as `props` or `data`.
+  Խնդրում եմ նշեք որ սլոտները ռեակտիվ **չեն**։ Եթե ձեզ անհրաժեշտ է կոմպոնենտ որպեսզի կրկին render անել կախված տվյալների փոփոխություններից որոնք փոխանցվել են սլոտին, մենք խորհուրդ են տալիս օգտագործել մեկ այլ ստրատեգիա որը կախված է ռեակտիվ instance-ի ընտրանքից, ինչպիսին են `props`-ը կամ `data`-ն։
 
-  **Note:** `v-slot:foo` is supported in v2.6+. For older versions, you can use the [deprecated syntax](../guide/components-slots.html#Deprecated-Syntax).
+  **Նշում․** `v-slot:foo` չի համապատասխանում v2.6+-ում։ Ավելի հին տարբերակների համար, դուք կարող եք օգտագործել [հնեցված գրելաձևը](../guide/components-slots.html#Deprecated-Syntax)։
 
-  Accessing `vm.$slots` is most useful when writing a component with a [render function](../guide/render-function.html).
+  Մուտք գործելով `vm.$slots` շատ օգտակար է երբ գրում եք կոմպոնենտի [render ֆունկցիա](../guide/render-function.html)։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
   <blog-post>
     <template v-slot:header>
-      <h1>About Me</h1>
+      <h1>Իմ մասին</h1>
     </template>
 
-    <p>Here's some page content, which will be included in vm.$slots.default, because it's not inside a named slot.</p>
+    <p>Այստեղ է էջի բովանդակությունը, որը կներառվի vm.$slots.default-ում, որովհետև այն չի գտնվում անվանված սլոտի ներսում։</p>
 
     <template v-slot:footer>
-      <p>Copyright 2016 Evan You</p>
+      <p>Հեղինակային իրավունք 2016 Evan You</p>
     </template>
 
-    <p>If I have some content down here, it will also be included in vm.$slots.default.</p>.
+    <p>Եթե ես ունենամ որևէ բովանդակություն այստեղ, այն կլինի ներառված vm.$slots.default-ում։</p>.
   </blog-post>
   ```
 
@@ -1429,162 +1429,162 @@ type: api
   })
   ```
 
-- **See also:**
-  - [`<slot>` Component](#slot)
-  - [Content Distribution with Slots](../guide/components.html#Content-Distribution-with-Slots)
-  - [Render Functions - Slots](../guide/render-function.html#Slots)
+- **Նաև նայեք․**
+  - [`<slot>` Կոմպոնենտ](#slot)
+  - [Բովանդակության Բաշխում Սլոտներով](../guide/components.html#Content-Distribution-with-Slots)
+  - [Render Ֆունկցիաներ - Սլոտներ](../guide/render-function.html#Slots)
 
 ### vm.$scopedSlots
 
-> New in 2.1.0+
+> Նոր 2.1.0+-ի մեջ
 
-- **Type:** `{ [name: string]: props => Array<VNode> | undefined }`
+- **Տիպ․** `{ [name: string]: props => Array<VNode> | undefined }`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Used to programmatically access [scoped slots](../guide/components.html#Scoped-Slots). For each slot, including the `default` one, the object contains a corresponding function that returns VNodes.
+  Օգտագործվում է որպեսզի ծրագրավորեն մուտք գործել դեպի [սահմանափակված սլոտներ](../guide/components.html#Scoped-Slots)։ Ամեն սլոտի համար, ներառյալ `default`-ը, օբյեկտը պարունակում է համապատասխան ֆունկցիա որը վերադարձնում է VNode-ները։
 
-  Accessing `vm.$scopedSlots` is most useful when writing a component with a [render function](../guide/render-function.html).
+  Մուտք գործելով `vm.$scopedSlots` ամենա օգտակարն է երբ գրում եք կոմպոնենտ [render ֆունկցիայի](../guide/render-function.html) հետ։
 
-  **Note:** since 2.6.0+, there are two notable changes to this property:
+  **Նշում․** մինչ 2.6.0+, կան երկու կարևոր փոփոխություններ այս հատկության մեջ․
 
-  1. Scoped slot functions are now guaranteed to return an array of VNodes, unless the return value is invalid, in which case the function will return `undefined`.
+  1. Սահմանափակված սլոտների ֆունկցիաները հիմա երաշխավորված են որ կվերադարձնեն զանգված VNode-երի փոխարեն, բացառությամբ եթե վերադարձված արժեքը սխալ է, որի դեպքում ֆունկցիան կվերադարձնի `undefined`։
 
-  2. All `$slots` are now also exposed on `$scopedSlots` as functions. If you work with render functions, it is now recommended to always access slots via `$scopedSlots`, whether they currently use a scope or not. This will not only make future refactors to add a scope simpler, but also ease your eventual migration to Vue 3, where all slots will be functions.
+  2. Բոլոր `$slots`-ը հիմա հասանելի են `$scopedSlots`-ում որպես ֆունկցիաներ։ Եթե դուք աշխատում եք render ֆունկցիաներով, խորհուրդ է տրվում միշտ մուտք գործել դեպի սլոտներ օգտագործելով `$scopedSlots`-ը, առանց նայելու թե նրանք ունեն scope թե ոչ։ Սա ոչ միայն ապագա վերանվանման փոփոխությունները կհեշտացնի, բայց նաև կհեշտացնի միգրացիան դեպի Vue 3, որտեղ բոլոր սլոտները կլինեն ֆունկցիաներ։
 
-- **See also:**
-  - [`<slot>` Component](#slot)
-  - [Scoped Slots](../guide/components.html#Scoped-Slots)
-  - [Render Functions - Slots](../guide/render-function.html#Slots)
+- **Նաև նայեք․**
+  - [`<slot>` Կոմպոնենտ](#slot)
+  - [Սահմանափակված Սլոտներ](../guide/components.html#Scoped-Slots)
+  - [Render Ֆունկցիաներ - Սլոտներ](../guide/render-function.html#Slots)
 
 ### vm.$refs
 
-- **Type:** `Object`
+- **Տիպ․** `Object`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  An object of DOM elements and component instances, registered with [`ref` attributes](#ref).
+  DOM էլեմենտների և կոմպոնենտների instance-ների օբյեկտ, գրանցված [`ref` ատրիբուտով](#ref)։
 
-- **See also:**
-  - [Child Component Refs](../guide/components.html#Child-Component-Refs)
-  - [Special Attributes - ref](#ref)
+- **Նաև նայեք․**
+  - [Ժառանգող Կոմպոնոնտի Ref-ներ](../guide/components.html#Child-Component-Refs)
+  - [Հատուկ Ատրիբուտներ - ref](#ref)
 
 ### vm.$isServer
 
-- **Type:** `boolean`
+- **Տիպ:** `boolean`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Whether the current Vue instance is running on the server.
+  Ցույց է տալիս թե ընթացիկ Vue instance-ը աշխատում է սերվերում թե ոչ։
 
-- **See also:** [Server-Side Rendering](../guide/ssr.html)
+- **Նաև նայեք․** [Server-Side Rendering](../guide/ssr.html)
 
 ### vm.$attrs
 
-> New in 2.4.0+
+> Նոր 2.4.0+-ի մեջ
 
-- **Type:** `{ [key: string]: string }`
+- **Տիպ․** `{ [key: string]: string }`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Contains parent-scope attribute bindings (except for `class` and `style`) that are not recognized (and extracted) as props. When a component doesn't have any declared props, this essentially contains all parent-scope bindings (except for `class` and `style`), and can be passed down to an inner component via `v-bind="$attrs"` - useful when creating higher-order components.
+  Պարունակում է ծնողին կապված ատրիբուտների կապումները (բացառությամբ `class`-ի և `style`-ի) որոնք որ չեն ճանաչվել (և դուրս հանվել) որպես prop-ներ։ Երբ կոմպոնենտը չունի որևէ հայտարարված prop-ներ, սա պարզապես պարունակում է ծնող scope-ի կապումներ (բացառությամբ `class`-ի և `style`-ի), և կարող է փոխանցվել ներքև դեպի ներքին կոմպոնենտ օգտագործելով `v-bind="$attrs"`-ը - օգտակար է երբ ստեղծում եք բարձր կարգի կոմպոնենտներ։
 
 ### vm.$listeners
 
-> New in 2.4.0+
+> Նոր 2.4.0+-ի մեջ
 
-- **Type:** `{ [key: string]: Function | Array<Function> }`
+- **Տիպ․** `{ [key: string]: Function | Array<Function> }`
 
-- **Read only**
+- **Միայն կարդալու համար**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Contains parent-scope `v-on` event listeners (without `.native` modifiers). This can be passed down to an inner component via `v-on="$listeners"` - useful when creating transparent wrapper components.
+  Պարունակում է ծնող scope-ի `v-on` event listener-ները (առանց `.native` փոփոխիչի)։ Սա կարող է փոխանցվել դեպի ներքին կոմպոնենտ օգտագործելով `v-on="$listeners"` - օգտակար է երբ ստեղծում եք թափանցիկ փաթաթվող կոմպոնենտներ։
 
-## Instance Methods / Data
+## Instance-ի Մեթոդներ / Տվյալներ
 
 ### vm.$watch( expOrFn, callback, [options] )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{string | Function} expOrFn`
   - `{Function | Object} callback`
   - `{Object} [options]`
     - `{boolean} deep`
     - `{boolean} immediate`
 
-- **Returns:** `{Function} unwatch`
+- **Վերադարձնում է․** `{Function} unwatch`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Watch an expression or a computed function on the Vue instance for changes. The callback gets called with the new value and the old value. The expression only accepts dot-delimited paths. For more complex expressions, use a function instead.
+  Դիտարկեք արտահայտությունը կամ հաշվարկված ֆունկցիան Vue instance-ում փոփոխությունների համար։ Այս callback-ը կանչվում է նոր և հին արժեքներով։ Արտահայտությունը միայն ընդունում է կետով սահմանված ճանապարհներ։ Ավելի բարդ արտահայտությունների համար, օգտագործեք ֆունկցիաներ։
 
-<p class="tip">Note: when mutating (rather than replacing) an Object or an Array, the old value will be the same as new value because they reference the same Object/Array. Vue doesn't keep a copy of the pre-mutate value.</p>
+<p class="tip">Նշում․ երբ մուտացիայի ենք ենթարկում (քան փոխարինել) Օբյեկտը կամ Զանգվածը, հին արժեքը կլինի նույնը ինչ նոր արժեքը որովհետև նրանք դիմում են նույն Օբյեկտ/Զանգված-ին։ Vue-ն չի պահում նախքան մուտացիայի ենթարկված արժեքի պատճեն։</p>
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
-  // keypath
+  // բանալիների ճանապարհը
   vm.$watch('a.b.c', function (newVal, oldVal) {
-    // do something
+    // Գործողությունները այստեղ
   })
 
-  // function
+  // ֆունկցիա
   vm.$watch(
     function () {
-      // every time the expression `this.a + this.b` yields a different result,
-      // the handler will be called. It's as if we were watching a computed
-      // property without defining the computed property itself
+      // ամեն անգամ արտահայտությունը `this.a + this.b` պարունակում է տարբեր արդյունքներ,
+      // գործարկիչը կկանչվի։ Այն նման է հաշվարկված հատկության որը որ մենք դիտարկում ենք
+      // առանց հայտարարելու հաշվարկված հատկությունը
       return this.a + this.b
     },
     function (newVal, oldVal) {
-      // do something
+      // Գործողությունները այստեղ
     }
   )
   ```
 
-  `vm.$watch` returns an unwatch function that stops firing the callback:
+  `vm.$watch` վերադարձնում է չդիտարկված ֆունկցիա որը կանգնեցնում է callback-ի արձակումը․
 
   ``` js
   var unwatch = vm.$watch('a', cb)
-  // later, teardown the watcher
+  // հետո, վերացրեք դիտարկիչը
   unwatch()
   ```
 
-- **Option: deep**
+- **Ընտրանք․ deep**
 
-  To also detect nested value changes inside Objects, you need to pass in `deep: true` in the options argument. Note that you don't need to do so to listen for Array mutations.
+  Որպեսզի նկատել խորը տեղադրված արժեքները Օբյեկտներում, դուք պետք է փոխանցեք `deep: true` ընտրանքների արգումենտում։ Նշում որ սա անհրաժեշտ չէ եթե ցանկանում է լսել Զանգվածի մուտացիաներին։
 
   ``` js
   vm.$watch('someObject', callback, {
     deep: true
   })
   vm.someObject.nestedValue = 123
-  // callback is fired
+  // callback-ը արձակվել է
   ```
 
-- **Option: immediate**
+- **Ընտրանք․ immediate**
 
-  Passing in `immediate: true` in the option will trigger the callback immediately with the current value of the expression:
+  Փոխանցելով `immediate: true` ընտրանքներում կարձակի callback անմիջապես ընթացիկ արտահայտության արժեքի հետ․
 
   ``` js
   vm.$watch('a', callback, {
     immediate: true
   })
-  // `callback` is fired immediately with current value of `a`
+  // `callback`-ը անմիջապես արձակվել է `a` ընթացիկ արժեքով
   ```
 
-  Note that with `immediate` option you won't be able to unwatch the given property on the first callback call.
+  Նշում որ `immediate` ընտրանքով դուք չեք կարող հատկության դիտարկումը կանգնեցնել առաջին callback-ի կանչի ժամանակ։
 
   ``` js
-  // This will cause an error
+  // Սա կստեղծի սխալ
   var unwatch = vm.$watch(
     'value',
     function () {
@@ -1595,7 +1595,7 @@ type: api
   )
   ```
 
-  If you still want to call an unwatch function inside the callback, you should check its availability first:
+  Եթե դուք դեռ ցանկանում եք կանչել դիտարկումը կանգնացնելու ֆունկցիա callback-ի ներսում, դուք պետք է ստուգեք սկզբում թե այն հասանելի է՞ թե ոչ․
 
   ``` js
   var unwatch = vm.$watch(
@@ -1612,96 +1612,96 @@ type: api
 
 ### vm.$set( target, propertyName/index, value )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
   - `{any} value`
 
-- **Returns:** the set value.
+- **Վերադարձնում է․** տեղադրված արժեքը։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  This is the **alias** of the global `Vue.set`.
+  Սա **փոխանուն է** գլոբալ `Vue.set`-ի։
 
-- **See also:** [Vue.set](#Vue-set)
+- **Նաև նայեք․** [Vue.set](#Vue-set)
 
 ### vm.$delete( target, propertyName/index )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{Object | Array} target`
   - `{string | number} propertyName/index`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  This is the **alias** of the global `Vue.delete`.
+  Սա **փոխանուն է** գլոբալ `Vue.delete`-ի։
 
-- **See also:** [Vue.delete](#Vue-delete)
+- **Նաև նայեք․** [Vue.delete](#Vue-delete)
 
-## Instance Methods / Events
+## Instance-ի Մեթոդներ / Event-ներ
 
 ### vm.$on( event, callback )
 
-- **Arguments:**
-  - `{string | Array<string>} event` (array only supported in 2.2.0+)
+- **Արգումենտներ․**
+  - `{string | Array<string>} event` (զանգվածը միայն համապտասխանում է 2.2.0+-ի մեջ)
   - `{Function} callback`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Listen for a custom event on the current vm. Events can be triggered by `vm.$emit`. The callback will receive all the additional arguments passed into these event-triggering methods.
+  Լսեք custom event-ին ընթացիկ vm-ի վրա։ Event-ները կարող են արձակվել `vm.$emit`-ի շնորհիվ։ Callback-ը կստանա բոլոր հավելյալ արգումենտները փոխանցված դեպի այս event-ը արձակող մեթոդներին։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   vm.$on('test', function (msg) {
     console.log(msg)
   })
-  vm.$emit('test', 'hi')
-  // => "hi"
+  vm.$emit('test', 'բարև')
+  // => "բարև"
   ```
 
 ### vm.$once( event, callback )
 
-- **Arguments:**
+- **Արգումենտներ:**
   - `{string} event`
   - `{Function} callback`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Listen for a custom event, but only once. The listener will be removed once it triggers for the first time.
+  Լսեք custom event-ին, բայց միայն մեկ անգամ։ Այս listener կջնջվի երբ այն կարձակվի առաջին անգամ։
 
 ### vm.$off( [event, callback] )
 
-- **Arguments:**
-  - `{string | Array<string>} event` (array only supported in 2.2.2+)
+- **Արգումենտներ․**
+  - `{string | Array<string>} event` (զանգվածները միայն համապատասխանում է 2.2.2+-ի մեջ)
   - `{Function} [callback]`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Remove custom event listener(s).
+  Ջնջեք custom event listener(ները)։
 
-  - If no arguments are provided, remove all event listeners;
+  - Եթե արգումենտները տրամադրված չեն, բոլոր event listener-ները կջնջվեն;
 
-  - If only the event is provided, remove all listeners for that event;
+  - Եթե միայն event-ն է տրամադրված, բոլոր listener-ը կապված այդ event-ին կջնջվեն;
 
-  - If both event and callback are given, remove the listener for that specific callback only.
+  - Եթե տրամադրված են event և callback, կջնջվեն միայն այն listener-ը որին պատկանում է այդ callback։
 
 ### vm.$emit( eventName, [...args] )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{string} eventName`
   - `[...args]`
 
-  Trigger an event on the current instance. Any additional arguments will be passed into the listener's callback function.
+  Արձակել event ընթացիկ instance-ում։ Ցանկացած հավելյալ արգումենտները կփոխանցվեն դեպի listener callback ֆունկցիա։
 
-- **Examples:**
+- **Օրինակներ․**
 
-  Using `$emit` with only an event name:
+  Օգտագործելով `$emit` միայն event-ի անունի հետ․
 
   ```js
   Vue.component('welcome-button', {
     template: `
       <button v-on:click="$emit('welcome')">
-        Click me to be welcomed
+        Կտտացրեք ինձ ողջունվելու համար
       </button>
     `
   })
@@ -1716,7 +1716,7 @@ type: api
     el: '#emit-example-simple',
     methods: {
       sayHi: function () {
-        alert('Hi!')
+        alert('Բարև')
       }
     }
   })
@@ -1729,7 +1729,7 @@ type: api
     Vue.component('welcome-button', {
       template: `
         <button v-on:click="$emit('welcome')">
-          Click me to be welcomed
+          Կտտացրեք ինձ ողջունվելու համար
         </button>
       `
     })
@@ -1737,20 +1737,20 @@ type: api
       el: '#emit-example-simple',
       methods: {
         sayHi: function () {
-          alert('Hi!')
+          alert('Բարև')
         }
       }
     })
   </script>
   {% endraw %}
 
-  Using `$emit` with additional arguments:
+  `$emit`-ի օգտագործումը հավելյալ արգումենտներով․
 
   ```js
   Vue.component('magic-eight-ball', {
     data: function () {
       return {
-        possibleAdvice: ['Yes', 'No', 'Maybe']
+        possibleAdvice: ['Այո', 'Ոչ', 'Միգուցե']
       }
     },
     methods: {
@@ -1761,7 +1761,7 @@ type: api
     },
     template: `
       <button v-on:click="giveAdvice">
-        Click me for advice
+        Կտտացրեք ինձ խորհուրդի համար
       </button>
     `
   })
@@ -1792,7 +1792,7 @@ type: api
     Vue.component('magic-eight-ball', {
       data: function () {
         return {
-          possibleAdvice: ['Yes', 'No', 'Maybe']
+          possibleAdvice: ['Այո', 'Ոչ', 'Միգուցե']
         }
       },
       methods: {
@@ -1803,7 +1803,7 @@ type: api
       },
       template: `
         <button v-on:click="giveAdvice">
-          Click me for advice
+          Կտտացրեք ինձ խորհուրդի համար
         </button>
       `
     })
@@ -1818,64 +1818,64 @@ type: api
   </script>
   {% endraw %}
 
-## Instance Methods / Lifecycle
+## Instance-ի Մեթոդներ / Lifecycle
 
 ### vm.$mount( [elementOrSelector] )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{Element | string} [elementOrSelector]`
   - `{boolean} [hydrating]`
 
-- **Returns:** `vm` - the instance itself
+- **Վերադարձնում է․** `vm` - instance-ը
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  If a Vue instance didn't receive the `el` option at instantiation, it will be in "unmounted" state, without an associated DOM element. `vm.$mount()` can be used to manually start the mounting of an unmounted Vue instance.
+  Եթե Vue instance-ը չի ստացել `el` ընտրանքը ստեղծման ժամանակ, այն կլինի «չտեղադրված» վիճակում, չլինելով կապված որևէ DOM էլեմենտի։ `vm.$mount()`-ը կարող է օգտագործվել որպեսզի ձեռքով սկսել տեղադրումը չտեղադրված Vue instance-ի։
 
-  If `elementOrSelector` argument is not provided, the template will be rendered as an off-document element, and you will have to use native DOM API to insert it into the document yourself.
+  Եթե `elementOrSelector` արգումենտը տրամադրված չե, ձևանմուշը render կլինի որպես փաստաթղթից դուրս էլեմենտ, և դուք պետք է օգտագործեք ներքին DOM API-ը որպեսզի տեղադրեք այն փաստաթղթի մեջ։
 
-  The method returns the instance itself so you can chain other instance methods after it.
+  Մեթոդը վերադարձնում է instance, այնպես որ դուք կարող եք շխթայել այլ instance-ի մեթոդներ նրանից հետո։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   var MyComponent = Vue.extend({
-    template: '<div>Hello!</div>'
+    template: '<div>Բարև</div>'
   })
 
-  // create and mount to #app (will replace #app)
+  // ստեղծել և տեղադրել դեպի #app (կփոխարինի #app-ը)
   new MyComponent().$mount('#app')
 
-  // the above is the same as:
+  // Վերևում նույնն է ինչ այստեղ․
   new MyComponent({ el: '#app' })
 
-  // or, render off-document and append afterwards:
+  // կամ, render անել փաստաթղթից դուրս և միացնել այն հետո․
   var component = new MyComponent().$mount()
   document.getElementById('app').appendChild(component.$el)
   ```
 
-- **See also:**
-  - [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք․**
+  - [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
   - [Server-Side Rendering](../guide/ssr.html)
 
 ### vm.$forceUpdate()
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Force the Vue instance to re-render. Note it does not affect all child components, only the instance itself and child components with inserted slot content.
+  Ստիպեք Vue instance-ին որպեսզի կրկին render լինի։ Նշում այն չի ազդում բոլոր ժառանգող կոմպոնենտների վրա, միայն instance-ին և ժառանգող կոմպոնենտները-ին որոնք տեղադրվել են սլոտի բովանդակությամբ։
 
 ### vm.$nextTick( [callback] )
 
-- **Arguments:**
+- **Արգումենտներ․**
   - `{Function} [callback]`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Defer the callback to be executed after the next DOM update cycle. Use it immediately after you've changed some data to wait for the DOM update. This is the same as the global `Vue.nextTick`, except that the callback's `this` context is automatically bound to the instance calling this method.
+  Հետաձգել callback-ը որպեսզի աշխատի հաջորդ DOM-ի թարմացման ցիկլում։ Օգտագործեք այն անմիջապես երբ որ դուք փոփոխել եք որոշ տվյալները և սպասում եք DOM-ի թարմացմանը։ Սա նույնն է ինչ գլոբալ `Vue.nextTick`, բացառությամբ որ callback-ի `this` կոնթեքստը ավտոմատ կերպով կկապվի instance-ին որը կանչում է այս մեթոդը։
 
-  > New in 2.1.0+: returns a Promise if no callback is provided and Promise is supported in the execution environment. Please note that Vue does not come with a Promise polyfill, so if you target browsers that don't support Promises natively (looking at you, IE), you will have to provide a polyfill yourself.
+  > Նոր 2.1.0+-ի մեջ․ վերադարձնում է Promise եթե callback տրամադրված չե և Promise-ը համապատասխանում է գործարկման միջավայրում։ Խնդրում եմ նշեք որ Vue-ն չունի Promise-ի polyfill, այնպես որ այն բրաուզերները որոնք չունեն Promise-ների ներքին համապատասխանեցում (նայում եմ քեզ, IE), դուք միշտ պետք է տրամադրեք polyfill։
 
-- **Example:**
+- **Օրինակ․**
 
   ``` js
   new Vue({
@@ -1883,12 +1883,12 @@ type: api
     methods: {
       // ...
       example: function () {
-        // modify data
+        // փոփոխեք տվյալները
         this.message = 'changed'
-        // DOM is not updated yet
+        // DOM-ը դեռ չի թարմացվել
         this.$nextTick(function () {
-          // DOM is now updated
-          // `this` is bound to the current instance
+          // DOM-ը հիմա թարմացվել է
+          // `this`-ը կապված է ընթացիկ instance-ին
           this.doSomethingElse()
         })
       }
@@ -1896,145 +1896,145 @@ type: api
   })
   ```
 
-- **See also:**
+- **Նաև նայեք․**
   - [Vue.nextTick](#Vue-nextTick)
-  - [Async Update Queue](../guide/reactivity.html#Async-Update-Queue)
+  - [Ասինխռոն Թարմացման Հերթ](../guide/reactivity.html#Async-Update-Queue)
 
 ### vm.$destroy()
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives, turn off all event listeners.
+  Ամբողջովին ոչնչացնել vm։ Մաքրել իր բոլոր կապերը գոյություն ունեցող vm-ների հետ, արձակել բոլոր իր ուղղորդիչները, անջատել բոլոր event listener-ները։
 
-  Triggers the `beforeDestroy` and `destroyed` hooks.
+  Արձակում է `beforeDestroy` և `destroyed` hook-երը։
 
-  <p class="tip">In normal use cases you shouldn't have to call this method yourself. Prefer controlling the lifecycle of child components in a data-driven fashion using `v-if` and `v-for`.</p>
+  <p class="tip">Հասարակ օգտագործման դեպքերում դուք չպետք է կանչեք այս մեթոդը։ Նախընտրեք կառավարելու lifecycle-ը ժառանգող կոմպոնենտների տվյալներով հենված ձևով օգտագործելով `v-if`-ը և `v-for`-ը։</p>
 
-- **See also:** [Lifecycle Diagram](../guide/instance.html#Lifecycle-Diagram)
+- **Նաև նայեք:** [Lifecycle-ի Դիագրամ](../guide/instance.html#Lifecycle-Diagram)
 
-## Directives
+## Ուղղորդիչներ
 
 ### v-text
 
-- **Expects:** `string`
+- **Ակնկալում է․** `string`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Updates the element's `textContent`. If you need to update the part of `textContent`, you should use `{% raw %}{{ Mustache }}{% endraw %}` interpolations.
+  Թարմացնում է էլեմենտի `textContent`-ը։ Եթե դուք պետք է թարմացնեք մի մաս `textContent`-ը, դուք պետք է օգտագործեք `{% raw %}{{ Բեղավոր }}{% endraw %}` ինտերպոլացիաներ։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
   <span v-text="msg"></span>
-  <!-- same as -->
+  <!-- նույնն է ինչ -->
   <span>{{msg}}</span>
   ```
 
-- **See also:** [Data Binding Syntax - Interpolations](../guide/syntax.html#Text)
+- **Նաև նայեք․** [Տվյալների Կապման Գրելաձև - Ինտերպոլացիաներ](../guide/syntax.html#Text)
 
 ### v-html
 
-- **Expects:** `string`
+- **Ակնկալում է․** `string`
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Updates the element's `innerHTML`. **Note that the contents are inserted as plain HTML - they will not be compiled as Vue templates**. If you find yourself trying to compose templates using `v-html`, try to rethink the solution by using components instead.
+  Թարմացնում է էլեմենտի `innerHTML`-ը։ **Նշում որ բովանդակությունները տեղադրված են որպես հասարակ HTML - նրանք compile չեն լինի ինչպես Vue-ի Ձևանմուշները**։ Եթե դուք ցանկանաք մշակել ձևանմուշ օգտագործելով `v-html`, փորձեք կրկին մտածել փոխարենը օգտագործելով կոմպոնենտներ։
 
-  <p class="tip">Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.</p>
+  <p class="tip">Դինամիկորեն render եղած հասարակ HTML-ը ձեր կայքում կարող է շատ վտանգավոր լինել որովհետև այն կարող է հանգեցնել [XSS հարձակումների](https://en.wikipedia.org/wiki/Cross-site_scripting)։ Միայն օգտագործեք `v-html`-ը վստահված բովանդակություններում և **երբեք** օգտագործողի կողմից տրամադրված բովանդակությունները։</p>
 
-  <p class="tip">In [single-file components](../guide/single-file-components.html), `scoped` styles will not apply to content inside `v-html`, because that HTML is not processed by Vue's template compiler. If you want to target `v-html` content with scoped CSS, you can instead use [CSS modules](https://vue-loader.vuejs.org/en/features/css-modules.html) or an additional, global `<style>` element with a manual scoping strategy such as BEM.</p>
+  <p class="tip">[մեկ ֆայլ կոմպոնենտներում](../guide/single-file-components.html), `scoped` եղած ոճերը չեն կիրառվի `v-html`-ում գտնվող բովանդակությանը, որովհետև այդ HTML չի գործարկվում Vue-ի ձևանմուշի compiler-ը։ Եթե դուք ցանկանում եք թիրախ դնել `v-html`-ի բովանդակությունը սահմանփակված CSS-ով, դուք կարող եք օգտագործել [CSS մոդուլներ](https://vue-loader.vuejs.org/en/features/css-modules.html) կամ հավելյալ, գլոբալ `<style>` էլեմենտ ձեռքով սահմանափակվող ստրատեգիայով ինչպիսին BEM-ն է։</p>
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
   <div v-html="html"></div>
   ```
 
-- **See also:** [Data Binding Syntax - Interpolations](../guide/syntax.html#Raw-HTML)
+- **Նաև նայեք․** [Տվյալների Կապման Գրելաձև - Ինտերպոլացիաներ](../guide/syntax.html#Raw-HTML)
 
 ### v-show
 
-- **Expects:** `any`
+- **Սպասում է․** `any`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Toggles the element's `display` CSS property based on the truthy-ness of the expression value.
+  Փոխարկում է էլէմենտի `display` CSS հատկությունը կախված արտահայտության արժեքի ճշմարտությունից։
 
-  This directive triggers transitions when its condition changes.
+  Այս ուղղորդիչը արձակում է անցումները երբ իր պայմանը փոխվում է ։
 
-- **See also:** [Conditional Rendering - v-show](../guide/conditional.html#v-show)
+- **Նաև նայեք․** [Պայմանական Rendering - v-show](../guide/conditional.html#v-show)
 
 ### v-if
 
-- **Expects:** `any`
+- **Սպասում է․** `any`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Conditionally render the element based on the truthy-ness of the expression value. The element and its contained directives / components are destroyed and re-constructed during toggles. If the element is a `<template>` element, its content will be extracted as the conditional block.
+  Պայմանականորեն render անել էլեմենտը կախված արտահայտության արժեքի ճշմարտությունից։ Էլեմենտը և իր պարունակող ուղղորդիչները / կոմպոնենտները ոչնչացվում և վերակառուցվում են փոխարկման ընթացքում։ Եթե էլեմենտը `<template>` է, իր բովանդակությունը դուրս կհանվի որպես պայմանական բլոկ։
 
-  This directive triggers transitions when its condition changes.
+  Այս ուղղորդիչը արձակում է անցումներ և իր պայմանը փոխվում է։
 
-  <p class="tip">When used together with v-if, v-for has a higher priority than v-if. See the <a href="../guide/list.html#v-for-with-v-if">list rendering guide</a> for details.</p>
+  <p class="tip">Երբ օգտագործվում է v-if-ի հետ, v-for-ը ունի ավելի բարձր կարևորություն քան v-if-ը։ Նայեք <a href="../guide/list.html#v-for-with-v-if">ցանկերի մատուցման ցանկը</a> մանրամասների համար։</p>
 
-- **See also:** [Conditional Rendering - v-if](../guide/conditional.html)
+- **Նաև նայեք․** [Պայմանական Rendering - v-if](../guide/conditional.html)
 
 ### v-else
 
-- **Does not expect expression**
+- **Չի ակնկալում արտահայտություն**
 
-- **Restriction:** previous sibling element must have `v-if` or `v-else-if`.
+- **Սահմանափակումները․** նախկին հարևան էլեմենտը պետք է ունենա `v-if` կամ `v-else-if`։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Denote the "else block" for `v-if` or a `v-if`/`v-else-if` chain.
+  Նշանակեք «else բլոկը» `v-if` կամ `v-if`/`v-else-if` շխթաների համար։
 
   ```html
   <div v-if="Math.random() > 0.5">
-    Now you see me
+    Հիմա ինձ տեսնում ես
   </div>
   <div v-else>
-    Now you don't
+    Հիմա ոչ
   </div>
   ```
 
-- **See also:** [Conditional Rendering - v-else](../guide/conditional.html#v-else)
+- **Նաև նայեք․** [Պայմանական Rendering - v-else](../guide/conditional.html#v-else)
 
 ### v-else-if
 
-> New in 2.1.0+
+> Նոր 2.1.0+-ի մեջ
 
-- **Expects:** `any`
+- **Սպասում է․** `any`
 
-- **Restriction:** previous sibling element must have `v-if` or `v-else-if`.
+- **Սահմանափակումները․** նախկին հարևան էլեմենտը պետք է ունենա `v-if` կամ `v-else-if`.
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Denote the "else if block" for `v-if`. Can be chained.
+  Նշանակեք «else if բլոկը» `v-if`-ի համար։ Կարող է շխթայվել։
 
   ```html
   <div v-if="type === 'A'">
-    A
+    Ա
   </div>
   <div v-else-if="type === 'B'">
-    B
+    Բ
   </div>
   <div v-else-if="type === 'C'">
-    C
+    Գ
   </div>
   <div v-else>
-    Not A/B/C
+    Ոչ Ա/Բ/Գ
   </div>
   ```
 
-- **See also:** [Conditional Rendering - v-else-if](../guide/conditional.html#v-else-if)
+- **Նաև նայեք․** [Պայմանական Rendering - v-else-if](../guide/conditional.html#v-else-if)
 
 ### v-for
 
-- **Expects:** `Array | Object | number | string | Iterable (since 2.6)`
+- **Սպասում է․** `Array | Object | number | string | Iterable (2.6-ից սկսած)`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Render the element or template block multiple times based on the source data. The directive's value must use the special syntax `alias in expression` to provide an alias for the current element being iterated on:
+  Render անել էլեմենտ կամ ձևանմուշի բլոկ բազմաթիվ անգամ կախված տվյալների աղբյուրից։ Ուղղորդչի արժեքը պետք է օգտագործի `փոխանուն արտահայտության մեջ` որպեսզի տրամադրի փոխանուն ընթացիկ էլեմենտի համար որով ընթանում եք․
 
   ``` html
   <div v-for="item in items">
@@ -2042,7 +2042,7 @@ type: api
   </div>
   ```
 
-  Alternatively, you can also specify an alias for the index (or the key if used on an Object):
+  Այլ ձև, դուք կարո եք նաև տրամադրել փոխանուն ինդեքսի համար (կամ բանալիի եթե օգտագործվում է Օբյեկտի վրա)․
 
   ``` html
   <div v-for="(item, index) in items"></div>
@@ -2050,7 +2050,7 @@ type: api
   <div v-for="(val, name, index) in object"></div>
   ```
 
-  The default behavior of `v-for` will try to patch the elements in-place without moving them. To force it to reorder elements, you need to provide an ordering hint with the `key` special attribute:
+  Հիմնական վարքը `v-for`-ի կփորձի նորոգել էլեմենտները տեղում առանց նրանց շարժելու։ Որպեսզի ստիպել նրան վերադասավորելու էլեմենտները, դուք պետք է տրամադրեք հերթականության հուշում `key` հատուկ ատրիբուտով․
 
   ``` html
   <div v-for="item in items" :key="item.id">
@@ -2058,241 +2058,241 @@ type: api
   </div>
   ```
 
-  In 2.6+, `v-for` can also work on values that implement the [Iterable Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), including native `Map` and `Set`. However, it should be noted that Vue 2.x currently does not support reactivity on `Map` and `Set` values, so cannot automatically detect changes.
+  2.6+-ի մեջ, `v-for`-ը կարող է նաև աշխատել արժեքների վրա որոնք կիրառում են [Iterable Protocol-ը](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), ներառելով ներքին `Map`-ը և `Set`-ը։ Սակայն, պետք է նշել որ Vue 2.x-ը դեռ չունի ռեակտիվություն `Map` և `Set`-ի արժեքների համար, այն չի կարող ավտոմատ կերպով նկատել փոփոխությունները։
 
-  <p class="tip">When used together with v-if, v-for has a higher priority than v-if. See the <a href="../guide/list.html#v-for-with-v-if">list rendering guide</a> for details.</p>
+  <p class="tip">Երբ օգտագործվում են v-if-հետ միասին, v-for-ը ունի ավելի բարձր կարևորություն քան v-if։ Նայեք <a href="../guide/list.html#v-for-with-v-if">ցանկի մատուցման ուղեցույցը</a> մանրամասների համար։</p>
 
-  The detailed usage for `v-for` is explained in the guide section linked below.
+  Մանրամասն `v-for`-ի օգտագործումը բացատրված է ներքևում նշված ուղեցույցների հղումներում։
 
-- **See also:**
-  - [List Rendering](../guide/list.html)
+- **Նաև նայեք․**
+  - [Ցանկի Rendering](../guide/list.html)
   - [key](../guide/list.html#key)
 
 ### v-on
 
-- **Shorthand:** `@`
+- **Կրճատ․** `@`
 
-- **Expects:** `Function | Inline Statement | Object`
+- **Սպասում է․** `Function | Inline Statement | Object`
 
-- **Argument:** `event`
+- **Արգումենտներ․** `event`
 
-- **Modifiers:**
-  - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
-  - `.capture` - add event listener in capture mode.
-  - `.self` - only trigger handler if event was dispatched from this element.
-  - `.{keyCode | keyAlias}` - only trigger handler on certain keys.
-  - `.native` - listen for a native event on the root element of component.
-  - `.once` - trigger handler at most once.
-  - `.left` - (2.2.0+) only trigger handler for left button mouse events.
-  - `.right` - (2.2.0+) only trigger handler for right button mouse events.
-  - `.middle` - (2.2.0+) only trigger handler for middle button mouse events.
-  - `.passive` - (2.3.0+) attaches a DOM event with `{ passive: true }`.
+- **Փոփոխիչներ․**
+  - `.stop` - կանչում է `event.stopPropagation()`.
+  - `.prevent` - կանչում է `event.preventDefault()`.
+  - `.capture` - ավելացնում է event listener capture ռեժիմում։
+  - `.self` - միայն արձակում է գործարկիչ եթե event-ը արձակվել է այս էլեմենտից
+  - `.{keyCode | keyAlias}` - միայն արձակում է գործարկիչ որոշ բանալիների համար։
+  - `.native` - լսել ներքին event-ին կոմպոնենտի արմատային էլեմենտում։
+  - `.once` - արձակել գործարկիչը միայն մեկ անգամ։
+  - `.left` - (2.2.0+) միայն արձակել գործարկիչը մկնիկի ձախ կոճակի event-ների համար։
+  - `.right` - (2.2.0+) միայն արձակել գործարկիչը մկնիկի աջ կոճակի event-ների համար։
+  - `.middle` - (2.2.0+) միայն արձակել գործարկիչը մկնիկի մեջտեղի կոճակի event-ների համար։
+  - `.passive` - (2.3.0+) միացնում է DOM event `{ passive: true }`-ի հետ։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Attaches an event listener to the element. The event type is denoted by the argument. The expression can be a method name, an inline statement, or omitted if there are modifiers present.
+  Միացնում է event listener էլեմենտին։ Event-ի տիպը նշանակվում է արգումենտով։ Արտահայտությունը կարող է լինել մեթոդի անուն, inline հայտարարություն, կամ արձակվում է եթե փոփոխիչներ են ներկա։
 
-  When used on a normal element, it listens to [**native DOM events**](https://developer.mozilla.org/en-US/docs/Web/Events) only. When used on a custom element component, it listens to **custom events** emitted on that child component.
+  Երբ օգտագործվում է հասարակ էլեմենտի վրա, այն լսում է [**ներքին DOM event-ներին**](https://developer.mozilla.org/en-US/docs/Web/Events) միայն։ Երբ օգտագործվում է custom էլեմենտ կոմպոնենտի վրա, այն լսում է **custom event-ներին** արձակված ժառանգող կոմպոնենտներում։
 
-  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
+  Երբ լսում եք ներքին DOM event-ներին, այս մեթոդը ստանում է ներքին event որպես միակ արգումենտ։ Եթե օգտագործենք inline հայտարարություն, հայտարարությունը կունենա մուտք դեպի հատուկ `$event` հատկություն։ `v-on:click="handle('ok', $event)"`։
 
-  Starting in 2.4.0+, `v-on` also supports binding to an object of event/listener pairs without an argument. Note when using the object syntax, it does not support any modifiers.
+  Սկսած 2.4.0+-ի մեջ, `v-on`-ը նաև համապատասխանում է կապումներ օբյեկտին կազմված զույգ event/listener-ից որոնք առանց արգումենտի են։ Նշում երբ օգտագործում ենք օբյեկտի գրելաձևը, այն չունի փոփոխիչների համապատասխանեցում։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
-  <!-- method handler -->
+  <!-- մեթոդի գործարկիչ -->
   <button v-on:click="doThis"></button>
 
-  <!-- dynamic event (2.6.0+) -->
+  <!-- դինամիկ event (2.6.0+) -->
   <button v-on:[event]="doThis"></button>
 
-  <!-- inline statement -->
+  <!-- inline հայտարարություն -->
   <button v-on:click="doThat('hello', $event)"></button>
 
-  <!-- shorthand -->
+  <!-- կրճատ -->
   <button @click="doThis"></button>
 
-  <!-- shorthand dynamic event (2.6.0+) -->
+  <!-- կրճատ դինամիկ event (2.6.0+) -->
   <button @[event]="doThis"></button>
 
-  <!-- stop propagation -->
+  <!-- կանխել տարածումը  -->
   <button @click.stop="doThis"></button>
 
-  <!-- prevent default -->
+  <!-- կանխել հիմնականը -->
   <button @click.prevent="doThis"></button>
 
-  <!-- prevent default without expression -->
+  <!-- կանխել հիմնականը առանց արտահայտության -->
   <form @submit.prevent></form>
 
-  <!-- chain modifiers -->
+  <!-- սխթայել փոփոխիչները -->
   <button @click.stop.prevent="doThis"></button>
 
-  <!-- key modifier using keyAlias -->
+  <!-- կոճակի փոփոխիչները օգտագործելով keyAlias -->
   <input @keyup.enter="onEnter">
 
-  <!-- key modifier using keyCode -->
+  <!-- կոճակի փոփոխիչներ օգտագործելով keyCode -->
   <input @keyup.13="onEnter">
 
-  <!-- the click event will be triggered at most once -->
+  <!-- կտտացնելու event-ը կարձակվի միայն մեկ անգամ -->
   <button v-on:click.once="doThis"></button>
 
-  <!-- object syntax (2.4.0+) -->
+  <!-- օբյեկտի գրելաձև (2.4.0+) -->
   <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
   ```
 
-  Listening to custom events on a child component (the handler is called when "my-event" is emitted on the child):
+  Сustom event-ների լսումը ժառանգող կոմպոնենտում (գործարկիչը կանչվում է երբ «my-event» արձակված է ժառանգողում)․
 
   ```html
   <my-component @my-event="handleThis"></my-component>
 
-  <!-- inline statement -->
+  <!-- inline հայտարարություն -->
   <my-component @my-event="handleThis(123, $event)"></my-component>
 
-  <!-- native event on component -->
+  <!-- ներքին event կոմպոնենտի վրա -->
   <my-component @click.native="onClick"></my-component>
   ```
 
-- **See also:**
+- **Նաև նայեք․**
   - [Event Handling](../guide/events.html)
-  - [Components - Custom Events](../guide/components.html#Custom-Events)
+  - [Կոմպոնենտներ - Custom Event-ներ](../guide/components.html#Custom-Events)
 
 ### v-bind
 
-- **Shorthand:** `:`
+- **Կարճ․** `:`
 
-- **Expects:** `any (with argument) | Object (without argument)`
+- **Սպասում է․** `any (արգումենտով) | Object (առանց արգումենտ)`
 
-- **Argument:** `attrOrProp (optional)`
+- **Արգումենտ․** `attrOrProp (ոչ պարտադիր)`
 
-- **Modifiers:**
-  - `.prop` - Bind as a DOM property instead of an attribute ([what's the difference?](https://stackoverflow.com/questions/6003819/properties-and-attributes-in-html#answer-6004028)). If the tag is a component then `.prop` will set the property on the component's `$el`.
-  - `.camel` - (2.1.0+) transform the kebab-case attribute name into camelCase.
-  - `.sync` - (2.3.0+) a syntax sugar that expands into a `v-on` handler for updating the bound value.
+- **Փոփոխիչներ․**
+  - `.prop` - Կապել որպես DOM-ի հատկություն ատրիբուտի փոխարեն ([ի՞նչն է տարբերությունը](https://stackoverflow.com/questions/6003819/properties-and-attributes-in-html#answer-6004028))։ Եթե tag-ը կոմպոնենտ է ուրեմն `.prop`-ը կտեղադրի կոմպոնենտի `$el`-ի հատկությունը։
+  - `.camel` - (2.1.0+) վերափոխում է kebab-case ատրիբուտը դեպի camelCase։
+  - `.sync` - (2.3.0+) գրելաձևի շաքար որը ընդլայնվում է դեպի `v-on`-ի գործարկիչ կապված արժեքը թարմացնելու համար։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Dynamically bind one or more attributes, or a component prop to an expression.
+  Դինամիկորեն կապել մեկ կամ ավելի ատրիբուտներ, կամ կոմպոնենտի prop արտահայտությանը։
 
-  When used to bind the `class` or `style` attribute, it supports additional value types such as Array or Objects. See linked guide section below for more details.
+  Երբ օգտագործվում է որպեսզի կապել `class` կամ `style` ատրիբուտը, այն համապատասխանում է հավելյալ արժեքի տիպեր ինչպիսին են Զանգվածը կամ Օբյեկտները։ Նայեք ներքևում ուղեցույցի հղումը ավելի մանրամասների համար։
 
-  When used for prop binding, the prop must be properly declared in the child component.
+  Երբ օգտագործվում է prop-ի կապումների համար, prop-ը պետք է ճիշտ հայտարարված լինի ժառանգող կոմպոնենտում։
 
-  When used without an argument, can be used to bind an object containing attribute name-value pairs. Note in this mode `class` and `style` does not support Array or Objects.
+  Երբ օգտագործվում է առանց արգումեն, կարող է օգտագործվել որպեսզի կապել օբյեկտ պարունակող ատրիբուտի անուն-արժեք զույգերը։ Նշում որ այս ռեժիմում `class` և `style`-ը չեն համապատասխանում Զանգվածին կամ Օբյեկտներին։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
-  <!-- bind an attribute -->
+  <!-- կապել ատրիբուտը -->
   <img v-bind:src="imageSrc">
 
-  <!-- dynamic attribute name (2.6.0+) -->
+  <!-- դինամիկ ատրիբուտի անուն (2.6.0+) -->
   <button v-bind:[key]="value"></button>
 
-  <!-- shorthand -->
+  <!-- կարճ -->
   <img :src="imageSrc">
 
-  <!-- shorthand dynamic attribute name (2.6.0+) -->
+  <!-- կարճ դինամիկ ատրիբուտի անուն (2.6.0+) -->
   <button :[key]="value"></button>
 
-  <!-- with inline string concatenation -->
+  <!-- inline string կոնկատինացումով -->
   <img :src="'/path/to/images/' + fileName">
 
-  <!-- class binding -->
+  <!-- class-ի կապում -->
   <div :class="{ red: isRed }"></div>
   <div :class="[classA, classB]"></div>
   <div :class="[classA, { classB: isB, classC: isC }]">
 
-  <!-- style binding -->
+  <!-- ոճի կապում -->
   <div :style="{ fontSize: size + 'px' }"></div>
   <div :style="[styleObjectA, styleObjectB]"></div>
 
-  <!-- binding an object of attributes -->
+  <!-- ատրիբուտների օբյեկտի կապում -->
   <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
 
-  <!-- DOM attribute binding with prop modifier -->
+  <!-- DOM ատրիբուտի կապում prop փոփոխիչի հետ -->
   <div v-bind:text-content.prop="text"></div>
 
-  <!-- prop binding. "prop" must be declared in my-component. -->
+  <!-- prop-ի կապում։ «prop»-ը պետք է հայտարարվի my-component-ում։ -->
   <my-component :prop="someThing"></my-component>
 
-  <!-- pass down parent props in common with a child component -->
+  <!-- փոխանցել ծնողի prop-ները որոնք ծանոթ են ժառանգող կոմպոնենտներին -->
   <child-component v-bind="$props"></child-component>
 
   <!-- XLink -->
   <svg><a :xlink:special="foo"></a></svg>
   ```
 
-  The `.camel` modifier allows camelizing a `v-bind` attribute name when using in-DOM templates, e.g. the SVG `viewBox` attribute:
+  `.camel` փոփոխիչը թույլ է տալիս camelCase դարձնել `v-bind` ատրիբուտի անունը երբ օգտագործում ենք DOM-ի ներքին ձևանմուշներ, օրինակ․ SVG `viewBox` ատրիբուտը․
 
   ``` html
   <svg :view-box.camel="viewBox"></svg>
   ```
 
-  `.camel` is not needed if you are using string templates, or compiling with `vue-loader`/`vueify`.
+  `.camel`-ը անհրաժեշտ չէ եթե դուք օգտագործում եք string ձևանմուշներ, կամ compile եք անում `vue-loader`/`vueify`-ի հետ։
 
-- **See also:**
-  - [Class and Style Bindings](../guide/class-and-style.html)
-  - [Components - Props](../guide/components.html#Props)
-  - [Components - `.sync` Modifier](../guide/components.html#sync-Modifier)
+- **Նաև նայեք․**
+  - [Class-ի և Style-ի Կապումները](../guide/class-and-style.html)
+  - [Կոմպոնենտներ - Prop-ներ](../guide/components.html#Props)
+  - [Կոմպոնենտներ - `.sync` Փոփոխիչ](../guide/components.html#sync-Modifier)
 
 ### v-model
 
-- **Expects:** varies based on value of form inputs element or output of components
+- **Ակնկալում է․** կախված է form-ի input-ի կամ կոմպոնենտի ելքագրման արժեքից
 
-- **Limited to:**
+- **Սահմանափակված է միայն․**
   - `<input>`
   - `<select>`
   - `<textarea>`
-  - components
+  - կոմպոնենտներ
 
-- **Modifiers:**
-  - [`.lazy`](../guide/forms.html#lazy) - listen to `change` events instead of `input`
-  - [`.number`](../guide/forms.html#number) - cast valid input string to numbers
-  - [`.trim`](../guide/forms.html#trim) - trim input
+- **Փոփոխիչներ․**
+  - [`.lazy`](../guide/forms.html#lazy) - լսել `change` event-ներին `input`-ի փոխարեն
+  - [`.number`](../guide/forms.html#number) - վերածել ճիշտ մուտագրված string-ը դեպի թվեր
+  - [`.trim`](../guide/forms.html#trim) - կտրել մուտքագրումը
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Create a two-way binding on a form input element or a component. For detailed usage and other notes, see the Guide section linked below.
+  Ստեղծել երկուղի կապում form-ի input էլեմենտի կամ կոմպոնենտի հետ։ Օգտագործման վերաբերյալ մանրամասների համար, նայեք ներքևում գտնվող ուղեցույցի հղումը։
 
-- **See also:**
-  - [Form Input Bindings](../guide/forms.html)
-  - [Components - Form Input Components using Custom Events](../guide/components.html#Form-Input-Components-using-Custom-Events)
+- **Նաև նայեք․**
+  - [Form Input-ի Կապումները](../guide/forms.html)
+  - [Կոմպոնենտներ - Form Input-ի Կոմպոնենտներ օգտագործելով Custom Event-ներ](../guide/components.html#Form-Input-Components-using-Custom-Events)
 
 ### v-slot
 
-- **Shorthand:** `#`
+- **Կարճ․** `#`
 
-- **Expects:** JavaScript expression that is valid in a function argument position (supports destructuring in [supported environments](../guide/components-slots.html#Slot-Props-Destructuring)). Optional - only needed if expecting props to be passed to the slot.
+- **Սպասում է․** JavaScript արտահայտություն որը ճիշտ է ֆունկցիայի արգումենտի դիրքում (համապատասխանում է դեստրուկուրային [համապատասխան միջավայրերում](../guide/components-slots.html#Slot-Props-Destructuring))։ Այլընտրանքային - միայն անհրաժեշտ է եթե սպասվող prop-ները փոխանցվում են սլոտին։
 
-- **Argument:** slot name (optional, defaults to `default`)
+- **Արգումենտ․** սլոտի անուն (ոչ պարտադիր, հիմնականում լինում է `default`)
 
-- **Limited to:**
+- **Սահմանափակված է մինչ․**
   - `<template>`
-  - [components](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (for a lone default slot with props)
+  - [կոմպոնենտներ](../guide/components-slots.html#Abbreviated-Syntax-for-Lone-Default-Slots) (միայնակ հիմանական սլոտի համար prop-ների հետ)
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  Denote named slots or slots that expect to receive props.
+  Նշանակում է անվանված սլոտները կամ սլոտները որոնք սպասում են prop-ների։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
-  <!-- Named slots -->
+  <!-- Անվանված սլոտներ -->
   <base-layout>
     <template v-slot:header>
-      Header content
+      Header-ի բովանդակություն
     </template>
 
-    Default slot content
+    Հիմնական սլոտի բովանդակությունը
 
     <template v-slot:footer>
-      Footer content
+      Footer-ի բովանդակություն
     </template>
   </base-layout>
 
-  <!-- Named slot that receives props -->
+  <!-- Անվանված սլոտներ որոնք ստանում են prop-ներ -->
   <infinite-scroll>
     <template v-slot:item="slotProps">
       <div class="item">
@@ -2301,41 +2301,41 @@ type: api
     </template>
   </infinite-scroll>
 
-  <!-- Default slot that receive props, with destructuring -->
+  <!-- Հիմնական սլոտ որը ստանում է prop-ներ, ապակառուցման հետ հանդերձ -->
   <mouse-position v-slot="{ x, y }">
-    Mouse position: {{ x }}, {{ y }}
+    Մկնիկի դիրք․ {{ x }}, {{ y }}
   </mouse-position>
   ```
 
-  For more details, see the links below.
+  Ավելի մանրամասների համար, նայեք ներքևում գտնվող հղումները։
 
-- **See also:**
-  - [Components - Slots](../guide/components-slots.html)
+- **Նաև նայեք․**
+  - [Կոմպոնենտներ - Սլոտներ](../guide/components-slots.html)
   - [RFC-0001](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md)
 
 ### v-pre
 
-- **Does not expect expression**
+- **Չի ակնկալում արտահայտություն**
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Skip compilation for this element and all its children. You can use this for displaying raw mustache tags. Skipping large numbers of nodes with no directives on them can also speed up compilation.
+  Բաց թողնել կոմպիլացիան նշված էլեմենտի և իր ժառանգողների համար։ Դուք կարող եք օգտագործել սա որպեսզի ցուցադրել չմշակված բեղավոր tag-եր։ Բաց թողնելով մեծ թվով node-եր առանց ուղղորդիչների կարող է արագացնել կոմպիլացիան։
 
-- **Example:**
+- **Օրինակ․**
 
   ```html
-  <span v-pre>{{ this will not be compiled }}</span>
+  <span v-pre>{{ սա չի լինի կոմպիլացված }}</span>
    ```
 
 ### v-cloak
 
-- **Does not expect expression**
+- **Չի ակնկալում արտահայտություն**
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  This directive will remain on the element until the associated Vue instance finishes compilation. Combined with CSS rules such as `[v-cloak] { display: none }`, this directive can be used to hide un-compiled mustache bindings until the Vue instance is ready.
+  Այս ուղղորդիչը կմնա էլեմենտի վրա մինչ կապված Vue instance-ը ավարտում է կոմպիլացիան։ CSS կանոնների հետ համատեղ ինչպիսին են `[v-cloak] { display: none }`, այս ուղղորդիչը կարող է օգտագործվել որպեսզի թակցնել չկոմպիլացված բեղերի կապումներ մինչ Vue instance-ի պատրաստ է։
 
-- **Example:**
+- **Օրինակ․**
 
   ```css
   [v-cloak] {
@@ -2349,47 +2349,47 @@ type: api
   </div>
   ```
 
-  The `<div>` will not be visible until the compilation is done.
+  `<div>`-ը չի լինի տեսանելի մինչ կոմպիլացիան ավատրված է։
 
 ### v-once
 
-- **Does not expect expression**
+- **Չի ակնկալում արտահայտություն**
 
-- **Details:**
+- **Մանրամասներ․**
 
-  Render the element and component **once** only. On subsequent re-renders, the element/component and all its children will be treated as static content and skipped. This can be used to optimize update performance.
+  Render անել միայն էլեմենտը և կոմպոնենտը։ Կրկնակի render-ների ժամանակ, էլեմենտը/կոմպոնենտը և բոլոր իր ժառանգողները կվերաբերվեն որպես ստատիկ բովանդակություն և բաց կթղնվեն։ Սա կարող է օգտագործվել որպեսզի օպտիմիզացնել թարմացման արագությունը։
 
   ```html
-  <!-- single element -->
-  <span v-once>This will never change: {{msg}}</span>
-  <!-- the element have children -->
+  <!-- մեկ էլեմենտ -->
+  <span v-once>Սա երբեք չի փոխվի․ {{msg}}</span>
+  <!-- էլեմենտը ունի ժառանգողներ -->
   <div v-once>
-    <h1>comment</h1>
+    <h1>մեկնաբանություն</h1>
     <p>{{msg}}</p>
   </div>
-  <!-- component -->
+  <!-- կոմպոնենտ -->
   <my-component v-once :comment="msg"></my-component>
-  <!-- `v-for` directive -->
+  <!-- `v-for` ուղղորդիչ -->
   <ul>
     <li v-for="i in list" v-once>{{i}}</li>
   </ul>
   ```
 
-- **See also:**
-  - [Data Binding Syntax - interpolations](../guide/syntax.html#Text)
-  - [Components - Cheap Static Components with `v-once`](../guide/components.html#Cheap-Static-Components-with-v-once)
+- **Նաև նայեք․**
+  - [Տվյալների Կապման Գրելաձև - Ինտերպոլացիաներ](../guide/syntax.html#Text)
+  - [Կոմպոնենտներ - Թեթև Ստատիկ Կոմպոնենտներ `v-once`-ի հետ](../guide/components.html#Cheap-Static-Components-with-v-once)
 
-## Special Attributes
+## Հատուկ Ատրիբուտներ
 
 ### key
 
-- **Expects:** `number | string | boolean (since 2.4.2) | symbol (since 2.5.12)`
+- **Ակնկալում է․** `number | string | boolean (since 2.4.2) | symbol (since 2.5.12)`
 
-  The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify VNodes when diffing the new list of nodes against the old list. Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed/destroyed.
+  `key` հատուկ ատրիբուտը հիմնականում օգտագործվում է որպես հուշում Vue-ի վիրտուալ DOM-ի ալգորիթմի համար որպեսզի նկատի VNode-երը երբ նոր ցանկի node-երը տարբերվում են հինից։ Առանց key-երի, Vue օգտագործվում է ալգորիթմ որը փոքրացնում է էլէմենտի շարժը և փորձում է նորոգել/վերօգտագործել նույն տիպի էլեմենտները տեղում որքան հնարավոր է։ Key-երի հետ, այն կվերադասավորի էլեմենտը նրանց փոփոխության դեպքում, և էլեմենտը key-երով որոնք այլևս ներկա չեն միշտ կլինեն ջնջված/ոչնչացված։
 
-  Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+  Ժառանգողները նույն ընդհանուր ծնողի պետք է ունենան **հատուկ բանալիներ**։ Կրկնվող բանալիները կստեղծեն render-ի սխալներ։
 
-  The most common use case is combined with `v-for`:
+  Ամենա հաճախ օգտագործվող դեպքը դա `v-for`-ի հետ հանդերձ է․
 
   ``` html
   <ul>
@@ -2397,12 +2397,12 @@ type: api
   </ul>
   ```
 
-  It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
+  Սա նաև կարող է օգտագործվել որպեսզի ստիպել փոխարինումը էլեմենտի/կոմպոնենտի վերօգտագործման փոխարեն։ Սա կարող է օգտակար լինել երբ որ դուք ցանկանում եք․
 
-  - Properly trigger lifecycle hooks of a component
-  - Trigger transitions
+  - Ճիշտ ձևով արձակել կոմպոնենտի lifecycle hook-երը
+  - Արձակել անցումներ
 
-  For example:
+  Օրինակի համար․
 
   ``` html
   <transition>
@@ -2410,119 +2410,119 @@ type: api
   </transition>
   ```
 
-  When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  Երբ `text`-ը փոփոխվում է, `<span>` միշտ կլինի փոխարինված վերանորոգվելու փոխարեն, այնպես որ անցումը կարձակվի։
 
 ### ref
 
-- **Expects:** `string`
+- **Ակնկալում է․** `string`
 
-  `ref` is used to register a reference to an element or a child component. The reference will be registered under the parent component's `$refs` object. If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be component instance:
+  `ref`-ը օգտագործվում է որպեսզի գրանցել դիմելու միջոց դեպի էլեմենտ կամ ժառանգող կոմպոնենտ։ Այս դիմելու միջոցը կգրանցվի ծնող կոմպոնենտի `$refs` օբյեկտի մեջ։ Եթե օգտագործվի հասարակ DOM էլեմենտի վրա, այդ դիմումը կլինի դեպի էլեմենտ; եթե օգտագործվում է ժառանգող կոմպոնենտի վրա, դիմումը կլինի կոմպոնենտի instance․
 
   ``` html
-  <!-- vm.$refs.p will be the DOM node -->
-  <p ref="p">hello</p>
+  <!-- vm.$refs.p կլինի DOM node-ը -->
+  <p ref="p">բարև</p>
 
-  <!-- vm.$refs.child will be the child component instance -->
+  <!-- vm.$refs.child կլինի ժառանգող կոմպոնենտի instance-ը -->
   <child-component ref="child"></child-component>
   ```
 
-  When used on elements/components with `v-for`, the registered reference will be an Array containing DOM nodes or component instances.
+  Երբ օգտագործվում է էլեմենտների/կոմպոնենտների վրա `v-for`-ի հետ, գրանցված դիմումը կլինի Զանգված պարունակող DOM node-եր կամ կոմպոնենտի instance-ներ։
 
-  An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you cannot access them on the initial render - they don't exist yet! `$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+  Կարևոր նշում ref-ի գրանցման մասին․ որովհետև ref-ները ստեղծվում են որպես render ֆունկցիայի արդյունք, դուք չեք կարող մուտք գործել նրանց մեջ սկզբնական render-ի ժամանակ - որովհետև նրանք դեռ գոյություն չունեն՜ `$refs`-ը նաև ոչ-ռեակտիվ է, այնպես որ դուք չպետք է փորձեք օգտագործել նրանց ձևանմուշներում տվյանլերի կապման համար։
 
-- **See also:** [Child Component Refs](../guide/components.html#Child-Component-Refs)
+- **Նաև նայեք․** [Ժառանգող Կոմպոնենտների Ref-եր](../guide/components.html#Child-Component-Refs)
 
 ### is
 
-- **Expects:** `string | Object (component’s options object)`
+- **Սպասում է․** `string | Object (component’s options object)`
 
-  Used for [dynamic components](../guide/components.html#Dynamic-Components) and to work around [limitations of in-DOM templates](../guide/components.html#DOM-Template-Parsing-Caveats).
+  Օգտագործվում է [դինամիկ կոմպոնենտների](../guide/components.html#Dynamic-Components) համար և համարվում է շրջանցում [DOM-ի ներքին ձևանմուշների սահմանափակումների համար](../guide/components.html#DOM-Template-Parsing-Caveats)։
 
-  For example:
+  Օրինակի համար․
 
   ``` html
-  <!-- component changes when currentView changes -->
+  <!-- կոմպոնենտի փոփոխությունները երբ currentView-ը փոխվում է -->
   <component v-bind:is="currentView"></component>
 
-  <!-- necessary because `<my-row>` would be invalid inside -->
-  <!-- a `<table>` element and so would be hoisted out      -->
+  <!-- անհրաժեշտ է որովհետև `<my-row>`-ը կլինի սխալ ներքուստ -->
+  <!-- `<table>` էլեմենտը և կլինի բարձրացված վերև -->
   <table>
     <tr is="my-row"></tr>
   </table>
   ```
 
-  For detailed usage, follow the links in the description above.
+  Մանրամասն օգտագործման վերաբերյալ, հետևեք հղումները վերևում նշված մեկնաբանություններում։
 
-- **See also:**
-  - [Dynamic Components](../guide/components.html#Dynamic-Components)
-  - [DOM Template Parsing Caveats](../guide/components.html#DOM-Template-Parsing-Caveats)
+- **Նաև նայեք․**
+  - [Դինամիկ Կոմպոնենտներ](../guide/components.html#Dynamic-Components)
+  - [DOM-ի Ձևանմուշների Գործարկման Պայմանները](../guide/components.html#DOM-Template-Parsing-Caveats)
 
-### slot <sup style="color:#c92222">deprecated</sup>
+### slot <sup style="color:#c92222">հնեցված է</sup>
 
-**Prefer [v-slot](#v-slot) in 2.6.0+.**
+**Նախընտրեք [v-slot](#v-slot) 2.6.0+-ի մեջ։**
 
-- **Expects:** `string`
+- **Սպասում է․** `string`
 
-  Used on content inserted into child components to indicate which named slot the content belongs to.
+  Օգտագործվում է տեղադրված բովանդակությունում որը գտնվում է ժառանգող կոմպոնենտի մեջ որպեսզի նշել թե որ անվանված սլոտին է պատկանում բովանդակությունը։
 
-- **See also:** [Named Slots with `slot`](../guide/components.html#Named-Slots-with-slot)
+- **Նաև նայեք․** [Անվանված Սլոտներ `slot`-ի հետ](../guide/components.html#Named-Slots-with-slot)
 
-### slot-scope <sup style="color:#c92222">deprecated</sup>
+### slot-scope <sup style="color:#c92222">հնեցված է</sup>
 
-**Prefer [v-slot](#v-slot) in 2.6.0+.**
+**Նախընտրեք [v-slot](#v-slot) 2.6.0+-ի մեջ։**
 
-- **Expects:** `function argument expression`
+- **Ակնկալում է․** `ֆունկցիայի արգումենտի արտահայտություն`
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Used to denote an element or component as a scoped slot. The attribute's value should be a valid JavaScript expression that can appear in the argument position of a function signature. This means in supported environments you can also use ES2015 destructuring in the expression. Serves as a replacement for [`scope`](#scope-replaced) in 2.5.0+.
+  Օգտագործվում է որպեսզի նշել էլեմենտ կամ կոմպոնենտ որպես սահմանափակված սլոտ։ Ատրիբուտների արժեքը պետք է լինի ճիշտ JavaScript-ի արտահայտություն որը կհայտնվի ֆունկցիայի գրանցման արգումենի դիրքում։ Սա նշանակում է որ համապատասխան միջավայրերում դուք կարող եք օգտագործել ES2015 արտահայտության մեջ որպեսզի ապակառուցել։ Ծառայում է որպես փոխարինող [`scope-ի`](#scope-replaced) համար 2.5.0+-ի մեջ։
 
-  This attribute does not support dynamic binding.
+  Այս ատրիբուտը չի համապատասխանում դինամիկ կապումներին։
 
-- **See also:** [Scoped Slots with `slot-scope`](../guide/components.html#Scoped-Slots-with-slot-scope)
+- **Նաև նայեք․** [Scope-ված Սլոտներ `slot-scope`-ի հետ](../guide/components.html#Scoped-Slots-with-slot-scope)
 
-### scope <sup style="color:#c92222">removed</sup>
+### scope <sup style="color:#c92222">հնեցված է</sup>
 
-**Replaced by [slot-scope](#slot-scope) in 2.5.0+. Prefer [v-slot](#v-slot) in 2.6.0+.**
+**Փոխարինվել է [slot-scope-ով](#slot-scope) 2.5.0+-ի մեջ։ Նախընտրեք [v-slot-ը](#v-slot) 2.6.0+-ի մեջ։**
 
-Used to denote a `<template>` element as a scoped slot.
+Օգտագործվում է որպեսզի նշել `<template>` էլեմենտ որպես սահմանափակված սլոտ։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  Same as [`slot-scope`](#slot-scope) except that `scope` can only be used on `<template>` elements.
+  Նույնը ինչ [`slot-scope`](#slot-scope) բացառությամբ որ `scope`-ը կարող է միայն օգտագործվել `<template>` էլեմենտներում։
 
-## Built-In Components
+## Ներքին Կոմպոնենտներ
 
 ### component
 
-- **Props:**
+- **Prop-ներ․**
   - `is` - string | ComponentDefinition | ComponentConstructor
   - `inline-template` - boolean
 
-- **Usage:**
+- **Օգտագործումը:**
 
-  A "meta component" for rendering dynamic components. The actual component to render is determined by the `is` prop:
+  «meta կոմպոնենտ» դինամիկ կոմպոնենտների rendering-ի համար։ Իրական կոմպոնենտը որը պետք է render լինի կողմնորոշվում է `is` prop-ով․
 
   ```html
-  <!-- a dynamic component controlled by -->
-  <!-- the `componentId` property on the vm -->
+  <!-- դինամիկ կոմպոնենտ կառավարվող -->
+  <!-- `componentId` հատկության շնորհիվ vm-ում -->
   <component :is="componentId"></component>
 
-  <!-- can also render registered component or component passed as prop -->
+  <!-- կարող է նաև render անել գրանցված կոմպոնենտ կամ կոմպոնենտ փոխանցված որպես prop -->
   <component :is="$options.components.child"></component>
   ```
 
-- **See also:** [Dynamic Components](../guide/components.html#Dynamic-Components)
+- **Նաև նայեք․** [Դինամիկ Կոմպոնենտներ](../guide/components.html#Dynamic-Components)
 
 ### transition
 
-- **Props:**
-  - `name` - string, Used to automatically generate transition CSS class names. e.g. `name: 'fade'` will auto expand to `.fade-enter`, `.fade-enter-active`, etc. Defaults to `"v"`.
-  - `appear` - boolean, Whether to apply transition on initial render. Defaults to `false`.
-  - `css` - boolean, Whether to apply CSS transition classes. Defaults to `true`. If set to `false`, will only trigger JavaScript hooks registered via component events.
-  - `type` - string, Specifies the type of transition events to wait for to determine transition end timing. Available values are `"transition"` and `"animation"`. By default, it will automatically detect the type that has a longer duration.
-  - `mode` - string, Controls the timing sequence of leaving/entering transitions. Available modes are `"out-in"` and `"in-out"`; defaults to simultaneous.
-  - `duration` - number | { `enter`: number, `leave`: number }, Specifies the duration of transition. By default, Vue waits for the first `transitionend` or `animationend` event on the root transition element.
+- **Prop-ներ․**
+  - `name` - string, Օգտագործվում է որպեսզի ավտոմատ կերպով գեներացնել անցում CSS class անունների։ օրինակ․ `name: 'fade'` ավտոմատ կվերափոխվի դեպի `.fade-enter`, `.fade-enter-active`, և այլն։ Հիմնականում լինում է `"v"`։
+  - `appear` - boolean, Որոշում է կիրառել անցումներ սկզբնական render-ին թե ոչ։ Հիմանականում լինում է `false`։
+  - `css` - boolean, Որոշում է թե կիրառել CSS անցումների class-ներ թե ոչ։ Հիմնականում `true` է։ Եթե տեղադրված է դեպի `false`, այն միայն կարձակի JavaScript-ի hook-եր գրանցված կոմպոնենտնի event-ներում։
+  - `type` - string, Նշանակում է անցման event-ների տիպը որպեսզի այն սպասի որ կողմնորոշվի անցման վերջնակետը։ Հասանելի արժեքները դա `"transition"` և `"animation"`-ն են։ Հիմնականում, այն ավտոմատ կերպով նկատում է տիպը որը ունի ավելի երկար տևողություն։
+  - `mode` - string, Կառավարում է ժամանակի հերթականությունը ելքի/մուտքի անցումների։ Հասանելի ռեժիմները դա `"out-in"` և `"in-out"`-ն են; հիմնականում երկուսն ել ակտիվ են։
+  - `duration` - number | { `enter`: number, `leave`: number }, Նշում է երկարությունը անցման։ Հիմնականում, Vue-ն սպասում է առաջին `transitionend` կամ `animationend` event-ին արմատային անցման էլեմենտում
   - `enter-class` - string
   - `leave-class` - string
   - `appear-class` - string
@@ -2549,23 +2549,23 @@ Used to denote a `<template>` element as a scoped slot.
 
 - **Usage:**
 
-  `<transition>` serve as transition effects for **single** element/component. The `<transition>` only applies the transition behavior to the wrapped content inside; it doesn't render an extra DOM element, or show up in the inspected component hierarchy.
+  `<transition>` ծառայում է որպես անցման էֆֆեկտներ **մեկ** էլեմենտ/կոմպոնենտնի համար։ `<transition>`-ը միայն կիրառում է անցման վարքը ներքին փաթաթված բովանդակությանը; այն չի render անում հավելյալ DOM էլեմենտ, կամ երևում դիտարկված կոմպոնենտի հիերարխիայում։
 
   ```html
-  <!-- simple element -->
+  <!-- մեկ էլեմենտ -->
   <transition>
-    <div v-if="ok">toggled content</div>
+    <div v-if="ok">փոխարկված բովանդակություն</div>
   </transition>
 
-  <!-- dynamic component -->
+  <!-- դինամիկ կոմպոնենտ -->
   <transition name="fade" mode="out-in" appear>
     <component :is="view"></component>
   </transition>
 
-  <!-- event hooking -->
+  <!-- event-ի կանչ -->
   <div id="transition-demo">
     <transition @after-enter="transitionComplete">
-      <div v-show="ok">toggled content</div>
+      <div v-show="ok">փոխարկված բովանդակություն</div>
     </transition>
   </div>
   ```
@@ -2575,32 +2575,32 @@ Used to denote a `<template>` element as a scoped slot.
     ...
     methods: {
       transitionComplete: function (el) {
-        // for passed 'el' that DOM element as the argument, something ...
+        // փոխանցված 'el'-ի համար որը ունի DOM էլեմենտ որպես արգումենտ, որևէ մի բան ...
       }
     }
     ...
   }).$mount('#transition-demo')
   ```
 
-- **See also:** [Transitions: Entering, Leaving, and Lists](../guide/transitions.html)
+- **Նաև նայեք․** [Անցումներ․ Մոտւք, Ելք, և Ցանկերը](../guide/transitions.html)
 
 ### transition-group
 
-- **Props:**
-  - `tag` - string, defaults to `span`.
-  - `move-class` - overwrite CSS class applied during moving transition.
-  - exposes the same props as `<transition>` except `mode`.
+- **Prop-ներ․**
+  - `tag` - string, հիմնականում լինում է `span`։
+  - `move-class` - վերագրել CSS class-ը որը կիրառվում է անցման շարջի ժամանակ։
+  - բացում է նույն prop-ները ինչ `<transition>`-ը բացառությամբ `mode`-ի։
 
-- **Events:**
-  - exposes the same events as `<transition>`.
+- **Event-ներ․**
+  - բացում է նույն event-ները ինչ `<transition>`։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  `<transition-group>` serve as transition effects for **multiple** elements/components. The `<transition-group>` renders a real DOM element. By default it renders a `<span>`, and you can configure what element it should render via the `tag` attribute.
+  `<transition-group>` ծառայում է որպես անցման էֆֆեկտներ **բազմաթիվ** էլեմենտների/կոմպոնենտների համար։ `<transition-group>` render է անում իրական DOM էլեմենտ։ Հիմնականում այն render է անում `<span>`, և դուք կարող եք կառավարել թե ինչ էլեմենտ այն պետք է մատուցի օգտագործելով `tag` ատրիբուտը։
 
-  Note that every child in a `<transition-group>` must be **uniquely keyed** for the animations to work properly.
+  Նշում որ ամեն ժառանգողը `<transition-group>`-ում պետք է լինի **հատուկ բանալիներով** որպեսզի անիմացիան ճիշտ աշխատի։
 
-  `<transition-group>` supports moving transitions via CSS transform. When a child's position on screen has changed after an update, it will get applied a moving CSS class (auto generated from the `name` attribute or configured with the `move-class` attribute). If the CSS `transform` property is "transition-able" when the moving class is applied, the element will be smoothly animated to its destination using the [FLIP technique](https://aerotwist.com/blog/flip-your-animations/).
+  `<transition-group>`-ը համապատասխանում է շարժվող անցումներին CSS-ի transform-ի շնորհիվ։ Երբ ժառանգողի դիրքը էկրանին փոխվում է թարմացումից հետո, այն կկիրառի շարժական CSS class (ավտոմատ կերպով գեներացված `name` ատրիբուտից կամ կառավարված `move-class` ատրիբուտի շնորհիվ)։ Եթե CSS `transform` հատկությունը «անցումային է» երբ շարժական class-ը կիրառված է, էլեմենտը կշարժվի սահուն կերպով դեպի իր նախատեսված դիրքը օգտագործելով [FLIP տեխնիկան](https://aerotwist.com/blog/flip-your-animations/)։
 
   ```html
   <transition-group tag="ul" name="slide">
@@ -2610,38 +2610,38 @@ Used to denote a `<template>` element as a scoped slot.
   </transition-group>
   ```
 
-- **See also:** [Transitions: Entering, Leaving, and Lists](../guide/transitions.html)
+- **Նաև նայեք․** [Անցումներ: Մուտք, Ելք, և Ցանկեր](../guide/transitions.html)
 
 ### keep-alive
 
-- **Props:**
-  - `include` - string or RegExp or Array. Only components with matching names will be cached.
-  - `exclude` - string or RegExp or Array. Any component with a matching name will not be cached.
-  - `max` - number. The maximum number of component instances to cache.
+- **Prop-ներ․**
+  - `include` - string կամ RegExp կամ Array։ Միայն կոմպոնենտները համապատասխանող անուններով cache-ում կպահվի։
+  - `exclude` - string կամ RegExp կամ Array։ Ցանկացած կոմպոնենտի համապատախսանող անուն չի cache-ում։
+  - `max` - number. Առավելագույն թիվը կոմպոնենտների instance-ների որպեսզի պահվի cache-ում։
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  When wrapped around a dynamic component, `<keep-alive>` caches the inactive component instances without destroying them. Similar to `<transition>`, `<keep-alive>` is an abstract component: it doesn't render a DOM element itself, and doesn't show up in the component parent chain.
+  Երբ փաթաթվում է դինամիկ կոմպոնենտի վրա, `<keep-alive>`-ը cache է անում ոչ ակտիվ կոմպոնենտի instance-ներ առանց նրանց ոչնչացնելու։ Նման լինելով `<transition>`-ի, `<keep-alive>`-ը աբստրակտ կոմպոնենտ է․ այն render չի անում DOM էլեմենտ իրենով, և չի երևում կոմպոնենտի ծնողի շխթայում։
 
-  When a component is toggled inside `<keep-alive>`, its `activated` and `deactivated` lifecycle hooks will be invoked accordingly.
+  Երբ կոմպոնենտը փոխարկվում է `<keep-alive>`-ում, իր `activated` և `deactivated` lifecycle hook-երը կկանչվեն հերթականությամբ։
 
-  > In 2.2.0+ and above, `activated` and `deactivated` will fire for all nested components inside a `<keep-alive>` tree.
+  > 2.2.0+-ի ավելի շուտ տարբերակներում, `activated` և `deactivated`-ը կարձակվեն բոլոր ներքին կոմպոնենտների համար `<keep-alive>`-ի ծառի ներքո։
 
-  Primarily used to preserve component state or avoid re-rendering.
+  Հիմնականում օգտագործվում է որպեսզի պահպանել կոմպոնենտի վիճակը կամ խուսափել վերամատուցումից։
 
   ```html
-  <!-- basic -->
+  <!-- հասարակ -->
   <keep-alive>
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- multiple conditional children -->
+  <!-- բազմաթիվ պայմանական ժառանգողներ -->
   <keep-alive>
     <comp-a v-if="a > 1"></comp-a>
     <comp-b v-else></comp-b>
   </keep-alive>
 
-  <!-- used together with `<transition>` -->
+  <!-- `<transition>`-ի հետ համատեղ օգտագործումը -->
   <transition>
     <keep-alive>
       <component :is="view"></component>
@@ -2649,38 +2649,38 @@ Used to denote a `<template>` element as a scoped slot.
   </transition>
   ```
 
-  Note, `<keep-alive>` is designed for the case where it has one direct child component that is being toggled. It does not work if you have `v-for` inside it. When there are multiple conditional children, as above, `<keep-alive>` requires that only one child is rendered at a time.
+  Նշում, `<keep-alive>`-ը նախատեսված է երբ որոշ դեպքերում այն ունի մեկ ուղիղ ժառանգող կոմպոնենտ որը փոխարկվում է։ Այն չի աշխատում եթե դուք ունեք `v-for` ներսում։ Երբ կան բազմաթիվ պայմանական ժառանգողներ, ինչպես վերևում `<keep-alive>` պահանջում է որ միայն մեկ ժառանգող մատուցվի միաժամանակ։
 
-- **`include` and `exclude`**
+- **`include` և `exclude`**
 
-  > New in 2.1.0+
+  > Նոր 2.1.0+-ի մեջ
 
-  The `include` and `exclude` props allow components to be conditionally cached. Both props can be a comma-delimited string, a RegExp or an Array:
+  `include` և `exclude` prop-ներ թույլ են տալիս կոմպոնենտների որպեսզի նրանք պայմանականորեն պահպանվեն cache-ում։ Երկու prop-ները կարող են լինել բաժանված ստորակետներով string, RegExp կամ Զանգված․
 
   ``` html
-  <!-- comma-delimited string -->
+  <!-- ստորակետով բաժանված string -->
   <keep-alive include="a,b">
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- regex (use `v-bind`) -->
+  <!-- regex (օգտագործեք `v-bind`) -->
   <keep-alive :include="/a|b/">
     <component :is="view"></component>
   </keep-alive>
 
-  <!-- Array (use `v-bind`) -->
+  <!-- Զանգված (օգտագործեք `v-bind`) -->
   <keep-alive :include="['a', 'b']">
     <component :is="view"></component>
   </keep-alive>
   ```
 
-  The match is first checked on the component's own `name` option, then its local registration name (the key in the parent's `components` option) if the `name` option is not available. Anonymous components cannot be matched against.
+  Համապատասխանեցում սկզբում ստուգվում է կոմպոնենտի `name` ընտրանքում, այնուհետև իր լոկալ գրանցման անվան (key-ն ծնողի `components` ընտրանքում) եթե `name` ընտրանքը հասանելի չէ։ Անանուն կոմպոնենտները չեն կարող համապատասնախել։
 
 - **`max`**
 
-  > New in 2.5.0+
+  > Նոր 2.5.0+-ի մեջ
 
-  The maximum number of component instances to cache. Once this number is reached, the cached component instance that was least recently accessed will be destroyed before creating a new instance.
+  Առավելագույն թիվը կոմպոնենտի instance-ների cache անելու համար։ Հենց հասնում է այս թվին, cache եղած կոմպոնենտի instance-ը որը գրանցվել էր ամենաշուտը կոչնչացվի նախքան նոր instance-ի ստեղծումը։
 
   ``` html
   <keep-alive :max="10">
@@ -2688,27 +2688,27 @@ Used to denote a `<template>` element as a scoped slot.
   </keep-alive>
   ```
 
-  <p class="tip">`<keep-alive>` does not work with functional components because they do not have instances to be cached.</p>
+  <p class="tip">`<keep-alive>` չի աշխատում ֆունկցիոնալ կոմպոնենտների հետ որոովհետև նրանց չունեն instance-ներ որպեսզի cache լինեն։</p>
 
-- **See also:** [Dynamic Components - keep-alive](../guide/components.html#keep-alive)
+- **Նաև նայեք․** [Դինամիկ Կոմպոնենտներ - keep-alive](../guide/components.html#keep-alive)
 
 ### slot
 
-- **Props:**
-  - `name` - string, Used for named slot.
+- **Prop-ներ․**
+  - `name` - string, Օգտագործվում է անվանված սլոտենրի համար
 
-- **Usage:**
+- **Օգտագործումը․**
 
-  `<slot>` serve as content distribution outlets in component templates. `<slot>` itself will be replaced.
+  `<slot>`-ը ծառայում է որպես բովանդակության բաշխման ելքագրում կոմպոնենտնի ձևանմուշներում։ `<slot>`-ը իրենով կփոխարինվի։
 
-  For detailed usage, see the guide section linked below.
+  Ավելի մանրամասն օգտագործման համար, նայեք ուղեցույցի բաժինը ներքևի հղումներում։
 
-- **See also:** [Content Distribution with Slots](../guide/components.html#Content-Distribution-with-Slots)
+- **Նաև նայեք․** [Բովանդակության Բաշխում Սլոտների Հետ](../guide/components.html#Content-Distribution-with-Slots)
 
-## VNode Interface
+## VNode-ի Interface
 
-- Please refer to the [VNode class declaration](https://github.com/vuejs/vue/blob/dev/src/core/vdom/vnode.js).
+- Խնդում ենք դիմել [VNode class-ի հայտարարմանը](https://github.com/vuejs/vue/blob/dev/src/core/vdom/vnode.js)։
 
 ## Server-Side Rendering
 
-- Please refer to the [vue-server-renderer package documentation](https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer).
+- Խնդրում ենք դիմել [vue-server-renderer գրադարանի փաստաթղթավորումը](https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer)։
