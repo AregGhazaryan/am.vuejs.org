@@ -47,9 +47,6 @@ gold_sponsors:
   - url: 'https://www.frontenddeveloperlove.com/'
     img: frontendlove.png
     name: FrontendLove
-  - url: 'https://onsen.io/vue/'
-    img: onsen_ui.png
-    name: Onsen UI
   - url: 'https://neds.com.au/'
     img: neds.png
     name: Neds
@@ -119,6 +116,21 @@ gold_sponsors:
   - url: 'https://litslink.com'
     img: litslink.png
     name: LITSLINK
+  - url: 'https://newicon.net'
+    img: newicon.png
+    name: Newicon
+  - url: 'https://lowdefy.com?k=w432'
+    img: lowdefy.png
+    name: Lowdefy
+  - url: 'https://quickbookstoolhub.com/'
+    img: quickbooks_tool_hub.png
+    name: Quickbooks Tool Hub
+  - url: 'https://linecorp.com'
+    img: line_corporation.png
+    name: LINE Corporation
+  - url: 'https://exmax.it/'
+    img: exmax.png
+    name: Exmax
 silver_sponsors:
   - url: 'https://roadster.com'
     img: roadster.png
